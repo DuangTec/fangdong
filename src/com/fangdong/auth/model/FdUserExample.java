@@ -2,7 +2,7 @@ package com.fangdong.auth.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//
 public class FdUserExample {
     protected String orderByClause;
 
