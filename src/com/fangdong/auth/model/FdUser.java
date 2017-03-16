@@ -1,5 +1,5 @@
 package com.fangdong.auth.model;
-//»ù±¾Àà°¡ÎûÎû
+//åŸºæœ¬ç±»
 public class FdUser {
     private Integer id;
 
