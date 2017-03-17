@@ -1,0 +1,82 @@
+h1{
+    margin: 0px;
+    padding: 0px;
+}
+/*µÇÂ¼µ¼º½*/
+.city-log-reg{
+    float: right;
+}
+.city-log-reg li:nth-of-type(2){
+    margin-right:0px;
+}
+/*µÇÂ¼¿ò*/
+.login_regist{
+    padding: 100px 200px;
+}
+.login_regist_box{
+    padding: 80px;
+    /*border: 1px solid #D2D3D4;*/
+}
+.login_regist_box > h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    text-align: center;
+}
+.login_regist_box li{
+    width: 400px;
+    overflow: hidden;
+    margin: 0px auto 40px;
+}
+.login_regist_box input{
+    display: block;
+    width: 400px;
+    height: 46px;
+    line-height: 46px;
+    text-indent: 2em;
+    color:#A9A9A9;
+    border: 1px solid #D2D3D4;
+}
+.login_regist_box input[type="submit"]{
+    text-indent: 0px;
+    font-size: 18px;
+    background-color: #6CC5E9;
+    border: 1px solid #85CAE5;
+    color: white;
+}
+.login_regist_box input[type="submit"]:hover{
+    background-color: #56BEE7;
+}
+.login_regist_box input[type="submit"]:focus{
+    background-color: #4CB9E4;
+}
+.login_regist_box label{
+    position: relative;
+    display: inline-block;
+    margin: 10px 0px 0px 40px;
+    padding: 0px 6px;
+    height: 22px;
+    line-height: 22px;
+    font-weight: normal;
+    font-size: 12px;
+    background-color:#D2D3D4;
+    color:white;
+}
+.login_regist_box label:after{
+    content: "";
+    display:block;
+    width:0;
+    height:0;
+    border-width:11px 11px 11px 0;
+    border-style:solid;
+    border-color:transparent #D2D3D4 transparent transparent;/*Í¸Ã÷ »Æ Í¸Ã÷ Í¸Ã÷ */
+    position:absolute;
+    top:0px;
+    left:-11px;
+}
+/*µ×²¿*/
+.footer{
+    position: absolute;
+    width: 100%;
+}
+
+

@@ -1,0 +1,146 @@
+body{
+    font-family:"ZHRSXT","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+a,a:hover,a:visited,a:focus{
+    color:white;
+    text-decoration: none;
+    outline: none;
+}
+ul,li,input{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+input[type="text"],input[type="submit"],button{
+    outline: none;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.container{
+    min-width: 980px;
+    padding: 0px;
+}
+/*公共导航*/
+.navbar{
+    min-width: 980px;
+    margin: 0px auto;
+    margin-bottom: 0px;
+    border: none;
+    background-color: #98D2E9;
+}
+.navbar > .container .navbar-brand{
+    height: 60px;
+    line-height: 30px;
+    margin: 0px;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus
+{
+    color:white;
+}
+.city-log-reg{
+    display: inline-block;
+    min-height: 60px;
+}
+.city-log-reg > li{
+    display: inline-block;
+    margin: 0px 10px;
+    line-height: 60px;
+}
+.city-log-reg > li.dropdown > a{
+    font-size: 12px;
+}
+.city-log-reg > li > .dropdown-menu{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.dropdown-menu{
+    top:50px;
+    box-shadow: 0 0px 16px 0 rgba(0,0,0,.16);
+    border:1px solid gainsboro;
+}
+.city-log-reg > li.log-reg{
+    position: relative;
+    color:#3FAFDB;
+}
+.city-log-reg > li.log-reg > span{
+    position: absolute;
+    top:0px;
+    right: -12px;
+    color:white;
+}
+.city-log-reg >li.log-reg > a:hover{
+    color: #3FAFDB;
+}
+.nav{
+    float: right;
+}
+.nav > li{
+    float: left;
+}
+.nav > li > a{
+    height: 60px;
+    line-height: 40px;
+}
+.nav > .normal > a:hover{
+    background-color: #3FAFDB;
+}
+.nav > .active > a,
+.nav > .active > a:hover,
+.nav > .active > a:focus{
+    color:white;
+    background-color: #3FAFDB;
+}
+.nav > li > a,
+.nav > li > a:hover,
+.nav > li > a:focus{
+    color:white;
+}
+/*公共底部*/
+.footer{
+    background-color: #D2D3D4;
+    overflow: hidden;
+}
+.footer .container{
+    position: relative;
+}
+.footer p{
+    padding: 10px 0px;
+    line-height: 30px;
+    margin: 0px;
+    text-align: center;
+    color: white;
+}
+.footer p span{
+    display: inline-block;
+    width: 20px;
+}
+/*回顶部*/
+.go-top{
+    position: absolute;
+    bottom:20px;
+    right: 0px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+.go-top:hover{
+   transform: scale(1.1);
+}
+
+
