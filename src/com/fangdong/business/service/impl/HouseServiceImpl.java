@@ -1,5 +1,6 @@
 package com.fangdong.business.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 
@@ -73,5 +74,12 @@ public class HouseServiceImpl implements HouseService {
 		
 		List<HouseVo> houseVoList=houseMapper.selectTopHouseVo(top,regionId);
 		return houseVoList;
+	}
+	//模糊查询,入口key(用户输入的)
+	@Override
+	public List<HouseVo> fuzzySearch(String key) {
+		// TODO Auto-generated method stub
+		List<HouseVo> FsResult=houseMapper.selectByKey(key);
+		return FsResult;
 	}
 }

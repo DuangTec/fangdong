@@ -127,4 +127,17 @@ public class HouseController {
 	    return mov;
 	}
 	
+	@RequestMapping("/fuzzySearch.action")
+	public ModelAndView fuzzySearch(HttpServletRequest request){
+		String key = request.getParameter("index-search");
+		ModelAndView mov = new ModelAndView("/house/house.jsp");
+		
+		List<HouseVo> houseVoList = houseService.fuzzySearch(key);
+		
+	    mov.addObject("houseList",houseVoList);
+	    
+	    return mov;
+	}
+	
+	
 }

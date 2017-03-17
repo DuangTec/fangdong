@@ -21,6 +21,9 @@ public interface FdHouseMapper {
     List<FdHouse> selectByExample(FdHouseExample example);
 
     FdHouse selectByPrimaryKey(Integer id);
+    
+    //模糊查询的dao层借口
+    List<HouseVo> selectByKey(String key);
 
     int updateByExampleSelective(@Param("record") FdHouse record, @Param("example") FdHouseExample example);
 

@@ -12,4 +12,6 @@ public interface HouseService {
 	public void deleteHouseById(int id) throws SQLConnectionFailException;
 	public HouseVo getHouseVoById(int id);
 	public List<HouseVo> getTopHouse(int top,int regionId);
+	//模糊查询
+	public List<HouseVo> fuzzySearch(String key);
 }
