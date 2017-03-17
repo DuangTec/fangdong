@@ -4,15 +4,16 @@
 }
 .duang-breadcrumb{
     margin: 0px;
+    padding: 20px 15px;
     background-color: white;
 }
-.duang-breadcrumb a{
+.duang-breadcrumb a,.news_text a{
     color: #98D2E9;
 }
-.duang-breadcrumb a:hover{
+.duang-breadcrumb a:hover,.news_text a:hover{
     color: #777;
 }
-/*房屋信息预览*/
+/*房屋信息预览-左侧图片*/
 .magnifier{
     position: relative;
     padding:0px 30px;
@@ -41,6 +42,7 @@
     height: 200px;
     overflow: hidden;
     display: none;
+    z-index: 1;
 }
 .house_big_img_preview img{
     position: absolute;
@@ -71,7 +73,7 @@
     right: 30px;
 }
 .scroll_outer{
-    width: 400px;
+    width: 300px;
     margin: 0px auto;
     overflow: hidden;
 }
@@ -92,4 +94,51 @@
 }
 .scroll_inner > span > img:hover{
     box-shadow: 0px 0px 6px 2px #98D2E9;
+}
+/*房屋信息预览-右侧信息*/
+.house_news_preview h1{
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 36px;
+}
+.news_text a{
+    color: black;
+}
+.news_text a:hover{
+    color: #98D2E9;
+}
+.house_news li{
+    padding: 10px 0px;
+    overflow: hidden;
+}
+.house_news li span{
+   display: inline-block;
+   height: 23px;
+   line-height: 23px;
+}
+.news_title{
+    color: #777;
+    margin-right: 10px;
+}
+.news_text_money,.new_text_phone{
+    color: #FF9649;
+    font-size: 16px;
+    font-weight: bold;
+}
+.new_text_phone{
+    color:#98D2E9;
+}
+.booking_house{
+    width: 200px;
+    height: 50px;
+    background-color: #98D2E9;
+    border-radius: 4px;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 2px;
+}
+@media (min-width: 1200px){
+    .scroll_outer{
+        width: 400px;
+    }
 }
