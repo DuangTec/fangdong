@@ -1,11 +1,14 @@
 package com.fangdong.business.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -128,15 +131,20 @@ public class HouseController {
 	}
 	
 	@RequestMapping("/fuzzySearch.action")
-	public ModelAndView fuzzySearch(HttpServletRequest request){
+	public ModelAndView fuzzySearch(HttpServletRequest request) throws IOException{
 		String key = request.getParameter("index-search");
-		ModelAndView mov = new ModelAndView("/house/house.jsp");
-		
-		List<HouseVo> houseVoList = houseService.fuzzySearch(key);
-		
-	    mov.addObject("houseList",houseVoList);
-	    
-	    return mov;
+		if(key.indexOf("%")== -1)
+		{
+			ModelAndView mov = new ModelAndView("/house/house.jsp");
+			List<HouseVo> houseVoList = houseService.fuzzySearch(key);
+		    mov.addObject("houseList",houseVoList); 
+		    return mov;
+		}
+		else
+		{
+			ModelAndView mov = new ModelAndView("/house/house.jsp");
+			return mov;
+		}
 	}
 	
 	

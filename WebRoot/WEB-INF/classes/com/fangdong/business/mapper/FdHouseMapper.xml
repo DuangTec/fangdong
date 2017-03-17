@@ -140,8 +140,8 @@
 	where r1.region_name like "%"#{key}"%"
 	or  r2.region_name like "%"#{key}"%"
 	or  r3.region_name like "%"#{key}"%"
-	or h.house_detail like "%"#{key}"%"
-	or h.address like  "%"#{key}"%"
+	or 	h.house_detail like "%"#{key}"%"
+	or 	h.address like "%"#{key}"%"
   </select>
   <select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
   	select 
