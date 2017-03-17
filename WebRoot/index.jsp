@@ -123,9 +123,9 @@
                     </a>
                     <div class="caption">
                         <h3>
-                            <a href="#" title="${house.city } ${house.area}"
+                            <a href="#" title="${house.district} ${house.area}"
                                     target="_blank">
-                                ${house.city } ${house.area}
+                                ${house.district } ${house.area}
                             </a>
                         </h3>
                         <div class="item-info clearfix">

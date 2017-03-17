@@ -3,8 +3,11 @@ package com.fangdong.business.model;
 public class HouseVo extends FdHouse{
 	private String owner;
 	private String[] pics;
-	private String province;
+	//城市(第一层)city
 	private String city;
+	//行政区(第二层)district
+	private String district;
+	//地区(第三层)area
 	private String area;
 	
 	public String getOwner() {
@@ -19,17 +22,17 @@ public class HouseVo extends FdHouse{
 	public void setPics(String[] pics) {
 		this.pics = pics;
 	}
-	public String getProvince() {
-		return province;
-	}
-	public void setProvince(String province) {
-		this.province = province;
-	}
 	public String getCity() {
 		return city;
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 	public String getArea() {
 		return area;
