@@ -1,14 +1,14 @@
 /**
- * Created by yey on 2017/2/13.
+ * Created by yey on 2017/3/19.
  */
 $(function(){
-    /*go-topå¿«é€Ÿå›é¡¶*/
+    /*go-top¿ìËÙ»Ø¶¥*/
     $(".go-top").click(function(){
         $(window).scrollTop(0);
     });
-    /*å¯¼èˆªåŸå¸‚åˆ‡æ¢*/
+    /*µ¼º½³ÇÊĞÇĞ»»*/
     function dropdownActive(){
-       $(".dropdown-toggle").html($(this).text()+'<span class="caret"></span>');
+        $(".dropdown-toggle").html($(this).text()+'<span class="caret"></span>');
     }
     $(".dropdown-menu a").click(dropdownActive);
     function navBgColor(){

@@ -111,6 +111,9 @@
     padding: 10px 0px;
     overflow: hidden;
 }
+.house_phone{
+    display: none;
+}
 .house_news li span{
    display: inline-block;
    height: 23px;
@@ -141,4 +144,46 @@
     .scroll_outer{
         width: 400px;
     }
+}
+/*house_details*/
+.house_details{
+    margin: 30px  auto;
+    padding: 20px;
+    overflow: hidden;
+    border: 2px solid #98D2E9;
+}
+.house_details_title{
+    display: inline-block;
+    margin: 0px;
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: 2px solid #98D2E9;
+}
+.house_details_groups{
+    box-sizing: content-box;
+    overflow: hidden;
+    padding: 10px;
+}
+.house_details_groups h3{
+    font-size: 16px;
+    color: #777;
+}
+.house_equipment{
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #98D2E9;
+    color: white;
+}
+.house_equipment_no{
+    background-color: #D2D3D4;
+}
+.house_details_img span{
+    display: inline-block;
+    overflow: hidden;
+    width: 70%;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+.house_details_img img{
+    width: 100%;
 }

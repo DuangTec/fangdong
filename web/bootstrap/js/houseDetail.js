@@ -74,4 +74,12 @@ $(function(){
         var big_img_left=x_bili*parseFloat(bigimg_height);
         $(".house_big_img_preview img").css({top:-big_img_top,left:-big_img_left});
     });
+    /*看房电话显示*/
+    $(".booking_house").click(function(){
+        $(".house_phone").show(500,function(){
+            /*已登录后返回true*/
+            return true;
+        });
+    })
+    $(".house_details_img").html($(".scroll_inner").html())
 })
