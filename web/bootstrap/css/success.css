@@ -27,11 +27,12 @@
 }
 .countDown,.success_text .now_go{
     display: inline-block;
-    padding: 0px 4px;
+    width: 40px;
+    text-align: center;
     color: #98D2E9;
 }
 .success_text .now_go{
-    padding: 0px 8px;
+    width: 90px;
 }
 .success_text .now_go:hover{
     font-size: 16px;
