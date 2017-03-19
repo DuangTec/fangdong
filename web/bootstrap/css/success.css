@@ -1,0 +1,38 @@
+.footer{
+    position: absolute;
+    width: 100%;
+}
+.success_content{
+    margin-top: 200px;
+    text-align: center;
+}
+.success_content .success_icon{
+    margin-right: 20px;
+    font-size: 60px;
+    color: #98D2E9;
+}
+.success_text{
+    display: inline-block;
+    text-align: left;
+}
+.success_text p,.success_text h2{
+    letter-spacing: 2px;
+    font-weight: normal;
+    font-size: 20px;
+}
+.success_text p{
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.countDown,.success_text .now_go{
+    display: inline-block;
+    padding: 0px 4px;
+    color: #98D2E9;
+}
+.success_text .now_go{
+    padding: 0px 8px;
+}
+.success_text .now_go:hover{
+    font-size: 16px;
+}
