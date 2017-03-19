@@ -1,0 +1,157 @@
+
+/* 全部房源 */
+.hot-selected{
+    background-color: #F4F4F4;
+    color:rgb(85,85,85);
+}
+.hot-selected h2{
+    margin-bottom: 20px;
+
+    font-size: 20px;
+}
+.hot-selected-content{
+    width: 90%;
+    margin: 0px auto;
+}
+@media screen and (min-width: 1200px){
+    .hot-selected-content .thumbnail > a > img{
+        width: 100%;
+        height: 206px;
+    }
+}
+@media screen and (max-width: 1200px){
+    .hot-selected-content .thumbnail > a > img{
+        width: 100%;
+        height: 166px;
+    }
+}
+.hot-selected-content .caption a{
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    color:rgb(85,85,85);
+}
+.hot-selected-content .caption h3{
+    margin-top: 10px;
+}
+.item-info{
+    padding: 0 6px 6px 0px;
+}
+.item-pri{
+    font-size: 16px;
+    font-weight: bold;
+    color:#FF9649;
+}
+.item-loc{
+    max-width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.hot-selected-content .thumbnail:hover{
+    border-bottom-color: #FF9649;
+}
+.new{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+/* 条件找房 */
+.screen{
+    margin-top: 40px;
+}
+/* right*/
+.s-right img{
+    position: absolute;
+    max-width: 550px;
+    left: 700px;
+    top: 50px;
+}
+/*left*/
+.s-left{
+   margin-top: 60px;
+}
+.s-left .new{
+    background: #F4F4F4;
+    width: 50%;
+    margin: inherit;
+    border: none;
+    position: relative;
+    left: 25px;
+    margin-bottom: 10px;
+}
+.filter-row {
+    padding-left: 80px;
+    margin: 20px 0;
+}
+.filter-row .filter-label {
+    position: relative;
+    left: -80px;
+    float: left;
+    width: 70px;
+    text-align: right;
+    margin-right: -100%;
+}
+.filter-tag a.active {
+    background-color: #98D2E9;
+    color: #fff;
+    padding: 0 5px;
+}
+.filter-row .filter-tag a {
+    color: #555;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* search */
+/*搜索区域*/
+.search-box{
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.search-box form{
+    position: relative;
+    width: 585px;
+    left: 23px;
+}
+.search-box form > img{
+    position: absolute;
+    top:15px;
+    left: 28px;
+    width: 14px;
+}
+.index-search{
+    width: 100%;
+    height: 40px;
+
+    text-indent: 3em;
+    color:#A9A9A9;
+
+    border: 1px solid #CCCCCC;
+}
+.index-search-sub{
+    position: absolute;
+    top:2px;
+    right: 1px;
+    width: 10%;
+    height: 35px;
+    border: none;
+    background-color: white;
+    cursor: text;
+}
+.index-search-sub img{
+    width: 14px;
+    cursor: pointer;
+}
+.search-box form img:hover{
+    width: 18px;
+}
