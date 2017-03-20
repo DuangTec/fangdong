@@ -119,7 +119,7 @@ public class HouseController {
 		
 	}
 	
-	@RequestMapping("/house/houseDetail.action")
+	@RequestMapping("/house/houseDetail.do")
 	public ModelAndView houseDetail(HttpServletRequest request){
 		Integer houseId = Integer.parseInt(request.getParameter("houseid"));
 		ModelAndView mov = new ModelAndView("WEB-INF/views/business/houseDetail.jsp");

@@ -3,6 +3,8 @@ package com.fangdong.business.model;
 public class HouseVo extends FdHouse{
 	private String owner;
 	private String[] pics;
+	//家具
+	private String[] facility;
 	//城市(第一层)city
 	private String city;
 	//行政区(第二层)district
@@ -40,6 +42,13 @@ public class HouseVo extends FdHouse{
 	public void setArea(String area) {
 		this.area = area;
 	}
-
+	public String[] getFacility() {
+		return facility;
+	}
+	public void setFacility(String[] facility) {
+		this.facility = facility;
+	}
+	
+	
 	
 }

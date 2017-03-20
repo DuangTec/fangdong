@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="org.apache.shiro.SecurityUtils"%>
-<%@ page import="org.apache.shiro.subject.Subject"  %>
+<%@page import="org.apache.shiro.subject.Subject"  %>
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -118,8 +118,8 @@
             <c:forEach items="${hotHouse }" var="house">
             <div class="col-xs-4">
                 <div class="thumbnail">
-                    <a href="#" target="_blank">
-                        <img src="/img/hot-selected1.png" alt="...">
+                    <a href="/house/houseDetail.do?houseid=${house.id }" target="_blank">
+                        <img src="${house.pics[0] }" alt="...">
                     </a>
                     <div class="caption">
                         <h3>

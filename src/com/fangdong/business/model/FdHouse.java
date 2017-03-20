@@ -29,6 +29,8 @@ public class FdHouse {
 
     private Integer room;
 
+    private String facilities;
+
     public Integer getId() {
         return id;
     }
@@ -131,5 +133,13 @@ public class FdHouse {
 
     public void setRoom(Integer room) {
         this.room = room;
+    }
+
+    public String getFacilities() {
+        return facilities;
+    }
+
+    public void setFacilities(String facilities) {
+        this.facilities = facilities == null ? null : facilities.trim();
     }
 }

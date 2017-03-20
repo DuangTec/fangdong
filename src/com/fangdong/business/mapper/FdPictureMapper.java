@@ -17,6 +17,8 @@ public interface FdPictureMapper {
     int insertSelective(FdPicture record);
 
     List<FdPicture> selectByExample(FdPictureExample example);
+    
+    List<FdPicture> selectByHouseId(Integer id);
 
     FdPicture selectByPrimaryKey(Integer id);
 

@@ -951,6 +951,76 @@ public class FdHouseExample {
             addCriterion("room not between", value1, value2, "room");
             return (Criteria) this;
         }
+
+        public Criteria andFacilitiesIsNull() {
+            addCriterion("facilities is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesIsNotNull() {
+            addCriterion("facilities is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesEqualTo(String value) {
+            addCriterion("facilities =", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesNotEqualTo(String value) {
+            addCriterion("facilities <>", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesGreaterThan(String value) {
+            addCriterion("facilities >", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesGreaterThanOrEqualTo(String value) {
+            addCriterion("facilities >=", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesLessThan(String value) {
+            addCriterion("facilities <", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesLessThanOrEqualTo(String value) {
+            addCriterion("facilities <=", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesLike(String value) {
+            addCriterion("facilities like", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesNotLike(String value) {
+            addCriterion("facilities not like", value, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesIn(List<String> values) {
+            addCriterion("facilities in", values, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesNotIn(List<String> values) {
+            addCriterion("facilities not in", values, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesBetween(String value1, String value2) {
+            addCriterion("facilities between", value1, value2, "facilities");
+            return (Criteria) this;
+        }
+
+        public Criteria andFacilitiesNotBetween(String value1, String value2) {
+            addCriterion("facilities not between", value1, value2, "facilities");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
