@@ -122,7 +122,7 @@
     <select id="selectAllHouseVo" resultMap="VoResultMap">
   	select 
     h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail, h.address, h.property_rights, 
-    h.house_type, h.rent_price, h.region_id,u.username as 'owner'
+    h.house_type, h.rent_price, h.region_id,h.title,u.username as 'owner'
     from fd_house h 
     left join fd_user u on h.owner_id=u.id
   </select>
