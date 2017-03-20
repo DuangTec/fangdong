@@ -95,4 +95,12 @@ public class HouseServiceImpl implements HouseService {
 		List<HouseVo> FsResult=houseMapper.selectByKey(key);
 		return FsResult;
 	}
+	
+	//猜你喜欢实现方法
+	@Override
+	public List<HouseVo> guessYouLike(String district) {
+		// TODO Auto-generated method stub
+		List<HouseVo> GylResult=houseMapper.selectGuessYouLike(district);
+		return GylResult;
+	}
 }

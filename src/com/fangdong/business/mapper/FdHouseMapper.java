@@ -22,8 +22,11 @@ public interface FdHouseMapper {
 
     FdHouse selectByPrimaryKey(Integer id);
     
-    //模糊查询的dao层借口
+    //模糊查询的dao层接口
     List<HouseVo> selectByKey(String key);
+    
+    //猜你喜欢的dao层接口
+    List<HouseVo> selectGuessYouLike(String district);
 
     int updateByExampleSelective(@Param("record") FdHouse record, @Param("example") FdHouseExample example);
 
