@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fangdong.auth.AdminPassport;
 import com.fangdong.business.service.RegionService;
 
 @Controller
@@ -16,7 +15,7 @@ public class RegionController {
 	@Resource
 	private RegionService regionService;
 	
-	@AdminPassport
+
 	@RequestMapping("/admin/deleteRegion.action")
 	public ModelAndView deleteRegion(HttpServletRequest request){
 		int id = Integer.parseInt(request.getParameter("id"));

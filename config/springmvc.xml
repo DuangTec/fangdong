@@ -24,14 +24,5 @@
 
     <property name="prefix" value="/" />  
 	</bean>
-	
-	<mvc:interceptors>
-	<bean class="com.fangdong.auth.interceptor.SystemInterceptor"></bean>
-	<mvc:interceptor>
-		<mvc:mapping path="/admin/*"/>
-		<bean class="com.fangdong.auth.interceptor.AdminInterceptor"></bean>
-	</mvc:interceptor>
-	</mvc:interceptors>
-
 
 </beans>

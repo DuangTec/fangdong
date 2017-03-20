@@ -3,15 +3,12 @@ package com.fangdong.auth.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.annotation.Resources;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fangdong.auth.AdminPassport;
 import com.fangdong.auth.model.FdUser;
 import com.fangdong.auth.service.UserService;
 import com.fangdong.business.model.RegionVo;

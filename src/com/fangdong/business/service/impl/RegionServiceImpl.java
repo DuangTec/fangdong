@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.fangdong.business.mapper.FdRegionMapper;
-import com.fangdong.business.model.FdRegion;
 import com.fangdong.business.model.RegionVo;
 import com.fangdong.business.service.RegionService;
 

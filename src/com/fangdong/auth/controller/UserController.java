@@ -6,9 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.security.SecurityUtil;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fangdong.auth.model.FdUser;
 import com.fangdong.auth.service.UserService;
 
 @Controller
@@ -27,6 +24,7 @@ public class UserController{
 	@Resource
 	private UserService userService;
 	
+	//登录时提交
 	@RequestMapping("/userLogin.action")
 	public String userLogin(HttpServletRequest request,HttpSession session){
 		String username = request.getParameter("username_login");
@@ -47,6 +45,7 @@ public class UserController{
 		return "redirect:/";
 	}
 	
+	//注册时提交
 	@RequestMapping("/userSignUp.action")
 	public ModelAndView userSignUp(HttpServletRequest request){
 		String username = request.getParameter("username_reg");
@@ -70,12 +69,15 @@ public class UserController{
 		return mov;
 	}
 	
+	//登出
 	@RequestMapping("/logout.action")
 	public String logout(HttpSession session){
 		Subject currentUser = SecurityUtils.getSubject();
 		currentUser.logout();
 		return "redirect:/";
 	}
+	
+	//用户注册的验证，检查用户名是否存在
 	@ResponseBody
 	@RequestMapping("/userValidationCheck.action")
 	public String userValidationCheck(String username){
@@ -84,6 +86,7 @@ public class UserController{
 		return "false";
 	}
 	
+	//用户登录时的检查，检查用户是否存在
 	@ResponseBody
 	@RequestMapping("/usernameLoginCheck.action")
 	public String usernameLoginCheck(String username){

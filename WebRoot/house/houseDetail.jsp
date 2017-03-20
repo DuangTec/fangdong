@@ -4,6 +4,7 @@
 <%@page import="org.apache.shiro.subject.Subject"  %>
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -21,7 +22,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
                 <%String regionCode=(String)session.getAttribute("regionCode");
@@ -69,8 +70,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <ol class="breadcrumb duang-breadcrumb">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="#">我要租房</a></li>
+                    <li><a href="/index.do">首页</a></li>
+                    <li><a href="/house.do">我要租房</a></li>
                     <li><a href="#">比华利国际城二期</a></li>
                     <li class="active">
                         锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
@@ -95,7 +96,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 scoll_img">
-                        <span class="scroll_left"><</span>
+                        <span class="scroll_left">&le;</span>
                         <div class="scroll_outer">
                             <div class="list-inline list-unstyled scroll_inner">
                                 <span><img src="/bootstrap/images/hot-selected1.png"></span><span>
@@ -136,7 +137,12 @@
                         <span class="news_text new_text_phone">13511111111</span>
                     </li>
                     <li>
-                       <input type="button" value="我要看房" class="booking_house"/>
+                    	<shiro:authenticated>
+                       	<input type="button" value="我要看房" class="booking_house"/>
+                    	</shiro:authenticated>
+                    	<shiro:guest>
+                    	<input type="button" value="登录查看联系方式" class="login_to_book" />
+                    	</shiro:guest>
                     </li>
                 </ul>
             </div>

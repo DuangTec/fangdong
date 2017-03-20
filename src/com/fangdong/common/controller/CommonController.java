@@ -3,14 +3,11 @@ package com.fangdong.common.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fangdong.business.model.HouseVo;
@@ -41,6 +38,11 @@ public class CommonController {
 		String regionCode = request.getParameter("region");
 		request.getSession().setAttribute("regionCode", regionCode);
 		return "redirect:/index.do";
+	}
+	
+	@RequestMapping("/login.do")
+	public ModelAndView login(){
+		return new ModelAndView("/login.jsp");
 	}
 	
 }
