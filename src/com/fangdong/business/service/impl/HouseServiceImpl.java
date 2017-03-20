@@ -110,8 +110,17 @@ public class HouseServiceImpl implements HouseService {
 	// 模糊查询,入口key(用户输入的)
 	@Override
 	public List<HouseVo> fuzzySearch(String key) {
-		List<HouseVo> FsResult = houseMapper.selectByKey(key);
-		return FsResult;
+		List<HouseVo> fsResult = houseMapper.selectByKey(key);
+		for (HouseVo vo : fsResult) {
+			// 房屋对图片是一对多关系，需要按照房屋id再查图片，填充进vo
+			List<FdPicture> pictureList = pictureMapper.selectByHouseId(vo.getId());
+			String[] pics = new String[pictureList.size()];
+			for (int i = 0; i < pictureList.size(); i++) {
+				pics[i] = pictureList.get(i).getPictureUrl();
+			}
+			vo.setPics(pics);
+		}
+		return fsResult;
 	}
 	
 	//猜你喜欢实现方法
