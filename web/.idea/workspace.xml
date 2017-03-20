@@ -20,21 +20,7 @@
     <favorites_list name="web" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="admin.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/admin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.781401">
-              <caret line="53" column="57" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
-              <folding>
-                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,8 +63,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="453" />
-    <option name="y" value="25" />
+    <option name="x" value="614" />
+    <option name="y" value="28" />
     <option name="width" value="1249" />
     <option name="height" value="994" />
   </component>
@@ -121,24 +107,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -233,10 +201,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="453" y="25" width="1249" height="994" extended-state="0" />
-    <editor active="true" />
+    <frame x="614" y="28" width="1249" height="994" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22465532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22465532" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -453,7 +421,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/admin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.781401">
+        <state vertical-scroll-proportion="0.84903383">
           <caret line="53" column="57" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
