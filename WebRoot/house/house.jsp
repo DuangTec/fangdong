@@ -68,10 +68,6 @@
 <!-- content -->
 <div class="screen">
     <div class="container">
-        <div class="s-right">
-            <img src="/bootstrap/images/rent-banner.png" alt=""/>
-        </div>
-
         <div class="s-left">
             <div class="new row">
                 <h4 class="col-xs-12">条件找房</h4>

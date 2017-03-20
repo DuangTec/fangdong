@@ -58,7 +58,7 @@
     border-bottom-color: #FF9649;
 }
 .new{
-    width: 90%;
+    width: 86.5%;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -69,20 +69,16 @@
 .screen{
     margin-top: 40px;
 }
-/* right*/
-.s-right img{
-    position: absolute;
-    max-width: 550px;
-    left: 700px;
-    top: 50px;
-}
+
 /*left*/
 .s-left{
-   margin-top: 60px;
+    margin-top: 60px;
+/*    position: relative;
+    left: 28px;*/
 }
 .s-left .new{
     background: #F4F4F4;
-    width: 50%;
+    width: 96%;
     margin: inherit;
     border: none;
     position: relative;
@@ -117,6 +113,7 @@
 .search-box{
     margin-bottom: 30px;
     margin-top: 20px;
+  /*  float: left;*/
 }
 .search-box form{
     position: relative;
@@ -154,4 +151,9 @@
 }
 .search-box form img:hover{
     width: 18px;
+}
+
+/* ·ÖÒ³ */
+.pagenation nav{
+    /*max-width: 980px;*/
 }

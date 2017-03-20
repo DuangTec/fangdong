@@ -14,4 +14,6 @@ public interface HouseService {
 	public List<HouseVo> getTopHouse(int top,int regionId);
 	//模糊查询
 	public List<HouseVo> fuzzySearch(String key);
+	//猜你喜欢
+	public List<HouseVo> guessYouLike(String district);
 }

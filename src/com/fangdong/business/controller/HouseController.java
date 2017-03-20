@@ -115,15 +115,16 @@ public class HouseController {
 		return mov;
 		
 	}
-	
+	//跳转detaile
 	@RequestMapping("/house/houseDetail.do")
 	public ModelAndView houseDetail(HttpServletRequest request){
 		Integer houseId = Integer.parseInt(request.getParameter("houseid"));
 		ModelAndView mov = new ModelAndView("/house/houseDetail.jsp");
 		
 		HouseVo houseVo = houseService.getHouseVoById(houseId);
-	    mov.addObject("house",houseVo);
-	    
+		mov.addObject("house",houseVo);
+		List<HouseVo> guessYouLikeList =houseService.guessYouLike(houseVo.getDistrict());
+	    mov.addObject("guessYouLikeList",guessYouLikeList);
 	    return mov;
 	}
 	

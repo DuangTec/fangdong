@@ -74,18 +74,19 @@ public class HouseServiceImpl implements HouseService {
 
 	@Override
 	public HouseVo getHouseVoById(int id) {
-		HouseVo house = (HouseVo) houseMapper.selectByPrimaryKey(id);
-		// 获取图片
+		HouseVo house = (HouseVo) houseMapper.selectHouseVoByPrimaryKey(id);
+		// 根据id获取图片
 		List<FdPicture> pictureList = pictureMapper.selectByHouseId(house.getId());
 		String[] pics = new String[pictureList.size()];
 		for (int i = 0; i < pictureList.size(); i++) {
 			pics[i] = pictureList.get(i).getPictureUrl();
 		}
 		house.setPics(pics);
-		//设置家具
+		//根据facilities字段设置家具
 		String facility=house.getFacilities();
 		if(facility!=null)
 			house.setFacility(facility.split(","));
+		
 
 		return house;
 	}
@@ -109,8 +110,24 @@ public class HouseServiceImpl implements HouseService {
 	// 模糊查询,入口key(用户输入的)
 	@Override
 	public List<HouseVo> fuzzySearch(String key) {
-		// TODO Auto-generated method stub
 		List<HouseVo> FsResult = houseMapper.selectByKey(key);
 		return FsResult;
+	}
+	
+	//猜你喜欢实现方法
+	@Override
+	public List<HouseVo> guessYouLike(String district) {
+		List<HouseVo> gylResult=houseMapper.selectGuessYouLike(district);
+		
+		for (HouseVo vo : gylResult) {
+			// 房屋对图片是一对多关系，需要按照房屋id再查图片，填充进vo
+			List<FdPicture> pictureList = pictureMapper.selectByHouseId(vo.getId());
+			String[] pics = new String[pictureList.size()];
+			for (int i = 0; i < pictureList.size(); i++) {
+				pics[i] = pictureList.get(i).getPictureUrl();
+			}
+			vo.setPics(pics);
+		}
+		return gylResult;
 	}
 }
