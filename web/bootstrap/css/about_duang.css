@@ -1,0 +1,13 @@
+.prompt_box{
+    margin-top: 80px;
+}
+.prompt_box .panel-group .panel{
+    border-radius: 0px;
+    border: none;
+}
+.prompt_box .panel-group .panel a{
+    color:#98D2E9;
+}
+.prompt_box .panel-group .panel a:hover{
+    color:#333;
+}
