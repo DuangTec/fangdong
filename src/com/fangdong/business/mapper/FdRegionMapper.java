@@ -31,4 +31,6 @@ public interface FdRegionMapper {
     int updateByPrimaryKeySelective(FdRegion record);
 
     int updateByPrimaryKey(FdRegion record);
+    
+    public List<FdRegion> selectChildren(String fatherId);
 }

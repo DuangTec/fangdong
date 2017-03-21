@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.fangdong.business.mapper.FdRegionMapper;
+import com.fangdong.business.model.FdRegion;
 import com.fangdong.business.model.RegionVo;
 import com.fangdong.business.service.RegionService;
 
@@ -26,6 +27,13 @@ public class RegionServiceImpl implements RegionService{
 	public void deleteRegionById(int id) throws Exception {
 		regionMapper.deleteByPrimaryKey(id);
 		
+	}
+
+	//传入父ID找子ID
+	public List<FdRegion> getChildren(String fatherId) {
+		// TODO Auto-generated method stub
+		List<FdRegion> fdRegionResult=regionMapper.selectChildren(fatherId);
+		return fdRegionResult;
 	}
 
 }
