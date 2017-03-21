@@ -59,8 +59,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="input3" class="col-xs-2 control-label">父地区</label>
-                                <div class="col-xs-10">
+                                <div class="col-xs-10 edit_select">
                                     <input type="text" class="form-control" id="input3" value="${region.parentRegName}">
+                                    <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
+                                    <ul class="edit-select_ul">
+                                        <li>1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                    </ul>
+
                                 </div>
                             </div>
                             

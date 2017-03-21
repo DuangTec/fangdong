@@ -62,7 +62,7 @@
         </ul>
         <ul class="nav">
             <li class="active"><a href="/index.do">首页</a></li>
-            <li class="normal"><a href="/house.do">我要租房</a></li>
+            <li class="normal"><a href="/house.do?type=all">我要租房</a></li>
             <li class="normal"><a href="#">租前须知</a></li>
             <li class="normal"><a href="#">房东加盟</a></li>
             <li class="normal"><a href="#">关于杜昂</a></li>
@@ -103,7 +103,7 @@
         <div class="row">
             <div class="col-xs-2"></div>
             <div class="col-xs-8">
-                <form action="/house.do" method="post" autocomplete="off">
+                <form action="/house.do?type=fuzzySearch" method="post" autocomplete="off">
                     <input type="text" name="index-search" value="" placeholder="请输入区域、商圈或小区名"
                             class="index-search form-control"/>
                     <img src="/img/index-search-img.png"/>

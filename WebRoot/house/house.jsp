@@ -58,7 +58,7 @@
         </ul>
         <ul class="nav">
             <li class="normal"><a href="/index.do">首页</a></li>
-            <li class="active"><a href="/house.do">我要租房</a></li>
+            <li class="active"><a href="/house.do?type=all">我要租房</a></li>
             <li class="normal"><a href="#">租前须知</a></li>
             <li class="normal"><a href="#">房东加盟</a></li>
             <li class="normal"><a href="#">关于杜昂</a></li>
@@ -76,16 +76,24 @@
             <div class="filter-row">
                 <span class="filter-label"> 区域：</span>
                 <div class="filter-tag">
-                    <a href="#" class="active">全部</a>
-                    <c:forEach items="${fdRegionResult }" var="district">
-                    <a href="#" class="">${district.regionName }</a>
-                    </c:forEach>
-                    <!-- <a href="#" class="">青羊区</a>
-                    <a href="#" class="">金牛区</a>
-                    <a href="#" class="">武侯区</a>
-                    <a href="#" class="">成华区</a>
-                    <a href="#" class="">龙泉驿区</a>
-                    <a href="#" class="">高新区</a> -->
+                <c:choose>
+                 <c:when test="${type ne 'all'}">
+                    <a href="house.do?type=all" class="">全部</a>
+                    </c:when>	
+                    <c:otherwise>
+                    <a href="house.do?type=all" class="active">全部</a>
+                    </c:otherwise>
+                </c:choose>
+                    <c:forEach items="${fdRegionResult }" var="districtResult">
+                    <c:choose>
+                    <c:when test="${district == districtResult.id }">
+                    <a href="house.do?type=district&district=${districtResult.id }" class="active">${districtResult.regionName }</a>
+                    </c:when>
+                    <c:otherwise>
+                    <a href="house.do?type=district&district=${districtResult.id }" class="">${districtResult.regionName }</a>
+                    </c:otherwise>
+                    </c:choose>                    
+                    </c:forEach>     
                 </div>
             </div>
             <div class="filter-row">
@@ -127,7 +135,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-8">
-                            <form action="#" method="post" autocomplete="off">
+                            <form action="/house.do?type=fuzzySearch" method="post" autocomplete="off">
                                 <input type="text" name="index-search" value="" placeholder="请输入区域、商圈或小区名"
                                        class="index-search form-control"/>
                                 <img src="/bootstrap/images/index-search-img.png"/>

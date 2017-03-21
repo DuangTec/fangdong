@@ -30,35 +30,72 @@ public class HouseController {
 
 	/**
 	 * 房屋业务的主页，展示已经挂上来的房屋
-	 * 模糊查询整合
+	 * 模糊查询整合\通过三种方式查询整合
 	 * @return 
 	 */
 	@RequestMapping("/house.do")
 	public ModelAndView house(HttpServletRequest request,HttpSession session) {
-		String key = request.getParameter("index-search");
+		//获取前台的数据
+		String type =request.getParameter("type");//all：我要租房、fuzzySearch：模糊查询、district：用地区查询
+		if(type.equals(null)){type="all";}
+		String regionCode=(String)session.getAttribute("regionCode");//获取前台的市区信息
+		if(regionCode==null){regionCode="1";}//初始化重庆市nll=1
+		List<FdRegion> fdRegionResult=regionService.getChildren(regionCode);//返回市区的子地区信息
+		
+		ModelAndView mov = new ModelAndView("/house/house.jsp");//初始化跳转信息
+		mov.addObject("fdRegionResult",fdRegionResult);//传子地区信息到jsp前台
+		
+		//初始化返回的房屋list
 		List<HouseVo> houseList = new ArrayList<HouseVo>();
-		String regionCode=(String)session.getAttribute("regionCode");
-		if(regionCode==null){regionCode="1";}//初始化
-		List<FdRegion> fdRegionResult=regionService.getChildren(regionCode);
-		ModelAndView mov = new ModelAndView("/house/house.jsp");
-		mov.addObject("fdRegionResult",fdRegionResult);
-		if(key==null)
+		//我要租房
+		if(type.equals("all"))
 		{
-			houseList = houseService.getHouseList();
+			//当前台没有任何值传入时候，查所有的房屋并显示
+			houseList = houseService.getHouseList(type,"");
 			mov.addObject("houseList", houseList);
+			mov.addObject("type","all");
 			return mov;
 		}
-		else if(key.indexOf("%")== -1)
+		//模糊查询
+		else if(type.equals("fuzzySearch"))
 		{
-			List<HouseVo> houseVoList = houseService.fuzzySearch(key);
-		    mov.addObject("houseList",houseVoList); 
-		    return mov;
+			String key = request.getParameter("index-search");//模糊查询的
+			if(key.indexOf("%")== -1)
+			{
+				List<HouseVo> houseVoList = houseService.fuzzySearch(key);
+			    mov.addObject("houseList",houseVoList); 
+			    return mov;
+			}
+			else
+			{
+				return mov;
+			}
+		}
+		//用地区（行政区）查询
+		else if(type.equals("district"))
+		{
+			String district =request.getParameter("district");//通过地区查询
+			//当前台没有任何值传入时候，查所有的房屋并显示
+			houseList = houseService.getHouseList(type,district);
+			mov.addObject("houseList", houseList);
+			mov.addObject("type","district");
+			mov.addObject("district",district);
+			return mov;
 		}
 		else
 		{
 			return mov;
 		}
 	}
+	
+	/*//我要租房页面的区域找房按钮
+		@RequestMapping("/getHouseByDistrict.do")
+		public ModelAndView getHouseByDistrict(HttpServletRequest request){
+			String district =request.getParameter("district");
+			
+			ModelAndView mov = new ModelAndView("/house/house.jsp");
+			return mov;
+		}*/
 	/*//模糊查询
 		@RequestMapping("/fuzzySearch.action")
 		public ModelAndView fuzzySearch(HttpServletRequest request) throws IOException{
@@ -165,7 +202,6 @@ public class HouseController {
 	    mov.addObject("guessYouLikeList",guessYouLikeList);
 	    return mov;
 	}
-	//传入父id
 	
 	
 }
