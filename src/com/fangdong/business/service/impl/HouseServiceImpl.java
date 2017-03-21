@@ -13,6 +13,7 @@ import com.fangdong.business.mapper.FdRegionMapper;
 import com.fangdong.business.model.FdHouse;
 import com.fangdong.business.model.FdPicture;
 import com.fangdong.business.model.HouseVo;
+import com.fangdong.business.model.SearchParam;
 import com.fangdong.business.service.HouseService;
 import com.fangdong.common.exception.SQLConnectionFailException;
 
@@ -34,27 +35,9 @@ public class HouseServiceImpl implements HouseService {
 	 * @return
 	 */
 	@Override
-	public List<HouseVo> getHouseList(String type,String key) {	
-		if(type.equals("all"))
-		{
-			List<HouseVo> houseVoList = houseMapper.selectAllHouseVo();
-			houseVoList=addPic(houseVoList);
-			return houseVoList;
-		}
-		
-		else if(type.equals("district"))
-		{
-			//地区查询就和guessyoulike是一样的
-			int id=Integer.parseInt(key);
-			List<HouseVo> houseVoList = houseMapper.selectHouseVoByDistrictId(id);
-			houseVoList=addPic(houseVoList);
-			return houseVoList;
-		}
-		else
-		{
-			List<HouseVo> houseVoList=new ArrayList<HouseVo>();
-			return houseVoList;
-		}
+	public List<HouseVo> getHouseList(SearchParam param) {	
+			List<HouseVo> houseList= houseMapper.selectHouseVoByParam(param);
+			return addPic(houseList);
 	}
 	
 	//增加图片
@@ -142,7 +125,7 @@ public class HouseServiceImpl implements HouseService {
 		return houseVoList;
 	}
 
-	// 模糊查询,入口key(用户输入的)
+	// 模糊查询,入口key(用户输入的)，搜索了地址、详细介绍、标题
 	@Override
 	public List<HouseVo> fuzzySearch(String key) {
 		List<HouseVo> fsResult = houseMapper.selectByKey(key);

@@ -4,11 +4,12 @@ import java.util.List;
 
 import com.fangdong.business.model.FdHouse;
 import com.fangdong.business.model.HouseVo;
+import com.fangdong.business.model.SearchParam;
 import com.fangdong.common.exception.SQLConnectionFailException;
 
 public interface HouseService {
 	//获取房屋(type=all\district..)
-	public List<HouseVo> getHouseList(String Type,String key);
+	public List<HouseVo> getHouseList(SearchParam param);
 	public void insertHouse(FdHouse house) throws SQLConnectionFailException;
 	public void deleteHouseById(int id) throws SQLConnectionFailException;
 	public HouseVo getHouseVoById(int id);

@@ -1,6 +1,5 @@
 package com.fangdong.business.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +16,7 @@ import com.fangdong.auth.model.FdUser;
 import com.fangdong.business.model.FdHouse;
 import com.fangdong.business.model.FdRegion;
 import com.fangdong.business.model.HouseVo;
+import com.fangdong.business.model.SearchParam;
 import com.fangdong.business.service.HouseService;
 import com.fangdong.business.service.RegionService;
 
@@ -29,90 +29,106 @@ public class HouseController {
 	private RegionService regionService;
 
 	/**
-	 * 房屋业务的主页，展示已经挂上来的房屋
-	 * 模糊查询整合\通过三种方式查询整合
-	 * @return 
+	 * 房屋业务的主页，展示已经挂上来的房屋 模糊查询整合\通过三种方式查询整合
+	 * 
+	 * @return
 	 */
 	@RequestMapping("/house.do")
-	public ModelAndView house(HttpServletRequest request,HttpSession session) {
-		//获取前台的数据
-		String type =request.getParameter("type");//all：我要租房、fuzzySearch：模糊查询、district：用地区查询
-		if(type.equals(null)){type="all";}
-		String regionCode=(String)session.getAttribute("regionCode");//获取前台的市区信息
-		if(regionCode==null){regionCode="1";}//初始化重庆市nll=1
-		List<FdRegion> fdRegionResult=regionService.getChildren(regionCode);//返回市区的子地区信息
+	public ModelAndView house(HttpServletRequest request, HttpSession session) {
+		ModelAndView mov = new ModelAndView("/house/house.jsp");
+		//获取该城市下的所有行政区
+		String regionCode = (String) session.getAttribute("regionCode");
+		if (regionCode == null) {
+			regionCode = "1";
+		}
+		List<FdRegion> fdRegionResult = regionService.getChildren(regionCode);
+
+		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
 		
-		ModelAndView mov = new ModelAndView("/house/house.jsp");//初始化跳转信息
-		mov.addObject("fdRegionResult",fdRegionResult);//传子地区信息到jsp前台
-		
-		//初始化返回的房屋list
-		List<HouseVo> houseList = new ArrayList<HouseVo>();
-		//我要租房
-		if(type.equals("all"))
-		{
-			//当前台没有任何值传入时候，查所有的房屋并显示
-			houseList = houseService.getHouseList(type,"");
-			mov.addObject("houseList", houseList);
-			mov.addObject("type","all");
-			return mov;
-		}
-		//模糊查询
-		else if(type.equals("fuzzySearch"))
-		{
-			String key = request.getParameter("index-search");//模糊查询的
-			if(key.indexOf("%")== -1)
-			{
-				List<HouseVo> houseVoList = houseService.fuzzySearch(key);
-			    mov.addObject("houseList",houseVoList); 
-			    return mov;
-			}
-			else
-			{
-				return mov;
-			}
-		}
-		//用地区（行政区）查询
-		else if(type.equals("district"))
-		{
-			String district =request.getParameter("district");//通过地区查询
-			//当前台没有任何值传入时候，查所有的房屋并显示
-			houseList = houseService.getHouseList(type,district);
-			mov.addObject("houseList", houseList);
-			mov.addObject("type","district");
-			mov.addObject("district",district);
-			return mov;
-		}
-		else
-		{
-			return mov;
-		}
-	}
-	
-	/*//我要租房页面的区域找房按钮
-		@RequestMapping("/getHouseByDistrict.do")
-		public ModelAndView getHouseByDistrict(HttpServletRequest request){
-			String district =request.getParameter("district");
-			
-			ModelAndView mov = new ModelAndView("/house/house.jsp");
-			return mov;
-		}*/
-	/*//模糊查询
-		@RequestMapping("/fuzzySearch.action")
-		public ModelAndView fuzzySearch(HttpServletRequest request) throws IOException{
+		//检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
+		String type=request.getParameter("type");
+		if((type!=null)&&(type.equals("fuzzySearch"))){
 			String key = request.getParameter("index-search");
-			if(key.indexOf("%")== -1)
-			{
-				ModelAndView mov = new ModelAndView("/house/house.jsp");
-				List<HouseVo> houseVoList = houseService.fuzzySearch(key);
-			    mov.addObject("houseList",houseVoList); 
-			    return mov;
+			List<HouseVo> houseList = houseService.fuzzySearch(key);
+			mov.addObject("houseList",houseList);
+			return mov;
+		}
+		
+		//不是模糊查询，则执行条件查询
+		// 获取前台的数据
+		String district = request.getParameter("district");
+		String rentprice = request.getParameter("rentprice");
+		String housetype = request.getParameter("housetype");
+		
+		//组装搜索参数对象
+		SearchParam param = new SearchParam();
+		if((district!=null)&&(!district.equals(""))){
+		param.setDistrictId(Integer.parseInt(district));
+		}
+		if (rentprice!=null) {
+			switch (rentprice) {
+			case "700L":
+				param.setUpperPrice(700);
+				break;
+			case "700to1000":
+				param.setUpperPrice(1000);
+				param.setLowerPrice(700);
+				break;
+			case "1000to1500":
+				param.setUpperPrice(1500);
+				param.setLowerPrice(1000);
+				break;
+			case "1500to2000":
+				param.setUpperPrice(2000);
+				param.setLowerPrice(1500);
+				break;
+			case "2000M":
+				param.setLowerPrice(2000);
+				break;
 			}
-			else
-			{
-				ModelAndView mov = new ModelAndView("/house/house.jsp");
-				return mov;
+		}
+		if (housetype!=null) {
+			switch (housetype) {
+			case "1n1":
+				param.setRoomNum(1);
+				param.setHallNum(1);
+				break;
+			case "2n1":
+				param.setRoomNum(2);
+				param.setHallNum(1);
+				break;
+			case "2n2":
+				param.setRoomNum(2);
+				param.setHallNum(2);
+				break;
+			case "3":
+				param.setRoomNum(3);
+				break;
 			}
-		}*/
+		}
+
+		//按参数搜索，并添加结果到视图
+		List<HouseVo> houseList = houseService.getHouseList(param);
+		mov.addObject("houseList", houseList);
+
+		//将上一次的搜索参数返回到响应页面
+		mov.addObject("district", district);
+		mov.addObject("rentprice",rentprice);
+		mov.addObject("housetype",housetype);
+		return mov;
+	}
+
+	/*
+	 * //模糊查询
+	 * 
+	 * @RequestMapping("/fuzzySearch.action") public ModelAndView
+	 * fuzzySearch(HttpServletRequest request) throws IOException{ String key =
+	 * request.getParameter("index-search"); if(key.indexOf("%")== -1) {
+	 * ModelAndView mov = new ModelAndView("/house/house.jsp"); List<HouseVo>
+	 * houseVoList = houseService.fuzzySearch(key);
+	 * mov.addObject("houseList",houseVoList); return mov; } else { ModelAndView
+	 * mov = new ModelAndView("/house/house.jsp"); return mov; } }
+	 */
 
 	/**
 	 * 创建房屋，出售和出租都在这个页面进行
@@ -154,10 +170,10 @@ public class HouseController {
 		// 插入拥有者id
 		FdUser verifiedUser = (FdUser) session.getAttribute("verifiedUser");
 		house.setOwnerId(verifiedUser.getId());
-		
-		try{
+
+		try {
 			houseService.insertHouse(house);
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			mov.addObject("resultMes", "fail");
 			mov.setViewName("messagePage.jsp");
@@ -166,19 +182,20 @@ public class HouseController {
 
 		return mov;
 	}
-	
+
 	/**
 	 * 普通用户只能删除自己建的房屋
+	 * 
 	 * @param request
 	 * @return
 	 */
 	@RequiresAuthentication
 	@RequestMapping("/deleteHouseSubmit")
-	public ModelAndView deleteHouseSubmit(HttpServletRequest request){
-		int id=Integer.parseInt(request.getParameter("id"));
+	public ModelAndView deleteHouseSubmit(HttpServletRequest request) {
+		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println(request.getRequestURI());
 		ModelAndView mov = new ModelAndView("/house");
-		
+
 		try {
 			houseService.deleteHouseById(id);
 		} catch (Exception e) {
@@ -188,20 +205,20 @@ public class HouseController {
 			return mov;
 		}
 		return mov;
-		
+
 	}
-	//跳转detaile
+
+	// 跳转detail
 	@RequestMapping("/house/houseDetail.do")
-	public ModelAndView houseDetail(HttpServletRequest request){
+	public ModelAndView houseDetail(HttpServletRequest request) {
 		Integer houseId = Integer.parseInt(request.getParameter("houseid"));
 		ModelAndView mov = new ModelAndView("/house/houseDetail.jsp");
-		
+
 		HouseVo houseVo = houseService.getHouseVoById(houseId);
-		mov.addObject("house",houseVo);
-		List<HouseVo> guessYouLikeList =houseService.guessYouLike(houseVo.getDistrict());
-	    mov.addObject("guessYouLikeList",guessYouLikeList);
-	    return mov;
+		mov.addObject("house", houseVo);
+		List<HouseVo> guessYouLikeList = houseService.guessYouLike(houseVo.getDistrict());
+		mov.addObject("guessYouLikeList", guessYouLikeList);
+		return mov;
 	}
-	
-	
+
 }

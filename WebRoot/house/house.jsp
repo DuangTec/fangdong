@@ -72,25 +72,25 @@
         <div class="s-left">
             <div class="new row">
                 <h4 class="col-xs-12">条件找房</h4>
-            </div> 			 
+            </div>
             <div class="filter-row">
                 <span class="filter-label"> 区域：</span>
                 <div class="filter-tag">
                 <c:choose>
-                 <c:when test="${type ne 'all'}">
-                    <a href="house.do?type=all" class="">全部</a>
+                 <c:when test="${(district != null) and (district ne '')}">
+                    <a href="/house.do?district=&rentprice=${rentprice}&housetype=${housetype}" class="">全部</a>
                     </c:when>	
                     <c:otherwise>
-                    <a href="house.do?type=all" class="active">全部</a>
+                    <a href="/house.do?district=&rentprice=${rentprice}&housetype=${housetype}" class="active">全部</a>
                     </c:otherwise>
                 </c:choose>
                     <c:forEach items="${fdRegionResult }" var="districtResult">
                     <c:choose>
                     <c:when test="${district == districtResult.id }">
-                    <a href="house.do?type=district&district=${districtResult.id }" class="active">${districtResult.regionName }</a>
+                    <a href="/house.do?district=${districtResult.id}&rentprice=${rentprice}&housetype=${housetype}" class="active">${districtResult.regionName }</a>
                     </c:when>
                     <c:otherwise>
-                    <a href="house.do?type=district&district=${districtResult.id }" class="">${districtResult.regionName }</a>
+                    <a href="/house.do?district=${districtResult.id}&rentprice=${rentprice}&housetype=${housetype}" class="">${districtResult.regionName }</a>
                     </c:otherwise>
                     </c:choose>                    
                     </c:forEach>     
@@ -99,23 +99,104 @@
             <div class="filter-row">
                 <span class="filter-label"> 租金：</span>
                 <div class="filter-tag">
-                    <a href="#" class="active">全部</a>
-                    <a href="#" class="">700以下</a>
-                    <a href="#" class="">700-1000</a>
-                    <a href="#" class="">1000-1500</a>
-                    <a href="#" class="">1500-2000</a>
-                    <a href="#" class="">2000以上</a>
+                    <c:choose>
+                        <c:when test="${(rentprice != null) and (rentprice ne '')}">
+                            <a href="/house.do?district=${district}&rentprice=&housetype=${housetype}" class="">全部</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=&housetype=${housetype}" class="active">全部</a>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${rentprice eq '700L'}">
+                            <a href="/house.do?district=${district}&rentprice=700L&housetype=${housetype}" class="active">700以下</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=700L&housetype=${housetype}" class="">700以下</a>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${rentprice eq '700to1000'}">
+                           <a href="/house.do?district=${district}&rentprice=700to1000&housetype=${housetype}" class="active">700-1000</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=700to1000&housetype=${housetype}" class="">700-1000</a>
+                        </c:otherwise>
+                    </c:choose>
+                    
+                    <c:choose>
+                        <c:when test="${rentprice eq '1000to1500'}">
+                           <a href="/house.do?district=${district}&rentprice=1000to1500&housetype=${housetype}" class="active">1000-1500</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=1000to1500&housetype=${housetype}" class="">1000-1500</a>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${rentprice eq '1500to2000'}">
+                           <a href="/house.do?district=${district}&rentprice=1500to2000&housetype=${housetype}" class="active">1500-2000</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=1500to2000&housetype=${housetype}" class="">1500-2000</a>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${rentprice eq '2000M'}">
+                           <a href="/house.do?district=${district}&rentprice=2000M&housetype=${housetype}" class="active">2000以上</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=2000M&housetype=${housetype}" class="">2000以上</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
             <div class="filter-row">
                 <span class="filter-label"> 户型：</span>
                 <div class="filter-tag">
-                    <a href="#" class="active">全部</a>
-                    <a href="#" class="">一室一厅</a>
-                    <a href="#" class="">两室一厅</a>
-                    <a href="#" class="">两室两厅</a>
-                    <a href="#" class="">三室</a>
-                    <a href="#" class="">跃层</a>
+                    <c:choose>
+                        <c:when test="${(housetype != null) and (housetype ne '')}">
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=" class="">全部</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=" class="active">全部</a>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${housetype eq '1n1'}">
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=1n1" class="active">一室一厅</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=1n1" class="">一室一厅</a>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${housetype eq '2n1'}">
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=2n1" class="active">两室一厅</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=2n1" class="">两室一厅</a>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:choose>
+                        <c:when test="${housetype eq '2n2'}">
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=2n2" class="active">两室两厅</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=2n2" class="">两室两厅</a>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${housetype eq '3'}">
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=3" class="active">三室</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="/house.do?district=${district}&rentprice=${rentprice}&housetype=3" class="">三室</a>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
            <!--  <div class="filter-row">

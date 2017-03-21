@@ -136,7 +136,7 @@
     from fd_house h 
     left join fd_user u on h.owner_id=u.id
   </select>
-  <select id="selectHouseVoByDistrictId" parameterType="int" resultMap="VoResultMap">
+  <select id="selectHouseVoByParam" parameterType="com.fangdong.business.model.SearchParam" resultMap="VoResultMap">
 	SELECT
 	h.id,
 	h.owner_id,
@@ -156,8 +156,25 @@
 	fd_house h
 	LEFT JOIN fd_region r1 ON h.region_id = r1.id
 	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
-	WHERE
-	r2.id = #{id}
+	<where>
+		<if test="districtId != null">
+			r2.id=#{districtId}
+		</if>
+		<if test="lowerPrice != null">
+			and h.rent_price &gt;=#{lowerPrice}
+		</if>
+		<if test="upperPrice != null">
+			and h.rent_price &lt;=#{upperPrice}
+		</if>
+		<if test="roomNum != null">
+			and h.room=#{roomNum}
+		</if>
+		<if test="hallNum != null">
+			and h.hall=#{hallNum}
+		</if>
+		
+	</where>
+	
   </select>
   <select id="selectByKey" parameterType="String" resultMap="VoResultMap">
 	select

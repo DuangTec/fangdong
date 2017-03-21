@@ -3,6 +3,7 @@ package com.fangdong.business.mapper;
 import com.fangdong.business.model.FdHouse;
 import com.fangdong.business.model.FdHouseExample;
 import com.fangdong.business.model.HouseVo;
+import com.fangdong.business.model.SearchParam;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -41,7 +42,7 @@ public interface FdHouseMapper {
     
     List<HouseVo> selectAllHouseVo();
     
-    List<HouseVo> selectHouseVoByDistrictId(int id);
+    List<HouseVo> selectHouseVoByParam(SearchParam param);
 
     List<HouseVo> selectTopHouseVo(@Param("top")int top,@Param("regionId")int regionId);
 }
