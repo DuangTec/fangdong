@@ -123,7 +123,7 @@
 	</select>
 	<select id="selectChildren" resultMap="VoResultMap">
 	SELECT
-	t1.id AS 'myId',
+	t1.id,
 	t1.region_name,
 	t1.parent_reg_id
 	FROM
