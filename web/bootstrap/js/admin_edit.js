@@ -6,4 +6,16 @@ $(function(){
     $(".go-top").click(function(){
         $(window).scrollTop(0);
     });
+    /*input聚焦下拉按钮出现，按钮点击模拟select出现，select点击input获得对应值*/
+    $(".edit_select input").focus(function(){
+        $(".edit_select_icon").css("display","block");
+    })
+    $(".edit_select_icon").click(function(){
+        $(".edit-select_ul").slideToggle(500);
+    })
+    $(".edit-select_ul li").click(function(){
+        $(".edit_select input").val($(this).html());
+        $(".edit-select_ul").slideToggle(500);
+        $(".edit_select_icon").css("display","none");
+    })
 })

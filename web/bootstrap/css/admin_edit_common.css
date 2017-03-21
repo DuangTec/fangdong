@@ -44,3 +44,32 @@ body{
 .edit_submit:focus{
     background-color: #4CB9E4;
 }
+.form-control_p{
+    height: 34px;
+    line-height: 34px;
+    padding-left: 12px;
+    margin-bottom: 0px;
+}
+.edit_select{
+    position: relative;
+}
+.edit_select_icon{
+    position: absolute;
+    right: 20px;
+    top:10px;
+    display: none;
+}
+.edit-select_ul{
+    display: none;
+}
+.edit-select_ul li{
+    height: 26px;
+    line-height: 26px;
+    margin-bottom: 1px;
+    background-color:#f5f5f5 ;
+    text-indent: 1em;
+    font-size: 12px;
+}
+.edit-select_ul li:hover{
+    background-color:#CAE4EE;
+}

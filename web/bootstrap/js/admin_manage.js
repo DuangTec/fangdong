@@ -18,4 +18,13 @@ $(function(){
     $(".user_manage .house_news_edit").click(function(){
         window.location.href='user_manage_edit.html';
     })
+    $(".house_manage .add_news_but").click(function(){
+        window.location.href='house_manage_edit.html';
+    })
+    $(".area_manage .add_news_but").click(function(){
+        window.location.href='area_manage_edit.html';
+    })
+    $(".user_manage .add_news_but").click(function(){
+        window.location.href='user_manage_edit.html';
+    })
 })
