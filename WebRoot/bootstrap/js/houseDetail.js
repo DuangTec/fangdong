@@ -10,11 +10,11 @@ $(function(){
     /*图片左右切换*/
     $(".scroll_left").click(scrollLeft);
     function scrollLeft(){
-        document.getElementsByClassName("scroll_outer")[0].scrollLeft+=100;
+        document.getElementsByClassName("scroll_outer")[0].scrollLeft-=100;
     }
     $(".scroll_right").click(scrollRight);
     function scrollRight(){
-        document.getElementsByClassName("scroll_outer")[0].scrollLeft-=100;
+        document.getElementsByClassName("scroll_outer")[0].scrollLeft+=100;
     }
     /*放大镜*/
     $(".house_small_img_preview").mouseenter(function(){

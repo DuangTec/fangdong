@@ -74,7 +74,7 @@
                     <li><a href="/house.do">我要租房</a></li>
                     <li><a href="#">比华利国际城二期</a></li>
                     <li class="active">
-                        锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
+                        ${house.title }
                     </li>
                 </ol>
             </div>
@@ -87,49 +87,44 @@
             <div class="col-xs-5 house_img_preview">
                 <div class="row magnifier">
                     <div class="col-xs-12 house_small_img_preview">
-                        <img src="/bootstrap/images/hot-selected1.png"/>
+                         <img src="${house.pics[0] }">
                         <div class="move"></div>
                     </div>
                     <div class="house_big_img_preview">
-                        <img src="/bootstrap/images/hot-selected1.png"/>
+                        <img src="${house.pics[0] }">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 scoll_img">
-                        <span class="scroll_left">&le;</span>
+                        <span class="scroll_left">&lt;</span>
                         <div class="scroll_outer">
                             <div class="list-inline list-unstyled scroll_inner">
-                                <span><img src="/bootstrap/images/hot-selected1.png"></span><span>
-                                <img src="/bootstrap/images/hot-selected2.png"></span><span>
-                                <img src="/bootstrap/images/hot-selected3.png"></span><span>
-                                <img src="/bootstrap/images/hot-selected1.png"></span><span>
-                                <img src="/bootstrap/images/hot-selected2.png"></span><span>
-                                <img src="/bootstrap/images/hot-selected3.png"></span><span>
-                                <img src="/bootstrap/images/hot-selected2.png"></span><span>
-                                <img src="/bootstrap/images/hot-selected3.png"></span>
+                            <c:forEach items="${house.pics }" var="pic">
+                                <span><img src="${pic }"></span>
+                            </c:forEach>
                             </div>
                         </div>
-                        <span class="scroll_right">></span>
+                        <span class="scroll_right">&gt;</span>
                     </div>
                 </div>
             </div>
             <div class="col-xs-7 house_news_preview">
-                <h1>锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间</h1>
+                <h1>${house.title}</h1>
                 <ul class="house_news">
                     <li>
                         <span class="news_title">租金：</span>
-                        <span class="news_text news_text_money">￥590.00-800.00</span>
+                        <span class="news_text news_text_money">￥${house.rentPrice}</span>
                     </li>
                     <li>
                         <span class="news_title">户型：</span>
-                        <span class="news_text">两室两厅</span>
+                        <span class="news_text">${house.room}室${house.hall}厅</span>
                     </li>
                     <li>
                         <span class="news_title">地址：</span>
                         <span class="news_text">
-                            <a href="">锦江区</a> -
-                            <a href="">川师</a> -
-                            <a href="">比华利国际城二期</a>
+                            <a href="">${house.district}</a> -
+                            <a href="">${house.area}</a> -
+                            <a href="">${house.address}</a>
                         </span>
                     </li>
                     <li class="house_phone">
@@ -155,12 +150,16 @@
             <div class="house_details col-xs-12">
                 <h2 class="house_details_title">房屋详情</h2>
                 <div class="house_details_groups">
-                        <h3>配套设施</h3>
-                        <c:forEach items="${house.facility }" var="equip" >
-                        <span class="house_equipment">${equip}</span>
-                        </c:forEach>
+                    <h3>详情描述</h3>
+                    <p style="width:70%">${house.houseDetail}</p>
+                </div>
+                <div class="house_details_groups">
+                    <h3>配套设施</h3>
+                    <c:forEach items="${house.facility }" var="equip" >
+                    <span class="house_equipment">${equip}</span>
+                    </c:forEach>
                         <!-- <span class="house_equipment house_equipment_no">水、电、气</span> -->
-                    </div>
+                </div>
                 <div class="house_details_groups">
                         <h3>房屋图片</h3>
                         <div class="house_details_img"></div>

@@ -1,0 +1,8 @@
+.manage_table{
+    padding: 20px 40px;
+}
+.manage_table span{
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}

@@ -49,6 +49,4 @@ public class HouseVo extends FdHouse{
 		this.facility = facility;
 	}
 	
-	
-	
 }

@@ -1,0 +1,38 @@
+body{
+    background-color: #F6F7FB;
+}
+.footer{
+    position: absolute;
+    width: 100%;
+}
+.esc_login{
+    float: right;
+}
+.manage_box{
+    margin-top: 60px;
+}
+.manage_box .container{
+    background-color: white;
+}
+.manege_nav_box{
+    padding: 20px 20px 0px 40px;
+}
+.manege_nav li{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid #F6F7FB;
+}
+.manege_nav li.active{
+    background-color: #98D2E9;
+}
+.manege_nav li:hover{
+    background-color: #98D2E9;
+}
+.manege_nav li a{
+    font-size: 16px;
+    color: #333;
+}
+.manege_nav li.active a,.manege_nav li:hover a{
+    color:white;
+}

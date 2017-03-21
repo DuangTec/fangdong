@@ -1,0 +1,26 @@
+.footer{
+    position: absolute;
+    width: 100%;
+}
+.esc_login{
+    float: right;
+}
+.go_in_buts{
+    padding-top: 200px;
+}
+.go_in_buts li input{
+    width: 90%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #98D2E9;
+    color: white;
+    border: 1px solid #56BEE7;
+    border-radius: 4px;
+    letter-spacing: 2px;
+}
+.go_in_buts li input:hover{
+    background-color: #56BEE7;
+}
+.go_in_buts li input:focus{
+    background-color: #4CB9E4;
+}
