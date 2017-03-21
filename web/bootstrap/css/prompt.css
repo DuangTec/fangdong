@@ -32,10 +32,16 @@
     font-size: 14px;
 }
 .page h1{
+    position: relative;
+    margin-top: 0px;
+    padding: 20px;
     background-color: #F5F5F5;
     font-size: 20px;
-    padding: 20px;
     box-shadow:2px 2px 2px 2px gainsboro;
+}
+#top1,#top2,#top3{
+    position: absolute;
+    top:-80px;
 }
 .page h1 span{
     display: inline-block;
@@ -43,8 +49,8 @@
     color:#F3CB2F;
 }
 .page_content{
-    padding: 20px;
+    padding: 20px 20px 60px;
 }
 .page img{
-    width: 90%;
+    width: 100%;
 }
