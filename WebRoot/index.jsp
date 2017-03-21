@@ -4,6 +4,7 @@
 <%@page import="org.apache.shiro.subject.Subject"  %>
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -38,22 +39,26 @@
                     <li><a href="/changeregion.action?region=3">北京市</a></li>
                 </ul>
             </li>
-            <%
-		        Subject currentUser=SecurityUtils.getSubject();
-		        if (currentUser.isAuthenticated()) {
-	        %>
+            <shiro:authenticated>
 	        <li class="log-reg">
-                <a href="#"><%=currentUser.getPrincipal()%></a>&nbsp;欢迎您
+                <a href="#"><shiro:principal /></a>&nbsp;欢迎您
             <span>|</span>
             </li>
+            <shiro:hasRole name="admin">
+            <li class="log-reg">
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
             <li class="log-reg"><a href="/logout.action">注销</a></li>
-            <%} else{%>
+            </shiro:authenticated>
+            <shiro:guest>
             <li class="log-reg">
                 <a href="/login.jsp">登录</a>
                 <span>|</span>
             </li>
             <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
-            <%}%>
+            </shiro:guest>
         </ul>
         <ul class="nav">
             <li class="active"><a href="/index.do">首页</a></li>

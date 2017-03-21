@@ -7,3 +7,7 @@ $(function(){
         $(window).scrollTop(0);
     });
 })
+
+function getParentsRegion(){
+
+}

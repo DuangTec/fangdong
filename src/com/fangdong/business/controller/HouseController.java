@@ -19,7 +19,6 @@ import com.fangdong.business.model.FdRegion;
 import com.fangdong.business.model.HouseVo;
 import com.fangdong.business.service.HouseService;
 import com.fangdong.business.service.RegionService;
-import com.fangdong.business.service.impl.HouseServiceImpl;
 
 @Controller
 public class HouseController {

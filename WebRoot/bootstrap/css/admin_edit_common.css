@@ -44,3 +44,9 @@ body{
 .edit_submit:focus{
     background-color: #4CB9E4;
 }
+.form_control_p{
+    height: 34px;
+    line-height:34px;
+    padding-left: 12px;
+    margin-bottom:0px;
+}
