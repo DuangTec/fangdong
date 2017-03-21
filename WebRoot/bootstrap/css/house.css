@@ -1,5 +1,5 @@
 
-/* 全部房源 */
+/* 鍏ㄩ儴鎴挎簮 */
 .hot-selected{
     background-color: #F4F4F4;
     color:rgb(85,85,85);
@@ -65,7 +65,7 @@
     background-color: #fff;
 }
 
-/* 条件找房 */
+/* 鏉′欢鎵炬埧 */
 .screen{
     margin-top: 40px;
 }
@@ -96,6 +96,7 @@
     width: 70px;
     text-align: right;
     margin-right: -100%;
+	margin-top:10px;
 }
 .filter-tag a.active {
     background-color: #98D2E9;
@@ -106,10 +107,12 @@
     color: #555;
     display: inline-block;
     margin-right: 20px;
+	margin-top:10px;
+	padding:0 5px;
 }
 
 /* search */
-/*搜索区域*/
+/*鎼滅储鍖哄煙*/
 .search-box{
     margin-bottom: 30px;
     margin-top: 20px;
@@ -153,7 +156,7 @@
     width: 18px;
 }
 
-/* 分页 */
+/* 鍒嗛〉 */
 .pagenation nav{
     /*max-width: 980px;*/
 }
