@@ -20,10 +20,10 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
             <li class="log-reg">
-                <a href="login.html">退出登录</a>
+                <a href="/logout.action">退出登录</a>
             </li>
         </ul>
     </div>
@@ -33,9 +33,9 @@
         <div class="row">
             <div class="col-xs-2 manege_nav_box">
                 <ul class="manege_nav">
-                    <li class="active"><a href="house_manage.html">房屋管理</a></li>
-                    <li><a href="area_manage.html">地区管理</a></li>
-                    <li><a href="user_manage.html">用户管理</a></li>
+                    <li class="active"><a href="house_manage.do">房屋管理</a></li>
+                    <li><a href="area_manage.do">地区管理</a></li>
+                    <li><a href="user_manage.do">用户管理</a></li>
                 </ul>
             </div>
             <div class="col-xs-10  manage_table">
@@ -56,11 +56,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${regionList}" var="region">   
+                    <c:forEach items="${houseList}" var="house">   
                     <tr>
-                        <td>${region.regionName }</td>
-                        <td>${region.id} </td>
-                        <td>${region.parentRegName}</td>
+                        <td>${house.createDate }</td>
+                        <td>${house.title} </td>
+                        <td>${house.size}</td>
+                        <td>${house.houseDetail}</td>
+                        <td>${house.address}</td>
+                        <td>${house.propertyRights}</td>
+                        <td>${house.rentPrice}</td>
+                        <td>${house.area}</td>
+                        <td>${house.hall}室${house.hall}厅</td>
+                        <td>${house.facilities}</td>
                         <td>
                             <span class="glyphicon glyphicon-pencil house_news_edit"></span>
                             <span class="glyphicon glyphicon-trash house_news_del"></span>

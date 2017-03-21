@@ -22,7 +22,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
                 <%String regionCode=(String)session.getAttribute("regionCode");
@@ -72,7 +72,6 @@
                 <ol class="breadcrumb duang-breadcrumb">
                     <li><a href="/index.do">首页</a></li>
                     <li><a href="/house.do">我要租房</a></li>
-                    <li><a href="#">比华利国际城二期</a></li>
                     <li class="active">
                         ${house.title }
                     </li>
