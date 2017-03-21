@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
@@ -56,14 +55,17 @@
                         <td>${region.id} </td>
                         <td>${region.parentRegName}</td>
                         <td>
-                            <span class="glyphicon glyphicon-pencil house_news_edit"></span>
-                            <span class="glyphicon glyphicon-trash house_news_del"></span>
+                            <span class="glyphicon glyphicon-pencil" onclick="editRegion(${region.id})"></span>
+                            <span class="glyphicon glyphicon-trash" onclick="delRegion(${region.id})"></span>
                         </td>
                     </tr>
                     </c:forEach>
                     
                     </tbody>
                 </table>
+                <div class="add_news">
+                    <input type="button" value="添加记录" name="add_news" class="add_news_but">
+                </div>
             </div>
         </div>
     </div>

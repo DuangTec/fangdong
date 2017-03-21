@@ -21,8 +21,12 @@ public interface FdRegionMapper {
     List<FdRegion> selectByExample(FdRegionExample example);
     
     List<RegionVo> selectAllRegion();
+    
+    List<FdRegion> selectAllParentsRegion();
 
     FdRegion selectByPrimaryKey(Integer id);
+    
+    RegionVo selectRegionVoByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") FdRegion record, @Param("example") FdRegionExample example);
 

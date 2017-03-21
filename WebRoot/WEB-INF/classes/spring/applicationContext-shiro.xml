@@ -33,6 +33,7 @@
 				/logout.action*=anon
 
 				/house/createHouse*=authc
+				/admin.do = roles[admin]
 				/admin/** = roles[admin]
 			</value>
 		</property>

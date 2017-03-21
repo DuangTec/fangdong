@@ -36,3 +36,19 @@ body{
 .manege_nav li.active a,.manege_nav li:hover a{
     color:white;
 }
+.add_news_but{
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #98D2E9;
+    color: white;
+    border: 1px solid #56BEE7;
+    border-radius: 4px;
+    letter-spacing: 2px;
+}
+.add_news_but:hover{
+    background-color: #56BEE7;
+}
+.add_news_but:focus{
+    background-color: #4CB9E4;
+}

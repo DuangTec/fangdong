@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -5,20 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit" /><!--国产浏览器高速渲染360-->
-    <link rel="icon" type="image/png" href="bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
+    <link rel="icon" type="image/png" href="/bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
     <meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
     <title>地区编辑-杜昂科技房咚网</title>
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="../bootstrap/css/duang.css" rel="stylesheet">
-    <link href="../bootstrap/css/admin_edit_common.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/duang.css" rel="stylesheet">
+    <link href="/bootstrap/css/admin_edit_common.css" rel="stylesheet">
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
             <li class="log-reg">
-                <a href="login.html">退出登录</a>
+                <a href="/logout.action">退出登录</a>
             </li>
         </ul>
     </div>
@@ -43,29 +46,31 @@
                     <div class="panel-body">
                         <form class="form-horizontal" action="" method="post">
                             <div class="form-group">
-                                <label for="input1" class="col-xs-2 control-label">后台条目1</label>
+                                <label for="input2" class="col-xs-2 control-label">地区id</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input1" value="条目1">
+                                    <p class="form_control_p">${region.id}</p>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input2" class="col-xs-2 control-label">后台条目2</label>
+                                <label for="input1" class="col-xs-2 control-label">地区名称</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input2" value="条目2">
+                                    <input type="text" class="form-control" id="input1" value="${region.regionName}">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input3" class="col-xs-2 control-label">后台条目3</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input3" value="条目3">
+                                <label for="input3" class="col-xs-2 control-label">父地区</label>
+                                <div class="col-xs-10 edit_select">
+                                    <input type="text" class="form-control" id="input3" value="${region.parentRegName}">
+                                    <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
+                                    <ul class="edit-select_ul">
+                                        <li>1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                    </ul>
+
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="input4" class="col-xs-2 control-label">后台条目4</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="条目4">
-                                </div>
-                            </div>
+                            
                             <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-2">
                                     <input type="submit" class="edit_submit" value="保存">
@@ -88,9 +93,9 @@
     </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="../bootstrap/js/jquery-1.12.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.js"></script>
-<script src="../bootstrap/js/admin_common.js"></script>
-<script src="../bootstrap/js/admin_edit.js"></script>
+<script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/admin_common.js"></script>
+<script src="/bootstrap/js/admin_edit.js"></script>
 </body>
 </html>

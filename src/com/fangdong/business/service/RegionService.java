@@ -10,6 +10,10 @@ public interface RegionService {
 	
 	public void deleteRegionById(int id) throws Exception;
 	
+	public RegionVo getRegionById(int id) throws Exception;
+	
+	public List<FdRegion> getParentsRegion() throws Exception;
+	
 	//传入地区父ID寻找子ID
 	public List<FdRegion> getChildren(String fatherId);
 } 
