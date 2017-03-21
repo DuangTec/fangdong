@@ -22,7 +22,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
    <div class="container">
-        <a class="navbar-brand" href="#">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
        			<%String regionCode=(String)session.getAttribute("regionCode");
