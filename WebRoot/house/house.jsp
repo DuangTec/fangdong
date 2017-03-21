@@ -3,6 +3,7 @@
 <%@ page import="org.apache.shiro.SecurityUtils"%>
 <%@ page import="org.apache.shiro.subject.Subject"  %>
 <%@ page import="com.fangdong.business.model.HouseVo" %>
+<%@ page import="com.fangdong.business.model.FdRegion" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -71,18 +72,20 @@
         <div class="s-left">
             <div class="new row">
                 <h4 class="col-xs-12">条件找房</h4>
-            </div>
+            </div> 			 
             <div class="filter-row">
                 <span class="filter-label"> 区域：</span>
                 <div class="filter-tag">
                     <a href="#" class="active">全部</a>
-                    <a href="#" class="">锦江区</a>
-                    <a href="#" class="">青羊区</a>
+                    <c:forEach items="${fdRegionResult }" var="district">
+                    <a href="#" class="">${district.regionName }</a>
+                    </c:forEach>
+                    <!-- <a href="#" class="">青羊区</a>
                     <a href="#" class="">金牛区</a>
                     <a href="#" class="">武侯区</a>
                     <a href="#" class="">成华区</a>
                     <a href="#" class="">龙泉驿区</a>
-                    <a href="#" class="">高新区</a>
+                    <a href="#" class="">高新区</a> -->
                 </div>
             </div>
             <div class="filter-row">
@@ -107,7 +110,7 @@
                     <a href="#" class="">跃层</a>
                 </div>
             </div>
-            <div class="filter-row">
+           <!--  <div class="filter-row">
                 <span class="filter-label"> 入住：</span>
                 <div class="filter-tag">
                     <a href="#" class="active">全部</a>
@@ -115,7 +118,7 @@
                     <a href="#" class="">一周内</a>
                     <a href="#" class="">两周内</a>
                 </div>
-            </div>
+            </div> -->
 
             <div class="new row">
                 <h4 class="col-xs-12">Search</h4>

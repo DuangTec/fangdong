@@ -11,5 +11,5 @@ public interface RegionService {
 	public void deleteRegionById(int id) throws Exception;
 	
 	//传入地区父ID寻找子ID
-	public List<FdRegion> getFatherId(String fatherId);
+	public List<FdRegion> getChildren(String fatherId);
 } 

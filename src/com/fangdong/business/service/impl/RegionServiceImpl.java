@@ -30,9 +30,9 @@ public class RegionServiceImpl implements RegionService{
 	}
 
 	//传入父ID找子ID
-	public List<FdRegion> getFatherId(String fatherId) {
+	public List<FdRegion> getChildren(String fatherId) {
 		// TODO Auto-generated method stub
-		List<FdRegion> fdRegionResult=regionMapper.selectFatherId(fatherId);
+		List<FdRegion> fdRegionResult=regionMapper.selectChildren(fatherId);
 		return fdRegionResult;
 	}
 
