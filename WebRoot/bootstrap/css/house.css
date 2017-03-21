@@ -96,6 +96,7 @@
     width: 70px;
     text-align: right;
     margin-right: -100%;
+	margin-top:10px;
 }
 .filter-tag a.active {
     background-color: #98D2E9;
@@ -106,6 +107,8 @@
     color: #555;
     display: inline-block;
     margin-right: 20px;
+	margin-top:10px;
+	padding:0 5px;
 }
 
 /* search */
