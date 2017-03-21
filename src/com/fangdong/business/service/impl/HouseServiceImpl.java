@@ -35,7 +35,15 @@ public class HouseServiceImpl implements HouseService {
 	@Override
 	public List<HouseVo> getHouseList() {
 		List<HouseVo> houseVoList = houseMapper.selectAllHouseVo();
-
+		for (HouseVo vo : houseVoList) {
+			// 房屋对图片是一对多关系，需要按照房屋id再查图片，填充进vo
+			List<FdPicture> pictureList = pictureMapper.selectByHouseId(vo.getId());
+			String[] pics = new String[pictureList.size()];
+			for (int i = 0; i < pictureList.size(); i++) {
+				pics[i] = pictureList.get(i).getPictureUrl();
+			}
+			vo.setPics(pics);
+		}	
 		return houseVoList;
 	}
 

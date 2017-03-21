@@ -98,7 +98,7 @@
         <div class="row">
             <div class="col-xs-2"></div>
             <div class="col-xs-8">
-                <form action="/fuzzySearch.action" method="post" autocomplete="off">
+                <form action="/house.do" method="post" autocomplete="off">
                     <input type="text" name="index-search" value="" placeholder="请输入区域、商圈或小区名"
                             class="index-search form-control"/>
                     <img src="/img/index-search-img.png"/>

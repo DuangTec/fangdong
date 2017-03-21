@@ -27,17 +27,50 @@ public class HouseController {
 
 	/**
 	 * 房屋业务的主页，展示已经挂上来的房屋
-	 * 
+	 * 模糊查询整合
 	 * @return 
 	 */
 	@RequestMapping("/house.do")
-	public ModelAndView house() {
+	public ModelAndView house(HttpServletRequest request) {
+		String key = request.getParameter("index-search");
 		List<HouseVo> houseList = new ArrayList<HouseVo>();
-		houseList = houseService.getHouseList();
-		ModelAndView mov = new ModelAndView("/house/house.jsp");
-		mov.addObject("houseList", houseList);
-		return mov;
+		if(key==null)
+		{
+			houseList = houseService.getHouseList();
+			ModelAndView mov = new ModelAndView("/house/house.jsp");
+			mov.addObject("houseList", houseList);
+			return mov;
+		}
+		else if(key.indexOf("%")== -1)
+		{
+			ModelAndView mov = new ModelAndView("/house/house.jsp");
+			List<HouseVo> houseVoList = houseService.fuzzySearch(key);
+		    mov.addObject("houseList",houseVoList); 
+		    return mov;
+		}
+		else
+		{
+			ModelAndView mov = new ModelAndView("/house/house.jsp");
+			return mov;
+		}
 	}
+	/*//模糊查询
+		@RequestMapping("/fuzzySearch.action")
+		public ModelAndView fuzzySearch(HttpServletRequest request) throws IOException{
+			String key = request.getParameter("index-search");
+			if(key.indexOf("%")== -1)
+			{
+				ModelAndView mov = new ModelAndView("/house/house.jsp");
+				List<HouseVo> houseVoList = houseService.fuzzySearch(key);
+			    mov.addObject("houseList",houseVoList); 
+			    return mov;
+			}
+			else
+			{
+				ModelAndView mov = new ModelAndView("/house/house.jsp");
+				return mov;
+			}
+		}*/
 
 	/**
 	 * 创建房屋，出售和出租都在这个页面进行
@@ -127,23 +160,7 @@ public class HouseController {
 	    mov.addObject("guessYouLikeList",guessYouLikeList);
 	    return mov;
 	}
-	
-	@RequestMapping("/fuzzySearch.action")
-	public ModelAndView fuzzySearch(HttpServletRequest request) throws IOException{
-		String key = request.getParameter("index-search");
-		if(key.indexOf("%")== -1)
-		{
-			ModelAndView mov = new ModelAndView("/house/house.jsp");
-			List<HouseVo> houseVoList = houseService.fuzzySearch(key);
-		    mov.addObject("houseList",houseVoList); 
-		    return mov;
-		}
-		else
-		{
-			ModelAndView mov = new ModelAndView("/house/house.jsp");
-			return mov;
-		}
-	}
+	//传入父id
 	
 	
 }
