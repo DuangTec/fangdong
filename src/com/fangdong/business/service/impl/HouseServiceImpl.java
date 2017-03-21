@@ -1,5 +1,6 @@
 package com.fangdong.business.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 
@@ -29,22 +30,48 @@ public class HouseServiceImpl implements HouseService {
 
 	/**
 	 * 获取所有房屋
-	 * 
+	 * 获取或者获取特定的房屋
 	 * @return
 	 */
 	@Override
-	public List<HouseVo> getHouseList() {
-		List<HouseVo> houseVoList = houseMapper.selectAllHouseVo();
-		for (HouseVo vo : houseVoList) {
+	public List<HouseVo> getHouseList(String type,String key) {	
+		if(type.equals("all"))
+		{
+			List<HouseVo> houseVoList = houseMapper.selectAllHouseVo();
+			houseVoList=addPic(houseVoList);
+			return houseVoList;
+		}
+		
+		else if(type.equals("district"))
+		{
+			//地区查询就和guessyoulike是一样的
+			int id=Integer.parseInt(key);
+			List<HouseVo> houseVoList = houseMapper.selectHouseVoByDistrictId(id);
+			houseVoList=addPic(houseVoList);
+			return houseVoList;
+		}
+		else
+		{
+			List<HouseVo> houseVoList=new ArrayList<HouseVo>();
+			return houseVoList;
+		}
+	}
+	
+	//增加图片
+	public List<HouseVo>  addPic(List<HouseVo> houseVoList)
+	{
+		for (HouseVo vo : houseVoList) 
+		{
 			// 房屋对图片是一对多关系，需要按照房屋id再查图片，填充进vo
 			List<FdPicture> pictureList = pictureMapper.selectByHouseId(vo.getId());
 			String[] pics = new String[pictureList.size()];
-			for (int i = 0; i < pictureList.size(); i++) {
+			for (int i = 0; i < pictureList.size(); i++) 
+			{
 				pics[i] = pictureList.get(i).getPictureUrl();
 			}
 			vo.setPics(pics);
-		}	
-		return houseVoList;
+		}
+		return houseVoList;	
 	}
 
 	/**
@@ -147,4 +174,6 @@ public class HouseServiceImpl implements HouseService {
 		}
 		return gylResult;
 	}
+
+	
 }

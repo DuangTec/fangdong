@@ -136,6 +136,29 @@
     from fd_house h 
     left join fd_user u on h.owner_id=u.id
   </select>
+  <select id="selectHouseVoByDistrictId" parameterType="int" resultMap="VoResultMap">
+	SELECT
+	h.id,
+	h.owner_id,
+	h.create_date,
+	h.size,
+	h.hall,
+	h.room,
+	h.house_detail,
+	h.address,
+	h.property_rights,
+	h.house_type,
+	h.rent_price,
+	h.region_id,
+	r1.region_name AS 'area',
+	r2.region_name AS 'district'
+	FROM
+	fd_house h
+	LEFT JOIN fd_region r1 ON h.region_id = r1.id
+	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
+	WHERE
+	r2.id = #{id}
+  </select>
   <select id="selectByKey" parameterType="String" resultMap="VoResultMap">
 	select
 	h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail,
