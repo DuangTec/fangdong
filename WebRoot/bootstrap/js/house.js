@@ -1,7 +1,7 @@
 /**
  * Created by sony on 2017/3/19.
  */
-//��ҳ
+//分页
 $(function(){
     function pageBgColor(){
         $(this).parent().attr("class","active").siblings().attr("class","");
@@ -9,7 +9,7 @@ $(function(){
     $(".pagenation a").click(pageBgColor);
 })
 
-// ɸѡ
+// 筛选
 $(function () {
     function filterBg(){
         $(this).attr("class","active").siblings().attr("class","");

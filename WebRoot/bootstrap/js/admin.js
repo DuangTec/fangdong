@@ -2,7 +2,7 @@
  * Created by yey on 2017/3/19.
  */
 $(function(){
-    /*µã»÷°´Å¥Ìø×ª¸÷×ÔµÄºóÌ¨¹ÜÀí½çÃæ*/
+    /*ç‚¹å‡»æŒ‰é’®è·³è½¬å„è‡ªçš„åå°ç®¡ç†ç•Œé¢*/
    /* $("#house_manegee").click(go_in_admin("house_manegee.html"));
     $("#area_manegee").click(go_in_admin("area_manegee.html"));
     $("#user_manegee").click(go_in_admin("user_manegee.html"));
@@ -11,12 +11,12 @@ $(function(){
       /!*  window.location.href=b;*!/
     }*/
     $("#house_manage").click(function(){
-        window.location.href="house_manage.html";
+        window.location.href="/admin/house_manage.do";
     })
     $("#area_manage").click(function(){
-        window.location.href="area_manage.html";
+        window.location.href="/admin/area_manage.do";
     })
     $("#user_manage").click(function(){
-        window.location.href="user_manage.html";
+        window.location.href="/admin/user_manage.do";
     })
 })

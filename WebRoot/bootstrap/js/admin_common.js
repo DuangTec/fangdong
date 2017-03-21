@@ -2,7 +2,7 @@
  * Created by yey on 2017/3/20.
  */
 $(function(){
-    /*footerʼ���ڵײ�*/
+    /*footer始终在底部*/
     pageButtomPos();
     function pageButtomPos(){
         var min_height=600;

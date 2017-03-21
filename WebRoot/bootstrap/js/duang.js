@@ -2,11 +2,11 @@
  * Created by yey on 2017/3/19.
  */
 $(function(){
-    /*go-top¿ìËÙ»Ø¶¥*/
+    /*go-topå¿«é€Ÿå›é¡¶*/
     $(".go-top").click(function(){
         $(window).scrollTop(0);
     });
-    /*µ¼º½³ÇÊĞÇĞ»»*/
+    /*å¯¼èˆªåŸå¸‚åˆ‡æ¢*/
     function dropdownActive(){
         $(".dropdown-toggle").html($(this).text()+'<span class="caret"></span>');
     }

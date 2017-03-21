@@ -2,7 +2,7 @@
  * Created by yey on 2017/3/19.
  */
 $(function(){
-    /*footerÊ¼ÖÕÔÚµ×²¿*/
+    /*footerå§‹ç»ˆåœ¨åº•éƒ¨*/
     pageButtomPos();
     function pageButtomPos(){
         var min_height=600;
@@ -17,7 +17,7 @@ $(function(){
     }
     $(window).resize(pageButtomPos);
 
-    /*×Ô¶¯Ìø×ª*/
+    /*è‡ªåŠ¨è·³è½¬*/
     var ocountDownVal=document.getElementsByClassName("countDown")[0];
     var num=parseInt(ocountDownVal.innerHTML);
     function countDown(){

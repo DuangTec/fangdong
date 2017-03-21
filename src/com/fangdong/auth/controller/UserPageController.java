@@ -24,7 +24,7 @@ public class UserPageController {
 	@RequiresRoles("admin")
 	@RequestMapping("/admin")
 	public String admin(){
-		return "manage/index.jsp";
+		return "/admin/admin.jsp";
 	}
 	
 	@RequiresRoles("admin")
@@ -38,9 +38,9 @@ public class UserPageController {
 	}
 	
 	@RequiresRoles("admin")
-	@RequestMapping("/admin/regionManage")
+	@RequestMapping("/admin/area_manage.do")
 	public ModelAndView regionManage(){
-		ModelAndView mov = new ModelAndView("manage/regionManage.jsp");
+		ModelAndView mov = new ModelAndView("/admin/area_manage.jsp");
 		
 		try{
 		List<RegionVo> regionList= regionService.getAllRegion();
