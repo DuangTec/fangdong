@@ -66,7 +66,7 @@
                         <td>${house.propertyRights}</td>
                         <td>${house.rentPrice}</td>
                         <td>${house.area}</td>
-                        <td>${house.hall}室${house.hall}厅</td>
+                        <td>${house.hall}室${house.room}厅</td>
                         <td>${house.facilities}</td>
                         <td>
                             <span class="glyphicon glyphicon-pencil house_news_edit"></span>
