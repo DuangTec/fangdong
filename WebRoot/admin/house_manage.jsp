@@ -56,11 +56,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${regionList}" var="region">   
+                    <c:forEach items="${houseList}" var="house">   
                     <tr>
-                        <td>${region.regionName }</td>
-                        <td>${region.id} </td>
-                        <td>${region.parentRegName}</td>
+                        <td>${house.createDate }</td>
+                        <td>${house.title} </td>
+                        <td>${house.size}</td>
+                        <td>${house.houseDetail}</td>
+                        <td>${house.address}</td>
+                        <td>${house.propertyRights}</td>
+                        <td>${house.rentPrice}</td>
+                        <td>${house.area}</td>
+                        <td>${house.hall}室${house.hall}厅</td>
+                        <td>${house.facilities}</td>
                         <td>
                             <span class="glyphicon glyphicon-pencil house_news_edit"></span>
                             <span class="glyphicon glyphicon-trash house_news_del"></span>
