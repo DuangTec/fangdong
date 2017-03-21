@@ -2,12 +2,12 @@
  * Created by yey on 2017/3/16.
  */
 $(function(){
-    /*·Å´ó¾µĞ¡Í¼×ÊÔ´È·¶¨*/
+    /*æ”¾å¤§é•œå°å›¾èµ„æºç¡®å®š*/
     $(".scroll_inner img").click(function(){
         $(".house_small_img_preview img").attr("src",$(this).attr("src"));
         $(".house_big_img_preview img").attr("src",$(this).attr("src"));
     });
-    /*Í¼Æ¬×óÓÒÇĞ»»*/
+    /*å›¾ç‰‡å·¦å³åˆ‡æ¢*/
     $(".scroll_left").click(scrollLeft);
     function scrollLeft(){
         document.getElementsByClassName("scroll_outer")[0].scrollLeft+=100;
@@ -16,7 +16,7 @@ $(function(){
     function scrollRight(){
         document.getElementsByClassName("scroll_outer")[0].scrollLeft-=100;
     }
-    /*·Å´ó¾µ*/
+    /*æ”¾å¤§é•œ*/
     $(".house_small_img_preview").mouseenter(function(){
         $(".move").css("display","block");
         $(".house_big_img_preview").css("display","block");
@@ -25,18 +25,18 @@ $(function(){
         $(".move").css("display","none");
         $(".house_big_img_preview").css("display","none");
     });
-    //Êó±êÔÚĞ¡¿éµÄÖĞÑë£¬ÇÒËæ×ÅÊó±êµÄÒÆ¶¯¿éÒ²ÒÆ¶¯£ºÒÆ¶¯¹ı³ÌÖĞÊó±êµÄ¸÷ÏîÖµÊÇ¶¯Ì¬¸Ä±äµÄ
+    //é¼ æ ‡åœ¨å°å—çš„ä¸­å¤®ï¼Œä¸”éšç€é¼ æ ‡çš„ç§»åŠ¨å—ä¹Ÿç§»åŠ¨ï¼šç§»åŠ¨è¿‡ç¨‹ä¸­é¼ æ ‡çš„å„é¡¹å€¼æ˜¯åŠ¨æ€æ”¹å˜çš„
     $(".house_small_img_preview").mousemove(function (ev) {
         var evx=ev.pageX;
         var evy=ev.pageY;
-        var small_x= $(".house_small_img_preview").offset().left;//Ã»ÓĞµ¥Î»£¬Ö»¶Á
+        var small_x= $(".house_small_img_preview").offset().left;//æ²¡æœ‰å•ä½ï¼Œåªè¯»
         console.log(small_x)
         var small_y= $(".house_small_img_preview").offset().top;
         var move_width= $(".move").css("width");
         var move_height= $(".move").css("height");
         var small_width=$(".house_small_img_preview").css("width");
         var small_height=$(".house_small_img_preview").css("height");
-        var move_top=evy-small_y-parseFloat(move_height)/2;//Éæ¼°ÑùÊ½ÊôĞÔ£ºwidthºÍheightµÄ»áÓĞµ¥Î»£¬¿É¶Á¿ÉĞ´£¬ÊÂÏÈ±ØĞëÓĞ¶¨Òå
+        var move_top=evy-small_y-parseFloat(move_height)/2;//æ¶‰åŠæ ·å¼å±æ€§ï¼šwidthå’Œheightçš„ä¼šæœ‰å•ä½ï¼Œå¯è¯»å¯å†™ï¼Œäº‹å…ˆå¿…é¡»æœ‰å®šä¹‰
         var move_left=evx-small_x-parseFloat(move_width)/2;
 
         var move_maxx=parseFloat(small_width)-parseFloat(move_width);
@@ -48,7 +48,7 @@ $(function(){
         var big_height=$(".house_big_img_preview").css("height");
         var big_move_maxx=parseFloat(bigimg_width)-parseFloat(big_width);
         var big_move_maxy=parseFloat(bigimg_height)-parseFloat(big_height);
-        //½«¿é¿ØÖÆÔÚÍ¼Æ¬·¶Î§Ö®ÀàÒÆ¶¯£¬ÒÆ¶¯²»³¬³öÍ¼Æ¬·¶Î§
+        //å°†å—æ§åˆ¶åœ¨å›¾ç‰‡èŒƒå›´ä¹‹ç±»ç§»åŠ¨ï¼Œç§»åŠ¨ä¸è¶…å‡ºå›¾ç‰‡èŒƒå›´
         if(move_top<0){
             move_top=0
         }
@@ -61,23 +61,23 @@ $(function(){
         if(move_top>move_maxy){
             move_top=move_maxy;
         }
-        $(".move").css({top:move_top,left:move_left});//ÊôĞÔÖµÒ²ÊÇÓĞµ¥Î»µÄ
-        //Ğ¡Í¼Æ¬ÖĞÊó±êÒÆ¶¯£¬´óÍ¼Æ¬Ò²ËæÖ®Í¬²½ÒÆ¶¯£¬´ïµ½·Å´ó¾µµÄĞ§¹û
-        /*var x_bili=move_left/move_maxx;//Ğ¡Í¼Æ¬µÄÎ»ÖÃ±ÈÀı=ÒÆ¶¯µÄ¶¯Ì¬Î»ÖÃ£º¿ÉÒÆ¶¯µÄ×î´ó·¶Î§£¨=Ğ¡Í¼Æ¬¸ß¿í-Ğ¡¿é¸ß¿í£©
+        $(".move").css({top:move_top,left:move_left});//å±æ€§å€¼ä¹Ÿæ˜¯æœ‰å•ä½çš„
+        //å°å›¾ç‰‡ä¸­é¼ æ ‡ç§»åŠ¨ï¼Œå¤§å›¾ç‰‡ä¹Ÿéšä¹‹åŒæ­¥ç§»åŠ¨ï¼Œè¾¾åˆ°æ”¾å¤§é•œçš„æ•ˆæœ
+        /*var x_bili=move_left/move_maxx;//å°å›¾ç‰‡çš„ä½ç½®æ¯”ä¾‹=ç§»åŠ¨çš„åŠ¨æ€ä½ç½®ï¼šå¯ç§»åŠ¨çš„æœ€å¤§èŒƒå›´ï¼ˆ=å°å›¾ç‰‡é«˜å®½-å°å—é«˜å®½ï¼‰
          var y_bili=move_top/move_maxy;
-         var big_img_top=y_bili*big_move_maxy;//ÒòÎª±ÈÀıÏàµÈ£¬ËùÒÔ´óÍ¼Æ¬µÄtopºÍleftµÄÒÆ¶¯¶¯Ì¬Î»ÖÃ=±ÈÀıÎ»ÖÃ*´óÍ¼Æ¬¿ÉÒÆ¶¯µÄ×î´óÎ»ÖÃ
+         var big_img_top=y_bili*big_move_maxy;//å› ä¸ºæ¯”ä¾‹ç›¸ç­‰ï¼Œæ‰€ä»¥å¤§å›¾ç‰‡çš„topå’Œleftçš„ç§»åŠ¨åŠ¨æ€ä½ç½®=æ¯”ä¾‹ä½ç½®*å¤§å›¾ç‰‡å¯ç§»åŠ¨çš„æœ€å¤§ä½ç½®
          var big_img_left=x_bili*big_move_maxx;
          $(".big img").css({top:-big_img_top,left:-big_img_left});*/
-        var x_bili=move_left/parseFloat(small_width);//±ÈÀıÓĞÁ½ÖÖ·½·¨
+        var x_bili=move_left/parseFloat(small_width);//æ¯”ä¾‹æœ‰ä¸¤ç§æ–¹æ³•
         var y_bili=move_top/parseFloat(small_height);
         var big_img_top=y_bili*parseFloat(bigimg_width);
         var big_img_left=x_bili*parseFloat(bigimg_height);
         $(".house_big_img_preview img").css({top:-big_img_top,left:-big_img_left});
     });
-    /*¿´·¿µç»°ÏÔÊ¾*/
+    /*çœ‹æˆ¿ç”µè¯æ˜¾ç¤º*/
     $(".booking_house").click(function(){
         $(".house_phone").show(500,function(){
-            /*ÒÑµÇÂ¼ºó·µ»Øtrue*/
+            /*å·²ç™»å½•åè¿”å›true*/
             return true;
         });
     })

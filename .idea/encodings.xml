@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/admin.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/admin_common.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/admin_edit.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/admin_manage.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/duang.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/house.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/houseDetail.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/web/bootstrap/js/success.js" charset="UTF-8" />
+  </component>
+</project>

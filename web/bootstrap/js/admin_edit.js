@@ -2,11 +2,11 @@
  * Created by yey on 2017/3/20.
  */
 $(function(){
-    /*go-top¿ìËÙ»Ø¶¥*/
+    /*go-topå¿«é€Ÿå›é¡¶*/
     $(".go-top").click(function(){
         $(window).scrollTop(0);
     });
-    /*input¾Û½¹ÏÂÀ­°´Å¥³öÏÖ£¬°´Å¥µã»÷Ä£Äâselect³öÏÖ£¬selectµã»÷input»ñµÃ¶ÔÓ¦Öµ*/
+    /*inputèšç„¦ä¸‹æ‹‰æŒ‰é’®å‡ºç°ï¼ŒæŒ‰é’®ç‚¹å‡»æ¨¡æ‹Ÿselectå‡ºç°ï¼Œselectç‚¹å‡»inputè·å¾—å¯¹åº”å€¼*/
     $(".edit_select input").focus(function(){
         $(".edit_select_icon").css("display","block");
     })
