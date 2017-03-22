@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" href="/bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
     <meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
     <c:choose>
-    <c:when test="${create == 'create' }">
+    <c:when test="${type == 'create' }">
     <title>新建地区-杜昂科技房咚网</title>    	
     </c:when>
     <c:otherwise>
@@ -42,7 +42,7 @@
                     <li><a href="admin.html">后台管理</a></li>
                     <li><a href="house_manage.html">地区管理</a></li>
                     <c:choose>
-                    	<c:when test="${create == 'create' }">
+                    	<c:when test="${type == 'create' }">
                     <li class="active">创建地区</li>
                     	</c:when>
                     	<c:otherwise>

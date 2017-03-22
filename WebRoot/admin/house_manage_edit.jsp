@@ -12,7 +12,14 @@
     <meta name="renderer" content="webkit" /><!--国产浏览器高速渲染360-->
     <link rel="icon" type="image/png" href="bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
     <meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
+    <c:choose>
+    <c:when test="${type == 'create' }">
+    <title>新建房屋-杜昂科技房咚网</title>    	
+    </c:when>
+    <c:otherwise>
     <title>房屋编辑-杜昂科技房咚网</title>
+    </c:otherwise>
+    </c:choose>
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../bootstrap/css/duang.css" rel="stylesheet">
     <link href="../bootstrap/css/admin_edit_common.css" rel="stylesheet">
@@ -50,7 +57,7 @@
                             <div class="form-group">
                                 <label for="input1" class="col-xs-2 control-label">创建时间</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input1" value="创建时间">
+                                    <input type="hidden" class="form-control" id="input1" value="创建时间">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -74,43 +81,43 @@
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">房屋地址</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="房屋地址">
+                                    <input type="text" class="form-control" id="input5" value="房屋地址">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">产权年限</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="产权年限">
+                                    <input type="text" class="form-control" id="input6" value="产权年限">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">租金</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="租金">
+                                    <input type="text" class="form-control" id="input7" value="租金">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">地区</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="地区">
+                                    <input type="text" class="form-control" id="input8" value="地区">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">房屋规格</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="房屋规格">
+                                    <input type="text" class="form-control" id="input9" value="房屋规格">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">租赁类型(1住房/2商铺)</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="租赁类型">
+                                    <input type="text" class="form-control" id="input10" value="租赁类型">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">设施</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="设施">
+                                    <input type="text" class="form-control" id="input11" value="设施">
                                 </div>
                             </div>
                             

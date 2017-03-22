@@ -235,13 +235,15 @@ public class HouseController {
 		ModelAndView mov = new ModelAndView("/admin/house_manage_edit.jsp");
 		int id = Integer.parseInt(request.getParameter("id"));
 		if(type!=null&&type.equals("creat"))
-		{			
+		{	
+			mov.addObject("type","create");
 			return mov;
 		}
 		else if(type!=null&&type.equals("update"))
 		{
 			try {
 				HouseVo hv=houseService.getHouseVoById(id);
+				//mov.addObject("type","update");
 				mov.addObject("houseVo",hv);
 			} catch (Exception e) {
 				mov.addObject("error","edit fail");
