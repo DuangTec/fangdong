@@ -76,3 +76,7 @@ body{
 .edit-select_ul li:hover{
     background-color:#CAE4EE;
 }
+.house_input{
+    width: 200px;
+    display: inline-block;
+}

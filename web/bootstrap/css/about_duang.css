@@ -1,18 +1,32 @@
-.about_duang{
+body{
+    background-color: #F5F5F5;
+}
+.about_us_banner{
     margin-top: 60px;
 }
-#page1 img{
+.about_us_banner img{
     width: 100%;
     height: 600px;
 }
-#page2{
-    padding: 50px;
-}
-#page2 h1{
+.about_duang h1{
+    display: inline-block;
     font-size: 30px;
-    margin-bottom: 20px;
+    padding: 20px 10px 10px;
+    margin: 0px 0px 30px;
+    border-bottom: 2px solid lightsteelblue;;
 }
-#page2 img{
+.about_duang h1 img{
+    width: 50px;
+    height: 36px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+#page2,#page3,#page4,#page5,#page6{
+    text-align: center;
+    padding: 50px;
+    margin-bottom: 50px;
+}
+.thumbnail img{
     width: 100%;
     height: 200px;
 }
@@ -20,5 +34,49 @@
     font-size: 20px;
 }
 #page2 .thumbnail p{
+    text-align: left;
     height: 150px;
+}
+#page3{
+    background: url("../images/about_duang_bg.jpg") no-repeat left top;
+}
+#page3 p,#page4 p, #page5 p,#page6 p{
+    text-align: center;
+    line-height: 30px;
+    font-size: 16px;
+}
+#page3 span{
+    display: inline-block;
+    width: 20px;
+    margin: 0px 30px;
+    animation: page3_move 2s linear infinite;
+}
+@keyframes page3_move {
+    0%{
+        text-align: left;
+    }
+    100%{
+        text-align: right;
+    }
+}
+.form-nav{
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 2;
+    display: none;
+}
+.form-nav a{
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: lightsteelblue;
+    margin-bottom: 5px;
+}
+.form-nav a:hover{
+    background-color: #3FAFDB;
+}
+#page6 .font_big{
+    font-size: 20px;
 }
