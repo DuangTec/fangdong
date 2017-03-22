@@ -117,7 +117,7 @@ public class UserController{
 			int id = Integer.parseInt(request.getParameter("id"));
 			String type= request.getParameter("type");
 			ModelAndView mov = new ModelAndView();
-			mov.setViewName("redirect:/admin/user_manage_edit.jsp");
+			mov.setViewName("/admin/user_manage_edit.jsp");
 			if(type!=null&&type.equals("create"))
 			{
 				mov.addObject("type","create");
