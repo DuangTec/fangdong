@@ -51,7 +51,8 @@
                             <th>产权年限</th>
                             <th>租金          </th>
                             <th>地区          </th>
-                            <th>房屋类型</th>
+                            <th>房屋规格</th>
+                            <th>租赁类型(1住房/2商铺)</th>
                             <th>设施          </th>
                             <th class="col-lg-1 col-xs-2">相关操作</th>
                         </tr>
@@ -68,6 +69,7 @@
                         <td>${house.rentPrice}</td>
                         <td>${house.area}</td>
                         <td>${house.hall}室${house.room}厅</td>
+                        <td align="center">${house.houseType}</td>
                         <td>${house.facilities}</td>
                         <td>
                             <span class="glyphicon glyphicon-pencil house_news_edit"></span>
