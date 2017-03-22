@@ -1,12 +1,12 @@
 package com.fangdong.business.service.impl;
 
-
-
 import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
 
 import com.fangdong.business.mapper.FdPictureMapper;
 import com.fangdong.business.service.PictureService;
-
+@Service
 public class PictureServiceImpl implements PictureService {
 
 	@Resource

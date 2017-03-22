@@ -48,29 +48,72 @@
                     <div class="panel-body">
                         <form class="form-horizontal" action="" method="post">
                             <div class="form-group">
-                                <label for="input1" class="col-xs-2 control-label">后台条目1</label>
+                                <label for="input1" class="col-xs-2 control-label">创建时间</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input1" value="条目1">
+                                    <input type="text" class="form-control" id="input1" value="创建时间">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input2" class="col-xs-2 control-label">后台条目2</label>
+                                <label for="input2" class="col-xs-2 control-label">房屋标题</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input2" value="条目2">
+                                    <input type="text" class="form-control" id="input2" value="房屋标题">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input3" class="col-xs-2 control-label">后台条目3</label>
+                                <label for="input3" class="col-xs-2 control-label">房屋大小</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input3" value="条目3">
+                                    <input type="text" class="form-control" id="input3" value="房屋大小">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input4" class="col-xs-2 control-label">后台条目4</label>
+                                <label for="input4" class="col-xs-2 control-label">房屋详情</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="条目4">
+                                    <input type="text" class="form-control" id="input4" value="房屋详情">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">房屋地址</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" value="房屋地址">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">产权年限</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" value="产权年限">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">租金</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" value="租金">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">地区</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" value="地区">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">房屋规格</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" value="房屋规格">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">租赁类型(1住房/2商铺)</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" value="租赁类型">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">设施</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" value="设施">
+                                </div>
+                            </div>
+                            
                             <div class="form-group">
                                 <div class="col-xs-offset-2 col-xs-2">
                                     <input type="submit" class="edit_submit" value="保存">
