@@ -11,6 +11,8 @@ public interface FdPictureMapper {
     int deleteByExample(FdPictureExample example);
 
     int deleteByPrimaryKey(Integer id);
+    
+    int deleteByHouseId(Integer id);
 
     int insert(FdPicture record);
 

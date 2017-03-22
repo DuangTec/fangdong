@@ -22,10 +22,7 @@ public class RegionController {
 	
 	@Resource
 	private RegionService regionService;
-	@Resource
-	private HouseService houseService;
-	@Resource
-	private UserService userService;
+	
 	
 
 	@RequestMapping("/admin/deleteRegion.action")
@@ -91,49 +88,4 @@ public class RegionController {
 		return null;
 	}
 	
-	@RequestMapping("/admin/deleteHouse.action")
-	public ModelAndView deleteHouse(HttpServletRequest request){
-		int id = Integer.parseInt(request.getParameter("id"));
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("redirect:/admin/house_manage.do");
-		try {
-			houseService.deleteHouseById(id);
-		} catch (Exception e) {
-			mov.addObject("error","delete fail");
-			e.printStackTrace();
-		}
-		
-		return mov;
-	}
-	
-	@RequestMapping("/admin/editHouse.do")
-	public ModelAndView editHouse(HttpServletRequest request){
-		int id = Integer.parseInt(request.getParameter("id"));
-		ModelAndView mov = new ModelAndView("/admin/area_manage_edit.jsp");
-		
-		try {
-			HouseVo hv=houseService.getHouseVoById(id);
-			mov.addObject("houseVo",hv);
-		} catch (Exception e) {
-			mov.addObject("error","edit fail");
-			e.printStackTrace();
-		}
-		
-		return mov;
-	}
-
-	@RequestMapping("/admin/deleteUser.action")
-	public ModelAndView deleteUser(HttpServletRequest request){
-		int id = Integer.parseInt(request.getParameter("id"));
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("redirect:/admin/user_manage.do");
-		try {
-			userService.deleteUserById(id);
-		} catch (Exception e) {
-			mov.addObject("error","delete fail");
-			e.printStackTrace();
-		}
-		
-		return mov;
-	}
 }

@@ -18,6 +18,7 @@ import com.fangdong.business.model.FdRegion;
 import com.fangdong.business.model.HouseVo;
 import com.fangdong.business.model.SearchParam;
 import com.fangdong.business.service.HouseService;
+import com.fangdong.business.service.PictureService;
 import com.fangdong.business.service.RegionService;
 
 @Controller
@@ -27,6 +28,8 @@ public class HouseController {
 	private HouseService houseService;
 	@Resource
 	private RegionService regionService;
+	@Resource
+	private PictureService pictureService;
 
 	/**
 	 * 房屋业务的主页，展示已经挂上来的房屋 模糊查询整合\通过三种方式查询整合
@@ -206,6 +209,50 @@ public class HouseController {
 		}
 		return mov;
 
+	}
+	
+	@RequestMapping("/admin/deleteHouse.action")
+	public ModelAndView deleteHouse(HttpServletRequest request){
+		int id = Integer.parseInt(request.getParameter("id"));
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("redirect:/admin/house_manage.do");
+		boolean deleteflag=false;
+		try {
+			//删房子先删图片
+			deleteflag=pictureService.deletePicByHouseId(id);
+			houseService.deleteHouseById(id);
+		} catch (Exception e) {
+			mov.addObject("error","delete fail,result "+deleteflag);
+			e.printStackTrace();
+		}
+		
+		return mov;
+	}
+	
+	@RequestMapping("/admin/editHouse.do")
+	public ModelAndView editHouse(HttpServletRequest request){
+		String type= request.getParameter("type");
+		ModelAndView mov = new ModelAndView("/admin/house_manage_edit.jsp");
+		int id = Integer.parseInt(request.getParameter("id"));
+		if(type!=null&&type.equals("creat"))
+		{			
+			return mov;
+		}
+		else if(type!=null&&type.equals("update"))
+		{
+			try {
+				HouseVo hv=houseService.getHouseVoById(id);
+				mov.addObject("houseVo",hv);
+			} catch (Exception e) {
+				mov.addObject("error","edit fail");
+				e.printStackTrace();
+			}		
+			return mov;
+		}
+		else
+		{
+			return mov;
+		}
 	}
 
 	// 跳转detail

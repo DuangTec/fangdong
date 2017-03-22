@@ -94,4 +94,19 @@ public class UserController{
 			return "true";
 		return "false";
 	}
+	//后台管理用户删除
+	@RequestMapping("/admin/deleteUser.action")
+	public ModelAndView deleteUser(HttpServletRequest request){
+		int id = Integer.parseInt(request.getParameter("id"));
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("redirect:/admin/user_manage.do");
+		try {
+			userService.deleteUserById(id);
+		} catch (Exception e) {
+			mov.addObject("error","delete fail");
+			e.printStackTrace();
+		}
+		
+		return mov;
+	}
 }

@@ -72,7 +72,7 @@
                         <td align="center">${house.houseType}</td>
                         <td>${house.facilities}</td>
                         <td>
-                            <span class="glyphicon glyphicon-pencil house_news_edit"></span>
+                            <span class="glyphicon glyphicon-pencil house_news_edit"onclick="editHouse(${house.id})"></span>
                             <span class="glyphicon glyphicon-trash house_news_del" onclick="delHouse(${house.id})"></span>
                         </td>
                     </tr>

@@ -97,6 +97,10 @@
     delete from fd_picture
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteByHouseId" parameterType="java.lang.Integer" >
+    delete from fd_picture 
+    where house_id = #{id,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="com.fangdong.business.model.FdPictureExample" >
     delete from fd_picture
     <if test="_parameter != null" >

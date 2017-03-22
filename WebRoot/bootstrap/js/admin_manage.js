@@ -22,6 +22,16 @@ function delHouse(id){
 	window.location.href="/admin/deleteHouse.action?id="+id;
 }
 
+//房屋编辑
+function editHouse(id){
+	window.location.href="/admin/editHouse.do?id="+id;
+}
+
+//用户编辑
+function editUser(id){
+	window.location.href="/admin/editUser.do?id="+id;
+}
+
 //用户删除
 function delUser(id){
 	window.location.href="/admin/deleteUser.action?id="+id;
