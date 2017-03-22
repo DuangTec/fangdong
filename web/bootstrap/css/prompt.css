@@ -54,3 +54,9 @@
 .page img{
     width: 100%;
 }
+.text_bold{
+    font-weight: bold;
+}
+.text_indent{
+    text-indent: 2em;
+}
