@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fangdong.auth.model.FdUser;
 import com.fangdong.auth.service.UserService;
+import com.fangdong.business.model.FdRegion;
 
 @Controller
 public class UserController{
@@ -112,30 +113,66 @@ public class UserController{
 		return mov;
 	}
 	//后台管理用户修改
-		@RequestMapping("/admin/editUser.do")
-		public ModelAndView editUser(HttpServletRequest request){
-			int id = Integer.parseInt(request.getParameter("id"));
-			String type= request.getParameter("type");
-			ModelAndView mov = new ModelAndView();
-			mov.setViewName("/admin/user_manage_edit.jsp");
-			if(type!=null&&type.equals("create"))
-			{
-				mov.addObject("type","create");
-				return mov;
-			}
-			else
-			{
-				try {
-					FdUser fu=userService.getUserById(id);
-					mov.addObject("AditUser",fu);
-				} catch (Exception e) {
-					mov.addObject("error","edit fail");
-					e.printStackTrace();
-				}				
-				return mov;
-			}
-			
+	@RequestMapping("/admin/editUser.do")
+	public ModelAndView editUser(HttpServletRequest request){
+		String type= request.getParameter("type");
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("/admin/user_manage_edit.jsp");
+		if(type!=null&&type.equals("create"))
+		{
+			mov.addObject("type","create");
+			return mov;
 		}
+		else
+		{
+			try {
+				int id = Integer.parseInt(request.getParameter("id"));
+				FdUser fu=userService.getUserById(id);
+				mov.addObject("AditUser",fu);
+			} catch (Exception e) {
+				mov.addObject("error","edit fail");
+				e.printStackTrace();
+			}				
+			return mov;
+		}
+		
+	}
+		
+	//后台管理用户修改后提交
+	@RequestMapping("/admin/editUserSubmit.action")
+	public String editUserSubmit(HttpServletRequest request){
+		//判断是否为新建
+		String type=request.getParameter("type");
+		FdUser newUser=new FdUser();
+		newUser.setName(request.getParameter("name"));
+		newUser.setUsername(request.getParameter("username"));
+		newUser.setPassword(request.getParameter("password"));
+		newUser.setPhone(request.getParameter("phone"));
+		newUser.setSex(request.getParameter("sex"));
+		String setAuthority=request.getParameter("authority");
+		if(setAuthority==null){setAuthority="1";}
+		newUser.setAuthority(Integer.parseInt(setAuthority));
+		if((type!=null)&&(type.equals("create"))){
+			try {
+				userService.createUser(newUser);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "redirect:/admin/user_manage.do";
+		}	
+		//如果不是新建，则为更新
+		String userid=request.getParameter("userid");
+		newUser.setId(Integer.parseInt(userid));
+		userService.updateUser(newUser);
+		try {
+			//userService.updateRegionById(region);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/admin/user_manage.do";
+	}
+		
 	
 	@RequiresAuthentication
 	@ResponseBody
