@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -30,7 +31,7 @@
 </div>
 <div class="manage_box house_manage">
     <div class="container">
-        <div class="row">
+        <div class="row">      
             <div class="col-xs-2 manege_nav_box">
                 <ul class="manege_nav">
                     <li class="active"><a href="house_manage.do">房屋管理</a></li>
@@ -48,17 +49,17 @@
                             <th>房屋详情</th>
                             <th>房屋地址</th>
                             <th>产权年限</th>
-                            <th>租金</th>
-                            <th>地区</th>
+                            <th>租金          </th>
+                            <th>地区          </th>
                             <th>房屋类型</th>
-                            <th>设施</th>
+                            <th>设施          </th>
                             <th class="col-lg-1 col-xs-2">相关操作</th>
                         </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${houseList}" var="house">   
                     <tr>
-                        <td>${house.createDate }</td>
+                        <td><fmt:formatDate value='${house.createDate }' pattern='yyyy-MM-dd '/></td>
                         <td>${house.title} </td>
                         <td>${house.size}</td>
                         <td>${house.houseDetail}</td>
@@ -76,6 +77,29 @@
                     </c:forEach>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="../index.html">首页</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>                   
+                        <li><a href="#">尾页</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
