@@ -52,9 +52,9 @@ body{
 .add_news_but:focus{
     background-color: #4CB9E4;
 }
-.area_manage nav{
+.area_manage nav,.house_manage nav,.user_manage nav{
     text-align: right;
 }
-.area_manage .pagination{
+.area_manage .pagination,.house_manage .pagination,.user_manage .pagination{
     margin: 20px 40px 20px 20px;
 }
