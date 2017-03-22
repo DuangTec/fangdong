@@ -11,4 +11,5 @@ public interface UserService {
 	public List<FdUser> getAllUser();
 	public FdUser selectUserByUserName(String username);
 	public boolean userExistCheck(String username);
+	public int deleteUserById(int id);
 }

@@ -87,4 +87,12 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+	
+	@Override
+	public int deleteUserById(int id) {
+		// TODO Auto-generated method stub
+		int i = userMapper.deleteByPrimaryKey(id);
+		return i;
+	}
+
 }

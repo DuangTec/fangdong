@@ -29,4 +29,5 @@ public interface FdUserMapper {
     int updateByPrimaryKey(FdUser record);
     
     FdUser selectByUserName(String username);
+    
 }
