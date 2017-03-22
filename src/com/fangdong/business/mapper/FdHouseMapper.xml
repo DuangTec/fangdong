@@ -166,6 +166,7 @@
 	h.house_type,
 	h.rent_price,
 	h.region_id,
+	h.facilities,
 	r1.region_name AS 'area',
 	r2.region_name AS 'district'
 	FROM
