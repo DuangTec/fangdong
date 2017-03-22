@@ -54,12 +54,21 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">编辑列表</h3>
                     </div>
-                    <div class="panel-body">                  
-                        <form class="form-horizontal" action="/admin/editUserSubmit.action" method="post">
+                    <div class="panel-body"> 
+                    <c:choose>
+                    	<c:when test="${type == 'create' }">
+                        <form class="form-horizontal" action="/admin/editUserSubmit.action?type=create" method="post">
+                    	</c:when>
+                    	<c:otherwise>
+                        <form class="form-horizontal" action="/admin/editUserSubmit.action" method="post">                 
+                     	</c:otherwise>
+                    	</c:choose>
+                 
                             <div class="form-group">
                                 <label for="input1" class="col-xs-2 control-label">姓名</label>
                                 <div class="col-xs-10">
                                     <input type="text" class="form-control" id="input1" name="name" value='${AditUser.name}'>
+                                    <input type="hidden" value="${AditUser.id}" name="userid"/>
                                 </div>
                             </div>                      
                             <div class="form-group">
@@ -69,15 +78,27 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input3" class="col-xs-2 control-label">后台条目3</label>
+                                <label for="input3" class="col-xs-2 control-label">密码</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input3" value="条目3">
+                                    <input type="text" class="form-control" id="input3" name="password" value='${AditUser.password}'>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input4" class="col-xs-2 control-label">后台条目4</label>
+                                <label for="input4" class="col-xs-2 control-label">电话</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="条目4">
+                                    <input type="text" class="form-control" id="input4" name="phone" value="${AditUser.phone}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">权限(1普通/2管理)</label>
+                                <div class="col-xs-10" >
+                                    <input type="text"  class="form-control" id="input4" name="authority" value="${AditUser.authority}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="input4" class="col-xs-2 control-label">性别</label>
+                                <div class="col-xs-10">
+                                    <input type="text" class="form-control" id="input4" name="sex" value="${AditUser.sex}">
                                 </div>
                             </div>
                             <div class="form-group">

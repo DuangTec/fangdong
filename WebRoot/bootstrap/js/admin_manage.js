@@ -40,3 +40,8 @@ function editUser(id){
 function delUser(id){
 	window.location.href="/admin/deleteUser.action?id="+id;
 }
+
+//新建用户按钮
+function createUser(){
+    window.location.href="/admin/editUser.do?type=create";
+}
