@@ -42,8 +42,16 @@ public class RegionController {
 	
 	@RequestMapping("/admin/editRegion.do")
 	public ModelAndView editRegion(HttpServletRequest request){
-		int id = Integer.parseInt(request.getParameter("id"));
 		ModelAndView mov = new ModelAndView("/admin/area_manage_edit.jsp");
+		String type=request.getParameter("type");
+		
+		if((type!=null)&&(!type.equals(""))){
+			//如果是create，返回一个create标识符
+			mov.addObject("type","create");
+			return mov;
+		}
+		
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		try {
 			RegionVo vo=regionService.getRegionById(id);

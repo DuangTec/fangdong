@@ -17,6 +17,10 @@ function delRegion(id){
 function editRegion(id){
     window.location.href="/admin/editRegion.do?id="+id;
 }
+//新建地区按钮
+function createRegion(){
+    window.location.href="/admin/editRegion.do?type=create";
+}
 //房屋删除
 function delHouse(id){
 	window.location.href="/admin/deleteHouse.action?id="+id;

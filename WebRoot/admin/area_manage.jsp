@@ -64,7 +64,7 @@
                     </tbody>
                 </table>
                 <div class="add_news">
-                    <input type="button" value="添加记录" name="add_news" class="add_news_but">
+                    <input type="button" value="添加记录" name="add_news" class="add_news_but" onclick="createRegion()">
                 </div>
             </div>
         </div>
