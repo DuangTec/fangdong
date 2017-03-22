@@ -128,6 +128,7 @@
                     </li>
                     <li class="house_phone">
                         <span class="news_title">联系方式：</span>
+                        <input type="hidden" value="${house.ownerId}" id="ownerId"/>
                         <span class="news_text new_text_phone">13511111111</span>
                     </li>
                     <li>

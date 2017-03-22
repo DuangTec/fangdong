@@ -78,7 +78,11 @@ $(function(){
     $(".booking_house").click(function(){
         $(".house_phone").show(500,function(){
             $.ajax({
-
+                url:"/getUserPhone.action",
+                data:{ownerId:$("#ownerId").val()},
+                success:function(result){
+                    $(".news_text .new_text_phone").html(result);
+                }
             });
             return true;
         });

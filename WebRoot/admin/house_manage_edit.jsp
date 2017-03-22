@@ -22,9 +22,9 @@
     <title>房屋编辑-杜昂科技房咚网</title>
     </c:otherwise>
     </c:choose>
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="../bootstrap/css/duang.css" rel="stylesheet">
-    <link href="../bootstrap/css/admin_edit_common.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/duang.css" rel="stylesheet">
+    <link href="/bootstrap/css/admin_edit_common.css" rel="stylesheet">
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -133,7 +133,7 @@
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">设施</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input11" value="设施">
+                                    <input type="radio" name="facility" value=""/>
                                 </div>
                             </div>
                             
@@ -159,9 +159,9 @@
     </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="../bootstrap/js/jquery-1.12.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.js"></script>
-<script src="../bootstrap/js/admin_common.js"></script>
-<script src="../bootstrap/js/admin_edit.js.js"></script>
+<script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/admin_common.js"></script>
+<script src="/bootstrap/js/admin_edit.js.js"></script>
 </body>
 </html>

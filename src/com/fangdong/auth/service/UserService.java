@@ -9,6 +9,7 @@ public interface UserService {
 	public Map<String,Object> userLogin(String username,String password);
 	public Map<String,Object> userSignUp(String username,String password);
 	public List<FdUser> getAllUser();
+	public FdUser getUserById(int id);
 	public FdUser selectUserByUserName(String username);
 	public boolean userExistCheck(String username);
 	public int deleteUserById(int id);
