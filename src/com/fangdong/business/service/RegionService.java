@@ -10,6 +10,8 @@ public interface RegionService {
 	
 	public void deleteRegionById(int id) throws Exception;
 	
+	public void updateRegionById(FdRegion region) throws Exception;
+	
 	public RegionVo getRegionById(int id) throws Exception;
 	
 	public List<FdRegion> getParentsRegion() throws Exception;

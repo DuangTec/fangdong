@@ -45,4 +45,9 @@ public class RegionServiceImpl implements RegionService{
 		return regionMapper.selectAllParentsRegion();
 	}
 
+	@Override
+	public void updateRegionById(FdRegion region) throws Exception {
+		regionMapper.updateByPrimaryKey(region);
+	}
+
 }

@@ -52,8 +52,28 @@ public class RegionController {
 		return mov;
 	}
 	
+	@RequestMapping("/admin/editRegionSubmit.action")
+	public String editRegionSubmit(HttpServletRequest request){
+		int regionId = Integer.parseInt(request.getParameter("regionId"));
+		String regionName = request.getParameter("regionName");
+		int parentRegionId = Integer.parseInt(request.getParameter("parentRegionId"));
+		
+		FdRegion region = new FdRegion();
+		region.setId(regionId);
+		region.setRegionName(regionName);
+		region.setParentRegId(parentRegionId);
+		
+		try {
+			regionService.updateRegionById(region);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/admin/area_manage.do";
+	}
+	
 	@ResponseBody
-	@RequestMapping("/getParentsRegion.action")
+	@RequestMapping("/admin/getParentsRegion.action")
 	public List<FdRegion> getParentsRegion(HttpServletRequest request){
 		try {
 			return regionService.getParentsRegion();

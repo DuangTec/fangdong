@@ -44,30 +44,29 @@
                         <h3 class="panel-title">编辑列表</h3>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="" method="post">
+                        <form class="form-horizontal" action="/admin/editRegionSubmit.action" method="post">
                             <div class="form-group">
                                 <label for="input2" class="col-xs-2 control-label">地区id</label>
                                 <div class="col-xs-10">
+                                    <input type="hidden" value="${region.id}" name="regionId"/>
                                     <p class="form_control_p">${region.id}</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input1" class="col-xs-2 control-label">地区名称</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input1" value="${region.regionName}">
+                                    <input type="text" class="form-control" id="input1" name="regionName" value="${region.regionName}">
+                                    
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input3" class="col-xs-2 control-label">父地区</label>
                                 <div class="col-xs-10 edit_select">
-                                    <input type="text" class="form-control" id="input3" value="${region.parentRegName}">
+                                    <input type="text" class="form-control" id="parentRegionName" value="${region.parentRegName}" readonly>
+                                    <input type="hidden" id="parentRegionId" name="parentRegionId" value="${region.id}" />
                                     <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
                                     <ul class="edit-select_ul">
-                                        <li>1</li>
-                                        <li>2</li>
-                                        <li>3</li>
                                     </ul>
-
                                 </div>
                             </div>
                             
