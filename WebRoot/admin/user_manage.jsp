@@ -61,7 +61,7 @@
                         <td>${userList.authority }</td>                   
                         <td>
                             <span class="glyphicon glyphicon-pencil house_news_edit"></span>
-                            <span class="glyphicon glyphicon-trash house_news_del"></span>
+                            <span class="glyphicon glyphicon-trash house_news_del" onclick="delUser(${userList.id })"></span>
                         </td>
                     </tr>
                     </c:forEach>

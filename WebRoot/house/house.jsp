@@ -256,7 +256,7 @@
                             </a>
                         </h3>
                         <div class="item-info clearfix">
-                            <div class="item-loc pull-left">${house.address }</div>
+                            <div class="item-loc pull-left">${house.title }</div>
                             <div class="item-pri pull-right">￥${house.rentPrice }</div>
                         </div>
                     </div>
