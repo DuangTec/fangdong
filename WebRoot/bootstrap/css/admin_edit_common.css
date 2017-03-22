@@ -61,7 +61,11 @@ body{
 }
 .edit-select_ul{
     display: none;
+    max-height: 200px;
+    overflow-y:scroll;
+    overflow-x:hidden;
 }
+
 .edit-select_ul li{
     height: 26px;
     line-height: 26px;

@@ -12,6 +12,8 @@ public interface RegionService {
 	
 	public void updateRegionById(FdRegion region) throws Exception;
 	
+	public void createRegion(FdRegion region)throws Exception;
+	
 	public RegionVo getRegionById(int id) throws Exception;
 	
 	public List<FdRegion> getParentsRegion() throws Exception;

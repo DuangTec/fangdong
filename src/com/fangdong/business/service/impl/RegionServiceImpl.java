@@ -50,4 +50,9 @@ public class RegionServiceImpl implements RegionService{
 		regionMapper.updateByPrimaryKey(region);
 	}
 
+	@Override
+	public void createRegion(FdRegion region) throws Exception {
+		regionMapper.insert(region);
+	}
+
 }

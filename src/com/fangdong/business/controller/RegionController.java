@@ -66,6 +66,24 @@ public class RegionController {
 	
 	@RequestMapping("/admin/editRegionSubmit.action")
 	public String editRegionSubmit(HttpServletRequest request){
+		//判断是否为新建
+		String type=request.getParameter("type");
+		if((type!=null)&&(type.equals("create"))){
+			int parentRegionId = Integer.parseInt(request.getParameter("parentRegionId"));
+			String regionName = request.getParameter("regionName");
+			FdRegion region = new FdRegion();
+			region.setParentRegId(parentRegionId);
+			region.setRegionName(regionName);
+			
+			try {
+				regionService.createRegion(region);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return "redirect:/admin/area_manage.do";
+		}
+		
+		//如果不是新建，则为更新
 		int regionId = Integer.parseInt(request.getParameter("regionId"));
 		String regionName = request.getParameter("regionName");
 		int parentRegionId = Integer.parseInt(request.getParameter("parentRegionId"));
