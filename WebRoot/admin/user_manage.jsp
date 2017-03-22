@@ -60,7 +60,7 @@
                         <td>${userList.sex }</td>
                         <td>${userList.authority }</td>                   
                         <td>
-                            <span class="glyphicon glyphicon-pencil house_news_edit"></span>
+                            <span class="glyphicon glyphicon-pencil house_news_edit"  onclick="editUser(${userList.id })"></span>
                             <span class="glyphicon glyphicon-trash house_news_del" onclick="delUser(${userList.id })"></span>
                         </td>
                     </tr>

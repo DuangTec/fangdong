@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -32,7 +31,7 @@
         <a class="navbar-brand" href="index.html">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
             <li class="log-reg">
-                <a href="login.html">退出登录</a>
+                <a href="logOut.do">退出登录</a>
             </li>
         </ul>
     </div>

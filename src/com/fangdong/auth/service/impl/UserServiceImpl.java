@@ -95,4 +95,11 @@ public class UserServiceImpl implements UserService {
 		return i;
 	}
 
+	@Override
+	public FdUser getUseById(int id) {
+		// TODO Auto-generated method stub
+		FdUser user = userMapper.selectByPrimaryKey(id);
+		return user;
+	}
+
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fangdong.auth.model.FdUser;
 import com.fangdong.auth.service.UserService;
 
 @Controller
@@ -109,4 +110,29 @@ public class UserController{
 		
 		return mov;
 	}
+	//后台管理用户修改
+		@RequestMapping("/admin/editUser.do")
+		public ModelAndView editUser(HttpServletRequest request){
+			int id = Integer.parseInt(request.getParameter("id"));
+			String type= request.getParameter("type");
+			ModelAndView mov = new ModelAndView();
+			mov.setViewName("redirect:/admin/user_manage_edit.jsp");
+			if(type!=null&&type.equals("create"))
+			{
+				mov.addObject("type","create");
+				return mov;
+			}
+			else
+			{
+				try {
+					FdUser fu=userService.getUseById(id);
+					mov.addObject("AditUser",fu);
+				} catch (Exception e) {
+					mov.addObject("error","edit fail");
+					e.printStackTrace();
+				}				
+				return mov;
+			}
+			
+		}
 }

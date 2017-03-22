@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="com.fangdong.auth.model.FdUser" %>
+<%@page import="com.fangdong.auth.model.FdUserExample" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -7,7 +14,14 @@
     <meta name="renderer" content="webkit" /><!--国产浏览器高速渲染360-->
     <link rel="icon" type="image/png" href="bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
     <meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
+    <c:choose>
+    <c:when test="${type == 'create' }">
+    <title>新建用户-杜昂科技房咚网</title>    	
+    </c:when>
+    <c:otherwise>
     <title>用户编辑-杜昂科技房咚网</title>
+    </c:otherwise>
+    </c:choose>
     <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="../bootstrap/css/duang.css" rel="stylesheet">
     <link href="../bootstrap/css/admin_edit_common.css" rel="stylesheet">
@@ -15,7 +29,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
             <li class="log-reg">
                 <a href="login.html">退出登录</a>
@@ -40,18 +54,18 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">编辑列表</h3>
                     </div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" action="" method="post">
+                    <div class="panel-body">                  
+                        <form class="form-horizontal" action="/admin/editUserSubmit.action" method="post">
                             <div class="form-group">
-                                <label for="input1" class="col-xs-2 control-label">后台条目1</label>
+                                <label for="input1" class="col-xs-2 control-label">姓名</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input1" value="条目1">
+                                    <input type="text" class="form-control" id="input1" name="name" value='${AditUser.name}'>
                                 </div>
-                            </div>
+                            </div>                      
                             <div class="form-group">
-                                <label for="input2" class="col-xs-2 control-label">后台条目2</label>
+                                <label for="input2" class="col-xs-2 control-label">用户名</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input2" value="条目2">
+                                    <input type="text" class="form-control" id="input2" name="username" value='${AditUser.username}'>
                                 </div>
                             </div>
                             <div class="form-group">

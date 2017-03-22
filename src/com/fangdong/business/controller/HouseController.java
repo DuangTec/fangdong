@@ -234,7 +234,7 @@ public class HouseController {
 		String type= request.getParameter("type");
 		ModelAndView mov = new ModelAndView("/admin/house_manage_edit.jsp");
 		int id = Integer.parseInt(request.getParameter("id"));
-		if(type!=null&&type.equals("creat"))
+		if(type!=null&&type.equals("create"))
 		{	
 			mov.addObject("type","create");
 			return mov;
