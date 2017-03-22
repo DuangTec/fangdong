@@ -3,6 +3,8 @@
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -40,8 +42,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <ol class="breadcrumb">
-                    <li><a href="admin.html">后台管理</a></li>
-                    <li><a href="house_manage.html">房屋管理</a></li>
+                    <li><a href="admin.do">后台管理</a></li>
+                    <li><a href="house_manage.do">房屋管理</a></li>
                     <li class="active">房屋编辑</li>
                 </ol>
             </div>
@@ -53,59 +55,73 @@
                         <h3 class="panel-title">编辑列表</h3>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="" method="post">
+                        <c:choose>
+                    	<c:when test="${type == 'create' }">
+                        <form class="form-horizontal" action="/admin/editRegionSubmit.action?type=create" method="post">
+                    	</c:when>
+                    	<c:otherwise>
+                        <form class="form-horizontal" action="/admin/editRegionSubmit.action" method="post">
                             <div class="form-group">
                                 <label for="input1" class="col-xs-2 control-label">创建时间</label>
                                 <div class="col-xs-10">
-                                    <input type="hidden" class="form-control" id="input1" value="创建时间">
+                                    <input type="hidden" value="${house.createDate}"  name="createDate"/>
+                                    <p class="form_control_p"><fmt:formatDate value='${house.createDate}' pattern='yyyy-MM-dd'/></p>
                                 </div>
                             </div>
+                            </c:otherwise>
+                    	</c:choose>
                             <div class="form-group">
                                 <label for="input2" class="col-xs-2 control-label">房屋标题</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input2" value="房屋标题">
+                                    <input type="text" class="form-control" id="input2" name="title" value='${house.title}'>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input3" class="col-xs-2 control-label">房屋大小</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input3" value="房屋大小">
+                                    <input type="text" class="form-control" id="input3" name="size" value='${house.size}'>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">房屋详情</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" value="房屋详情">
+                                    <input type="text" class="form-control" id="input4" name="houseDetail" value='${house.houseDetail}'>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">房屋地址</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input5" value="房屋地址">
+                                    <input type="text" class="form-control" id="input5" name="address" value='${house.address}'>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">产权年限</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input6" value="产权年限">
+                                    <input type="text" class="form-control" id="input6" name="propertyRights" value='${house.propertyRights}'>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">租金</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input7" value="租金">
+                                    <input type="text" class="form-control" id="input7" name="rentPrice" value='${house.rentPrice}'>
                                 </div>
-                            </div>
+                            </div>     
+                           <!--  何锐需要修改  -->                  
                             <div class="form-group">
-                                <label for="input4" class="col-xs-2 control-label">地区</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input8" value="地区">
+                                <label for="input3" class="col-xs-2 control-label">地区</label>
+                                <div class="col-xs-10 edit_select">
+                                    <input type="text" class="form-control" id="parentRegionName" value="${region.parentRegName}" readonly>
+                                    <input type="hidden" id="parentRegionId" name="parentRegionId" value="${region.id}" />
+                                    <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
+                                    <ul class="edit-select_ul">
+                                    </ul>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">房屋规格</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input9" value="房屋规格">
+                                    <input type="text" class="form-control" id="input9" name="hall" value='${house.hall}'>
+                                    <input type="text" class="form-control" id="input10" name="hall" value='${house.room}'>
                                 </div>
                             </div>
                             <div class="form-group">

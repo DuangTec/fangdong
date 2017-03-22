@@ -239,22 +239,19 @@ public class HouseController {
 			mov.addObject("type","create");
 			return mov;
 		}
-		else if(type!=null&&type.equals("update"))
+		else
 		{
 			try {
 				HouseVo hv=houseService.getHouseVoById(id);
 				//mov.addObject("type","update");
-				mov.addObject("houseVo",hv);
+				mov.addObject("house",hv);
 			} catch (Exception e) {
 				mov.addObject("error","edit fail");
 				e.printStackTrace();
 			}		
 			return mov;
 		}
-		else
-		{
-			return mov;
-		}
+		
 	}
 
 	// 跳转detail

@@ -39,8 +39,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <ol class="breadcrumb">
-                    <li><a href="admin.html">后台管理</a></li>
-                    <li><a href="house_manage.html">地区管理</a></li>
+                    <li><a href="admin.do">后台管理</a></li>
+                    <li><a href="house_manage.do">地区管理</a></li>
                     <c:choose>
                     	<c:when test="${type == 'create' }">
                     <li class="active">创建地区</li>
