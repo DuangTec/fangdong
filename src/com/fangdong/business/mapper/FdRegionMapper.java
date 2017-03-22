@@ -24,6 +24,9 @@ public interface FdRegionMapper {
     
     List<FdRegion> selectAllParentsRegion();
 
+    //获取所有第三级的地区
+    List<FdRegion> selectAllErea();
+
     FdRegion selectByPrimaryKey(Integer id);
     
     RegionVo selectRegionVoByPrimaryKey(Integer id);

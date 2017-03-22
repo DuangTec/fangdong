@@ -158,5 +158,15 @@ public class HouseServiceImpl implements HouseService {
 		return gylResult;
 	}
 
+	@Override
+	public void updateHouseById(FdHouse house) throws SQLConnectionFailException {
+		try{
+			houseMapper.updateByPrimaryKeySelective(house);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new SQLConnectionFailException("更新失败");
+		}
+	}
+
 	
 }

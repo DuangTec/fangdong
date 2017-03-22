@@ -20,6 +20,7 @@ import com.fangdong.business.model.SearchParam;
 import com.fangdong.business.service.HouseService;
 import com.fangdong.business.service.PictureService;
 import com.fangdong.business.service.RegionService;
+import com.fangdong.common.exception.SQLConnectionFailException;
 
 @Controller
 public class HouseController {
@@ -251,6 +252,43 @@ public class HouseController {
 			}		
 			return mov;
 		}
+	}
+	
+	@RequestMapping("/admin/editHouseSubmit.action")
+	public String editHouseSubmit(HttpServletRequest request){
+		int id=Integer.parseInt(request.getParameter("id"));
+		String title=request.getParameter("title");
+		int size=Integer.parseInt(request.getParameter("size"));
+		String houseDetail = request.getParameter("houseDetail");
+		String address = request.getParameter("address");
+		int propertyRights= Integer.parseInt(request.getParameter("propertyRights"));
+		int rentPrice = Integer.parseInt(request.getParameter("rentPrice"));
+		String facility[] = request.getParameterValues("facility");
+		int regionId = Integer.parseInt(request.getParameter("regionId"));
+		
+		FdHouse house = new FdHouse();
+		house.setId(id);
+		house.setTitle(title);
+		house.setSize(size);
+		house.setHouseDetail(houseDetail);
+		house.setAddress(address);
+		house.setPropertyRights(propertyRights);
+		house.setRentPrice(rentPrice);
+		house.setRegionId(regionId);
+		StringBuilder sb = new StringBuilder();
+		for(String f:facility){
+			sb.append(f+",");
+		}
+		house.setFacilities(sb.substring(0, sb.length()-1));
+		
+		try {
+			houseService.updateHouseById(house);
+		} catch (SQLConnectionFailException e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/admin/house_manage.do";
+		
 		
 	}
 

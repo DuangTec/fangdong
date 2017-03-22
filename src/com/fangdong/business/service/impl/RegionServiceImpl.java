@@ -55,4 +55,9 @@ public class RegionServiceImpl implements RegionService{
 		regionMapper.insert(region);
 	}
 
+	@Override
+	public List<FdRegion> getSonRegion() throws Exception {
+		return regionMapper.selectAllErea();
+	}
+
 }

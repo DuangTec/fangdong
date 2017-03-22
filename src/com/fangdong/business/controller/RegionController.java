@@ -114,4 +114,15 @@ public class RegionController {
 		return null;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/admin/getSonRegion.action")
+	public List<FdRegion> getSonRegion(HttpServletRequest request){
+		try {
+			return regionService.getSonRegion();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 }

@@ -18,6 +18,7 @@ public interface RegionService {
 	
 	public List<FdRegion> getParentsRegion() throws Exception;
 	
+	public List<FdRegion> getSonRegion() throws Exception;
 	//传入地区父ID寻找子ID
 	public List<FdRegion> getChildren(String fatherId);
 } 

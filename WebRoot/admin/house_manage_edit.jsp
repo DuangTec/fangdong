@@ -4,6 +4,7 @@
         <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
             <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+                <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
                     <!DOCTYPE html>
                     <html>
 
@@ -61,10 +62,11 @@
                                             <div class="panel-body">
                                                 <c:choose>
                                                     <c:when test="${type == 'create' }">
-                                                        <form class="form-horizontal" action="/admin/editRegionSubmit.action?type=create" method="post">
+                                                        <form class="form-horizontal" action="/admin/editHouseSubmit.action?type=create" method="post">
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <form class="form-horizontal" action="/admin/editRegionSubmit.action" method="post">
+                                                        <form class="form-horizontal" action="/admin/editHouseSubmit.action" method="post">
+                                                        <input type="hidden" name="id" value="${house.id}"/>
                                                             <div class="form-group">
                                                                 <label for="input1" class="col-xs-2 control-label">创建时间</label>
                                                                 <div class="col-xs-10">
@@ -115,8 +117,8 @@
                                                 <div class="form-group">
                                                     <label for="input3" class="col-xs-2 control-label">地区</label>
                                                     <div class="col-xs-10 edit_select">
-                                                        <input type="text" class="form-control" id="parentRegionName" value="${region.parentRegName}" readonly>
-                                                        <input type="hidden" id="parentRegionId" name="parentRegionId" value="${region.id}" />
+                                                        <input type="text" class="form-control" id="regionName" value="${house.area}" readonly>
+                                                        <input type="hidden" id="regionId" name="regionId" value="${house.regionId}" />
                                                         <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
                                                         <ul class="edit-select_ul">
                                                         </ul>
@@ -125,29 +127,29 @@
                                                 <div class="form-group">
                                                     <label for="input4" class="col-xs-2 control-label">房屋规格</label>
                                                     <div class="col-xs-10">
-                                                        <input type="text" class="form-control housetype" id="input9" name="hall" value='${house.hall}'>室
-                                                        <input type="text" class="form-control housetype" id="input10" name="hall" value='${house.room}'>厅
+                                                        <input type="text" class="form-control housetype" id="input9" name="room" value='${house.room}'>室
+                                                        <input type="text" class="form-control housetype" id="input10" name="hall" value='${house.hall}'>厅
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="col-xs-2 control-label">租赁类型(1住房/2商铺)</label>
+                                                    <label class="col-xs-2 control-label">租赁类型</label>
                                                     <div class="col-xs-10">
-                                                        <label class="checkbox-inline"><input type="radio" name="housetype" value="1">住房</label>
-                                                        <label class="checkbox-inline"><input type="radio" name="housetype" value="2">商铺</label>
+                                                        <label class="checkbox-inline"><input type="radio" name="housetype" value="1" <c:if test="${house.houseType ==1 }">checked</c:if>>住房</label>
+                                                        <label class="checkbox-inline"><input type="radio" name="housetype" value="2" <c:if test="${house.houseType ==2 }">checked</c:if>>商铺</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="input4" class="col-xs-2 control-label">设施</label>
                                                     <div class="col-xs-10">
-                                                        <label class="checkbox-inline"><input type="checkbox">床</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">沙发</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">桌子</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">衣柜</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">空调</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">电视</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">洗衣机</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">热水器</label>
-                                                        <label class="checkbox-inline"><input type="checkbox">水、电、气</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="床" name="facility" <c:if test="${fn:contains(house.facilities,'床')}">checked</c:if>>床</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="沙发" name="facility" <c:if test="${fn:contains(house.facilities,'沙发')}">checked</c:if>>沙发</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="桌子" name="facility" <c:if test="${fn:contains(house.facilities,'桌子')}">checked</c:if>>桌子</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="衣柜" name="facility" <c:if test="${fn:contains(house.facilities,'衣柜')}">checked</c:if>>衣柜</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="空调" name="facility" <c:if test="${fn:contains(house.facilities,'空调')}">checked</c:if>>空调</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="电视" name="facility" <c:if test="${fn:contains(house.facilities,'电视')}">checked</c:if>>电视</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="洗衣机" name="facility" <c:if test="${fn:contains(house.facilities,'洗衣机')}">checked</c:if>>洗衣机</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="热水器" name="facility" <c:if test="${fn:contains(house.facilities,'热水器床')}">checked</c:if>>热水器</label>
+                                                        <label class="checkbox-inline"><input type="checkbox" value="水、电、气" name="facility" <c:if test="${fn:contains(house.facilities,'水、电、气')}">checked</c:if>>水、电、气</label>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -175,7 +177,7 @@
                         <script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
                         <script src="/bootstrap/js/bootstrap.js"></script>
                         <script src="/bootstrap/js/admin_common.js"></script>
-                        <script src="/bootstrap/js/admin_edit.js"></script>
+                        <script src="/bootstrap/js/admin_house_edit.js"></script>
                     </body>
 
                     </html>
