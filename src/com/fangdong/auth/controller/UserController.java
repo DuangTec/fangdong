@@ -10,6 +10,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -125,7 +126,7 @@ public class UserController{
 			else
 			{
 				try {
-					FdUser fu=userService.getUseById(id);
+					FdUser fu=userService.getUserById(id);
 					mov.addObject("AditUser",fu);
 				} catch (Exception e) {
 					mov.addObject("error","edit fail");
@@ -135,4 +136,16 @@ public class UserController{
 			}
 			
 		}
+	
+	@RequiresAuthentication
+	@ResponseBody
+	@RequestMapping("/getUserPhone.action")
+	public String getUserPhone(HttpServletRequest request){
+		int ownerId = Integer.parseInt(request.getParameter("ownerId"));
+		
+		FdUser user =  userService.getUserById(ownerId);
+//		String phone = user.getPhone();
+		return user.getPhone();
+	}
+
 }

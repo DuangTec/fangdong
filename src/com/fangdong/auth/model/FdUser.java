@@ -9,7 +9,7 @@ public class FdUser {
 
     private String password;
 
-    private Integer phone;
+    private String phone;
 
     private String sex;
 
@@ -47,15 +47,17 @@ public class FdUser {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getPhone() {
-        return phone;
-    }
+  
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
-    }
+    public String getPhone() {
+		return phone;
+	}
 
-    public String getSex() {
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getSex() {
         return sex;
     }
 

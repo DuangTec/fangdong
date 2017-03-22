@@ -90,16 +90,15 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int deleteUserById(int id) {
-		// TODO Auto-generated method stub
 		int i = userMapper.deleteByPrimaryKey(id);
 		return i;
 	}
 
 	@Override
-	public FdUser getUseById(int id) {
-		// TODO Auto-generated method stub
-		FdUser user = userMapper.selectByPrimaryKey(id);
-		return user;
+	public FdUser getUserById(int id) {
+		return userMapper.selectByPrimaryKey(id);
 	}
+
+	
 
 }
