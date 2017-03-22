@@ -1,0 +1,24 @@
+.about_duang{
+    margin-top: 60px;
+}
+#page1 img{
+    width: 100%;
+    height: 600px;
+}
+#page2{
+    padding: 50px;
+}
+#page2 h1{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+#page2 img{
+    width: 100%;
+    height: 200px;
+}
+#page2 .thumbnail h3{
+    font-size: 20px;
+}
+#page2 .thumbnail p{
+    height: 150px;
+}
