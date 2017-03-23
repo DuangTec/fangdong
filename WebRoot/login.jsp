@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit" /><!--国产浏览器高速渲染360-->
-    <link rel="icon" type="image/png" href="bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
+    <link rel="icon" type="image/png" href="/bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
     <meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
     <title>登录-杜昂科技房咚网</title>
     <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -59,9 +59,9 @@
     </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="bootstrap/js/jquery-1.12.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
-<script src="bootstrap/js/jquery.validate-1.13.1.js"></script>
-<script src="bootstrap/js/login_regist.js"></script>
+<script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/jquery.validate-1.13.1.js"></script>
+<script src="/bootstrap/js/login_regist.js"></script>
 </body>
 </html>

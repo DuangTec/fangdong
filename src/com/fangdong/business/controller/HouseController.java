@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fangdong.auth.model.FdUser;
+import com.fangdong.auth.service.UserService;
 import com.fangdong.business.model.FdHouse;
 import com.fangdong.business.model.FdRegion;
 import com.fangdong.business.model.HouseVo;
@@ -31,6 +32,8 @@ public class HouseController {
 	private RegionService regionService;
 	@Resource
 	private PictureService pictureService;
+	@Resource
+	private UserService userService;
 
 	/**
 	 * 房屋业务的主页，展示已经挂上来的房屋 模糊查询整合\通过三种方式查询整合
@@ -265,6 +268,10 @@ public class HouseController {
 		int rentPrice = Integer.parseInt(request.getParameter("rentPrice"));
 		String facility[] = request.getParameterValues("facility");
 		int regionId = Integer.parseInt(request.getParameter("regionId"));
+		String houseType=request.getParameter("housetype");
+		String ownername=request.getParameter("owner");
+		
+		FdUser owner = userService.selectUserByUserName(ownername);
 		
 		FdHouse house = new FdHouse();
 		house.setId(id);
@@ -275,6 +282,8 @@ public class HouseController {
 		house.setPropertyRights(propertyRights);
 		house.setRentPrice(rentPrice);
 		house.setRegionId(regionId);
+		house.setHouseType(houseType);
+		house.setOwnerId(owner.getId());
 		StringBuilder sb = new StringBuilder();
 		for(String f:facility){
 			sb.append(f+",");
@@ -288,8 +297,6 @@ public class HouseController {
 		}
 		
 		return "redirect:/admin/house_manage.do";
-		
-		
 	}
 
 	// 跳转detail

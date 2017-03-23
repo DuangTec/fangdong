@@ -23,7 +23,7 @@ $(function(){
     /*表单验证插件*/
 
     $.validator.addMethod("login_regist_num_reg",function(value,element,params){
-        var login_regist_num_reg=/^[a-zA-Z0-9_]{3,16}$/ ;
+        var login_regist_num_reg=/^[a-zA-Z0-9_]{3,16}$/;
         return this.optional(element) || (login_regist_num_reg.test(value));
     },"以字母开头，包含任意数字、字母、下划线，长度在3-16");
 
