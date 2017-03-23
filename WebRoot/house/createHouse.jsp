@@ -82,10 +82,10 @@
         <div class="con-input">
             <c:choose>
                 <c:when test="${type == 'update'}">
-                    <form action="/updateHouseSubmit.action" method="post" enctype="multipart/form-data" >
+                    <form action="/house/updateHouseSubmit.action" method="post" enctype="multipart/form-data" >
                 </c:when>
                 <c:otherwise>
-                    <form action="/createHouseSubmit.action" method="post" enctype="multipart/form-data" >
+                    <form action="/house/createHouseSubmit.action" method="post" enctype="multipart/form-data" >
                 </c:otherwise>
             </c:choose>
                 <div class="row">
