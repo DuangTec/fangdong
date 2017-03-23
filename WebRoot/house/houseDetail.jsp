@@ -38,30 +38,33 @@
                     <li><a href="/changeregion.action?region=2">成都市</a></li>
                     <li><a href="/changeregion.action?region=3">北京市</a></li>
                 </ul>
-            </li>
-            <%
-		        Subject currentUser=SecurityUtils.getSubject();
-		        if (currentUser.isAuthenticated()) {
-	        %>
+            <shiro:authenticated>
 	        <li class="log-reg">
-                <a href="#"><%=currentUser.getPrincipal()%></a>&nbsp;欢迎您
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
             <span>|</span>
             </li>
-            <li class="log-reg"><a href="/logout.action">注销</a></li>
-            <%} else{%>
+            <shiro:hasRole name="admin">
             <li class="log-reg">
-                <a href="/login.jsp">登录</a>
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
+            <li class="log-reg"><a href="/logout.action">注销</a></li>
+            </shiro:authenticated>
+            <shiro:guest>
+            <li class="log-reg">
+                <a href="/login.do">登录</a>
                 <span>|</span>
             </li>
             <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
-            <%}%>
+            </shiro:guest>
         </ul>
         <ul class="nav">
             <li class="normal"><a href="/index.do">首页</a></li>
             <li class="active"><a href="/house.do">我要租房</a></li>
-            <li class="normal"><a href="#">租前须知</a></li>
+            <li class="normal"><a href="/prompt.jsp">租前须知</a></li>
             <li class="normal"><a href="#">房东加盟</a></li>
-            <li class="normal"><a href="#">关于杜昂</a></li>
+            <li class="normal"><a href="/about_duang.jsp">关于杜昂</a></li>
         </ul>
     </div>
 </div>
@@ -195,31 +198,7 @@
                     </div>
                 </div>
             </div>
-            </c:forEach>
-            <!-- 
-                    <div class="col-xs-4 you_like_one">
-                        <div class="thumbnail">
-                            <a href="#" target="_blank" class="you_like_img">
-                                <img src="/bootstrap/images/hot-selected1.png" alt="...">
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
-                                       target="_blank">
-                                        锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
-                                    </a>
-                                </h3>
-                                <div class="item-info clearfix">
-                                    <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
-                                    <div class="item-pri pull-right">￥590.00-800.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   -->
-                    
-                    
-                    
+            </c:forEach>                          
                 </div>
             </div>
         </div>

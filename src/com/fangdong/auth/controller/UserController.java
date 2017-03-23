@@ -192,5 +192,35 @@ public class UserController{
 //		String phone = user.getPhone();
 		return user.getPhone();
 	}
+	
+	//普通用户的userinfo
+	@RequestMapping("/userInfoSubmit.do")
+	public ModelAndView userInfoSubmit(HttpServletRequest request){
+
+		FdUser user=(FdUser)(SecurityUtils.getSubject().getPrincipal());
+		FdUser newUser=new FdUser();
+		
+		String name=request.getParameter("name");
+		newUser.setName(name);
+		user.setName(name);//改写shrio
+
+		String password=request.getParameter("password");
+		newUser.setPassword(password);
+		user.setPassword(password);
+		
+		String phone=request.getParameter("phone");
+		newUser.setPhone(phone);
+		user.setPhone(phone);
+		
+		String sex=request.getParameter("sex");
+		newUser.setSex(sex);
+		user.setSex(sex);
+		
+		String userid=request.getParameter("userid");
+		newUser.setId(Integer.parseInt(userid));
+		int i=userService.updateUser(newUser);
+		return new ModelAndView("/index.do");
+	}
+	
 
 }

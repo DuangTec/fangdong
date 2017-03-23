@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"%>
+<%@page import="com.fangdong.auth.model.FdUser"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -28,18 +32,24 @@
     <div class="container">
         <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
-            <li class="log-reg">
-                <a href="/logout.action">退出登录</a>
+			<%
+		        //FdUser user=(FdUser)(SecurityUtils.getSubject().getPrincipal());
+	        %>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
             </li>
-        </ul>
+				<li class="log-reg"><a href="/logout.action">退出登录</a></li>
+			</ul>
     </div>
 </div>
+<div class="center_content">
 <div class="edit_page_box">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <ol class="breadcrumb">
-                    <li><a href="admin.do">后台管理</a></li>
+                    <li><a href="/admin.do">后台管理</a></li>
                     <li><a href="house_manage.do">地区管理</a></li>
                     <c:choose>
                     	<c:when test="${type == 'create' }">
@@ -101,6 +111,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </div>
 <div class="footer">

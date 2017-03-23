@@ -4,13 +4,14 @@
 $(function(){
     /*footer始终在底部*/
     pageButtomPos();
-    function pageButtomPos(){
-        var min_height=600;
+    function pageButtomPos(){      
+        var center_content_height=parseFloat($(".center_content").css("height"));
         var screen_Height=window.innerHeight;
-        /*console.log(screen_Height)*/
         var buttom=document.getElementsByClassName("footer")[0];
-        if(screen_Height<min_height){
-            buttom.style.top=(min_height-80)+"px";
+        console.log(center_content_height)
+                console.log(screen_Height-80)
+                if(screen_Height-80<center_content_height){
+                    buttom.style.top=center_content_height+"px";
         }else{
             buttom.style.top=(screen_Height-80)+"px";
         }

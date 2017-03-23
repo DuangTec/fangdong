@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"%>
+<%@page import="com.fangdong.business.model.HouseVo" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -15,27 +22,50 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg">
-            <!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都<span class="caret"></span></a>
+            <li class="dropdown">
+       			<%String regionCode=(String)session.getAttribute("regionCode");
+       			if((regionCode==null)||(regionCode.equals("1"))){%>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">重庆市<span class="caret"></span></a>
+                <%} else if(regionCode.equals("3")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">北京市<span class="caret"></span></a>
+				<%} else if(regionCode.equals("2")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都市<span class="caret"></span></a>
+				<%} %>				                
                 <ul class="dropdown-menu">
-                    <li><a href="#">成都</a></li>
-                    <li><a href="#">北京</a></li>
+                    <li><a href="/changeregion.action?region=1">重庆市</a></li>
+                    <li><a href="/changeregion.action?region=2">成都市</a></li>
+                    <li><a href="/changeregion.action?region=3">北京市</a></li>
                 </ul>
-            </li>-->
+            </li>
+            <shiro:authenticated>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
+            </li>
+            <shiro:hasRole name="admin">
             <li class="log-reg">
-                <a href="login.html">登录</a>
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
+            <li class="log-reg"><a href="/logout.action">注销</a></li>
+            </shiro:authenticated>
+            <shiro:guest>
+            <li class="log-reg">
+                <a href="/login.do">登录</a>
                 <span>|</span>
             </li>
-            <li class="log-reg"><a href="regist.html">注册</a></li>
+            <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
+            </shiro:guest>
         </ul>
         <ul class="nav">
-            <li class="normal"><a href="index.html">首页</a></li>
-            <li class="normal"><a href="house.html">我要租房</a></li>
-            <li class="active"><a href="#">租前须知</a></li>
+            <li class="normal"><a href="/index.do">首页</a></li>
+            <li class="normal"><a href="/house.do">我要租房</a></li>
+            <li class="active"><a href="/prompt.jsp">租前须知</a></li>
             <li class="normal"><a href="#">房东加盟</a></li>
-            <li class="normal"><a href="#">关于杜昂</a></li>
+            <li class="normal"><a href="/about_duang.jsp">关于杜昂</a></li>
         </ul>
     </div>
 </div>
@@ -57,7 +87,7 @@
                         </div>
                         <div class="prompt_nav_box">
                             <a class="prompt_box_nav_h1" href="#top3">
-                                优客承诺<span class="glyphicon glyphicon-menu-right panel_title_open"></span>
+                                杜昂承诺<span class="glyphicon glyphicon-menu-right panel_title_open"></span>
                             </a>
                         </div>
                     </div>
@@ -102,7 +132,7 @@
                         <p>（4）水电气表读书等（物业交割时未满会帮您计算清楚）</p>
                     </div>
 
-                    <h1><a id="top3"></a><span class="glyphicon glyphicon-send"></span>优客承诺</h1>
+                    <h1><a id="top3"></a><span class="glyphicon glyphicon-send"></span>杜昂承诺</h1>
                     <div class="page_content">
                         <p class="text_bold">1. 100%真实房源信息</p>
                         <p class="text_bold">2. 租住中房屋质量问题维修无责任换房    </p>

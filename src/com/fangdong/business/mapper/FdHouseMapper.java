@@ -42,7 +42,7 @@ public interface FdHouseMapper {
     
     List<HouseVo> selectAllHouseVo();
     
-    List<HouseVo> selectHouseVoByParam(@Param("regionId") int regionId,@Param("param")SearchParam param);
+    List<HouseVo> selectHouseVoByParam(SearchParam param);
 
     List<HouseVo> selectTopHouseVo(@Param("top")int top,@Param("regionId")int regionId);
     

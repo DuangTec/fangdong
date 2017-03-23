@@ -1,32 +1,198 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+    <%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>新增房屋</title>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit" /><!--国产浏览器高速渲染360-->
+    <link rel="icon" type="image/png" href="/bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
+    <meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
+    <title>房东加盟-房源发布</title>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/duang.css" rel="stylesheet">
+    <link href="/bootstrap/css/index.css" rel="stylesheet">
+    <link href="/bootstrap/css/createHouse.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>新增房屋</h1>
-<form action="/createHouseSubmit.action" method="post" enctype="multipart/form-data">
-房屋大小：<input type="text" name="size"/>m<sup>2</sup><br>
-户型：<select name="layout_room">
-	<option>1</option>
-	<option>2</option>
-	<option>3</option>
-	<option>4</option>
-	<option>5</option>
-</select>室 <select name="layout_hall">
-	<option>1</option>
-	<option>2</option>
-	<option>3</option>
-</select>厅<br>
-详细地址：<input type="text" name="address"/><br>
-产权：<input type="number" name="right"/>年<br>
-房屋描述：<textarea rows="6" name="description"></textarea><br>
-<input type="file" name="pics"/>
+<div class="navbar navbar-fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Duang房咚网</a>
+        <ul class="city-log-reg">
+            <li class="dropdown">
+               <%String regionCode=(String)session.getAttribute("regionCode");
+       			if((regionCode==null)||(regionCode.equals("1"))){%>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">重庆市<span class="caret"></span></a>
+                <%} else if(regionCode.equals("3")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">北京市<span class="caret"></span></a>
+				<%} else if(regionCode.equals("2")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都市<span class="caret"></span></a>
+				<%} %>				                
+                <ul class="dropdown-menu">
+                    <li><a href="/changeregion.action?region=1">重庆市</a></li>
+                    <li><a href="/changeregion.action?region=2">成都市</a></li>
+                    <li><a href="/changeregion.action?region=3">北京市</a></li>
+                </ul>
+            </li>
+            <shiro:authenticated>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
+            </li>
+            <shiro:hasRole name="admin">
+            <li class="log-reg">
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
+            <li class="log-reg"><a href="/logout.action">注销</a></li>
+            </shiro:authenticated>
+            <shiro:guest>
+            <li class="log-reg">
+                <a href="/login.do">登录</a>
+                <span>|</span>
+            </li>
+            <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
+            </shiro:guest>
+        </ul>
+        <ul class="nav">
+            <li class="normal"><a href="/index.do">首页</a></li>
+            <li class="normal"><a href="/house.do">我要租房</a></li>
+            <li class="normal"><a href="/prompt.jsp">租前须知</a></li>
+            <li class="active"><a href="/house/createHouse.do">房东加盟</a></li>
+            <li class="normal"><a href="/about_duang.jsp">关于杜昂</a></li>
+        </ul>
+    </div>
+</div>
 
-<input type="submit" value="提交"/>
-</form>
+<!-- content -->
+<div class="info-input">
+    <div class="container">
+        <div class="info-title">
+            <h3>快速发布您的房源</h3>
+            <h5>全网推广，免去中介，隐私保护，房源置顶——四项优质专享服务</h5>
+        </div>
+
+        <div class="con-input">
+            <form action="/createHouseSubmit.action" method="post" enctype="multipart/form-data" >
+                <div class="row">
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-8">
+                    <h5> <span class="red">*&nbsp;&nbsp;</span>房源基本信息</h5>
+                    <div class="input-row">
+                        <span class="input-label">标题：</span>
+                        <input type="text" name="title" class="form-control">
+                        <div></div>
+                    </div>
+                    <div class="input-row">
+                        <span class="input-label"> 租金：</span>
+                        <input type="text" name="rentprice" class="form-control short">
+                        <div></div>
+                    </div>
+                    <div class="input-row">
+                        <span class="input-label"> 户型：</span>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <span class="input-group-addon">室</span>
+                                <input type="text" name="room" class="form-control" min="1" max="999" maxlength="3">
+                                <div></div>
+                            </div>
+                            <div class="col-xs-4">
+                                <span class="input-group-addon">厅</span>
+                                <input type="text" name="hall" class="form-control" min="1" max="999" maxlength="3">
+                                <div></div>
+                            </div>
+                            <div class="col-xs-4">
+                                <span class="input-group-addon">㎡</span>
+                                <input type="text" name="size" class="form-control" min="1" max="5000" >
+                                <div></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="input-row">
+                        <span class="input-label"> 小屋地址：</span>
+                        <div class="row">
+                            <div class="col-xs-3 edit_select" id="district">
+                                <input type="text" class="form-control" id="districtName" value="" readonly>
+                                <input type="hidden" id="districtId" name="districtId" value="">
+                                <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
+                                <ul class="edit-select_ul">
+                                </ul>
+                            </div>
+                            <div class="col-xs-3 edit_select" id="area">
+                                <input type="text" class="form-control" id="areaName" value="" readonly>
+                                <input type="hidden" id="areaId" name="areaId" value="">
+                                <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
+                                <ul class="edit-select_ul">
+                                </ul>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="text" name="address" class="form-control" placeholder="详细地址">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <span class="input-label">详细信息：</span>
+                        <textarea class="form-control" rows="3" name="houseDetail"></textarea>
+                        <div></div>
+                    </div>
+
+                    <h5> <span class="red">*&nbsp;&nbsp;</span>详细信息</h5>
+                    <div class="input-row">
+                        <span class="input-label i-down"> 配套设施：</span>
+                        <div class="checkbox input-tag">
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="床">床</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="沙发">沙发</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="桌子">桌子</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="衣柜">衣柜</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="空调">空调</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="电视">电视</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="洗衣机">洗衣机</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="热水器">热水器</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="facility" value="水、电、气">水、电、气</label>
+                        </div>
+                    </div>
+                    <div class="input-row create_house_img_preview">
+                        <span class="input-label">小屋美图：</span>
+                        <span class="img_preview"></span>
+                        <a href="javascript:;" class="create_house_file">
+                            <input type="file" id="edit-doc-ipt-file-5" class="create_house_input"
+                                   accept="image/jpg,image/jpeg,image/gif,image/png" multiple="multiple" name="file">上传图片
+                        </a>
+                    </div>
+                    <div class="up">
+                        <input type="submit" value="上传房屋信息" class="upload"/>
+                    </div>
+                </div>
+                <div class="col-xs-2"></div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <p>
+            Copyright&copy;20170224<span></span>杜昂科技<br/>
+            重庆师范大学<span></span>安博教育集团<span></span>信息与计算科学(软件服务外包)
+        </p>
+        <a class="go-top">TOP</a>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/index.js"></script>
+<script src="/bootstrap/js/createHouse.js"></script>
 </body>
 </html>

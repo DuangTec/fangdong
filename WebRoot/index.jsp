@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="org.apache.shiro.SecurityUtils"%>
-<%@page import="org.apache.shiro.subject.Subject"  %>
+<%@page import="org.apache.shiro.subject.Subject"%>
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
@@ -22,7 +22,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
        			<%String regionCode=(String)session.getAttribute("regionCode");
@@ -54,7 +54,7 @@
             </shiro:authenticated>
             <shiro:guest>
             <li class="log-reg">
-                <a href="/login.jsp">登录</a>
+                <a href="/login.do">登录</a>
                 <span>|</span>
             </li>
             <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
@@ -62,10 +62,10 @@
         </ul>
         <ul class="nav">
             <li class="active"><a href="/index.do">首页</a></li>
-            <li class="normal"><a href="/house.do?type=all">我要租房</a></li>
-            <li class="normal"><a href="/prompt.html">租前须知</a></li>
-            <li class="normal"><a href="/house/createHouse.html">房东加盟</a></li>
-            <li class="normal"><a href="#">关于杜昂</a></li>
+            <li class="normal"><a href="/house.do">我要租房</a></li>
+            <li class="normal"><a href="/prompt.jsp">租前须知</a></li>
+            <li class="normal"><a href="/house/createHouse.do">房东加盟</a></li>
+            <li class="normal"><a href="/about_duang.jsp">关于杜昂</a></li>
         </ul>
     </div>
 </div>

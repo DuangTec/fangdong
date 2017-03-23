@@ -27,7 +27,7 @@ public class UserPageController {
 	private HouseService houseService;
 	
 	@RequiresRoles("admin")
-	@RequestMapping("/admin")
+	@RequestMapping("/admin.do")
 	public String admin(){
 		return "/admin/admin.jsp";
 	}

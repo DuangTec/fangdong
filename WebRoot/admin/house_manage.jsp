@@ -3,6 +3,10 @@
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"%>
+<%@page import="com.fangdong.auth.model.FdUser"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -23,18 +27,21 @@
     <div class="container">
         <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
-            <li class="log-reg">
-                <a href="/logout.action">退出登录</a>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
             </li>
-        </ul>
+				<li class="log-reg"><a href="/logout.action">退出登录</a></li>
+			</ul>
     </div>
 </div>
+<div class="center_content">
 <div class="manage_box house_manage">
     <div class="container">
         <div class="row">      
             <div class="col-xs-2 manege_nav_box">
                 <ul class="manege_nav">
-                    <li class="active"><a href="/house_manage.do">房屋管理</a></li>
+                    <li class="active">房屋管理</li>
                     <li><a href="area_manage.do">地区管理</a></li>
                     <li><a href="user_manage.do">用户管理</a></li>
                 </ul>
@@ -85,6 +92,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="footer">
     <div class="container">

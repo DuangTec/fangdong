@@ -8,9 +8,10 @@ body{
 .esc_login{
     float: right;
 }
-.manage_box{
-    margin-top: 60px;
-}
+.center_content{
+    padding-top: 60px;
+    padding-bottom: 100px;
+ }
 .manage_box .container{
     background-color: white;
 }
