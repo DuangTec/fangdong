@@ -25,8 +25,9 @@ public class LoginShiroRealm extends AuthorizingRealm{
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		System.out.println("获取授权信息");
 		//下面这句话还没懂
-		String username = (String)principals.fromRealm(getName()).iterator().next();
-		FdUser authUser = userService.selectUserByUserName(username);
+//		System.out.println(principals.fromRealm(getName()).iterator().next());
+		FdUser authUser= (FdUser)(principals.fromRealm(getName()).iterator().next());
+//		FdUser authUser = userService.selectUserByUserName(username);
 		if((authUser!=null)&&(authUser.getAuthority()==2)){
 			SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
 			info.addRole("admin");
@@ -38,13 +39,14 @@ public class LoginShiroRealm extends AuthorizingRealm{
 	//获取认证信息
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+//		System.out.println("登陆认证");
 		UsernamePasswordToken upToken =(UsernamePasswordToken) token;
 		String username = upToken.getUsername();
 		String password = String.valueOf(upToken.getPassword());
 		FdUser loginUser = (FdUser) userService.userLogin(username, password).get("user");
 		
 		if(loginUser!=null){
-			SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(loginUser.getUsername(),loginUser.getPassword(),getName());
+			SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(loginUser,loginUser.getPassword(),getName());
 			return info;
 		}
 		return null;
