@@ -6,6 +6,7 @@ $(function(){
     $(".go-top").click(function(){
         $(window).scrollTop(0);
     });
+    /*删除编辑记录页面跳转*/
     $(".house_news_del").click(function(){
         $(this).parent().parent().css("display","none");
     })
