@@ -5,6 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -29,91 +32,95 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.do">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
-            <li class="log-reg">
-                <a href="login.html">退出登录</a>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
             </li>
-        </ul>
+				<li class="log-reg"><a href="/logout.action">退出登录</a></li>
+			</ul>
     </div>
 </div>
-<div class="edit_page_box">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <ol class="breadcrumb">
-                    <li><a href="admin.html">后台管理</a></li>
-                    <li><a href="house_manage.html">用户管理</a></li>
-                    <li class="active">用户编辑</li>
-                </ol>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-10">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">编辑列表</h3>
-                    </div>
-                    <div class="panel-body"> 
-                    <c:choose>
-                    	<c:when test="${type == 'create' }">
-                        <form class="form-horizontal" action="/admin/editUserSubmit.action?type=create" method="post">
-                    	</c:when>
-                    	<c:otherwise>
-                        <form class="form-horizontal" action="/admin/editUserSubmit.action" method="post">                 
-                     	</c:otherwise>
-                    	</c:choose>
-                 
-                            <div class="form-group">
-                                <label for="input1" class="col-xs-2 control-label">姓名</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input1" name="name" value='${AditUser.name}'>
-                                    <input type="hidden" value="${AditUser.id}" name="userid"/>
-                                </div>
-                            </div>                      
-                            <div class="form-group">
-                                <label for="input2" class="col-xs-2 control-label">用户名</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input2" name="username" value='${AditUser.username}'>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="input3" class="col-xs-2 control-label">密码</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input3" name="password" value='${AditUser.password}'>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="input4" class="col-xs-2 control-label">电话</label>
-                                <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" name="phone" value="${AditUser.phone}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="input4" class="col-xs-2 control-label">权限(1普通/2管理)</label>
-                                <div class="col-xs-10" >
-                                    <label class="checkbox-inline"><input type="radio" name="authority" value="1" <c:if test="${AditUser.authority ==1 }">checked</c:if>>普通用户</label>
-                                    <label class="checkbox-inline"><input type="radio" name="authority" value="2" <c:if test="${AditUser.authority ==2 }">checked</c:if>>管理员</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="input4" class="col-xs-2 control-label">性别</label>
-                                <div class="col-xs-10">
-                                    <label class="checkbox-inline"><input type="radio" name="sex" value="男" <c:if test="${AditUser.sex =='男' }">checked</c:if>>男</label>
-                                    <label class="checkbox-inline"><input type="radio" name="sex" value="女" <c:if test="${AditUser.sex =='女' }">checked</c:if>>女</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-offset-2 col-xs-2">
-                                    <input type="submit" class="edit_submit" value="保存">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="center_content">
+	<div class="edit_page_box">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-xs-12">
+	                <ol class="breadcrumb">
+	                    <li><a href="/admin.do">后台管理</a></li>
+	                    <li><a href="house_manage.do">用户管理</a></li>
+	                    <li class="active">用户编辑</li>
+	                </ol>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-xs-10">
+	                <div class="panel panel-default">
+	                    <div class="panel-heading">
+	                        <h3 class="panel-title">编辑列表</h3>
+	                    </div>
+	                    <div class="panel-body"> 
+	                    <c:choose>
+	                    	<c:when test="${type == 'create' }">
+	                        <form class="form-horizontal" action="/admin/editUserSubmit.action?type=create" method="post">
+	                    	</c:when>
+	                    	<c:otherwise>
+	                        <form class="form-horizontal" action="/admin/editUserSubmit.action" method="post">                 
+	                     	</c:otherwise>
+	                    	</c:choose>
+	                 
+	                            <div class="form-group">
+	                                <label for="input1" class="col-xs-2 control-label">姓名</label>
+	                                <div class="col-xs-10">
+	                                    <input type="text" class="form-control" id="input1" name="name" value='${AditUser.name}'>
+	                                    <input type="hidden" value="${AditUser.id}" name="userid"/>
+	                                </div>
+	                            </div>                      
+	                            <div class="form-group">
+	                                <label for="input2" class="col-xs-2 control-label">用户名</label>
+	                                <div class="col-xs-10">
+	                                    <input type="text" class="form-control" id="input2" name="username" value='${AditUser.username}'>
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="input3" class="col-xs-2 control-label">密码</label>
+	                                <div class="col-xs-10">
+	                                    <input type="text" class="form-control" id="input3" name="password" value='${AditUser.password}'>
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="input4" class="col-xs-2 control-label">电话</label>
+	                                <div class="col-xs-10">
+	                                    <input type="text" class="form-control" id="input4" name="phone" value="${AditUser.phone}">
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="input4" class="col-xs-2 control-label">权限(1普通/2管理)</label>
+	                                <div class="col-xs-10" >
+	                                    <label class="checkbox-inline"><input type="radio" name="authority" value="1" <c:if test="${AditUser.authority ==1 }">checked</c:if>>普通用户</label>
+	                                    <label class="checkbox-inline"><input type="radio" name="authority" value="2" <c:if test="${AditUser.authority ==2 }">checked</c:if>>管理员</label>
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+	                                <label for="input4" class="col-xs-2 control-label">性别</label>
+	                                <div class="col-xs-10">
+	                                    <label class="checkbox-inline"><input type="radio" name="sex" value="男" <c:if test="${AditUser.sex =='男' }">checked</c:if>>男</label>
+	                                    <label class="checkbox-inline"><input type="radio" name="sex" value="女" <c:if test="${AditUser.sex =='女' }">checked</c:if>>女</label>
+	                                </div>
+	                            </div>
+	                            <div class="form-group">
+	                                <div class="col-xs-offset-2 col-xs-2">
+	                                    <input type="submit" class="edit_submit" value="保存">
+	                                </div>
+	                            </div>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 </div>
 <div class="footer">
     <div class="container">

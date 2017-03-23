@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"%>
+<%@page import="com.fangdong.business.model.HouseVo" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@page import="com.fangdong.auth.model.FdUser"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -15,27 +23,52 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg">
-            <!--<li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都<span class="caret"></span></a>
+            <li class="dropdown">
+       			<%String regionCode=(String)session.getAttribute("regionCode");
+       			if((regionCode==null)||(regionCode.equals("1"))){%>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">重庆市<span class="caret"></span></a>
+                <%} else if(regionCode.equals("3")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">北京市<span class="caret"></span></a>
+				<%} else if(regionCode.equals("2")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都市<span class="caret"></span></a>
+				<%} %>				                
                 <ul class="dropdown-menu">
-                    <li><a href="#">成都</a></li>
-                    <li><a href="#">北京</a></li>
+                    <li><a href="/changeregion.action?region=1">重庆市</a></li>
+                    <li><a href="/changeregion.action?region=2">成都市</a></li>
+                    <li><a href="/changeregion.action?region=3">北京市</a></li>
                 </ul>
-            </li>-->
+            </li>
+            <%
+		        Subject currentUser=SecurityUtils.getSubject();
+		        if (currentUser.isAuthenticated()) {
+	        %>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
+            </li>
+            <shiro:hasRole name="admin">
             <li class="log-reg">
-                <a href="login.html">登录</a>
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
+            <li class="log-reg"><a href="/logout.action">注销</a></li>
+            <%} else{%>
+            <li class="log-reg">
+                <a href="/login.jsp">登录</a>
                 <span>|</span>
             </li>
-            <li class="log-reg"><a href="regist.html">注册</a></li>
+            <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
+            <%}%>
         </ul>
         <ul class="nav">
-            <li class="normal"><a href="index.do">首页</a></li>
-            <li class="normal"><a href="house.html">我要租房</a></li>
-            <li class="normal"><a href="prompt.html">租前须知</a></li>
+            <li class="normal"><a href="/index.do">首页</a></li>
+            <li class="normal"><a href="/house.do">我要租房</a></li>
+            <li class="normal"><a href="/prompt.jsp">租前须知</a></li>
             <li class="normal"><a href="#">房东加盟</a></li>
-            <li class="active"><a href="about_duang.html">关于杜昂</a></li>
+            <li class="active"><a href="/about_duang.jsp">关于杜昂</a></li>
         </ul>
     </div>
 </div>

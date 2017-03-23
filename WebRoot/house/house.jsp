@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="org.apache.shiro.SecurityUtils"%>
-<%@ page import="org.apache.shiro.subject.Subject"  %>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"  %>
 <%@ page import="com.fangdong.business.model.HouseVo" %>
 <%@ page import="com.fangdong.business.model.FdRegion" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -44,9 +45,15 @@
 		        if (currentUser.isAuthenticated()) {
 	        %>
 	        <li class="log-reg">
-                <a href="#"><%=currentUser.getPrincipal()%></a>&nbsp;欢迎您
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
             <span>|</span>
             </li>
+            <shiro:hasRole name="admin">
+            <li class="log-reg">
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
             <li class="log-reg"><a href="/logout.action">注销</a></li>
             <%} else{%>
             <li class="log-reg">
@@ -58,10 +65,10 @@
         </ul>
         <ul class="nav">
             <li class="normal"><a href="/index.do">首页</a></li>
-            <li class="active"><a href="/house.do?type=all">我要租房</a></li>
-            <li class="normal"><a href="/prompt.html">租前须知</a></li>
+            <li class="active"><a href="/house.do">我要租房</a></li>
+            <li class="normal"><a href="/prompt.jsp">租前须知</a></li>
             <li class="normal"><a href="#">房东加盟</a></li>
-            <li class="normal"><a href="#">关于杜昂</a></li>
+            <li class="normal"><a href="/about_duang.jsp">关于杜昂</a></li>
         </ul>
     </div>
 </div>

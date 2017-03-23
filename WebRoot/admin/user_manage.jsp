@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="org.apache.shiro.subject.Subject"%>
+<%@page import="com.fangdong.auth.model.FdUser"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -21,12 +25,15 @@
     <div class="container">
         <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
-            <li class="log-reg">
-                <a href="/logout.action">退出登录</a>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
             </li>
-        </ul>
+				<li class="log-reg"><a href="/logout.action">退出登录</a></li>
+			</ul>
     </div>
 </div>
+<div class="center_content">
 <div class="manage_box user_manage">
     <div class="container">
         <div class="row">
@@ -73,6 +80,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="footer">
     <div class="container">
