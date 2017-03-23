@@ -18,6 +18,13 @@ public interface RegionService {
 	
 	public List<FdRegion> getParentsRegion() throws Exception;
 	
+	//根据城市id获取二级地区
+	public List<FdRegion> getDistrict(int cityId) throws Exception;
+	
+	//根据行政区id获取三级地区
+	public List<FdRegion> getAreaByDistrictId(int districtId) throws Exception;
+	
+	//获取所有二级和三级地区
 	public List<FdRegion> getSonRegion() throws Exception;
 	//传入地区父ID寻找子ID
 	public List<FdRegion> getChildren(String fatherId);

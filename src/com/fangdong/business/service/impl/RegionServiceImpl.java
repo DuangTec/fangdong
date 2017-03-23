@@ -60,4 +60,14 @@ public class RegionServiceImpl implements RegionService{
 		return regionMapper.selectAllErea();
 	}
 
+	@Override
+	public List<FdRegion> getDistrict(int cityId) throws Exception {
+		return regionMapper.selectDistrictsByCityId(cityId);
+	}
+
+	@Override
+	public List<FdRegion> getAreaByDistrictId(int districtId) throws Exception {
+		return regionMapper.selectAreaByDistrictId(districtId);
+	}
+
 }

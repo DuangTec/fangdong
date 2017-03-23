@@ -64,7 +64,7 @@
             <li class="active"><a href="/index.do">首页</a></li>
             <li class="normal"><a href="/house.do?type=all">我要租房</a></li>
             <li class="normal"><a href="/prompt.html">租前须知</a></li>
-            <li class="normal"><a href="#">房东加盟</a></li>
+            <li class="normal"><a href="/house/createHouse.html">房东加盟</a></li>
             <li class="normal"><a href="#">关于杜昂</a></li>
         </ul>
     </div>

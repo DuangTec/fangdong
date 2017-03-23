@@ -1,0 +1,131 @@
+/* content */
+.info-input{
+    background: rgba(0,0,0,0.05);
+    margin-top: 60px;
+/*    background: url("../images/background.jpg") repeat;*/
+}
+.con-input{
+    margin-top: 40px;
+
+    background: rgba(255,255,255,0.7);
+}
+.con-input h3,h5{
+    text-align: center;
+    margin-top: 60px;
+}
+.con-input .row{
+    margin-top: 20px;
+}
+/* 题目*/
+.info-title h3,h5{
+    text-align: center;
+    margin-top: 50px;
+}
+.red{
+    color: red;
+}
+/* input */
+.input-row {
+    padding-left: 80px;
+    margin: 20px 0;
+    margin-top:35px;
+}
+.input-row .input-label {
+    position: relative;
+    left: -80px;
+    float: left;
+    width: 70px;
+    text-align: right;
+    margin-right: -100%;
+    line-height: 34px;
+}
+.input-row .short{
+    width: 350px;
+}
+.i-s{
+   width: 20px;
+}
+.s-s{
+    width: 20px;
+}
+/* 户型 */
+.input .inputstyle2 {
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 14px;
+    line-height: 34px;
+    width: 92px;
+    border: none;
+    padding: 0 24px 0 12px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+/* 详细信息 */
+.input-tag{
+    margin-top: 15px;
+}
+.input-tag a.active {
+    background-color: #98D2E9;
+    color: #fff;
+
+}
+.input-tag a.grey{
+    background: #F4F4F4;
+
+}
+.input-row .input-tag a {
+    color: #555;
+    display: inline-block;
+    margin-right: 20px;
+    padding: 0 15px;
+    line-height: 34px;
+    margin-top: 15px;
+}
+
+
+.up{
+    margin: 50px 0;
+}
+.upload{
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #3FAFDB;
+    color: white;
+    text-align: center;
+    margin: auto;
+    border-radius: 5%;
+}
+
+/* 警告 */
+.warning{
+    color: red;
+    padding: 10px 5px;
+}
+
+.edit_select_icon {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    display: none;
+}
+.edit-select_ul {
+    display: none;
+    max-height: 200px;
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+.edit-select_ul li{
+    height: 26px;
+    line-height: 26px;
+    margin-bottom: 1px;
+    background-color:#f5f5f5 ;
+    text-indent: 1em;
+    font-size: 12px;
+}
+.edit-select_ul li:hover{
+    background-color:#CAE4EE;
+}

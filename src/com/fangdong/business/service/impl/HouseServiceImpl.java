@@ -67,7 +67,7 @@ public class HouseServiceImpl implements HouseService {
 	@Override
 	public void insertHouse(FdHouse house) throws SQLConnectionFailException {
 		try {
-			houseMapper.insert(house);
+			houseMapper.insertSelective(house);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new SQLConnectionFailException("插入失败");

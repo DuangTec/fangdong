@@ -312,6 +312,9 @@
       #{room,jdbcType=INTEGER}, #{facilities,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fangdong.business.model.FdHouse" >
+  <selectKey resultType="int" order="AFTER" keyProperty="id">
+SELECT LAST_INSERT_ID()
+</selectKey>
     insert into fd_house
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
