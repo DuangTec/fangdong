@@ -8,8 +8,9 @@ body{
 .esc_login{
     float: right;
 }
-.edit_page_box{
-    margin-top: 60px;
+.center_content{
+    padding-top: 60px;
+    padding-bottom: 200px;
 }
 .edit_page_box .container,.edit_page_box .breadcrumb{
     background-color: white;
