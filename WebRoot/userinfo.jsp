@@ -23,31 +23,53 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Duang房咚网</a>
+        <a class="navbar-brand" href="/">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都<span class="caret"></span></a>
+       			<%String regionCode=(String)session.getAttribute("regionCode");
+       			if((regionCode==null)||(regionCode.equals("1"))){%>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">重庆市<span class="caret"></span></a>
+                <%} else if(regionCode.equals("3")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">北京市<span class="caret"></span></a>
+				<%} else if(regionCode.equals("2")){ %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都市<span class="caret"></span></a>
+				<%} %>				                
                 <ul class="dropdown-menu">
-                    <li><a href="#">成都</a></li>
-                    <li><a href="#">北京</a></li>
+                    <li><a href="/changeregion.action?region=1">重庆市</a></li>
+                    <li><a href="/changeregion.action?region=2">成都市</a></li>
+                    <li><a href="/changeregion.action?region=3">北京市</a></li>
                 </ul>
             </li>
+            <shiro:authenticated>
+	        <li class="log-reg">
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
+            <span>|</span>
+            </li>
+            <shiro:hasRole name="admin">
             <li class="log-reg">
-                <a href="login.html">登录</a>
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
+            <li class="log-reg"><a href="/logout.action">注销</a></li>
+            </shiro:authenticated>
+            <shiro:guest>
+            <li class="log-reg">
+                <a href="/login.jsp">登录</a>
                 <span>|</span>
             </li>
-            <li class="log-reg"><a href="regist.html">注册</a></li>
+            <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
+            </shiro:guest>
         </ul>
         <ul class="nav">
-            <li class="normal"><a href="#">首页</a></li>
-            <li class="normal"><a href="#">我要租房</a></li>
-            <li class="normal"><a href="#">租前须知</a></li>
-            <li class="active"><a href="#">房东加盟</a></li>
+            <li class="active"><a href="/index.do">首页</a></li>
+            <li class="normal"><a href="/house.do?type=all">我要租房</a></li>
+            <li class="normal"><a href="/prompt.html">租前须知</a></li>
+            <li class="normal"><a href="#">房东加盟</a></li>
             <li class="normal"><a href="#">关于杜昂</a></li>
         </ul>
     </div>
 </div>
-
 <!-- content -->
 <div class="userinfo">
     <div class="container">
@@ -63,28 +85,28 @@
                         <h5> <span class="red">*&nbsp;&nbsp;</span>我的账户信息</h5>
                         <div class="input-row">
                             <span class="input-label">用户名：</span>
-                            <input type="text" class="form-control short" readonly="readonly" value="123123">
+                            <input type="text" class="form-control short" readonly="readonly" value="${user.username}">
                         </div>
                         <div class="input-row">
                             <span class="input-label">用户密码：</span>
-                            <input type="text" class="form-control short">
+                            <input type="text" class="form-control short" value="${user.password}">
                         </div>
                         <h5> <span class="red">*&nbsp;&nbsp;</span>我的详细信息</h5>
                         <div class="input-row">
                             <span class="input-label">联系人：</span>
-                            <input type="text" class="form-control short" value="小明">
+                            <input type="text" class="form-control short" value="${user.name}">
                         </div>
                         <div class="input-row">
                             <span class="input-label">性别：</span>
-                            <input type="text" class="form-control short" value="女">
+                            <input type="text" class="form-control short" value="${user.sex}">
                         </div>
                         <div class="input-row">
                             <span class="input-label">联系电话：</span>
-                            <input type="text" class="form-control short"  value="13188888888">
+                            <input type="text" class="form-control short"  value="${user.phone}">
                         </div>
                         <div class="input-row">
                             <span class="input-label">权限：</span>
-                            <input type="text" class="form-control short" readonly="readonly" value="总管">
+                            <input type="text" class="form-control short" readonly="readonly" value="管理员">
                         </div>
 
                         <h5>我的租房信息</h5>

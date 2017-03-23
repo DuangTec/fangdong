@@ -6,10 +6,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fangdong.auth.model.FdUser;
 import com.fangdong.auth.service.UserService;
 import com.fangdong.business.model.HouseVo;
 import com.fangdong.business.service.HouseService;
@@ -51,7 +53,12 @@ public class CommonController {
 	
 	@RequestMapping("/userinfo.do")
 	public ModelAndView userInfo(){
-		return new ModelAndView("/userinfo.jsp");
+		FdUser user=(FdUser)(SecurityUtils.getSubject().getPrincipal());
+		ModelAndView mov=new ModelAndView("/userinfo.jsp");
+		List<HouseVo> house=houseService.getHouseByUserId(user.getId());
+		mov.addObject("user",user);
+		mov.addObject("house",house);
+		return  mov;
 	}
 	
 }
