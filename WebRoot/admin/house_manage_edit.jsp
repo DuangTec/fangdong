@@ -79,6 +79,13 @@
                                                     </c:otherwise>
                                                 </c:choose>
                                                 <div class="form-group">
+                                                    <label for="input2" class="col-xs-2 control-label">房东id</label>
+                                                    <div class="col-xs-10">
+                                                        <input type="text" class="form-control" id="owner" name="owner" value='${house.owner}'>
+                                                        <input type="hidden" name="ownerId" value="${house.ownerId}"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="input2" class="col-xs-2 control-label">房屋标题</label>
                                                     <div class="col-xs-10">
                                                         <input type="text" class="form-control" id="input2" name="title" value='${house.title}'>
@@ -176,6 +183,7 @@
                         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
                         <script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
                         <script src="/bootstrap/js/bootstrap.js"></script>
+                        <script src="/bootstrap/js/jquery.validate-1.13.1.js"></script>
                         <script src="/bootstrap/js/admin_common.js"></script>
                         <script src="/bootstrap/js/admin_house_edit.js"></script>
                     </body>

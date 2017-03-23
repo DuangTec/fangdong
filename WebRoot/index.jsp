@@ -41,7 +41,7 @@
             </li>
             <shiro:authenticated>
 	        <li class="log-reg">
-                <a href="/userinfo.do"><shiro:principal /></a>&nbsp;欢迎您
+                <a href="#"><shiro:principal property="username" /></a>&nbsp;欢迎您
             <span>|</span>
             </li>
             <shiro:hasRole name="admin">
@@ -65,7 +65,7 @@
             <li class="normal"><a href="/house.do?type=all">我要租房</a></li>
             <li class="normal"><a href="/prompt.html">租前须知</a></li>
             <li class="normal"><a href="#">房东加盟</a></li>
-            <li class="normal"><a href="/about_duang.html">关于杜昂</a></li>
+            <li class="normal"><a href="#">关于杜昂</a></li>
         </ul>
     </div>
 </div>

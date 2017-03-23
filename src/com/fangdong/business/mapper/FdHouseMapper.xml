@@ -122,8 +122,10 @@
   <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
   	select 
     h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.property_rights, 
-    h.house_type, h.rent_price, h.region_id,h.facilities,r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city'
+    h.house_type, h.rent_price, h.region_id,h.facilities,r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city',
+    u.username as 'owner'
     from fd_house h 
+    left join fd_user u on h.owner_id=u.id
     left join fd_region r1 on h.region_id = r1.id
     left join fd_region r2 on r1.parent_reg_id=r2.id
     left join fd_region r3 on r2.parent_reg_id=r3.id

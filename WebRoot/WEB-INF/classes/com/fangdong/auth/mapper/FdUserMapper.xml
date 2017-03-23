@@ -92,7 +92,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
-  	select username,authority from fd_user where username=#{username}
+  	select id,username,authority from fd_user where username=#{username}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from fd_user
