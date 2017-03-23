@@ -170,8 +170,12 @@ public class HouseServiceImpl implements HouseService {
 
 	@Override
 	public List<HouseVo> getHouseByUserId(int userId) {
-		// TODO Auto-generated method stub		
 		return houseMapper.selectHouseByUserId(userId);
+	}
+
+	@Override
+	public void createHouse(FdHouse house) {
+		houseMapper.insertSelective(house);
 	}
 
 	

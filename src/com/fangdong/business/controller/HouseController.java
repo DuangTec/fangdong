@@ -237,7 +237,6 @@ public class HouseController {
 	public ModelAndView editHouse(HttpServletRequest request){
 		String type= request.getParameter("type");
 		ModelAndView mov = new ModelAndView("/admin/house_manage_edit.jsp");
-		int id = Integer.parseInt(request.getParameter("id"));
 		if(type!=null&&type.equals("create"))
 		{	
 			mov.addObject("type","create");
@@ -245,6 +244,7 @@ public class HouseController {
 		}
 		else
 		{
+			int id = Integer.parseInt(request.getParameter("id"));
 			try {
 				HouseVo hv=houseService.getHouseVoById(id);
 				//mov.addObject("type","update");
@@ -259,7 +259,8 @@ public class HouseController {
 	
 	@RequestMapping("/admin/editHouseSubmit.action")
 	public String editHouseSubmit(HttpServletRequest request){
-		int id=Integer.parseInt(request.getParameter("id"));
+		String type=request.getParameter("type");
+		
 		String title=request.getParameter("title");
 		int size=Integer.parseInt(request.getParameter("size"));
 		String houseDetail = request.getParameter("houseDetail");
@@ -270,11 +271,12 @@ public class HouseController {
 		int regionId = Integer.parseInt(request.getParameter("regionId"));
 		String houseType=request.getParameter("housetype");
 		String ownername=request.getParameter("owner");
+		int hall=Integer.parseInt(request.getParameter("hall"));
+		int room=Integer.parseInt(request.getParameter("room"));
 		
 		FdUser owner = userService.selectUserByUserName(ownername);
 		
 		FdHouse house = new FdHouse();
-		house.setId(id);
 		house.setTitle(title);
 		house.setSize(size);
 		house.setHouseDetail(houseDetail);
@@ -283,6 +285,8 @@ public class HouseController {
 		house.setRentPrice(rentPrice);
 		house.setRegionId(regionId);
 		house.setHouseType(houseType);
+		house.setHall(hall);
+		house.setRoom(room);
 		house.setOwnerId(owner.getId());
 		StringBuilder sb = new StringBuilder();
 		for(String f:facility){
@@ -290,10 +294,19 @@ public class HouseController {
 		}
 		house.setFacilities(sb.substring(0, sb.length()-1));
 		
-		try {
-			houseService.updateHouseById(house);
-		} catch (SQLConnectionFailException e) {
-			e.printStackTrace();
+		//判断新建房屋
+		if((type!=null)&&(!type.equals(""))){
+			//新建房屋
+			house.setCreateDate(new Date());
+			houseService.createHouse(house);
+		} else{
+			int id=Integer.parseInt(request.getParameter("id"));
+			house.setId(id);
+			try {
+				houseService.updateHouseById(house);
+			} catch (SQLConnectionFailException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return "redirect:/admin/house_manage.do";
