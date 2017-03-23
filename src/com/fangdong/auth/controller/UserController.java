@@ -221,5 +221,6 @@ public class UserController{
 		int i=userService.updateUser(newUser);
 		return new ModelAndView("/index.do");
 	}
+	
 
 }

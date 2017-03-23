@@ -151,6 +151,7 @@ public class HouseController {
 	/**
 	 * 已在进入createHouse页面时检查登陆情况
 	 */
+	/*
 	@RequiresAuthentication
 	@RequestMapping("/createHouseSubmit")
 	public ModelAndView createHouseSubmit(HttpServletRequest request, HttpSession session) {
@@ -188,14 +189,14 @@ public class HouseController {
 		}
 
 		return mov;
-	}
-
+	}*/
+/*
 	/**
 	 * 普通用户只能删除自己建的房屋
 	 * 
 	 * @param request
 	 * @return
-	 */
+	 
 	@RequiresAuthentication
 	@RequestMapping("/deleteHouseSubmit")
 	public ModelAndView deleteHouseSubmit(HttpServletRequest request) {
@@ -213,8 +214,23 @@ public class HouseController {
 		}
 		return mov;
 
+	}*/
+	//用户info删除房屋
+	@RequestMapping("/deleteHome.action")
+	public ModelAndView deleteHome(HttpServletRequest request){
+		int id = Integer.parseInt(request.getParameter("id"));
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("redirect:/userinfo.do");
+		try {
+			houseService.deleteHouseById(id);
+		} catch (Exception e) {
+			mov.addObject("error","delete fail");
+			e.printStackTrace();
+		}
+		
+		return mov;
 	}
-	
+
 	@RequestMapping("/admin/deleteHouse.action")
 	public ModelAndView deleteHouse(HttpServletRequest request){
 		int id = Integer.parseInt(request.getParameter("id"));

@@ -100,8 +100,8 @@
                         </div>
                         <div class="input-row">
                             <span class="input-label">性别：</span>
-                            <label class="checkbox-inline"><input type="radio" name="housetype" name="sex" value="男" <c:if test="${user.sex =='男' }">checked</c:if>>男</label>
-                            <label class="checkbox-inline"><input type="radio" name="housetype" name="sex" value="女" <c:if test="${user.sex =='女' }">checked</c:if>>女</label>
+                            <label class="checkbox-inline"><input type="radio" name="sex" value="男" <c:if test="${user.sex =='男' }">checked</c:if>>男</label>
+                            <label class="checkbox-inline"><input type="radio" name="sex" value="女" <c:if test="${user.sex =='女' }">checked</c:if>>女</label>
                         </div>
                         <div class="input-row">
                             <span class="input-label">联系电话：</span>
@@ -123,10 +123,10 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>title</th>
-                                <th>address</th>
-                                <th>createDat</th>
-                                <th>rentPrice</th>
+                                <th>标题</th>
+                                <th>地址</th>
+                                <th>创建日期</th>
+                                <th>租金</th>
                                 <th class="col-lg-2 col-xs-2">相关操作</th>
                             </tr>
                             </thead>
@@ -138,8 +138,8 @@
                                 <td><fmt:formatDate value='${house.createDate }' pattern='yyyy-MM-dd'/></td>
                                 <td>${house.rentPrice}</td>
                                 <td>
-                                    <span class="glyphicon glyphicon-pencil" onclick="editHome(a)"></span>
-                                    <span class="glyphicon glyphicon-trash" onclick="delHome(a)"></span>
+                                    <span class="glyphicon glyphicon-pencil" onclick="editHome(${house.id})"></span>
+                                    <span class="glyphicon glyphicon-trash" onclick="delHome(${house.id})"></span>
                                 </td>
                             </tr>
                             </tbody>
