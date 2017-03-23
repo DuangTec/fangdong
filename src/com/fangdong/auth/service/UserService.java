@@ -12,6 +12,7 @@ public interface UserService {
 	public FdUser getUserById(int id);
 	public FdUser selectUserByUserName(String username);
 	public boolean userExistCheck(String username);
+	public int userExistCheckReturnId(String username);
 	public int deleteUserById(int id);
 	public int createUser(FdUser newUser);
 	public int updateUser(FdUser User);

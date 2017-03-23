@@ -110,6 +110,13 @@ public class UserServiceImpl implements UserService {
 		return userMapper.updateByPrimaryKey(User);
 	}
 
+	@Override
+	public int userExistCheckReturnId(String username) {
+		// TODO Auto-generated method stub
+		FdUser newFU=userMapper.selectByUserName(username);	
+		return newFU.getId();
+	}
+
 	
 
 }
