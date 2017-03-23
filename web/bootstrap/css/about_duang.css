@@ -35,7 +35,7 @@ body{
 }
 #page2 .thumbnail p{
     text-align: left;
-    height: 150px;
+    text-indent: 2em;
 }
 #page3{
     background: url("../images/about_duang_bg.jpg") no-repeat left top;
@@ -79,4 +79,14 @@ body{
 }
 #page6 .font_big{
     font-size: 20px;
+}
+@media (min-width: 1200px) {
+    #page2 .thumbnail p{
+        height: 150px;
+    }
+}
+@media (max-width: 1199px) {
+    #page2 .thumbnail p{
+        height: 160px;
+    }
 }
