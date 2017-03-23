@@ -92,13 +92,15 @@
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">权限(1普通/2管理)</label>
                                 <div class="col-xs-10" >
-                                    <input type="text"  class="form-control" id="input4" name="authority" value="${AditUser.authority}">
+                                    <label class="checkbox-inline"><input type="radio" name="authority" value="1" <c:if test="${AditUser.authority ==1 }">checked</c:if>>普通用户</label>
+                                    <label class="checkbox-inline"><input type="radio" name="authority" value="2" <c:if test="${AditUser.authority ==2 }">checked</c:if>>管理员</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="input4" class="col-xs-2 control-label">性别</label>
                                 <div class="col-xs-10">
-                                    <input type="text" class="form-control" id="input4" name="sex" value="${AditUser.sex}">
+                                    <label class="checkbox-inline"><input type="radio" name="sex" value="男" <c:if test="${AditUser.sex =='男' }">checked</c:if>>男</label>
+                                    <label class="checkbox-inline"><input type="radio" name="sex" value="女" <c:if test="${AditUser.sex =='女' }">checked</c:if>>女</label>
                                 </div>
                             </div>
                             <div class="form-group">
