@@ -79,38 +79,38 @@
             <h5>My Information</h5>
         </div>
         <div class="con-input">
-            <form action="" method="post" action="/admin/userInfoSubmit.do" >
+            <form  method="post" action="/userInfoSubmit.do" >
                 <div class="row">
                     <div class="col-xs-3"></div>
                     <div class="col-xs-6">
                         <h5> <span class="red">*&nbsp;&nbsp;</span>我的账户信息</h5>
                         <div class="input-row">
                             <span class="input-label">用户名：</span>
-                            <input type="text" class="form-control short" readonly="readonly" value="${user.username}">
+                            <input type="text" class="form-control short" readonly="readonly" name="username" value="${user.username}">
                             <input type="hidden" value="${user.id}" name="userid"/>
                         </div>
                         <div class="input-row">
                             <span class="input-label">用户密码：</span>
-                            <input type="text" class="form-control short" value="${user.password}">
+                            <input type="text" class="form-control short" name="password" value="${user.password}">
                         </div>
                         <h5> <span class="red">*&nbsp;&nbsp;</span>我的详细信息</h5>
                         <div class="input-row">
                             <span class="input-label">联系人：</span>
-                            <input type="text" class="form-control short" value="${user.name}">
+                            <input type="text" class="form-control short" name="name" value="${user.name}">
                         </div>
                         <div class="input-row">
                             <span class="input-label">性别：</span>
-                            <label class="checkbox-inline"><input type="radio" name="housetype" value="1" <c:if test="${user.sex =='男' }">checked</c:if>>男</label>
-                            <label class="checkbox-inline"><input type="radio" name="housetype" value="2" <c:if test="${user.sex =='女' }">checked</c:if>>女</label>
+                            <label class="checkbox-inline"><input type="radio" name="housetype" name="sex" value="男" <c:if test="${user.sex =='男' }">checked</c:if>>男</label>
+                            <label class="checkbox-inline"><input type="radio" name="housetype" name="sex" value="女" <c:if test="${user.sex =='女' }">checked</c:if>>女</label>
                         </div>
                         <div class="input-row">
                             <span class="input-label">联系电话：</span>
-                            <input type="text" class="form-control short"  value="${user.phone}">
+                            <input type="text" class="form-control short"  name="phone" value="${user.phone}">
                         </div>
                         <div class="input-row">
                             <span class="input-label">权限：</span>
-                            <c:if test="${user.authority =='2' }"><input type="text" class="form-control short" readonly="readonly" value="管理员"></c:if>
-                            <c:if test="${user.authority =='1' }"><input type="text" class="form-control short" readonly="readonly" value="用户"></c:if>
+                            <c:if test="${user.authority =='2' }"><input type="text" class="form-control short" readonly="readonly" name="authority" value="管理员"></c:if>
+                            <c:if test="${user.authority =='1' }"><input type="text" class="form-control short" readonly="readonly" name="authority" value="用户"></c:if>
                         </div>
 
                         <h5>我的租房信息</h5>

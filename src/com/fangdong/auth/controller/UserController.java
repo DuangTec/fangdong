@@ -194,22 +194,32 @@ public class UserController{
 	}
 	
 	//普通用户的userinfo
-	@RequestMapping("/admin/userInfoSubmit.do")
-	public void userInfoSubmit(HttpServletRequest request){
-		//判断是否为新建
+	@RequestMapping("/userInfoSubmit.do")
+	public ModelAndView userInfoSubmit(HttpServletRequest request){
+
+		FdUser user=(FdUser)(SecurityUtils.getSubject().getPrincipal());
 		FdUser newUser=new FdUser();
-		newUser.setName(request.getParameter("name"));
-		//newUser.setUsername(request.getParameter("username"));
-		newUser.setPassword(request.getParameter("password"));
-		newUser.setPhone(request.getParameter("phone"));
-		newUser.setSex(request.getParameter("sex"));
-		//String setAuthority=request.getParameter("authority");
-		//if(setAuthority==null){setAuthority="1";}
-		//newUser.setAuthority(Integer.parseInt(setAuthority));
+		
+		String name=request.getParameter("name");
+		newUser.setName(name);
+		user.setName(name);//改写shrio
+
+		String password=request.getParameter("password");
+		newUser.setPassword(password);
+		user.setPassword(password);
+		
+		String phone=request.getParameter("phone");
+		newUser.setPhone(phone);
+		user.setPhone(phone);
+		
+		String sex=request.getParameter("sex");
+		newUser.setSex(sex);
+		user.setSex(sex);
+		
 		String userid=request.getParameter("userid");
 		newUser.setId(Integer.parseInt(userid));
-		userService.updateUser(newUser);
-		
+		int i=userService.updateUser(newUser);
+		return new ModelAndView("/index.do");
 	}
 
 }
