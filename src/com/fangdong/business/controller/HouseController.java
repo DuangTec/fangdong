@@ -18,6 +18,7 @@ import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -27,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fangdong.auth.model.FdUser;
 import com.fangdong.auth.service.UserService;
 import com.fangdong.business.model.FdHouse;
+import com.fangdong.business.model.FdPicture;
 import com.fangdong.business.model.FdRegion;
 import com.fangdong.business.model.HouseVo;
 import com.fangdong.business.model.SearchParam;
@@ -60,6 +62,7 @@ public class HouseController {
 		if (regionCode == null) {
 			regionCode = "1";
 		}
+		int cityId = Integer.parseInt(regionCode);
 		List<FdRegion> fdRegionResult = regionService.getChildren(regionCode);
 
 		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
@@ -134,6 +137,7 @@ public class HouseController {
 		mov.addObject("district", district);
 		mov.addObject("rentprice", rentprice);
 		mov.addObject("housetype", housetype);
+		
 		return mov;
 	}
 
@@ -155,7 +159,7 @@ public class HouseController {
 	 * @return
 	 */
 	@RequiresAuthentication
-	@RequestMapping("/house/createHouse")
+	@RequestMapping("/house/createHouse.do")
 	public String createHouse() {
 		return "/house/createHouse.jsp";
 	}
@@ -225,6 +229,20 @@ public class HouseController {
 			}
 		}
 
+		return mov;
+	}
+	
+	@RequestMapping("/house/updateHouse.action")
+	public ModelAndView updateHouse(@RequestParam(value="id",required=true)int id){
+		ModelAndView mov=  new ModelAndView("/house/createHouse.jsp");
+		HouseVo houseVo = houseService.getHouseVoById(id);
+		//根据houseid去查询图片
+		List<FdPicture> picList = pictureService.getPicsByHouseId(id);
+		
+		mov.addObject("type","update");
+		mov.addObject("houseId",id);
+		mov.addObject("house",houseVo);
+		mov.addObject("picList",picList);
 		return mov;
 	}
 /*

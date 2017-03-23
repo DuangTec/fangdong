@@ -121,7 +121,7 @@
   </select>
   <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
   	select 
-    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.property_rights, 
+    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.property_rights, h.title,
     h.house_type, h.rent_price, h.region_id,h.facilities,r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city',
     u.username as 'owner'
     from fd_house h 

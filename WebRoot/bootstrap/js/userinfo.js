@@ -3,7 +3,7 @@
  */
 // 房屋编辑
 function editHome(id){
-    window.location.href=" "+id;
+    window.location.href="/house/updateHouse.action?id="+id;
 }
 //房屋删除
 function delHome(id){

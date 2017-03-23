@@ -49,4 +49,9 @@ public class PictureServiceImpl implements PictureService {
 		}
 	}
 
+	@Override
+	public List<FdPicture> getPicsByHouseId(int houseId) {
+		return picMapper.selectByHouseId(houseId);
+	}
+
 }
