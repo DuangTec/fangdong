@@ -9,7 +9,7 @@ import com.fangdong.common.exception.SQLConnectionFailException;
 
 public interface HouseService {
 	//获取房屋(type=all\district..)
-	public List<HouseVo> getHouseList(SearchParam param);
+	public List<HouseVo> getHouseList(int regionId,SearchParam param);
 	public void insertHouse(FdHouse house) throws SQLConnectionFailException;
 	public void deleteHouseById(int id) throws SQLConnectionFailException;
 	public HouseVo getHouseVoById(int id);
@@ -19,7 +19,7 @@ public interface HouseService {
 	//更新house
 	public void updateHouseById(FdHouse house)throws SQLConnectionFailException;
 	//模糊查询
-	public List<HouseVo> fuzzySearch(String key);
+	public List<HouseVo> fuzzySearch(int regionId,String key);
 	//猜你喜欢
 	public List<HouseVo> guessYouLike(String district);
 	//根据用户id查找他自己的房屋

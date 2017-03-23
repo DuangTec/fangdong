@@ -63,7 +63,8 @@ public class UserPageController {
 		ModelAndView mov = new ModelAndView("/admin/house_manage.jsp");
 		
 		try{
-		List<HouseVo> houseList= houseService.getHouseList(new SearchParam());
+			//传入0就是全局查询
+		List<HouseVo> houseList= houseService.getHouseList(0,new SearchParam());
 		mov.addObject("houseList",houseList);
 		} catch(Exception e){
 			e.printStackTrace();

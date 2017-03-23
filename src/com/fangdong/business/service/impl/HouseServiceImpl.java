@@ -35,8 +35,8 @@ public class HouseServiceImpl implements HouseService {
 	 * @return
 	 */
 	@Override
-	public List<HouseVo> getHouseList(SearchParam param) {	
-			List<HouseVo> houseList= houseMapper.selectHouseVoByParam(param);
+	public List<HouseVo> getHouseList(int regionId, SearchParam param) {	
+			List<HouseVo> houseList= houseMapper.selectHouseVoByParam(regionId,param);
 			return addPic(houseList);
 	}
 	
@@ -127,8 +127,8 @@ public class HouseServiceImpl implements HouseService {
 
 	// 模糊查询,入口key(用户输入的)，搜索了地址、详细介绍、标题
 	@Override
-	public List<HouseVo> fuzzySearch(String key) {
-		List<HouseVo> fsResult = houseMapper.selectByKey(key);
+	public List<HouseVo> fuzzySearch(int regionId,String key) {
+		List<HouseVo> fsResult = houseMapper.selectByKey(regionId,key);
 		for (HouseVo vo : fsResult) {
 			// 房屋对图片是一对多关系，需要按照房屋id再查图片，填充进vo
 			List<FdPicture> pictureList = pictureMapper.selectByHouseId(vo.getId());
