@@ -252,13 +252,13 @@
 	LEFT JOIN fd_region r3 ON r2.parent_reg_id = r3.id
 	LEFT JOIN fd_user u ON h.owner_id = u.id
 	WHERE
-	r3.id=#{regionId}
-	AND r1.region_name LIKE "%" #{key}"%"
-	OR r2.region_name LIKE "%" #{key}"%"
-	OR r3.region_name LIKE "%" #{key}"%"
-	OR h.house_detail LIKE "%" #{key}"%"
-	OR h.address LIKE "%" #{key}"%"
-	OR h.title LIKE "%" #{key}"%"
+	(r1.region_name LIKE "%" #{key}"%"
+	 or r2.region_name LIKE "%" #{key}"%"
+	 or r3.region_name LIKE "%" #{key}"%"
+	 or h.house_detail LIKE "%" #{key}"%"
+	 or h.address LIKE "%" #{key}"%"
+	 or h.title LIKE "%" #{key}"%")
+	 and r3.id=#{regionId}
   </select>
   <select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
   	select 
