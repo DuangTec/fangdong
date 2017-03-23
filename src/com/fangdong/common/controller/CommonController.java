@@ -45,4 +45,9 @@ public class CommonController {
 		return new ModelAndView("/login.jsp");
 	}
 	
+	@RequestMapping("/userinfo.do")
+	public ModelAndView userInfo(){
+		return new ModelAndView("/userinfo.jsp");
+	}
+	
 }

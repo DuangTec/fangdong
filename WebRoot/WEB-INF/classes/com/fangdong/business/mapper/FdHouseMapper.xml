@@ -154,6 +154,30 @@
 	LEFT JOIN fd_user u ON h.owner_id = u.id
 	LEFT JOIN fd_region r ON h.region_id = r.id
   </select>
+  <select id="selectHouseByUserId" resultMap="VoResultMap">
+	SELECT
+	h.id,
+	h.owner_id,
+	h.create_date,
+	h.size,
+	h.hall,
+	h.room,
+	h.house_detail,
+	h.address,
+	h.property_rights,
+	h.house_type,
+	h.rent_price,
+	h.region_id,
+	h.title,
+	h.facilities,
+	u.username AS 'owner',
+	r.region_name AS 'area'
+	FROM
+	fd_house h
+	LEFT JOIN fd_user u ON h.owner_id = u.id
+	LEFT JOIN fd_region r ON h.region_id = r.id
+	WHERE h.owner_id= #{userId}
+  </select>
   <select id="selectHouseVoByParam" parameterType="com.fangdong.business.model.SearchParam" resultMap="VoResultMap">
 	SELECT
 	h.id,

@@ -45,4 +45,6 @@ public interface FdHouseMapper {
     List<HouseVo> selectHouseVoByParam(SearchParam param);
 
     List<HouseVo> selectTopHouseVo(@Param("top")int top,@Param("regionId")int regionId);
+    
+    List<HouseVo> selectHouseByUserId(int userId);
 }

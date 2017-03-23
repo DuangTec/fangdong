@@ -97,6 +97,14 @@ public class UserController{
 			return "true";
 		return "false";
 	}
+	
+	//用户登录时的检查，检查用户是否存在
+	@ResponseBody
+	@RequestMapping("/userNameCheckReturnId.action")
+	public int userNameCheckReturnId(String username){
+		return userService.userExistCheckReturnId(username);
+	}
+	
 	//后台管理用户删除
 	@RequestMapping("/admin/deleteUser.action")
 	public ModelAndView deleteUser(HttpServletRequest request){
