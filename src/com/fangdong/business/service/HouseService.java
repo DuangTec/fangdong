@@ -20,4 +20,6 @@ public interface HouseService {
 	public List<HouseVo> fuzzySearch(String key);
 	//猜你喜欢
 	public List<HouseVo> guessYouLike(String district);
+	//根据用户id查找他自己的房屋
+	public List<HouseVo> getHouseByUserId(int userId);
 }
