@@ -11,7 +11,7 @@
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="bootstrap/css/duang.css" rel="stylesheet">
     <link href="bootstrap/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="bootstrap/css/createHouse.css"/>
+    <link href="bootstrap/css/createHouse.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -32,11 +32,11 @@
             <li class="log-reg"><a href="regist.html">注册</a></li>
         </ul>
         <ul class="nav">
-            <li class="normal"><a href="#">首页</a></li>
-            <li class="normal"><a href="#">我要租房</a></li>
-            <li class="normal"><a href="#">租前须知</a></li>
-            <li class="active"><a href="#">房东加盟</a></li>
-            <li class="normal"><a href="#">关于杜昂</a></li>
+            <li class="normal"><a href="index.html">首页</a></li>
+            <li class="normal"><a href="house.html">我要租房</a></li>
+            <li class="normal"><a href="prompt.html">租前须知</a></li>
+            <li class="active"><a href="createHouse.html">房东加盟</a></li>
+            <li class="normal"><a href="about_duang.html">关于杜昂</a></li>
         </ul>
     </div>
 </div>
@@ -165,27 +165,16 @@
 
                         </div>
                     </div>
-                    <div class="input-row">
+                    <div class="input-row create_house_img_preview">
                         <span class="input-label">小屋美图：</span>
-<!--
-                        <div class="row">
-                            <div class="col-xs-6 col-md-3">
-                                <a href="#" class="thumbnail">
-                                    <img class="i-new" src="bootstrap/images/new.jpg" alt="...">
-                                </a>
-                            </div>
-                        </div>-->
-
-                        <div class="i-upload">
-                            <a href="javascript:" class="file">
-                                <input type="file" class="input-up" accept="image/jpg,image/jpeg,image/gif,image/pn"/>选择文件
-                            </a>
-                        </div>
+                        <span class="img_preview"></span>
+                        <a href="javascript:;" class="create_house_file">
+                            <input type="file" id="edit-doc-ipt-file-5" class="create_house_input"
+                                   accept="image/jpg,image/jpeg,image/gif,image/png" multiple="multiple">上传图片
+                        </a>
                     </div>
-
-
                     <div class="up">
-                        <div class="upload">上传房屋信息</div>
+                        <input type="submit" value="上传房屋信息" class="upload"/>
                     </div>
                 </div>
                 <div class="col-xs-2"></div>

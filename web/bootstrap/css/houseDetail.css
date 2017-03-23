@@ -198,6 +198,7 @@
 }
 .you_like_img img{
     width: 100%;
+    margin: 0px 4px 4px 0px;
 }
 .you_like_groups .caption a{
     display: inline-block;

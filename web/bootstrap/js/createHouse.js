@@ -30,23 +30,17 @@ $(function(){
     }
     $(".input-row input").blur(inputnull);
 });
-/*
 //上传图片
-//清除之前的图片
-$(".input-up").on("change", function () {
-    var input_up = $(this).parents(".row").find(".col-xs-6")[0];
-    $(input_up).html("");
-
-   //上传新的图片
-    var fileList = this.files;
-    var fileListLen = fileList.length;
-    for(var i=0; i<fileListLen;i++){
-        $(input_up).append("<div class='col-xs-6 col-md-3'> <a href='#' class='thumbnail'> <img class='i-new"+ i + "'/> </a> </div>");
-        var imgObjPreview = input_up.children[i];
-        if(this.files && this.files[i]){
-            imgObjPreview.src = window.URL.createObjectURL(this.files[i]);
-        }
-    }
-
-});
-*/
+ $(".create_house_input").on("change", function(){
+     var img_preview = $(this).parents(".create_house_img_preview").find('.img_preview')[0];
+     $(img_preview).html("");
+     var fileList = this.files;
+     var fileListLen=fileList.length;
+     for(var i=0;i<fileListLen;i++){
+         $(img_preview).append(" <img/>");
+         var imgObjPreview = img_preview.children[i];
+         if (this.files && this.files[i]) {
+             imgObjPreview.src = window.URL.createObjectURL(this.files[i]);
+         }
+     }
+ })
