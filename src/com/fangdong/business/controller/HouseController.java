@@ -50,13 +50,14 @@ public class HouseController {
 		}
 		List<FdRegion> fdRegionResult = regionService.getChildren(regionCode);
 
+		int regionId=Integer.parseInt(regionCode);
 		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
 		
 		//检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
 		String type=request.getParameter("type");
 		if((type!=null)&&(type.equals("fuzzySearch"))){
 			String key = request.getParameter("index-search");
-			List<HouseVo> houseList = houseService.fuzzySearch(key);
+			List<HouseVo> houseList = houseService.fuzzySearch(regionId,key);
 			mov.addObject("houseList",houseList);
 			return mov;
 		}
@@ -115,7 +116,7 @@ public class HouseController {
 		}
 
 		//按参数搜索，并添加结果到视图
-		List<HouseVo> houseList = houseService.getHouseList(param);
+		List<HouseVo> houseList = houseService.getHouseList(regionId,param);
 		mov.addObject("houseList", houseList);
 
 		//将上一次的搜索参数返回到响应页面

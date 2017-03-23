@@ -27,10 +27,10 @@ public class CommonController {
 	
 	@RequestMapping("/index.do")
 	public ModelAndView index(HttpSession session){
+		int regionId=1;
 		ModelAndView mov = new ModelAndView("/index.jsp");
 		//根据地区获取热门房屋
 		String region = (String)session.getAttribute("regionCode");
-		int regionId=1;
 		if(region!=null){
 		regionId=Integer.parseInt(region);
 		}

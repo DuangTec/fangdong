@@ -27,7 +27,7 @@ public interface FdHouseMapper {
     HouseVo selectHouseVoByPrimaryKey(Integer id);
     
     //模糊查询的dao层接口
-    List<HouseVo> selectByKey(String key);
+    List<HouseVo> selectByKey(@Param("regionId")int regionId,@Param("key") String key);
     
     //猜你喜欢的dao层接口/用行政区查询~
     List<HouseVo> selectGuessYouLike(String district);
@@ -42,7 +42,7 @@ public interface FdHouseMapper {
     
     List<HouseVo> selectAllHouseVo();
     
-    List<HouseVo> selectHouseVoByParam(SearchParam param);
+    List<HouseVo> selectHouseVoByParam(@Param("regionId")int regionId,@Param("param") SearchParam param);
 
     List<HouseVo> selectTopHouseVo(@Param("top")int top,@Param("regionId")int regionId);
     
