@@ -41,7 +41,7 @@
             </li>
             <shiro:authenticated>
 	        <li class="log-reg">
-                <a href="#"><shiro:principal property="username" /></a>&nbsp;欢迎您
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
             <span>|</span>
             </li>
             <shiro:hasRole name="admin">
