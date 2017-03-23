@@ -26,6 +26,12 @@ public interface FdRegionMapper {
 
     //获取所有第三级的地区
     List<FdRegion> selectAllErea();
+    
+    //根据城市id获取所有第二级的地区
+    List<FdRegion> selectDistrictsByCityId(int cityId);
+    
+    //根据行政区id获取所有第三级的地区
+    List<FdRegion> selectAreaByDistrictId(int districtId);
 
     FdRegion selectByPrimaryKey(Integer id);
     

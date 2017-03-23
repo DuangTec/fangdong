@@ -121,6 +121,7 @@
         left join fd_region t3 on t3.id=t2.parent_reg_id
         where t3.id is null;
 	</select>
+	
 	<select id="selectAllErea" resultMap="BaseResultMap">
 		select 
         t1.id,t1.region_name,t1.parent_reg_id
@@ -128,6 +129,26 @@
         left join fd_region t2 on t2.id=t1.parent_reg_id
         left join fd_region t3 on t3.id=t2.parent_reg_id
         where t3.id is not null;
+	</select>
+	
+	<select id="selectDistrictsByCityId" resultMap="BaseResultMap" parameterType="int">
+		select 
+        t1.id,t1.region_name,t1.parent_reg_id
+		from fd_region t1 
+        left join fd_region t2 on t2.id=t1.parent_reg_id
+        left join fd_region t3 on t3.id=t2.parent_reg_id
+        where t3.id is null and t2.id is not null
+        and t2.id=#{cityId}
+        
+	</select>	
+	<select id="selectAreaByDistrictId" parameterType="int" resultMap="BaseResultMap">
+		select 
+        t1.id,t1.region_name,t1.parent_reg_id,t2.id,t3.id
+		from fd_region t1 
+        left join fd_region t2 on t2.id=t1.parent_reg_id
+        left join fd_region t3 on t3.id=t2.parent_reg_id
+        where t3.id is not null
+        and t2.id=#{districtId}
 	</select>
 	<select id="selectChildren" resultMap="VoResultMap">
 	SELECT

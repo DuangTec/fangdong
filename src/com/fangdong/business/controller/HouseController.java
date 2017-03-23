@@ -1,15 +1,27 @@
 package com.fangdong.business.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fangdong.auth.model.FdUser;
@@ -43,7 +55,7 @@ public class HouseController {
 	@RequestMapping("/house.do")
 	public ModelAndView house(HttpServletRequest request, HttpSession session) {
 		ModelAndView mov = new ModelAndView("/house/house.jsp");
-		//获取该城市下的所有行政区
+		// 获取该城市下的所有行政区
 		String regionCode = (String) session.getAttribute("regionCode");
 		if (regionCode == null) {
 			regionCode = "1";
@@ -52,28 +64,29 @@ public class HouseController {
 
 		int regionId=Integer.parseInt(regionCode);
 		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
-		
-		//检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
-		String type=request.getParameter("type");
-		if((type!=null)&&(type.equals("fuzzySearch"))){
+
+		// 检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
+		String type = request.getParameter("type");
+		if ((type != null) && (type.equals("fuzzySearch"))) {
 			String key = request.getParameter("index-search");
 			List<HouseVo> houseList = houseService.fuzzySearch(regionId,key);
 			mov.addObject("houseList",houseList);
+
 			return mov;
 		}
-		
-		//不是模糊查询，则执行条件查询
+
+		// 不是模糊查询，则执行条件查询
 		// 获取前台的数据
 		String district = request.getParameter("district");
 		String rentprice = request.getParameter("rentprice");
 		String housetype = request.getParameter("housetype");
-		
-		//组装搜索参数对象
+
+		// 组装搜索参数对象
 		SearchParam param = new SearchParam();
-		if((district!=null)&&(!district.equals(""))){
-		param.setDistrictId(Integer.parseInt(district));
+		if ((district != null) && (!district.equals(""))) {
+			param.setDistrictId(Integer.parseInt(district));
 		}
-		if (rentprice!=null) {
+		if (rentprice != null) {
 			switch (rentprice) {
 			case "700L":
 				param.setUpperPrice(700);
@@ -95,7 +108,7 @@ public class HouseController {
 				break;
 			}
 		}
-		if (housetype!=null) {
+		if (housetype != null) {
 			switch (housetype) {
 			case "1n1":
 				param.setRoomNum(1);
@@ -115,14 +128,15 @@ public class HouseController {
 			}
 		}
 
+
 		//按参数搜索，并添加结果到视图
 		List<HouseVo> houseList = houseService.getHouseList(regionId,param);
 		mov.addObject("houseList", houseList);
 
-		//将上一次的搜索参数返回到响应页面
+		// 将上一次的搜索参数返回到响应页面
 		mov.addObject("district", district);
-		mov.addObject("rentprice",rentprice);
-		mov.addObject("housetype",housetype);
+		mov.addObject("rentprice", rentprice);
+		mov.addObject("housetype", housetype);
 		return mov;
 	}
 
@@ -152,34 +166,43 @@ public class HouseController {
 	/**
 	 * 已在进入createHouse页面时检查登陆情况
 	 */
-	/*
+	
 	@RequiresAuthentication
-	@RequestMapping("/createHouseSubmit")
+	@RequestMapping("/createHouseSubmit.action")
 	public ModelAndView createHouseSubmit(HttpServletRequest request, HttpSession session) {
+		// 存储house数据
 		ModelAndView mov = new ModelAndView();
-		mov.setViewName("redirect:/house");
+		mov.setViewName("redirect:/house.do");
 
-		String houseType = request.getParameter("house_type");// 民用1商用2
-		String address = request.getParameter("address");
+		String title = request.getParameter("title");
+		int rentprice = Integer.parseInt(request.getParameter("rentprice"));
+		int room = Integer.parseInt(request.getParameter("room"));
+		int hall=Integer.parseInt(request.getParameter("hall"));
 		int size = Integer.parseInt(request.getParameter("size"));
-		int layout_room = Integer.parseInt(request.getParameter("layout_room"));
-		int layout_hall = Integer.parseInt(request.getParameter("layout_hall"));
-		int right = Integer.parseInt(request.getParameter("right"));
-		String description = request.getParameter("description");
+		String address = request.getParameter("address");
+		String houseDetail = request.getParameter("houseDetail");
+		int regionId = Integer.parseInt(request.getParameter("areaId"));
+		String facility[] = request.getParameterValues("facility");
 
 		FdHouse house = new FdHouse();
-		house.setAddress(address);
-		house.setRoom(layout_room);
-		house.setHall(layout_hall);
-		house.setCreateDate(new Date());
-		house.setHouseType(houseType);
+		house.setTitle(title);
+		house.setRentPrice(rentprice);
+		house.setRoom(room);
+		house.setHall(hall);
 		house.setSize(size);
-		house.setPropertyRights(right);
-		house.setHouseDetail(description);
-		// 插入拥有者id
-		FdUser verifiedUser = (FdUser) session.getAttribute("verifiedUser");
-		house.setOwnerId(verifiedUser.getId());
+		house.setAddress(address);
+		house.setHouseDetail(houseDetail);
+		house.setRegionId(regionId);
+		StringBuilder sb = new StringBuilder();
+		for (String f : facility) {
+			sb.append(f + ",");
+		}
+		house.setFacilities(sb.substring(0, sb.length() - 1));
+		house.setCreateDate(new Date());
 
+		Subject currentUser = SecurityUtils.getSubject();
+		int ownerId=((FdUser)currentUser.getPrincipal()).getId();
+		house.setOwnerId(ownerId);
 		try {
 			houseService.insertHouse(house);
 		} catch (Exception e) {
@@ -189,8 +212,24 @@ public class HouseController {
 			return mov;
 		}
 
+		//存储上传的文件到本地
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+				request.getSession().getServletContext());
+		
+		// 判断 request 是否有文件上传,即多部分请求
+		if (multipartResolver.isMultipart(request)) {
+			// 转换成多部分request
+			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+			List<MultipartFile> fileList = multiRequest.getFiles("file");
+			try {
+				pictureService.savePicByHouseId(request.getServletContext().getRealPath("/"),fileList, house.getId());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		return mov;
-	}*/
+	}
 /*
 	/**
 	 * 普通用户只能删除自己建的房屋
@@ -233,66 +272,64 @@ public class HouseController {
 	}
 
 	@RequestMapping("/admin/deleteHouse.action")
-	public ModelAndView deleteHouse(HttpServletRequest request){
+	public ModelAndView deleteHouse(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("redirect:/admin/house_manage.do");
-		boolean deleteflag=false;
+		boolean deleteflag = false;
 		try {
-			//删房子先删图片
-			deleteflag=pictureService.deletePicByHouseId(id);
+			// 删房子先删图片
+			deleteflag = pictureService.deletePicByHouseId(id);
 			houseService.deleteHouseById(id);
 		} catch (Exception e) {
-			mov.addObject("error","delete fail,result "+deleteflag);
+			mov.addObject("error", "delete fail,result " + deleteflag);
 			e.printStackTrace();
 		}
-		
+
 		return mov;
 	}
-	
+
 	@RequestMapping("/admin/editHouse.do")
-	public ModelAndView editHouse(HttpServletRequest request){
-		String type= request.getParameter("type");
+	public ModelAndView editHouse(HttpServletRequest request) {
+		String type = request.getParameter("type");
 		ModelAndView mov = new ModelAndView("/admin/house_manage_edit.jsp");
-		if(type!=null&&type.equals("create"))
-		{	
-			mov.addObject("type","create");
+		if (type != null && type.equals("create")) {
+			mov.addObject("type", "create");
 			return mov;
-		}
-		else
-		{
+		} else {
 			int id = Integer.parseInt(request.getParameter("id"));
 			try {
-				HouseVo hv=houseService.getHouseVoById(id);
-				//mov.addObject("type","update");
-				mov.addObject("house",hv);
+				HouseVo hv = houseService.getHouseVoById(id);
+				// mov.addObject("type","update");
+				mov.addObject("house", hv);
 			} catch (Exception e) {
-				mov.addObject("error","edit fail");
+				mov.addObject("error", "edit fail");
 				e.printStackTrace();
-			}		
+			}
 			return mov;
 		}
 	}
-	
+
+	// 管理员创建房屋
 	@RequestMapping("/admin/editHouseSubmit.action")
-	public String editHouseSubmit(HttpServletRequest request){
-		String type=request.getParameter("type");
-		
-		String title=request.getParameter("title");
-		int size=Integer.parseInt(request.getParameter("size"));
+	public String editHouseSubmit(HttpServletRequest request) {
+		String type = request.getParameter("type");
+
+		String title = request.getParameter("title");
+		int size = Integer.parseInt(request.getParameter("size"));
 		String houseDetail = request.getParameter("houseDetail");
 		String address = request.getParameter("address");
-		int propertyRights= Integer.parseInt(request.getParameter("propertyRights"));
+		int propertyRights = Integer.parseInt(request.getParameter("propertyRights"));
 		int rentPrice = Integer.parseInt(request.getParameter("rentPrice"));
 		String facility[] = request.getParameterValues("facility");
 		int regionId = Integer.parseInt(request.getParameter("regionId"));
-		String houseType=request.getParameter("housetype");
-		String ownername=request.getParameter("owner");
-		int hall=Integer.parseInt(request.getParameter("hall"));
-		int room=Integer.parseInt(request.getParameter("room"));
-		
+		String houseType = request.getParameter("housetype");
+		String ownername = request.getParameter("owner");
+		int hall = Integer.parseInt(request.getParameter("hall"));
+		int room = Integer.parseInt(request.getParameter("room"));
+
 		FdUser owner = userService.selectUserByUserName(ownername);
-		
+
 		FdHouse house = new FdHouse();
 		house.setTitle(title);
 		house.setSize(size);
@@ -306,18 +343,18 @@ public class HouseController {
 		house.setRoom(room);
 		house.setOwnerId(owner.getId());
 		StringBuilder sb = new StringBuilder();
-		for(String f:facility){
-			sb.append(f+",");
+		for (String f : facility) {
+			sb.append(f + ",");
 		}
-		house.setFacilities(sb.substring(0, sb.length()-1));
-		
-		//判断新建房屋
-		if((type!=null)&&(!type.equals(""))){
-			//新建房屋
+		house.setFacilities(sb.substring(0, sb.length() - 1));
+
+		// 判断新建房屋
+		if ((type != null) && (!type.equals(""))) {
+			// 新建房屋
 			house.setCreateDate(new Date());
 			houseService.createHouse(house);
-		} else{
-			int id=Integer.parseInt(request.getParameter("id"));
+		} else {
+			int id = Integer.parseInt(request.getParameter("id"));
 			house.setId(id);
 			try {
 				houseService.updateHouseById(house);
@@ -325,7 +362,7 @@ public class HouseController {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return "redirect:/admin/house_manage.do";
 	}
 

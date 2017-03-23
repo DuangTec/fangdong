@@ -18,7 +18,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="renderer" content="webkit" />
 <!--国产浏览器高速渲染360-->
-<link rel="icon" type="image/png" href="bootstrap/i/Duang.jpg" />
+<link rel="icon" type="image/png" href="/bootstrap/i/Duang.jpg" />
 <!--改变title图标：h5-->
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 <!--禁止百度转码-->

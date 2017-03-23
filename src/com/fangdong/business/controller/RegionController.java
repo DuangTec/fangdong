@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -101,7 +103,11 @@ public class RegionController {
 		
 		return "redirect:/admin/area_manage.do";
 	}
-	
+	/**
+	 * 获取一级二级地区
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/admin/getParentsRegion.action")
 	public List<FdRegion> getParentsRegion(HttpServletRequest request){
@@ -114,6 +120,11 @@ public class RegionController {
 		return null;
 	}
 	
+	/**
+	 * 获取二级三级地区
+	 * @param request
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/admin/getSonRegion.action")
 	public List<FdRegion> getSonRegion(HttpServletRequest request){
@@ -125,4 +136,38 @@ public class RegionController {
 		return null;
 	}
 	
+	/**
+	 * 获取第二级地区
+	 * @param session
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/getDistrict.action")
+	public List<FdRegion> getDistrict(HttpSession session){
+		String regionCode = (String)session.getAttribute("regionCode");
+		int cityId =1;
+		if((regionCode!=null)&&(!regionCode.equals(""))){
+			cityId = Integer.parseInt(regionCode);
+		}
+		try {
+			return regionService.getDistrict(cityId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/getArea.action")
+	public List<FdRegion> getArea(HttpServletRequest request){
+		int districtId = Integer.parseInt(request.getParameter("districtId"));
+		
+		try {
+			return regionService.getAreaByDistrictId(districtId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+		
 }
