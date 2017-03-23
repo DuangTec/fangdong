@@ -38,23 +38,26 @@
                     <li><a href="/changeregion.action?region=2">成都市</a></li>
                     <li><a href="/changeregion.action?region=3">北京市</a></li>
                 </ul>
-            </li>
-            <%
-		        Subject currentUser=SecurityUtils.getSubject();
-		        if (currentUser.isAuthenticated()) {
-	        %>
+            <shiro:authenticated>
 	        <li class="log-reg">
-                <a href="/userinfo.do"><%=currentUser.getPrincipal()%></a>&nbsp;欢迎您
+                <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
             <span>|</span>
             </li>
-            <li class="log-reg"><a href="/logout.action">注销</a></li>
-            <%} else{%>
+            <shiro:hasRole name="admin">
             <li class="log-reg">
-                <a href="/login.jsp">登录</a>
+                <a href="/admin.do">进入后台</a>
+            <span>|</span>
+            </li>
+            </shiro:hasRole>
+            <li class="log-reg"><a href="/logout.action">注销</a></li>
+            </shiro:authenticated>
+            <shiro:guest>
+            <li class="log-reg">
+                <a href="/login.do">登录</a>
                 <span>|</span>
             </li>
             <li class="log-reg"><a href="/signUp.jsp">注册</a></li>
-            <%}%>
+            </shiro:guest>
         </ul>
         <ul class="nav">
             <li class="normal"><a href="/index.do">首页</a></li>
