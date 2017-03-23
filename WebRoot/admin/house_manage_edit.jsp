@@ -49,7 +49,14 @@
                                         <ol class="breadcrumb">
                                             <li><a href="admin.do">后台管理</a></li>
                                             <li><a href="house_manage.do">房屋管理</a></li>
-                                            <li class="active">房屋编辑</li>
+                                            <c:choose>
+                                                <c:when test="${type=='create'}">
+                                                    <li class="active">创建房屋</li>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <li class="active">房屋编辑</li>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </ol>
                                     </div>
                                 </div>
@@ -79,7 +86,7 @@
                                                     </c:otherwise>
                                                 </c:choose>
                                                 <div class="form-group">
-                                                    <label for="input2" class="col-xs-2 control-label">房东id</label>
+                                                    <label for="input2" class="col-xs-2 control-label">房东用户名</label>
                                                     <div class="col-xs-10">
                                                         <input type="text" class="form-control" id="owner" name="owner" value='${house.owner}'>
                                                         <input type="hidden" name="ownerId" value="${house.ownerId}"/>

@@ -14,6 +14,8 @@ public interface HouseService {
 	public void deleteHouseById(int id) throws SQLConnectionFailException;
 	public HouseVo getHouseVoById(int id);
 	public List<HouseVo> getTopHouse(int top,int regionId);
+	//创建房屋
+	public void createHouse(FdHouse house);
 	//更新house
 	public void updateHouseById(FdHouse house)throws SQLConnectionFailException;
 	//模糊查询

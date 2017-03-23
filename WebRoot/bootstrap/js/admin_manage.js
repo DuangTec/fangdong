@@ -45,3 +45,8 @@ function delUser(id){
 function createUser(){
     window.location.href="/admin/editUser.do?type=create";
 }
+
+//新建房屋
+function createHouse(){
+    window.location.href="/admin/editHouse.do?type=create";
+}
