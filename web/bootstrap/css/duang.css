@@ -1,5 +1,6 @@
 body{
     font-family:"ZHRSXT","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    min-width: 1010px;
 }
 a,a:hover,a:visited,a:focus{
     color:white;
@@ -26,6 +27,10 @@ input[type="text"],input[type="submit"],button{
 .container{
     min-width: 980px;
     padding: 0px;
+}
+.footer{
+    width: 100%;
+    min-width: 1010px;
 }
 /*公共导航*/
 .navbar{
