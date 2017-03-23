@@ -1,7 +1,7 @@
 /**
  * Created by yey on 2017/3/22.
  */
-/*×ó²ànav³öÏÖºÍÏûÊ§*/
+/*å·¦ä¾§navå‡ºç°å’Œæ¶ˆå¤±*/
 $(function(){
     $(window).scroll(function() {
         var h = $(window).scrollTop();
