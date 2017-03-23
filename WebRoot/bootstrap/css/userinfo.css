@@ -1,0 +1,47 @@
+/* content */
+.userinfo{
+    background: rgba(0,0,0,0.04);
+    margin-top: 60px;
+}
+.con-input{
+    margin-top: 40px;
+    background: rgba(255,255,255,0.7);
+}
+
+.info-title h3,h5{
+    text-align: center;
+    margin-top: 50px;
+}
+.red{
+    color: red;
+}
+
+/* input */
+.input-row {
+    padding-left: 80px;
+    margin: 20px 0;
+    margin-top:35px;
+}
+.input-row .input-label {
+    position: relative;
+    left: -80px;
+    float: left;
+    width: 70px;
+    text-align: right;
+    margin-right: -100%;
+    line-height: 34px;
+}
+.input-row .short{
+    width: 400px;
+}
+
+/* 提交 */
+.sub{
+    position: relative;
+    left: 40px;
+    margin: 50px 0;
+}
+/* 表格 */
+.table a,.table a:hover,.table a:visited,.table a:focus{
+    color: black;
+}
