@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fangdong.auth.service.UserService;
 import com.fangdong.business.model.HouseVo;
 import com.fangdong.business.service.HouseService;
 
@@ -18,6 +19,9 @@ public class CommonController {
 
 	@Resource
 	private HouseService houseService;
+	
+	@Resource
+	private UserService userService;
 	
 	@RequestMapping("/index.do")
 	public ModelAndView index(HttpSession session){
