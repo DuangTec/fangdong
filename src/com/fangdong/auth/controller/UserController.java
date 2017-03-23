@@ -192,5 +192,24 @@ public class UserController{
 //		String phone = user.getPhone();
 		return user.getPhone();
 	}
+	
+	//普通用户的userinfo
+	@RequestMapping("/admin/userInfoSubmit.do")
+	public void userInfoSubmit(HttpServletRequest request){
+		//判断是否为新建
+		FdUser newUser=new FdUser();
+		newUser.setName(request.getParameter("name"));
+		//newUser.setUsername(request.getParameter("username"));
+		newUser.setPassword(request.getParameter("password"));
+		newUser.setPhone(request.getParameter("phone"));
+		newUser.setSex(request.getParameter("sex"));
+		//String setAuthority=request.getParameter("authority");
+		//if(setAuthority==null){setAuthority="1";}
+		//newUser.setAuthority(Integer.parseInt(setAuthority));
+		String userid=request.getParameter("userid");
+		newUser.setId(Integer.parseInt(userid));
+		userService.updateUser(newUser);
+		
+	}
 
 }

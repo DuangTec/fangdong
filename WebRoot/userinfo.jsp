@@ -5,6 +5,7 @@
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -78,7 +79,7 @@
             <h5>My Information</h5>
         </div>
         <div class="con-input">
-            <form action="" method="post">
+            <form action="" method="post" action="/admin/userInfoSubmit.do" >
                 <div class="row">
                     <div class="col-xs-3"></div>
                     <div class="col-xs-6">
@@ -86,6 +87,7 @@
                         <div class="input-row">
                             <span class="input-label">用户名：</span>
                             <input type="text" class="form-control short" readonly="readonly" value="${user.username}">
+                            <input type="hidden" value="${user.id}" name="userid"/>
                         </div>
                         <div class="input-row">
                             <span class="input-label">用户密码：</span>
@@ -98,7 +100,8 @@
                         </div>
                         <div class="input-row">
                             <span class="input-label">性别：</span>
-                            <input type="text" class="form-control short" value="${user.sex}">
+                            <label class="checkbox-inline"><input type="radio" name="housetype" value="1" <c:if test="${user.sex =='男' }">checked</c:if>>男</label>
+                            <label class="checkbox-inline"><input type="radio" name="housetype" value="2" <c:if test="${user.sex =='女' }">checked</c:if>>女</label>
                         </div>
                         <div class="input-row">
                             <span class="input-label">联系电话：</span>
@@ -106,14 +109,12 @@
                         </div>
                         <div class="input-row">
                             <span class="input-label">权限：</span>
-                            <input type="text" class="form-control short" readonly="readonly" value="管理员">
+                            <c:if test="${user.authority =='2' }"><input type="text" class="form-control short" readonly="readonly" value="管理员"></c:if>
+                            <c:if test="${user.authority =='1' }"><input type="text" class="form-control short" readonly="readonly" value="用户"></c:if>
                         </div>
 
                         <h5>我的租房信息</h5>
-
-
-
-                    </div>
+               </div>
                     <div class="col-xs-3"></div>
                 </div>
                 <div class="row">
@@ -122,23 +123,29 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>地址</th>
+                                <th>title</th>
+                                <th>address</th>
+                                <th>createDat</th>
+                                <th>rentPrice</th>
                                 <th class="col-lg-2 col-xs-2">相关操作</th>
                             </tr>
                             </thead>
+                            <c:forEach items="${house }" var="house">
                             <tbody>
                             <tr>
-                                <td><a href="#">123</a></td>
-                                <td>555555555555</td>
+                            	<td>${house.title}</td>
+                            	<td>${house.address}</td>
+                                <td><fmt:formatDate value='${house.createDate }' pattern='yyyy-MM-dd'/></td>
+                                <td>${house.rentPrice}</td>
                                 <td>
                                     <span class="glyphicon glyphicon-pencil" onclick="editHome(a)"></span>
                                     <span class="glyphicon glyphicon-trash" onclick="delHome(a)"></span>
                                 </td>
                             </tr>
                             </tbody>
+                            </c:forEach>
                         </table>
-                    </div>
+                    </div>                    
                     <div class="col-xs-1"></div>
                 </div>
 

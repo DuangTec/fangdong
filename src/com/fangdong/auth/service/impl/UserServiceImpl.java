@@ -107,7 +107,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int updateUser(FdUser User) {
 		// TODO Auto-generated method stub
-		return userMapper.updateByPrimaryKey(User);
+		return userMapper.updateByPrimaryKeySelective(User);
 	}
 
 	@Override
