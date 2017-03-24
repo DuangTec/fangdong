@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
 		FdUser user = new FdUser();
 		user.setUsername(username);
 		user.setPassword(password);
+		user.setAuthority(1);
 		
 		int row = 0;
 		try {
