@@ -162,7 +162,7 @@ public class HouseController {
 	 * @return
 	 */
 	@RequiresAuthentication
-	@RequestMapping("/house/createHouse.do")
+	@RequestMapping("/createHouse.do")
 	public String createHouse() {
 		return "/house/createHouse.jsp";
 	}

@@ -23,7 +23,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
                <%String regionCode=(String)session.getAttribute("regionCode");
@@ -65,7 +65,7 @@
             <li class="normal"><a href="/index.do">首页</a></li>
             <li class="normal"><a href="/house.do">我要租房</a></li>
             <li class="normal"><a href="/prompt.jsp">租前须知</a></li>
-            <li class="active"><a href="/house/createHouse.do">房东加盟</a></li>
+            <li class="active"><a href="/createHouse.do">房东加盟</a></li>
             <li class="normal"><a href="/about_duang.jsp">关于杜昂</a></li>
         </ul>
     </div>
