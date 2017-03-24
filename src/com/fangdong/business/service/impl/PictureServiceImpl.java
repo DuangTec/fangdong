@@ -31,7 +31,7 @@ public class PictureServiceImpl implements PictureService {
 		for (int i = 0; i < fileList.size(); i++) {
 			String fileName = fileList.get(i).getOriginalFilename();
 			String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());
-			String fileSrc = "\\img\\house-"+ houseId+ "-" + (i+1)+fileSuffix;
+			String fileSrc = "\\img\\housepic\\house-"+ houseId+ "-" + (i+1)+fileSuffix;
 			// 存到本地
 			File localFile = new File(contextPath+fileSrc);
 			if (!localFile.exists())

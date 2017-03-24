@@ -63,15 +63,6 @@ public class UserController{
 		return mov;
 	}
 	
-
-	@RequestMapping("/pay")
-	public ModelAndView pay(){
-		ModelAndView mov = new ModelAndView();
-		mov.setViewName("success.jsp");
-		mov.addObject("loginMes","pass the authentication");
-		return mov;
-	}
-	
 	//登出
 	@RequestMapping("/logout.action")
 	public String logout(HttpSession session){

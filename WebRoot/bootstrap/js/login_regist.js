@@ -33,8 +33,6 @@ $(function(){
     },"数字,字母,下划线组成的3-16位密码");
 
     $("form").validate({
-        //debug用于调试，成功也不进行提交
-        /*debug:true,*/
         rules:{
             /*登录验证*/
             username_login:{
