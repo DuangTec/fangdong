@@ -248,6 +248,73 @@ public class HouseController {
 		mov.addObject("picList",picList);
 		return mov;
 	}
+	
+	@RequestMapping("/house/updateHouseSubmit.action")
+	public ModelAndView updateHouseSubmit(HttpServletRequest request){
+		// 存储house数据
+				ModelAndView mov = new ModelAndView();
+				mov.setViewName("redirect:/userinfo.do");
+
+				int houseId = Integer.parseInt(request.getParameter("houseId"));
+				String title = request.getParameter("title");
+				int rentprice = Integer.parseInt(request.getParameter("rentprice"));
+				int room = Integer.parseInt(request.getParameter("room"));
+				int hall=Integer.parseInt(request.getParameter("hall"));
+				int size = Integer.parseInt(request.getParameter("size"));
+				String address = request.getParameter("address");
+				String houseDetail = request.getParameter("houseDetail");
+				int regionId = Integer.parseInt(request.getParameter("areaId"));
+				String facility[] = request.getParameterValues("facility");
+
+				FdHouse house = new FdHouse();
+				house.setId(houseId);
+				house.setTitle(title);
+				house.setRentPrice(rentprice);
+				house.setRoom(room);
+				house.setHall(hall);
+				house.setSize(size);
+				house.setAddress(address);
+				house.setHouseDetail(houseDetail);
+				house.setRegionId(regionId);
+				StringBuilder sb = new StringBuilder();
+				for (String f : facility) {
+					sb.append(f + ",");
+				}
+				house.setFacilities(sb.substring(0, sb.length() - 1));
+				house.setCreateDate(new Date());
+
+				Subject currentUser = SecurityUtils.getSubject();
+				int ownerId=((FdUser)currentUser.getPrincipal()).getId();
+				house.setOwnerId(ownerId);
+				
+				try {
+					houseService.updateHouseById(house);
+				} catch (SQLConnectionFailException e) {
+					e.printStackTrace();
+				}
+				
+				//存储上传的文件到本地
+				CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+						request.getSession().getServletContext());
+				
+				// 判断 request 是否有文件上传,即多部分请求
+				if (multipartResolver.isMultipart(request)) {
+					// 转换成多部分request
+					MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+					List<MultipartFile> fileList = multiRequest.getFiles("file");
+					//先删除原先的图片,如果没有新文件上传则不删除
+					if((fileList.size()>0)&&(fileList.get(0).getSize()>0)){
+						pictureService.deletePicByHouseId(houseId);
+					//在上传新的图片
+					try {
+						pictureService.savePicByHouseId(request.getServletContext().getRealPath("/"),fileList, house.getId());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					}
+				}
+				return mov;
+	}
 /*
 	/**
 	 * 普通用户只能删除自己建的房屋

@@ -93,6 +93,7 @@
                 </div>
                 <div class="col-xs-8">
                     <h5> <span class="red">*&nbsp;&nbsp;</span>房源基本信息</h5>
+                    <c:if test="${type=='update'}"><input type="hidden" value="${house.id}" name="houseId"></c:if>
                     <div class="input-row">
                         <span class="input-label">标题：</span>
                         <input type="text" name="title" class="form-control" value="${house.title}">
@@ -169,7 +170,7 @@
                     </div>
                     <div class="input-row create_house_img_preview">
                         <span class="input-label">小屋美图：</span>
-                        <span class="img_preview"></span>
+                        <span class="img_preview"><c:forEach items="${picList}" var="pic"><img src="${pic.pictureUrl}"></c:forEach></span>
                         <a href="javascript:;" class="create_house_file">
                             <input type="file" id="edit-doc-ipt-file-5" class="create_house_input"
                                    accept="image/jpg,image/jpeg,image/gif,image/png" multiple="multiple" name="file">上传图片

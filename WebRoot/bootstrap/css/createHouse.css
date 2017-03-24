@@ -129,3 +129,7 @@
 .edit-select_ul li:hover{
     background-color:#CAE4EE;
 }
+.img_preview img{
+    width:200px;
+    height:166px;
+}

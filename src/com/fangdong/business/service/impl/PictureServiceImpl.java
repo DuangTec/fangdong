@@ -20,7 +20,6 @@ public class PictureServiceImpl implements PictureService {
 	
 	@Override
 	public boolean deletePicByHouseId(int houseId) {
-		// TODO Auto-generated method stub
 		boolean flag=true;
 		int r=picMapper.deleteByHouseId(houseId);
 		if(r==0){flag=false;}
