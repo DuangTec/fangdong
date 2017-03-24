@@ -162,7 +162,7 @@ public class HouseController {
 	 * @return
 	 */
 	@RequiresAuthentication
-	@RequestMapping("/createHouse.do")
+	@RequestMapping("/house/createHouse.do")
 	public String createHouse() {
 		return "/house/createHouse.jsp";
 	}
@@ -172,7 +172,7 @@ public class HouseController {
 	 */
 	
 	@RequiresAuthentication
-	@RequestMapping("/createHouseSubmit.action")
+	@RequestMapping("/house/createHouseSubmit.action")
 	public ModelAndView createHouseSubmit(HttpServletRequest request, HttpSession session) {
 		// 存储house数据
 		ModelAndView mov = new ModelAndView();
