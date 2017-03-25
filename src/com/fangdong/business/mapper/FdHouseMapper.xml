@@ -209,7 +209,7 @@
 		<if test="param.lowerPrice != null">
 			and h.rent_price &gt;=#{param.lowerPrice}
 		</if>
-		<if test="param.lowerPrice != null">
+		<if test="param.upperPrice != null">
 			and h.rent_price &lt;=#{param.upperPrice}
 		</if>
 		<if test="param.roomNum != null">
