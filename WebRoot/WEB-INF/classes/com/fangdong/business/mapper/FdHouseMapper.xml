@@ -294,6 +294,7 @@
 	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
 	WHERE
 	r2.region_name = #{district}
+	limit 0,3;
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from fd_house
