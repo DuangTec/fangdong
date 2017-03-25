@@ -49,7 +49,7 @@
 	            <div class="col-xs-12">
 	                <ol class="breadcrumb">
 	                    <li><a href="/admin.do">后台管理</a></li>
-	                    <li><a href="house_manage.do">用户管理</a></li>
+	                    <li><a href="user_manage.do">用户管理</a></li>
 	                    <li class="active">用户编辑</li>
 	                </ol>
 	            </div>
