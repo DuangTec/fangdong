@@ -202,6 +202,7 @@
 <script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
 <script src="/bootstrap/js/bootstrap.js"></script>
 <script src="/bootstrap/js/index.js"></script>
+<script src="/bootstrap/js/jquery.validate-1.13.1.js"></script>
 <script src="/bootstrap/js/createHouse.js"></script>
 </body>
 </html>

@@ -71,19 +71,50 @@ function getDistrictRegion() {
     });
 }
 
-//表单验证
-$(function () {
-    // function inputnull() {
-    //     if ($(this).val().length == "0") {
-    //         $(this).next().attr("class", "warning");
-    //         $(this).next().html("宝宝，此处不可为空");
-    //     }
-    //     if ($(this).val().length != "0") {
-    //         $(this).next().remove();
-    //     }
-    // }
-    // $(".input-row input").blur(inputnull);
-});
+    //表单验证
+	$("form").validate({
+        rules:{
+            /*登录验证*/
+        	title:{
+                required:true,          
+            },
+            rentprice:{
+            	required:true,
+            },
+            room:{
+            	required:true,
+            },
+            hall:{
+            	required:true,
+            },
+            size:{
+            	required:true,
+            },
+            address:{
+            	required:true,
+            },
+        },
+	messages:{
+		title:{
+            required:"请输入正确的用户名",
+        },
+        rentprice:{
+            required:"租金不可为空！",
+        },
+        room:{
+            required:"室不可为空",
+        },
+        hall:{
+            required:"厅不可为空！",
+        },
+        size:{
+            required:"房屋面积不可为空！",
+        },
+        address:{
+            required:"详细地址不可为空！",
+        },
+    }
+})
 //上传图片
 $(".create_house_input").on("change", function () {
     var img_preview = $(this).parents(".create_house_img_preview").find('.img_preview')[0];

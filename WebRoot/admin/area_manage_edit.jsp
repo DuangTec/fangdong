@@ -127,6 +127,7 @@
 <script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
 <script src="/bootstrap/js/bootstrap.js"></script>
 <script src="/bootstrap/js/admin_common.js"></script>
+<script src="/bootstrap/js/jquery.validate-1.13.1.js"></script>
 <script src="/bootstrap/js/admin_edit.js"></script>
 </body>
 </html>
