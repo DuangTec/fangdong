@@ -118,3 +118,7 @@
 .hot-selected-content .thumbnail:hover{
     border-bottom-color: #FF9649;
 }
+.you_like_groups img{
+    width: 100%;
+    height: 200px;
+}

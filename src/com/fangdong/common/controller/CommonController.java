@@ -34,7 +34,7 @@ public class CommonController {
 		if(region!=null){
 		regionId=Integer.parseInt(region);
 		}
-		List<HouseVo> houseList = houseService.getTopHouse(10,regionId);
+		List<HouseVo> houseList = houseService.getTopHouse(9,regionId);
 		mov.addObject("hotHouse",houseList);
 		return mov;
 	}
