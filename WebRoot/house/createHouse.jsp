@@ -101,7 +101,7 @@
                     </div>
                     <div class="input-row">
                         <span class="input-label"> 租金：</span>
-                        <input type="text" name="rentprice" class="form-control short" value="${house.rentPrice}">
+                        <input type="number" name="rentprice" class="form-control short" value="${house.rentPrice}">
                         <div></div>
                     </div>
                     <div class="input-row">
@@ -109,17 +109,17 @@
                         <div class="row">
                             <div class="col-xs-4">
                                 <span class="input-group-addon">室</span>
-                                <input type="text" name="room" class="form-control" value="${house.room}" min="1" max="999" maxlength="3">
+                                <input type="number" name="room" class="form-control" value="${house.room}" min="1" max="999" maxlength="3">
                                 <div></div>
                             </div>
                             <div class="col-xs-4">
                                 <span class="input-group-addon">厅</span>
-                                <input type="text" name="hall" class="form-control" value="${house.hall}" min="1" max="999" maxlength="3">
+                                <input type="number" name="hall" class="form-control" value="${house.hall}" min="1" max="999" maxlength="3">
                                 <div></div>
                             </div>
                             <div class="col-xs-4">
                                 <span class="input-group-addon">㎡</span>
-                                <input type="text" name="size" class="form-control" value="${house.size}" min="1" max="5000" >
+                                <input type="number" name="size" class="form-control" value="${house.size}" min="1" max="5000" >
                                 <div></div>
                             </div>
                         </div>
