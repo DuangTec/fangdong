@@ -92,7 +92,7 @@
 	                            <div class="form-group">
 	                                <label for="input4" class="col-xs-2 control-label">电话</label>
 	                                <div class="col-xs-10">
-	                                    <input type="text" class="form-control" id="input4" name="phone" value="${AditUser.phone}">
+	                                    <input type="number" class="form-control" id="input4" name="phone" value="${AditUser.phone}">
 	                                </div>
 	                            </div>
 	                            <div class="form-group">

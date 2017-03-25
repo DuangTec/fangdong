@@ -115,7 +115,7 @@
 							<div class="form-group">
 								<label for="input3" class="col-xs-2 control-label">房屋大小</label>
 								<div class="col-xs-10">
-									<input type="text" class="form-control" id="input3" name="size"
+									<input type="number" class="form-control" id="input3" name="size"
 										value='${house.size}'>
 								</div>
 							</div>
@@ -136,14 +136,14 @@
 							<div class="form-group">
 								<label for="input4" class="col-xs-2 control-label">产权年限</label>
 								<div class="col-xs-10">
-									<input type="text" class="form-control" id="input6"
+									<input type="number" class="form-control" id="input6"
 										name="propertyRights" value='${house.propertyRights}'>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="input4" class="col-xs-2 control-label">租金</label>
 								<div class="col-xs-10">
-									<input type="text" class="form-control" id="input7"
+									<input type="number" class="form-control" id="input7"
 										name="rentPrice" value='${house.rentPrice}'>
 								</div>
 							</div>
@@ -161,8 +161,8 @@
 							<div class="form-group">
 								<label for="input4" class="col-xs-2 control-label">房屋规格</label>
 								<div class="col-xs-10">
-									<input type="text" class="form-control housetype" id="input9"
-										name="room" value='${house.room}'>室 <input type="text"
+									<input type="number" class="form-control housetype" id="input9"
+										name="room" value='${house.room}'>室 <input type="number"
 										class="form-control housetype" id="input10" name="hall"
 										value='${house.hall}'>厅
 								</div>
