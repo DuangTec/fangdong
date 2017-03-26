@@ -9,6 +9,9 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="authority" property="authority" jdbcType="INTEGER" />
+    <result column="start_service_date" property="startServiceDate" jdbcType="TIMESTAMP" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
+    <result column="end_service_date" property="endServiceDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, username, password, phone, sex, authority
+    id, name, username, password, phone, sex, authority, start_service_date, balance, 
+    end_service_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fangdong.auth.model.FdUserExample" >
     select
@@ -107,10 +111,12 @@
   <insert id="insert" parameterType="com.fangdong.auth.model.FdUser" >
     insert into fd_user (id, name, username, 
       password, phone, sex, 
-      authority)
+      authority, start_service_date, balance, 
+      end_service_date)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
-      #{authority,jdbcType=INTEGER})
+      #{authority,jdbcType=INTEGER}, #{startServiceDate,jdbcType=TIMESTAMP}, #{balance,jdbcType=INTEGER}, 
+      #{endServiceDate,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.fangdong.auth.model.FdUser" >
     insert into fd_user
@@ -136,6 +142,15 @@
       <if test="authority != null" >
         authority,
       </if>
+      <if test="startServiceDate != null" >
+        start_service_date,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="endServiceDate != null" >
+        end_service_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -158,6 +173,15 @@
       </if>
       <if test="authority != null" >
         #{authority,jdbcType=INTEGER},
+      </if>
+      <if test="startServiceDate != null" >
+        #{startServiceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="endServiceDate != null" >
+        #{endServiceDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -191,6 +215,15 @@
       <if test="record.authority != null" >
         authority = #{record.authority,jdbcType=INTEGER},
       </if>
+      <if test="record.startServiceDate != null" >
+        start_service_date = #{record.startServiceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.balance != null" >
+        balance = #{record.balance,jdbcType=INTEGER},
+      </if>
+      <if test="record.endServiceDate != null" >
+        end_service_date = #{record.endServiceDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -204,7 +237,10 @@
       password = #{record.password,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
-      authority = #{record.authority,jdbcType=INTEGER}
+      authority = #{record.authority,jdbcType=INTEGER},
+      start_service_date = #{record.startServiceDate,jdbcType=TIMESTAMP},
+      balance = #{record.balance,jdbcType=INTEGER},
+      end_service_date = #{record.endServiceDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -230,6 +266,15 @@
       <if test="authority != null" >
         authority = #{authority,jdbcType=INTEGER},
       </if>
+      <if test="startServiceDate != null" >
+        start_service_date = #{startServiceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="endServiceDate != null" >
+        end_service_date = #{endServiceDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -240,7 +285,10 @@
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
-      authority = #{authority,jdbcType=INTEGER}
+      authority = #{authority,jdbcType=INTEGER},
+      start_service_date = #{startServiceDate,jdbcType=TIMESTAMP},
+      balance = #{balance,jdbcType=INTEGER},
+      end_service_date = #{endServiceDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

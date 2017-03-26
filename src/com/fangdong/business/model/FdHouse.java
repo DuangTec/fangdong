@@ -31,6 +31,14 @@ public class FdHouse {
 
     private String facilities;
 
+    private Date updateTime;
+
+    private String houseStatus;
+
+    private String rentType;
+
+    private String features;
+
     public Integer getId() {
         return id;
     }
@@ -141,5 +149,37 @@ public class FdHouse {
 
     public void setFacilities(String facilities) {
         this.facilities = facilities == null ? null : facilities.trim();
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getHouseStatus() {
+        return houseStatus;
+    }
+
+    public void setHouseStatus(String houseStatus) {
+        this.houseStatus = houseStatus == null ? null : houseStatus.trim();
+    }
+
+    public String getRentType() {
+        return rentType;
+    }
+
+    public void setRentType(String rentType) {
+        this.rentType = rentType == null ? null : rentType.trim();
+    }
+
+    public String getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(String features) {
+        this.features = features == null ? null : features.trim();
     }
 }

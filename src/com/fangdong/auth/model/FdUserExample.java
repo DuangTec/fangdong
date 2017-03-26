@@ -1,8 +1,9 @@
 package com.fangdong.auth.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-//
+
 public class FdUserExample {
     protected String orderByClause;
 
@@ -394,6 +395,36 @@ public class FdUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andPhoneGreaterThan(String value) {
+            addCriterion("phone >", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("phone >=", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLessThan(String value) {
+            addCriterion("phone <", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLessThanOrEqualTo(String value) {
+            addCriterion("phone <=", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneLike(String value) {
+            addCriterion("phone like", value, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotLike(String value) {
+            addCriterion("phone not like", value, "phone");
+            return (Criteria) this;
+        }
+
         public Criteria andPhoneIn(List<String> values) {
             addCriterion("phone in", values, "phone");
             return (Criteria) this;
@@ -401,6 +432,16 @@ public class FdUserExample {
 
         public Criteria andPhoneNotIn(List<String> values) {
             addCriterion("phone not in", values, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneBetween(String value1, String value2) {
+            addCriterion("phone between", value1, value2, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andPhoneNotBetween(String value1, String value2) {
+            addCriterion("phone not between", value1, value2, "phone");
             return (Criteria) this;
         }
 
@@ -531,6 +572,186 @@ public class FdUserExample {
 
         public Criteria andAuthorityNotBetween(Integer value1, Integer value2) {
             addCriterion("authority not between", value1, value2, "authority");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateIsNull() {
+            addCriterion("start_service_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateIsNotNull() {
+            addCriterion("start_service_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateEqualTo(Date value) {
+            addCriterion("start_service_date =", value, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateNotEqualTo(Date value) {
+            addCriterion("start_service_date <>", value, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateGreaterThan(Date value) {
+            addCriterion("start_service_date >", value, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("start_service_date >=", value, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateLessThan(Date value) {
+            addCriterion("start_service_date <", value, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateLessThanOrEqualTo(Date value) {
+            addCriterion("start_service_date <=", value, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateIn(List<Date> values) {
+            addCriterion("start_service_date in", values, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateNotIn(List<Date> values) {
+            addCriterion("start_service_date not in", values, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateBetween(Date value1, Date value2) {
+            addCriterion("start_service_date between", value1, value2, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartServiceDateNotBetween(Date value1, Date value2) {
+            addCriterion("start_service_date not between", value1, value2, "startServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIsNull() {
+            addCriterion("balance is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIsNotNull() {
+            addCriterion("balance is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceEqualTo(Integer value) {
+            addCriterion("balance =", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotEqualTo(Integer value) {
+            addCriterion("balance <>", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceGreaterThan(Integer value) {
+            addCriterion("balance >", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceGreaterThanOrEqualTo(Integer value) {
+            addCriterion("balance >=", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceLessThan(Integer value) {
+            addCriterion("balance <", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceLessThanOrEqualTo(Integer value) {
+            addCriterion("balance <=", value, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceIn(List<Integer> values) {
+            addCriterion("balance in", values, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotIn(List<Integer> values) {
+            addCriterion("balance not in", values, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceBetween(Integer value1, Integer value2) {
+            addCriterion("balance between", value1, value2, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andBalanceNotBetween(Integer value1, Integer value2) {
+            addCriterion("balance not between", value1, value2, "balance");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateIsNull() {
+            addCriterion("end_service_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateIsNotNull() {
+            addCriterion("end_service_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateEqualTo(Date value) {
+            addCriterion("end_service_date =", value, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateNotEqualTo(Date value) {
+            addCriterion("end_service_date <>", value, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateGreaterThan(Date value) {
+            addCriterion("end_service_date >", value, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("end_service_date >=", value, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateLessThan(Date value) {
+            addCriterion("end_service_date <", value, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateLessThanOrEqualTo(Date value) {
+            addCriterion("end_service_date <=", value, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateIn(List<Date> values) {
+            addCriterion("end_service_date in", values, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateNotIn(List<Date> values) {
+            addCriterion("end_service_date not in", values, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateBetween(Date value1, Date value2) {
+            addCriterion("end_service_date between", value1, value2, "endServiceDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndServiceDateNotBetween(Date value1, Date value2) {
+            addCriterion("end_service_date not between", value1, value2, "endServiceDate");
             return (Criteria) this;
         }
     }

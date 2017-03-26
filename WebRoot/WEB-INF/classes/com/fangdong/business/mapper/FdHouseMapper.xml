@@ -16,6 +16,10 @@
     <result column="hall" property="hall" jdbcType="INTEGER" />
     <result column="room" property="room" jdbcType="INTEGER" />
     <result column="facilities" property="facilities" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
+    <result column="rent_type" property="rentType" jdbcType="VARCHAR" />
+    <result column="features" property="features" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap type="com.fangdong.business.model.HouseVo" id="VoResultMap">
     <id column="id" property="id" jdbcType="INTEGER" />
@@ -36,6 +40,10 @@
     <result column="district" property="district" jdbcType="VARCHAR"/>
     <result column="owner" property="owner" jdbcType="VARCHAR" />
     <result column="facilities" property="facilities" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
+    <result column="rent_type" property="rentType" jdbcType="VARCHAR" />
+    <result column="features" property="features" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -97,7 +105,8 @@
   </sql>
   <sql id="Base_Column_List" >
     id, owner_id, create_date, size, title, house_detail, address, property_rights, house_type, 
-    rent_price, region_id, hall, room, facilities
+    rent_price, region_id, hall, room, facilities, update_time, house_status, rent_type, 
+    features
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fangdong.business.model.FdHouseExample" >
     select
@@ -113,16 +122,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from fd_house
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
+   <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
   	select 
     h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.property_rights, h.title,
-    h.house_type, h.rent_price, h.region_id,h.facilities,r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city',
+    h.house_type, h.rent_price, h.region_id,h.facilities,h.update_time, h.house_status, h.rent_type, 
+    h.features, r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city',
     u.username as 'owner'
     from fd_house h 
     left join fd_user u on h.owner_id=u.id
@@ -131,7 +141,7 @@
     left join fd_region r3 on r2.parent_reg_id=r3.id
     where h.id=#{id}
   </select>
-    <select id="selectAllHouseVo" resultMap="VoResultMap">
+  <select id="selectAllHouseVo" resultMap="VoResultMap">
 	SELECT
 	h.id,
 	h.owner_id,
@@ -147,6 +157,10 @@
 	h.region_id,
 	h.title,
 	h.facilities,
+	h.update_time, 
+	h.house_status, 
+	h.rent_type, 
+    h.features,
 	u.username AS 'owner',
 	r.region_name AS 'area'
 	FROM
@@ -311,17 +325,21 @@
       size, title, house_detail, 
       address, property_rights, house_type, 
       rent_price, region_id, hall, 
-      room, facilities)
+      room, facilities, update_time, 
+      house_status, rent_type, features
+      )
     values (#{id,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, 
       #{size,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{houseDetail,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{propertyRights,jdbcType=INTEGER}, #{houseType,jdbcType=VARCHAR}, 
       #{rentPrice,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{hall,jdbcType=INTEGER}, 
-      #{room,jdbcType=INTEGER}, #{facilities,jdbcType=VARCHAR})
+      #{room,jdbcType=INTEGER}, #{facilities,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{houseStatus,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.fangdong.business.model.FdHouse" >
-  <selectKey resultType="int" order="AFTER" keyProperty="id">
-SELECT LAST_INSERT_ID()
-</selectKey>
+    <selectKey resultType="int" order="AFTER" keyProperty="id">
+	SELECT LAST_INSERT_ID()
+	</selectKey>
     insert into fd_house
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -366,6 +384,18 @@ SELECT LAST_INSERT_ID()
       <if test="facilities != null" >
         facilities,
       </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="houseStatus != null" >
+        house_status,
+      </if>
+      <if test="rentType != null" >
+        rent_type,
+      </if>
+      <if test="features != null" >
+        features,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -409,6 +439,18 @@ SELECT LAST_INSERT_ID()
       </if>
       <if test="facilities != null" >
         #{facilities,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="houseStatus != null" >
+        #{houseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="rentType != null" >
+        #{rentType,jdbcType=VARCHAR},
+      </if>
+      <if test="features != null" >
+        #{features,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -463,6 +505,18 @@ SELECT LAST_INSERT_ID()
       <if test="record.facilities != null" >
         facilities = #{record.facilities,jdbcType=VARCHAR},
       </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.houseStatus != null" >
+        house_status = #{record.houseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rentType != null" >
+        rent_type = #{record.rentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.features != null" >
+        features = #{record.features,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -483,7 +537,11 @@ SELECT LAST_INSERT_ID()
       region_id = #{record.regionId,jdbcType=INTEGER},
       hall = #{record.hall,jdbcType=INTEGER},
       room = #{record.room,jdbcType=INTEGER},
-      facilities = #{record.facilities,jdbcType=VARCHAR}
+      facilities = #{record.facilities,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      house_status = #{record.houseStatus,jdbcType=VARCHAR},
+      rent_type = #{record.rentType,jdbcType=VARCHAR},
+      features = #{record.features,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -530,6 +588,18 @@ SELECT LAST_INSERT_ID()
       <if test="facilities != null" >
         facilities = #{facilities,jdbcType=VARCHAR},
       </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="houseStatus != null" >
+        house_status = #{houseStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="rentType != null" >
+        rent_type = #{rentType,jdbcType=VARCHAR},
+      </if>
+      <if test="features != null" >
+        features = #{features,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -547,7 +617,11 @@ SELECT LAST_INSERT_ID()
       region_id = #{regionId,jdbcType=INTEGER},
       hall = #{hall,jdbcType=INTEGER},
       room = #{room,jdbcType=INTEGER},
-      facilities = #{facilities,jdbcType=VARCHAR}
+      facilities = #{facilities,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      house_status = #{houseStatus,jdbcType=VARCHAR},
+      rent_type = #{rentType,jdbcType=VARCHAR},
+      features = #{features,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

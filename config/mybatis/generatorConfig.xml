@@ -21,13 +21,13 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.fangdong.business.model"
+		<javaModelGenerator targetPackage="com.fangdong.auth.model"
 			targetProject=".\src">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.fangdong.business.mapper1"
+		<sqlMapGenerator targetPackage="com.fangdong.auth.mapper1"
 			targetProject=".\src">
 			<property name="enableSubPackages" value="true" />	
 		</sqlMapGenerator>
@@ -38,7 +38,7 @@
 		</javaClientGenerator> -->
 
 		
-		<table tableName="fd_house"></table>
+		<table tableName="fd_user"></table>
 
 	</context>
 </generatorConfiguration>
