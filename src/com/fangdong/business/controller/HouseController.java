@@ -65,15 +65,15 @@ public class HouseController {
 		int cityId = Integer.parseInt(regionCode);
 		List<FdRegion> fdRegionResult = regionService.getChildren(regionCode);
 
-		int regionId=Integer.parseInt(regionCode);
+		int regionId = Integer.parseInt(regionCode);
 		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
 
 		// 检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
 		String type = request.getParameter("type");
 		if ((type != null) && (type.equals("fuzzySearch"))) {
 			String key = request.getParameter("index-search");
-			List<HouseVo> houseList = houseService.fuzzySearch(regionId,key);
-			mov.addObject("houseList",houseList);
+			List<HouseVo> houseList = houseService.fuzzySearch(regionId, key);
+			mov.addObject("houseList", houseList);
 
 			return mov;
 		}
@@ -131,16 +131,15 @@ public class HouseController {
 			}
 		}
 
-
-		//按参数搜索，并添加结果到视图
-		List<HouseVo> houseList = houseService.getHouseList(regionId,param);
+		// 按参数搜索，并添加结果到视图
+		List<HouseVo> houseList = houseService.getHouseList(regionId, param);
 		mov.addObject("houseList", houseList);
 
 		// 将上一次的搜索参数返回到响应页面
 		mov.addObject("district", district);
 		mov.addObject("rentprice", rentprice);
 		mov.addObject("housetype", housetype);
-		
+
 		return mov;
 	}
 
@@ -170,7 +169,7 @@ public class HouseController {
 	/**
 	 * 已在进入createHouse页面时检查登陆情况
 	 */
-	
+
 	@RequiresAuthentication
 	@RequestMapping("/house/createHouseSubmit.action")
 	public ModelAndView createHouseSubmit(HttpServletRequest request, HttpSession session) {
@@ -181,7 +180,7 @@ public class HouseController {
 		String title = request.getParameter("title");
 		int rentprice = Integer.parseInt(request.getParameter("rentprice"));
 		int room = Integer.parseInt(request.getParameter("room"));
-		int hall=Integer.parseInt(request.getParameter("hall"));
+		int hall = Integer.parseInt(request.getParameter("hall"));
 		int size = Integer.parseInt(request.getParameter("size"));
 		String address = request.getParameter("address");
 		String houseDetail = request.getParameter("houseDetail");
@@ -205,7 +204,7 @@ public class HouseController {
 		house.setCreateDate(new Date());
 
 		Subject currentUser = SecurityUtils.getSubject();
-		int ownerId=((FdUser)currentUser.getPrincipal()).getId();
+		int ownerId = ((FdUser) currentUser.getPrincipal()).getId();
 		house.setOwnerId(ownerId);
 		try {
 			houseService.insertHouse(house);
@@ -216,17 +215,17 @@ public class HouseController {
 			return mov;
 		}
 
-		//存储上传的文件到本地
+		// 存储上传的文件到本地
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
 				request.getSession().getServletContext());
-		
+
 		// 判断 request 是否有文件上传,即多部分请求
 		if (multipartResolver.isMultipart(request)) {
 			// 转换成多部分request
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 			List<MultipartFile> fileList = multiRequest.getFiles("file");
 			try {
-				pictureService.savePicByHouseId(request.getServletContext().getRealPath("/"),fileList, house.getId());
+				pictureService.savePicByHouseId(request.getServletContext().getRealPath("/"), fileList, house.getId());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -234,131 +233,127 @@ public class HouseController {
 
 		return mov;
 	}
-	
+
 	@RequestMapping("/house/updateHouse.action")
-	public ModelAndView updateHouse(@RequestParam(value="id",required=true)int id){
-		ModelAndView mov=  new ModelAndView("/house/createHouse.jsp");
+	public ModelAndView updateHouse(@RequestParam(value = "id", required = true) int id) {
+		ModelAndView mov = new ModelAndView("/house/createHouse.jsp");
 		HouseVo houseVo = houseService.getHouseVoById(id);
-		//根据houseid去查询图片
+		// 根据houseid去查询图片
 		List<FdPicture> picList = pictureService.getPicsByHouseId(id);
-		
-		mov.addObject("type","update");
-		mov.addObject("houseId",id);
-		mov.addObject("house",houseVo);
-		mov.addObject("picList",picList);
+
+		mov.addObject("type", "update");
+		mov.addObject("houseId", id);
+		mov.addObject("house", houseVo);
+		mov.addObject("picList", picList);
 		return mov;
 	}
-	
+
 	@RequestMapping("/house/updateHouseSubmit.action")
-	public ModelAndView updateHouseSubmit(HttpServletRequest request){
+	public ModelAndView updateHouseSubmit(HttpServletRequest request) {
 		// 存储house数据
-				ModelAndView mov = new ModelAndView();
-				mov.setViewName("redirect:/userinfo.do");
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("redirect:/userinfo.do");
 
-				int houseId = Integer.parseInt(request.getParameter("houseId"));
-				String title = request.getParameter("title");
-				int rentprice = Integer.parseInt(request.getParameter("rentprice"));
-				int room = Integer.parseInt(request.getParameter("room"));
-				int hall=Integer.parseInt(request.getParameter("hall"));
-				int size = Integer.parseInt(request.getParameter("size"));
-				String address = request.getParameter("address");
-				String houseDetail = request.getParameter("houseDetail");
-				int regionId = Integer.parseInt(request.getParameter("areaId"));
-				String facility[] = request.getParameterValues("facility");
+		int houseId = Integer.parseInt(request.getParameter("houseId"));
+		String title = request.getParameter("title");
+		int rentprice = Integer.parseInt(request.getParameter("rentprice"));
+		int room = Integer.parseInt(request.getParameter("room"));
+		int hall = Integer.parseInt(request.getParameter("hall"));
+		int size = Integer.parseInt(request.getParameter("size"));
+		String address = request.getParameter("address");
+		String houseDetail = request.getParameter("houseDetail");
+		int regionId = Integer.parseInt(request.getParameter("areaId"));
+		String facility[] = request.getParameterValues("facility");
 
-				FdHouse house = new FdHouse();
-				house.setId(houseId);
-				house.setTitle(title);
-				house.setRentPrice(rentprice);
-				house.setRoom(room);
-				house.setHall(hall);
-				house.setSize(size);
-				house.setAddress(address);
-				house.setHouseDetail(houseDetail);
-				house.setRegionId(regionId);
-				StringBuilder sb = new StringBuilder();
-				for (String f : facility) {
-					sb.append(f + ",");
-				}
-				house.setFacilities(sb.substring(0, sb.length() - 1));
-				house.setCreateDate(new Date());
+		FdHouse house = new FdHouse();
+		house.setId(houseId);
+		house.setTitle(title);
+		house.setRentPrice(rentprice);
+		house.setRoom(room);
+		house.setHall(hall);
+		house.setSize(size);
+		house.setAddress(address);
+		house.setHouseDetail(houseDetail);
+		house.setRegionId(regionId);
+		StringBuilder sb = new StringBuilder();
+		for (String f : facility) {
+			sb.append(f + ",");
+		}
+		house.setFacilities(sb.substring(0, sb.length() - 1));
+		house.setCreateDate(new Date());
 
-				Subject currentUser = SecurityUtils.getSubject();
-				int ownerId=((FdUser)currentUser.getPrincipal()).getId();
-				house.setOwnerId(ownerId);
-				
-				try {
-					houseService.updateHouseById(house);
-				} catch (SQLConnectionFailException e) {
-					e.printStackTrace();
-				}
-				
-				//存储上传的文件到本地
-				CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
-						request.getSession().getServletContext());
-				
-				// 判断 request 是否有文件上传,即多部分请求
-				if (multipartResolver.isMultipart(request)) {
-					// 转换成多部分request
-					MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-					List<MultipartFile> fileList = multiRequest.getFiles("file");
-					//先删除原先的图片,如果没有新文件上传则不删除
-					if((fileList.size()>0)&&(fileList.get(0).getSize()>0)){
-						pictureService.deletePicByHouseId(houseId);
-					//在上传新的图片
-					try {
-						pictureService.savePicByHouseId(request.getServletContext().getRealPath("/"),fileList, house.getId());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					}
-				}
-				return mov;
-	}
-/*
-	/**
-	 * 普通用户只能删除自己建的房屋
-	 * 
-	 * @param request
-	 * @return
-	 
-	@RequiresAuthentication
-	@RequestMapping("/deleteHouseSubmit")
-	public ModelAndView deleteHouseSubmit(HttpServletRequest request) {
-		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println(request.getRequestURI());
-		ModelAndView mov = new ModelAndView("/house");
+		Subject currentUser = SecurityUtils.getSubject();
+		int ownerId = ((FdUser) currentUser.getPrincipal()).getId();
+		house.setOwnerId(ownerId);
 
 		try {
-			houseService.deleteHouseById(id);
-		} catch (Exception e) {
+			houseService.updateHouseById(house);
+		} catch (SQLConnectionFailException e) {
 			e.printStackTrace();
-			mov.addObject("resultMes", "fail");
-			mov.setViewName("messagePage.jsp");
-			return mov;
+		}
+
+		// 存储上传的文件到本地
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+				request.getSession().getServletContext());
+
+		// 判断 request 是否有文件上传,即多部分请求
+		if (multipartResolver.isMultipart(request)) {
+			// 转换成多部分request
+			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+			List<MultipartFile> fileList = multiRequest.getFiles("file");
+			// 先删除原先的图片,如果没有新文件上传则不删除
+			if ((fileList.size() > 0) && (fileList.get(0).getSize() > 0)) {
+				pictureService.deletePicByHouseId(houseId);
+				// 在上传新的图片
+				try {
+					pictureService.savePicByHouseId(request.getServletContext().getRealPath("/"), fileList,
+							house.getId());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return mov;
+	}
 
-	}*/
-	//用户info删除房屋
+	/*
+	 * /** 普通用户只能删除自己建的房屋
+	 * 
+	 * @param request
+	 * 
+	 * @return
+	 * 
+	 * @RequiresAuthentication
+	 * 
+	 * @RequestMapping("/deleteHouseSubmit") public ModelAndView
+	 * deleteHouseSubmit(HttpServletRequest request) { int id =
+	 * Integer.parseInt(request.getParameter("id"));
+	 * System.out.println(request.getRequestURI()); ModelAndView mov = new
+	 * ModelAndView("/house");
+	 * 
+	 * try { houseService.deleteHouseById(id); } catch (Exception e) {
+	 * e.printStackTrace(); mov.addObject("resultMes", "fail");
+	 * mov.setViewName("messagePage.jsp"); return mov; } return mov;
+	 * 
+	 * }
+	 */
+	// 用户info删除房屋
 	@RequestMapping("/deleteHome.action")
-	public ModelAndView deleteHome(HttpServletRequest request){
-		int id = Integer.parseInt(request.getParameter("id"));
+	public ModelAndView deleteHome(@RequestParam(value = "id", required = true) int id) {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("redirect:/userinfo.do");
 		try {
 			houseService.deleteHouseById(id);
 		} catch (Exception e) {
-			mov.addObject("error","delete fail");
+			mov.addObject("error", "delete fail");
 			e.printStackTrace();
 		}
-		
+
 		return mov;
 	}
 
 	@RequestMapping("/admin/deleteHouse.action")
-	public ModelAndView deleteHouse(HttpServletRequest request) {
-		int id = Integer.parseInt(request.getParameter("id"));
+	public ModelAndView deleteHouse(@RequestParam(value = "id", required = true) int id) {
 		ModelAndView mov = new ModelAndView();
 		mov.setViewName("redirect:/admin/house_manage.do");
 		boolean deleteflag = false;
@@ -375,14 +370,13 @@ public class HouseController {
 	}
 
 	@RequestMapping("/admin/editHouse.do")
-	public ModelAndView editHouse(HttpServletRequest request) {
-		String type = request.getParameter("type");
+	public ModelAndView editHouse(@RequestParam(value = "type", required = false) String type,
+			@RequestParam(value = "id", required = false) int id) {
 		ModelAndView mov = new ModelAndView("/admin/house_manage_edit.jsp");
 		if (type != null && type.equals("create")) {
 			mov.addObject("type", "create");
 			return mov;
 		} else {
-			int id = Integer.parseInt(request.getParameter("id"));
 			try {
 				HouseVo hv = houseService.getHouseVoById(id);
 				// mov.addObject("type","update");
