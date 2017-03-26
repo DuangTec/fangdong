@@ -21,24 +21,27 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.fangdong.auth.model"
+		<javaModelGenerator targetPackage="com.fangdong.business.model"
 			targetProject=".\src">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.fangdong.auth.mapper1"
+		<sqlMapGenerator targetPackage="com.fangdong.business.mapper"
 			targetProject=".\src">
 			<property name="enableSubPackages" value="true" />	
 		</sqlMapGenerator>
 
-<!-- 		<javaClientGenerator type="XMLMAPPER"
+ 		<javaClientGenerator type="XMLMAPPER"
 			targetPackage="com.fangdong.business.mapper" targetProject=".\src">
 			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator> -->
+		</javaClientGenerator>
 
 		
-		<table tableName="fd_user"></table>
+		<table tableName="fd_hot_region"></table>
+		<table tableName="fd_subway"></table>
+		<table tableName="fd_subway-region"></table>
+		
 
 	</context>
 </generatorConfiguration>
