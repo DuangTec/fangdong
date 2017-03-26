@@ -1291,6 +1291,126 @@ public class FdHouseExample {
             addCriterion("features not between", value1, value2, "features");
             return (Criteria) this;
         }
+
+        public Criteria andStartTopTimeIsNull() {
+            addCriterion("start_top_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeIsNotNull() {
+            addCriterion("start_top_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeEqualTo(Date value) {
+            addCriterion("start_top_time =", value, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeNotEqualTo(Date value) {
+            addCriterion("start_top_time <>", value, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeGreaterThan(Date value) {
+            addCriterion("start_top_time >", value, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("start_top_time >=", value, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeLessThan(Date value) {
+            addCriterion("start_top_time <", value, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeLessThanOrEqualTo(Date value) {
+            addCriterion("start_top_time <=", value, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeIn(List<Date> values) {
+            addCriterion("start_top_time in", values, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeNotIn(List<Date> values) {
+            addCriterion("start_top_time not in", values, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeBetween(Date value1, Date value2) {
+            addCriterion("start_top_time between", value1, value2, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andStartTopTimeNotBetween(Date value1, Date value2) {
+            addCriterion("start_top_time not between", value1, value2, "startTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeIsNull() {
+            addCriterion("end_top_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeIsNotNull() {
+            addCriterion("end_top_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeEqualTo(Date value) {
+            addCriterion("end_top_time =", value, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeNotEqualTo(Date value) {
+            addCriterion("end_top_time <>", value, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeGreaterThan(Date value) {
+            addCriterion("end_top_time >", value, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("end_top_time >=", value, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeLessThan(Date value) {
+            addCriterion("end_top_time <", value, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeLessThanOrEqualTo(Date value) {
+            addCriterion("end_top_time <=", value, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeIn(List<Date> values) {
+            addCriterion("end_top_time in", values, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeNotIn(List<Date> values) {
+            addCriterion("end_top_time not in", values, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeBetween(Date value1, Date value2) {
+            addCriterion("end_top_time between", value1, value2, "endTopTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndTopTimeNotBetween(Date value1, Date value2) {
+            addCriterion("end_top_time not between", value1, value2, "endTopTime");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

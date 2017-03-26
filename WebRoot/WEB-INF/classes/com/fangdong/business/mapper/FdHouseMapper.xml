@@ -20,6 +20,8 @@
     <result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
     <result column="rent_type" property="rentType" jdbcType="VARCHAR" />
     <result column="features" property="features" jdbcType="VARCHAR" />
+    <result column="start_top_time" property="startTopTime" jdbcType="TIMESTAMP" />
+    <result column="end_top_time" property="endTopTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <resultMap type="com.fangdong.business.model.HouseVo" id="VoResultMap">
     <id column="id" property="id" jdbcType="INTEGER" />
@@ -44,6 +46,8 @@
     <result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
     <result column="rent_type" property="rentType" jdbcType="VARCHAR" />
     <result column="features" property="features" jdbcType="VARCHAR" />
+    <result column="start_top_time" property="startTopTime" jdbcType="TIMESTAMP" />
+    <result column="end_top_time" property="endTopTime" jdbcType="TIMESTAMP" />    
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -106,7 +110,7 @@
   <sql id="Base_Column_List" >
     id, owner_id, create_date, size, title, house_detail, address, property_rights, house_type, 
     rent_price, region_id, hall, room, facilities, update_time, house_status, rent_type, 
-    features
+    features, start_top_time, end_top_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fangdong.business.model.FdHouseExample" >
     select
@@ -128,7 +132,7 @@
     from fd_house
     where id = #{id,jdbcType=INTEGER}
   </select>
-   <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
+  <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
   	select 
     h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.property_rights, h.title,
     h.house_type, h.rent_price, h.region_id,h.facilities,h.update_time, h.house_status, h.rent_type, 
@@ -326,20 +330,17 @@
       address, property_rights, house_type, 
       rent_price, region_id, hall, 
       room, facilities, update_time, 
-      house_status, rent_type, features
-      )
+      house_status, rent_type, features, 
+      start_top_time, end_top_time)
     values (#{id,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, 
       #{size,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{houseDetail,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{propertyRights,jdbcType=INTEGER}, #{houseType,jdbcType=VARCHAR}, 
       #{rentPrice,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{hall,jdbcType=INTEGER}, 
       #{room,jdbcType=INTEGER}, #{facilities,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{houseStatus,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR}
-      )
+      #{houseStatus,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR}, 
+      #{startTopTime,jdbcType=TIMESTAMP}, #{endTopTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.fangdong.business.model.FdHouse" >
-    <selectKey resultType="int" order="AFTER" keyProperty="id">
-	SELECT LAST_INSERT_ID()
-	</selectKey>
     insert into fd_house
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -396,6 +397,12 @@
       <if test="features != null" >
         features,
       </if>
+      <if test="startTopTime != null" >
+        start_top_time,
+      </if>
+      <if test="endTopTime != null" >
+        end_top_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -451,6 +458,12 @@
       </if>
       <if test="features != null" >
         #{features,jdbcType=VARCHAR},
+      </if>
+      <if test="startTopTime != null" >
+        #{startTopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTopTime != null" >
+        #{endTopTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -517,6 +530,12 @@
       <if test="record.features != null" >
         features = #{record.features,jdbcType=VARCHAR},
       </if>
+      <if test="record.startTopTime != null" >
+        start_top_time = #{record.startTopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTopTime != null" >
+        end_top_time = #{record.endTopTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -541,7 +560,9 @@
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       house_status = #{record.houseStatus,jdbcType=VARCHAR},
       rent_type = #{record.rentType,jdbcType=VARCHAR},
-      features = #{record.features,jdbcType=VARCHAR}
+      features = #{record.features,jdbcType=VARCHAR},
+      start_top_time = #{record.startTopTime,jdbcType=TIMESTAMP},
+      end_top_time = #{record.endTopTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -600,6 +621,12 @@
       <if test="features != null" >
         features = #{features,jdbcType=VARCHAR},
       </if>
+      <if test="startTopTime != null" >
+        start_top_time = #{startTopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTopTime != null" >
+        end_top_time = #{endTopTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -621,7 +648,9 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       house_status = #{houseStatus,jdbcType=VARCHAR},
       rent_type = #{rentType,jdbcType=VARCHAR},
-      features = #{features,jdbcType=VARCHAR}
+      features = #{features,jdbcType=VARCHAR},
+      start_top_time = #{startTopTime,jdbcType=TIMESTAMP},
+      end_top_time = #{endTopTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

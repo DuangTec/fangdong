@@ -32,14 +32,12 @@
 			<property name="enableSubPackages" value="true" />	
 		</sqlMapGenerator>
 
- 		<javaClientGenerator type="XMLMAPPER"
+	<javaClientGenerator type="XMLMAPPER"
 			targetPackage="com.fangdong.business.mapper" targetProject=".\src">
 			<property name="enableSubPackages" value="true" />
-		</javaClientGenerator>
+		</javaClientGenerator> 
 
 		
-		<table tableName="fd_hot_region"></table>
-		<table tableName="fd_subway"></table>
 		<table tableName="fd_subway-region"></table>
 		
 

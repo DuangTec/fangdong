@@ -39,6 +39,10 @@ public class FdHouse {
 
     private String features;
 
+    private Date startTopTime;
+
+    private Date endTopTime;
+
     public Integer getId() {
         return id;
     }
@@ -181,5 +185,21 @@ public class FdHouse {
 
     public void setFeatures(String features) {
         this.features = features == null ? null : features.trim();
+    }
+
+    public Date getStartTopTime() {
+        return startTopTime;
+    }
+
+    public void setStartTopTime(Date startTopTime) {
+        this.startTopTime = startTopTime;
+    }
+
+    public Date getEndTopTime() {
+        return endTopTime;
+    }
+
+    public void setEndTopTime(Date endTopTime) {
+        this.endTopTime = endTopTime;
     }
 }

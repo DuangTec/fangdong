@@ -1,7 +1,5 @@
 package com.fangdong.auth.model;
 
-import java.util.Date;
-
 public class FdUser {
     private Integer id;
 
@@ -17,11 +15,7 @@ public class FdUser {
 
     private Integer authority;
 
-    private Date startServiceDate;
-
     private Integer balance;
-
-    private Date endServiceDate;
 
     public Integer getId() {
         return id;
@@ -79,27 +73,11 @@ public class FdUser {
         this.authority = authority;
     }
 
-    public Date getStartServiceDate() {
-        return startServiceDate;
-    }
-
-    public void setStartServiceDate(Date startServiceDate) {
-        this.startServiceDate = startServiceDate;
-    }
-
     public Integer getBalance() {
         return balance;
     }
 
     public void setBalance(Integer balance) {
         this.balance = balance;
-    }
-
-    public Date getEndServiceDate() {
-        return endServiceDate;
-    }
-
-    public void setEndServiceDate(Date endServiceDate) {
-        this.endServiceDate = endServiceDate;
     }
 }
