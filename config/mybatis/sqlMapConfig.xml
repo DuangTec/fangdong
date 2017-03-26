@@ -4,6 +4,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <!-- 全局变量，按需添加 -->
+	<settings>
+	<setting name="logImpl" value="LOG4j"></setting>
+	</settings>
 
 <!-- 批量扫描别名 -->
 	<typeAliases>
