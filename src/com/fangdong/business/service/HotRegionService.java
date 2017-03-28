@@ -2,10 +2,10 @@ package com.fangdong.business.service;
 
 import java.util.List;
 
-import com.fangdong.business.model.FdHotRegion;
+import com.fangdong.business.model.HotRegionVo;
 
 public interface HotRegionService {
 
-	public List<FdHotRegion> getAllHotRegion();
+	public List<HotRegionVo> getAllHotRegion();
 }
 

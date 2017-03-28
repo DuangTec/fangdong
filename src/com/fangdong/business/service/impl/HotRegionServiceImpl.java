@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fangdong.business.mapper.FdHotRegionMapper;
 import com.fangdong.business.model.FdHotRegion;
+import com.fangdong.business.model.HotRegionVo;
 import com.fangdong.business.service.HotRegionService;
 @Service
 public class HotRegionServiceImpl implements HotRegionService {
@@ -15,7 +16,7 @@ public class HotRegionServiceImpl implements HotRegionService {
 	@Resource
 	private FdHotRegionMapper HotRegionMapper;
 	
-	public List<FdHotRegion> getAllHotRegion() {
+	public List<HotRegionVo> getAllHotRegion() {
 		// TODO Auto-generated method stub
 		return HotRegionMapper.selectAllHotRegion();
 	}

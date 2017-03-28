@@ -87,9 +87,15 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAllSubway"  resultMap="BaseResultMap">
-    select 
-    from fd_subway
-    where id = #{id,jdbcType=INTEGER}
+	SELECT
+	s.id,
+	s.subway_name,
+	sr.regionId as 'regionId',
+	r.region_name as 'regionName'
+	FROM
+	fd_subway s
+	left join fd_subway_region sr on s.id=sr.subwayId
+	left join fd_region r on sr.regionId=r.id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fd_subway

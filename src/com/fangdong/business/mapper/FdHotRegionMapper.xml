@@ -88,6 +88,17 @@
     from fd_hot_region
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAllHotRegion"  resultMap="map">
+	SELECT
+	hr.hot_region_name,
+	hr.hot_region_type,
+	hr.id,
+	hr.region_id,
+	r.region_name as 'regionName'
+	FROM
+	fd_hot_region hr
+	left join fd_region r on hr.region_id=r.id
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fd_hot_region
     where id = #{id,jdbcType=INTEGER}
