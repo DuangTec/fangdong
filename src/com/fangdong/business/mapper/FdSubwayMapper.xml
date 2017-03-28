@@ -86,6 +86,11 @@
     from fd_subway
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAllSubway"  resultMap="BaseResultMap">
+    select 
+    from fd_subway
+    where id = #{id,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fd_subway
     where id = #{id,jdbcType=INTEGER}

@@ -17,6 +17,8 @@ public interface FdSubwayMapper {
     int insertSelective(FdSubway record);
 
     List<FdSubway> selectByExample(FdSubwayExample example);
+    
+    List<FdSubway> selectAllSubway();
 
     FdSubway selectByPrimaryKey(Integer id);
 

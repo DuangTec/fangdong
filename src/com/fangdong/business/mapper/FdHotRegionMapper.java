@@ -17,6 +17,8 @@ public interface FdHotRegionMapper {
     int insertSelective(FdHotRegion record);
 
     List<FdHotRegion> selectByExample(FdHotRegionExample example);
+    
+    List<FdHotRegion> selectAllHotRegion(); 
 
     FdHotRegion selectByPrimaryKey(Integer id);
 
