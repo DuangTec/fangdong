@@ -287,7 +287,8 @@
     left join fd_region r1 on h.region_id = r1.id
     left join fd_region r2 on r1.parent_reg_id=r2.id
     left join fd_region r3 on r2.parent_reg_id=r3.id
-    where r3.id=#{regionId}
+    where h.prior_approval=1 
+    and r3.id=#{regionId}
     limit 0,#{top};
   </select>
   <select id="selectGuessYouLike" parameterType="String" resultMap="VoResultMap">

@@ -38,7 +38,7 @@
 		</javaClientGenerator> 
 
 		
-		<table tableName="fd_subway-region"></table>
+		<table tableName="fd_subway_region"></table>
 		
 
 	</context>
