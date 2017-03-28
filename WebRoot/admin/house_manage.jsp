@@ -72,7 +72,7 @@
                         <td>${house.size}</td>
                         <td>${house.houseDetail}</td>
                         <td>${house.address}</td>
-                        <td>${house.propertyRights}</td>
+                        <td>${house.priorApproval}</td>
                         <td>${house.rentPrice}</td>
                         <td>${house.area}</td>
                         <td>${house.hall}室${house.room}厅</td>

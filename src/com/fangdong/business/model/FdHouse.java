@@ -17,7 +17,7 @@ public class FdHouse {
 
     private String address;
 
-    private Integer propertyRights;
+    private Integer priorApproval;
 
     private String houseType;
 
@@ -99,12 +99,12 @@ public class FdHouse {
         this.address = address == null ? null : address.trim();
     }
 
-    public Integer getPropertyRights() {
-        return propertyRights;
+    public Integer getPriorApproval() {
+        return priorApproval;
     }
 
-    public void setPropertyRights(Integer propertyRights) {
-        this.propertyRights = propertyRights;
+    public void setPriorApproval(Integer priorApproval) {
+        this.priorApproval = priorApproval;
     }
 
     public String getHouseType() {

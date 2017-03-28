@@ -137,7 +137,7 @@
 								<label for="input4" class="col-xs-2 control-label">产权年限</label>
 								<div class="col-xs-10">
 									<input type="number" class="form-control" id="input6"
-										name="propertyRights" value='${house.propertyRights}'>
+										name="priorApproval" value='${house.priorApproval}'>
 								</div>
 							</div>
 							<div class="form-group">

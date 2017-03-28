@@ -398,7 +398,7 @@ public class HouseController {
 		int size = Integer.parseInt(request.getParameter("size"));
 		String houseDetail = request.getParameter("houseDetail");
 		String address = request.getParameter("address");
-		int propertyRights = Integer.parseInt(request.getParameter("propertyRights"));
+		int priorApproval = Integer.parseInt(request.getParameter("priorApproval"));
 		int rentPrice = Integer.parseInt(request.getParameter("rentPrice"));
 		String facility[] = request.getParameterValues("facility");
 		int regionId = Integer.parseInt(request.getParameter("regionId"));
@@ -414,7 +414,7 @@ public class HouseController {
 		house.setSize(size);
 		house.setHouseDetail(houseDetail);
 		house.setAddress(address);
-		house.setPropertyRights(propertyRights);
+		house.setPriorApproval(priorApproval);
 		house.setRentPrice(rentPrice);
 		house.setRegionId(regionId);
 		house.setHouseType(houseType);

@@ -582,63 +582,63 @@ public class FdHouseExample {
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsIsNull() {
-            addCriterion("property_rights is null");
+        public Criteria andPriorApprovalIsIsNull() {
+            addCriterion("prior_approval is null");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsIsNotNull() {
-            addCriterion("property_rights is not null");
+        public Criteria andPriorApprovalNotNull() {
+            addCriterion("prior_approval is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsEqualTo(Integer value) {
-            addCriterion("property_rights =", value, "propertyRights");
+        public Criteria andPriorApprovalEqualTo(Integer value) {
+            addCriterion("prior_approval =", value, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsNotEqualTo(Integer value) {
-            addCriterion("property_rights <>", value, "propertyRights");
+        public Criteria andPriorApprovalNotEqualTo(Integer value) {
+            addCriterion("prior_approval <>", value, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsGreaterThan(Integer value) {
-            addCriterion("property_rights >", value, "propertyRights");
+        public Criteria andPriorApprovalGreaterThan(Integer value) {
+            addCriterion("prior_approval >", value, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsGreaterThanOrEqualTo(Integer value) {
-            addCriterion("property_rights >=", value, "propertyRights");
+        public Criteria andPriorApprovalGreaterThanOrEqualTo(Integer value) {
+            addCriterion("prior_approval >=", value, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsLessThan(Integer value) {
-            addCriterion("property_rights <", value, "propertyRights");
+        public Criteria andPriorApprovalLessThan(Integer value) {
+            addCriterion("prior_approval <", value, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsLessThanOrEqualTo(Integer value) {
-            addCriterion("property_rights <=", value, "propertyRights");
+        public Criteria andPriorApprovalLessThanOrEqualTo(Integer value) {
+            addCriterion("prior_approval <=", value, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsIn(List<Integer> values) {
-            addCriterion("property_rights in", values, "propertyRights");
+        public Criteria andPriorApprovalIn(List<Integer> values) {
+            addCriterion("prior_approval in", values, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsNotIn(List<Integer> values) {
-            addCriterion("property_rights not in", values, "propertyRights");
+        public Criteria andPriorApprovalNotIn(List<Integer> values) {
+            addCriterion("prior_approval not in", values, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsBetween(Integer value1, Integer value2) {
-            addCriterion("property_rights between", value1, value2, "propertyRights");
+        public Criteria andPriorApprovalBetween(Integer value1, Integer value2) {
+            addCriterion("prior_approval between", value1, value2, "priorApproval");
             return (Criteria) this;
         }
 
-        public Criteria andPropertyRightsNotBetween(Integer value1, Integer value2) {
-            addCriterion("property_rights not between", value1, value2, "propertyRights");
+        public Criteria andPriorApprovalNotBetween(Integer value1, Integer value2) {
+            addCriterion("prior_approval not between", value1, value2, "priorApproval");
             return (Criteria) this;
         }
 

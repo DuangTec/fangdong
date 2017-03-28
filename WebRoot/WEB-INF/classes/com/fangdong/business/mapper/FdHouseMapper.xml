@@ -9,7 +9,7 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="house_detail" property="houseDetail" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="property_rights" property="propertyRights" jdbcType="INTEGER" />
+    <result column="prior_approval" property="priorApproval" jdbcType="INTEGER" />
     <result column="house_type" property="houseType" jdbcType="VARCHAR" />
     <result column="rent_price" property="rentPrice" jdbcType="INTEGER" />
     <result column="region_id" property="regionId" jdbcType="INTEGER" />
@@ -31,7 +31,7 @@
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="house_detail" jdbcType="VARCHAR" property="houseDetail" />
     <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="property_rights" property="propertyRights" jdbcType="INTEGER" />
+    <result column="prior_approval" property="priorApproval" jdbcType="INTEGER" />
     <result column="house_type" property="houseType" jdbcType="VARCHAR" />
     <result column="hall" property="hall" jdbcType="INTEGER" />
     <result column="room" property="room" jdbcType="INTEGER" />    
@@ -108,7 +108,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, owner_id, create_date, size, title, house_detail, address, property_rights, house_type, 
+    id, owner_id, create_date, size, title, house_detail, address, prior_approval, house_type, 
     rent_price, region_id, hall, room, facilities, update_time, house_status, rent_type, 
     features, start_top_time, end_top_time
   </sql>
@@ -134,7 +134,7 @@
   </select>
   <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
   	select 
-    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.property_rights, h.title,
+    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.prior_approval, h.title,
     h.house_type, h.rent_price, h.region_id,h.facilities,h.update_time, h.house_status, h.rent_type, 
     h.features, r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city',
     u.username as 'owner'
@@ -155,7 +155,7 @@
 	h.room,
 	h.house_detail,
 	h.address,
-	h.property_rights,
+	h.prior_approval,
 	h.house_type,
 	h.rent_price,
 	h.region_id,
@@ -182,7 +182,7 @@
 	h.room,
 	h.house_detail,
 	h.address,
-	h.property_rights,
+	h.prior_approval,
 	h.house_type,
 	h.rent_price,
 	h.region_id,
@@ -206,7 +206,7 @@
 	h.room,
 	h.house_detail,
 	h.address,
-	h.property_rights,
+	h.prior_approval,
 	h.house_type,
 	h.rent_price,
 	h.region_id,
@@ -253,7 +253,7 @@
 	h.room,
 	h.house_detail,
 	h.address,
-	h.property_rights,
+	h.prior_approval,
 	h.title,
 	h.house_type,
 	h.rent_price,
@@ -280,7 +280,7 @@
   </select>
   <select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
   	select 
-    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail, h.address, h.property_rights, 
+    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail, h.address, h.prior_approval, 
     h.house_type, h.rent_price, h.region_id,r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city'
     ,h.title
     from fd_house h
@@ -300,7 +300,7 @@
 	h.room,
 	h.house_detail,
 	h.address,
-	h.property_rights,
+	h.prior_approval,
 	h.house_type,
 	h.rent_price,
 	h.region_id,
@@ -327,14 +327,14 @@
   <insert id="insert" parameterType="com.fangdong.business.model.FdHouse" >
     insert into fd_house (id, owner_id, create_date, 
       size, title, house_detail, 
-      address, property_rights, house_type, 
+      address, prior_approval, house_type, 
       rent_price, region_id, hall, 
       room, facilities, update_time, 
       house_status, rent_type, features, 
       start_top_time, end_top_time)
     values (#{id,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, 
       #{size,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{houseDetail,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{propertyRights,jdbcType=INTEGER}, #{houseType,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{priorApproval,jdbcType=INTEGER}, #{houseType,jdbcType=VARCHAR}, 
       #{rentPrice,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{hall,jdbcType=INTEGER}, 
       #{room,jdbcType=INTEGER}, #{facilities,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{houseStatus,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR}, 
@@ -364,8 +364,8 @@
       <if test="address != null" >
         address,
       </if>
-      <if test="propertyRights != null" >
-        property_rights,
+      <if test="priorApproval != null" >
+        prior_approval,
       </if>
       <if test="houseType != null" >
         house_type,
@@ -426,8 +426,8 @@
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="propertyRights != null" >
-        #{propertyRights,jdbcType=INTEGER},
+      <if test="priorApproval != null" >
+        #{priorApproval,jdbcType=INTEGER},
       </if>
       <if test="houseType != null" >
         #{houseType,jdbcType=VARCHAR},
@@ -497,8 +497,8 @@
       <if test="record.address != null" >
         address = #{record.address,jdbcType=VARCHAR},
       </if>
-      <if test="record.propertyRights != null" >
-        property_rights = #{record.propertyRights,jdbcType=INTEGER},
+      <if test="record.priorApproval != null" >
+        prior_approval = #{record.priorApproval,jdbcType=INTEGER},
       </if>
       <if test="record.houseType != null" >
         house_type = #{record.houseType,jdbcType=VARCHAR},
@@ -550,7 +550,7 @@
       title = #{record.title,jdbcType=VARCHAR},
       house_detail = #{record.houseDetail,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
-      property_rights = #{record.propertyRights,jdbcType=INTEGER},
+      prior_approval = #{record.priorApproval,jdbcType=INTEGER},
       house_type = #{record.houseType,jdbcType=VARCHAR},
       rent_price = #{record.rentPrice,jdbcType=INTEGER},
       region_id = #{record.regionId,jdbcType=INTEGER},
@@ -588,8 +588,8 @@
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="propertyRights != null" >
-        property_rights = #{propertyRights,jdbcType=INTEGER},
+      <if test="priorApproval != null" >
+        prior_approval = #{priorApproval,jdbcType=INTEGER},
       </if>
       <if test="houseType != null" >
         house_type = #{houseType,jdbcType=VARCHAR},
@@ -638,7 +638,7 @@
       title = #{title,jdbcType=VARCHAR},
       house_detail = #{houseDetail,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      property_rights = #{propertyRights,jdbcType=INTEGER},
+      prior_approval = #{priorApproval,jdbcType=INTEGER},
       house_type = #{houseType,jdbcType=VARCHAR},
       rent_price = #{rentPrice,jdbcType=INTEGER},
       region_id = #{regionId,jdbcType=INTEGER},
