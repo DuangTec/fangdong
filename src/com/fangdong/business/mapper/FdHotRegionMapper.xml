@@ -7,6 +7,13 @@
     <result column="hot_region_name" jdbcType="VARCHAR" property="hotRegionName" />
     <result column="hot_region_type" jdbcType="VARCHAR" property="hotRegionType" />
   </resultMap>
+    <resultMap id="VoResultMap" type="com.fangdong.business.model.HotRegionVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="region_id" jdbcType="INTEGER" property="regionId" />
+    <result column="hot_region_name" jdbcType="VARCHAR" property="hotRegionName" />
+    <result column="hot_region_type" jdbcType="VARCHAR" property="hotRegionType" />
+    <result column="region_name" jdbcType="VARCHAR" property="regionName" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -88,13 +95,13 @@
     from fd_hot_region
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectAllHotRegion"  resultMap="map">
+  <select id="selectAllHotRegion"  resultMap="VoResultMap">
 	SELECT
 	hr.hot_region_name,
 	hr.hot_region_type,
 	hr.id,
 	hr.region_id,
-	r.region_name as 'regionName'
+	r.region_name as 'region_name'
 	FROM
 	fd_hot_region hr
 	left join fd_region r on hr.region_id=r.id
@@ -108,13 +115,13 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-  </delete>
-  <insert id="insert" parameterType="com.fangdong.business.model.FdHotRegion">
+  </delete><insert id="insert" parameterType="com.fangdong.business.model.FdHotRegion">
     insert into fd_hot_region (id, region_id, hot_region_name, 
       hot_region_type)
     values (#{id,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{hotRegionName,jdbcType=VARCHAR}, 
       #{hotRegionType,jdbcType=VARCHAR})
   </insert>
+  
   <insert id="insertSelective" parameterType="com.fangdong.business.model.FdHotRegion">
     insert into fd_hot_region
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -148,12 +155,6 @@
   </insert>
   <select id="countByExample" parameterType="com.fangdong.business.model.FdHotRegionExample" resultType="java.lang.Integer">
     select count(*) from fd_hot_region
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <select id="selectAllHotRegion"  resultType="map">
-    select  h.hot_region_name,h.hot_region_type,h.id,h.region_id from fd_hot_region h
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
