@@ -14,6 +14,7 @@ import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -95,6 +96,12 @@ public class UserController{
 	public int userNameCheckReturnId(String username){
 		return userService.userExistCheckReturnId(username);
 	}
+	
+//	//更改密码接口
+//	@RequestMapping("/changePassoword.action")
+//	public String changePassword(@RequestParam(value="id",required=true)int id,@RequestParam(value="oldPassword",required=true)String oldPsw,@RequestParam(value="newPassword",required=true)String newPsw){
+//		
+//	}
 	
 	//后台管理用户删除
 	@RequestMapping("/admin/deleteUser.action")

@@ -279,17 +279,24 @@
 	 and r3.id=#{regionId}
   </select>
   <select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
-  	select 
+  	select * from (select 
     h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail, h.address, h.prior_approval, 
     h.house_type, h.rent_price, h.region_id,r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city'
-    ,h.title
+    ,h.title,(@rowNum:=@rowNum+1) as row_no
     from fd_house h
     left join fd_region r1 on h.region_id = r1.id
     left join fd_region r2 on r1.parent_reg_id=r2.id
     left join fd_region r3 on r2.parent_reg_id=r3.id
-    where h.prior_approval=1 
-    and r3.id=#{regionId}
-    limit 0,#{top};
+    ,(select (@rowNum:=0)) x
+    where r3.id=1 and 
+    now() between h.start_top_time and h.end_top_time ) z where row_no in
+    <foreach collection="randomNum" item="num" index="index"
+            open="(" close=")" separator=",">
+            #{num}
+    </foreach>;
+  </select>
+  <select id="selectTopHouseAmount" resultType="int">
+  	select count(*) from fd_house where prior_approval=1;
   </select>
   <select id="selectGuessYouLike" parameterType="String" resultMap="VoResultMap">
 	SELECT

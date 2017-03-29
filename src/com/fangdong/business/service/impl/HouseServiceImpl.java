@@ -2,6 +2,8 @@ package com.fangdong.business.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import com.fangdong.business.model.HouseVo;
 import com.fangdong.business.model.SearchParam;
 import com.fangdong.business.service.HouseService;
 import com.fangdong.common.exception.SQLConnectionFailException;
+import com.fangdong.common.utils.CommonUtils;
 
 @Service
 public class HouseServiceImpl implements HouseService {
@@ -111,8 +114,14 @@ public class HouseServiceImpl implements HouseService {
 
 	@Override
 	public List<HouseVo> getTopHouse(int top, int regionId) {
-
-		List<HouseVo> houseVoList = houseMapper.selectTopHouseVo(top, regionId);
+		int tha=houseMapper.selectTopHouseAmount();
+		int rCount=top;
+		if(tha<=top){
+			top=tha;
+			rCount=tha;
+		} 
+		int[] randomNum=CommonUtils.randomNums(tha, rCount);
+		List<HouseVo> houseVoList = houseMapper.selectTopHouseVo(top, regionId,randomNum);
 		for (HouseVo vo : houseVoList) {
 			// 房屋对图片是一对多关系，需要按照房屋id再查图片，填充进vo
 			List<FdPicture> pictureList = pictureMapper.selectByHouseId(vo.getId());
