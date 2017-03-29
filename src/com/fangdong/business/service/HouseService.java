@@ -24,4 +24,6 @@ public interface HouseService {
 	public List<HouseVo> guessYouLike(String district);
 	//根据用户id查找他自己的房屋
 	public List<HouseVo> getHouseByUserId(int userId);
+	//刷新房屋
+	public void refreshHouse(int id);
 }

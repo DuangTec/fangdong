@@ -49,4 +49,6 @@ public interface FdHouseMapper {
     List<HouseVo> selectHouseByUserId(int userId);
     
     int selectTopHouseAmount();
+    
+    int updateUpdateTimeById(int id);
 }

@@ -457,5 +457,12 @@ public class HouseController {
 		mov.addObject("guessYouLikeList", guessYouLikeList);
 		return mov;
 	}
+	
+	//刷新房屋接口
+	@RequestMapping("/refreshHouse.action")
+	public String refreshHouse(@RequestParam(value="id",required=true)int id){
+		houseService.refreshHouse(id);
+		return "redirect:/userinfo.do";
+	}
 
 }

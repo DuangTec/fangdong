@@ -187,5 +187,10 @@ public class HouseServiceImpl implements HouseService {
 		houseMapper.insertSelective(house);
 	}
 
+	@Override
+	public void refreshHouse(int id) {
+		houseMapper.updateUpdateTimeById(id);
+	}
+
 	
 }
