@@ -15,7 +15,7 @@ public class SubwayServiceImpl implements SubwayService {
 
 	@Resource
 	private FdSubwayMapper subwayMapper;
-	public List<SubwayVo> getAllSubwayService() {
+	public List<FdSubway> getAllSubwayService() {
 		// TODO Auto-generated method stub
 		return subwayMapper.selectAllSubway();
 	}

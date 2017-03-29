@@ -5,6 +5,12 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="subway_name" jdbcType="VARCHAR" property="subwayName" />
   </resultMap>
+  <resultMap id="ResultMap" type="com.fangdong.business.model.SubwayVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="subway_name" jdbcType="VARCHAR" property="subwayName" />
+    <result column="regionName" jdbcType="VARCHAR" property="regionName" />
+    <result column="regionId" jdbcType="VARCHAR" property="regionId" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -89,13 +95,9 @@
   <select id="selectAllSubway"  resultMap="BaseResultMap">
 	SELECT
 	s.id,
-	s.subway_name,
-	sr.regionId as 'regionId',
-	r.region_name as 'regionName'
+	s.subway_name
 	FROM
 	fd_subway s
-	left join fd_subway_region sr on s.id=sr.subwayId
-	left join fd_region r on sr.regionId=r.id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fd_subway

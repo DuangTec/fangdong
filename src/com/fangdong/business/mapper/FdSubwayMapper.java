@@ -20,7 +20,7 @@ public interface FdSubwayMapper {
 
     List<FdSubway> selectByExample(FdSubwayExample example);
     
-    List<SubwayVo> selectAllSubway();
+    List<FdSubway> selectAllSubway();
 
     FdSubway selectByPrimaryKey(Integer id);
 

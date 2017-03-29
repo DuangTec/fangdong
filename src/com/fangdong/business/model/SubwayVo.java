@@ -1,19 +1,20 @@
 package com.fangdong.business.model;
 
 
-public class SubwayVo extends FdSubwayRegion{
+public class SubwayVo extends FdSubway{
 
-	private String regionName;
+	private String regionName[];
 	
-	private String regionId;
-	 public String getRegionName() {
+	public String[] getRegionName() {
 		return regionName;
 	}
 
-	public void setRegionName(String regionName) {
+	public void setRegionName(String[] regionName) {
 		this.regionName = regionName;
 	}
 
+	private String regionId;
+	 
 	public String getRegionId() {
 		return regionId;
 	}
