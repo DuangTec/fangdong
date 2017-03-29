@@ -1,7 +1,7 @@
 package com.fangdong.business.model;
 
 
-public class SubwayRegionVo extends FdSubwayRegion{
+public class SubwayVo extends FdSubwayRegion{
 
 	private String regionName;
 	
