@@ -196,7 +196,7 @@ public class UserController{
 	public ModelAndView userInfoSubmit(HttpServletRequest request){
 
 		FdUser user=(FdUser)(SecurityUtils.getSubject().getPrincipal());
-		FdUser newUser=new FdUser();
+		FdUser newUser=new FdUser();//shiro的user
 		
 		String name=request.getParameter("name");
 		newUser.setName(name);
@@ -216,6 +216,10 @@ public class UserController{
 		
 		String userid=request.getParameter("userid");
 		newUser.setId(Integer.parseInt(userid));
+		
+		int balance=Integer.parseInt(request.getParameter("balance"));
+		newUser.setBalance(balance);
+		
 		int i=userService.updateUser(newUser);
 		return new ModelAndView("/index.do");
 	}

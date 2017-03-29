@@ -88,6 +88,17 @@
     from fd_hot_region
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectAllHotRegion"  resultMap="map">
+	SELECT
+	hr.hot_region_name,
+	hr.hot_region_type,
+	hr.id,
+	hr.region_id,
+	r.region_name as 'regionName'
+	FROM
+	fd_hot_region hr
+	left join fd_region r on hr.region_id=r.id
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fd_hot_region
     where id = #{id,jdbcType=INTEGER}
@@ -137,6 +148,12 @@
   </insert>
   <select id="countByExample" parameterType="com.fangdong.business.model.FdHotRegionExample" resultType="java.lang.Integer">
     select count(*) from fd_hot_region
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="selectAllHotRegion"  resultType="map">
+    select  h.hot_region_name,h.hot_region_type,h.id,h.region_id from fd_hot_region h
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>

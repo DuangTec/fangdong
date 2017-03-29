@@ -2,6 +2,8 @@ package com.fangdong.business.mapper;
 
 import com.fangdong.business.model.FdSubway;
 import com.fangdong.business.model.FdSubwayExample;
+import com.fangdong.business.model.SubwayVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,6 +19,8 @@ public interface FdSubwayMapper {
     int insertSelective(FdSubway record);
 
     List<FdSubway> selectByExample(FdSubwayExample example);
+    
+    List<SubwayVo> selectAllSubway();
 
     FdSubway selectByPrimaryKey(Integer id);
 

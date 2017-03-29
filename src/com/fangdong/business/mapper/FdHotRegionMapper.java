@@ -2,6 +2,8 @@ package com.fangdong.business.mapper;
 
 import com.fangdong.business.model.FdHotRegion;
 import com.fangdong.business.model.FdHotRegionExample;
+import com.fangdong.business.model.HotRegionVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,6 +19,8 @@ public interface FdHotRegionMapper {
     int insertSelective(FdHotRegion record);
 
     List<FdHotRegion> selectByExample(FdHotRegionExample example);
+    
+    List<HotRegionVo> selectAllHotRegion(); 
 
     FdHotRegion selectByPrimaryKey(Integer id);
 
