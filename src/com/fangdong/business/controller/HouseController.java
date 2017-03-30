@@ -196,6 +196,9 @@ public class HouseController {
 		house.setAddress(address);
 		house.setHouseDetail(houseDetail);
 		house.setRegionId(regionId);
+		house.setUpdateTime(new Date());
+		//创建房屋后状态改为pending待审批
+		house.setHouseStatus("pending");
 		StringBuilder sb = new StringBuilder();
 		for (String f : facility) {
 			sb.append(f + ",");
@@ -463,6 +466,31 @@ public class HouseController {
 	public String refreshHouse(@RequestParam(value="id",required=true)int id){
 		houseService.refreshHouse(id);
 		return "redirect:/userinfo.do";
+	}
+	
+	//通过审核 接口
+	@RequestMapping("/admin/passApproval.action")
+	public String passApproval(@RequestParam(value="id",required=true)int id){
+		houseService.changeHouseStatus(id,"publish");
+		return "redirect:/admin/pendingHouse.do";
+	}
+	
+	//未通过审核 接口
+	@RequestMapping("/admin/failApproval.action")
+	public String failApproval(@RequestParam(value="id",required=true)int id){
+		houseService.changeHouseStatus(id,"close");
+		return "redirect:/admin/pendingHouse.do";
+	}
+	
+	//后台房屋审核页面
+	@RequestMapping("/admin/pendingHouse.do")
+	public ModelAndView pendingHouse(){
+		ModelAndView mov = new ModelAndView("/admin/pendingHouse.jsp");
+		
+		List<HouseVo> pendingHouseList=houseService.getAllPendingHouse();
+		mov.addObject("pendingHouseList",pendingHouseList);
+		
+		return mov;
 	}
 
 }

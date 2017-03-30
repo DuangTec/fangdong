@@ -51,4 +51,6 @@ public interface FdHouseMapper {
     int selectTopHouseAmount();
     
     int updateUpdateTimeById(int id);
+    
+    List<HouseVo> selectAllPendingHouseVo();
 }

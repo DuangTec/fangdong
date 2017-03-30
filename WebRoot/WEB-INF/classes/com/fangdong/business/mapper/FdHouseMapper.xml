@@ -241,8 +241,8 @@
 		</if>
 		
 	</where>
+</select>
 	
-  </select>
   <select id="selectByKey" parameterType="map" resultMap="VoResultMap">
 	SELECT
 	h.id,
@@ -278,6 +278,7 @@
 	 or h.title LIKE "%" #{key}"%")
 	 and r3.id=#{regionId}
   </select>
+  
   <select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
   	select * from (select 
     h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail, h.address, h.prior_approval, 
@@ -321,6 +322,34 @@
 	WHERE
 	r2.region_name = #{district}
 	limit 0,3;
+  </select>
+  <select id="selectAllPendingHouseVo" resultMap="VoResultMap">
+  	SELECT
+	h.id,
+	h.owner_id,
+	h.create_date,
+	h.size,
+	h.hall,
+	h.room,
+	h.house_detail,
+	h.address,
+	h.prior_approval,
+	h.house_type,
+	h.rent_price,
+	h.region_id,
+	h.title,
+	h.facilities,
+	h.update_time, 
+	h.house_status, 
+	h.rent_type, 
+    h.features,
+	u.username AS 'owner',
+	r.region_name AS 'area'
+	FROM
+	fd_house h
+	LEFT JOIN fd_user u ON h.owner_id = u.id
+	LEFT JOIN fd_region r ON h.region_id = r.id
+	order by h.prior_approval desc,h.update_time desc
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from fd_house

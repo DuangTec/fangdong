@@ -192,5 +192,18 @@ public class HouseServiceImpl implements HouseService {
 		houseMapper.updateUpdateTimeById(id);
 	}
 
+	@Override
+	public void changeHouseStatus(int id, String status) {
+		FdHouse house = new FdHouse();
+		house.setHouseStatus(status);
+		house.setId(id);
+		houseMapper.updateByPrimaryKeySelective(house);		
+	}
+
+	@Override
+	public List<HouseVo> getAllPendingHouse() {
+		return houseMapper.selectAllPendingHouseVo();
+	}
+
 	
 }

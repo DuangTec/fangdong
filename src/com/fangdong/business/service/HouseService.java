@@ -26,4 +26,8 @@ public interface HouseService {
 	public List<HouseVo> getHouseByUserId(int userId);
 	//刷新房屋
 	public void refreshHouse(int id);
+	//更新房屋状态
+	public void changeHouseStatus(int id,String status);
+	//获取待审核房屋
+	public List<HouseVo> getAllPendingHouse();
 }
