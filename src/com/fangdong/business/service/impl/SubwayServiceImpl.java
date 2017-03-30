@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.fangdong.business.mapper.FdSubwayMapper;
 import com.fangdong.business.model.FdSubway;
-import com.fangdong.business.model.SubwayVo;
 import com.fangdong.business.service.SubwayService;
 @Service
 public class SubwayServiceImpl implements SubwayService {
 
 	@Resource
 	private FdSubwayMapper subwayMapper;
+	//这里获取的是所有的地铁
 	public List<FdSubway> getAllSubwayService() {
 		// TODO Auto-generated method stub
 		return subwayMapper.selectAllSubway();

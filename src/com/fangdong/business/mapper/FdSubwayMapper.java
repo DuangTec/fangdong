@@ -2,7 +2,6 @@ package com.fangdong.business.mapper;
 
 import com.fangdong.business.model.FdSubway;
 import com.fangdong.business.model.FdSubwayExample;
-import com.fangdong.business.model.SubwayVo;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
