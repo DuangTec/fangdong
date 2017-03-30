@@ -2,6 +2,8 @@ package com.fangdong.business.mapper;
 
 import com.fangdong.business.model.FdSubwayRegion;
 import com.fangdong.business.model.FdSubwayRegionExample;
+import com.fangdong.business.model.SubwayRegionVo;
+
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,6 +21,8 @@ public interface FdSubwayRegionMapper {
     List<FdSubwayRegion> selectByExample(FdSubwayRegionExample example);
 
     FdSubwayRegion selectByPrimaryKey(Integer id);
+    
+    List<SubwayRegionVo> selectSubwayRegionBySubwayId(int subwayId);
 
     int updateByExampleSelective(@Param("record") FdSubwayRegion record, @Param("example") FdSubwayRegionExample example);
 

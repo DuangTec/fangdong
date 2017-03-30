@@ -5,12 +5,6 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="subway_name" jdbcType="VARCHAR" property="subwayName" />
   </resultMap>
-  <resultMap id="ResultMap" type="com.fangdong.business.model.SubwayVo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="subway_name" jdbcType="VARCHAR" property="subwayName" />
-    <result column="regionName" jdbcType="VARCHAR" property="regionName" />
-    <result column="regionId" jdbcType="VARCHAR" property="regionId" />
-  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
