@@ -17,7 +17,6 @@ public class HotRegionServiceImpl implements HotRegionService {
 	private FdHotRegionMapper HotRegionMapper;
 	
 	public List<HotRegionVo> getAllHotRegion() {
-		// TODO Auto-generated method stub
 		return HotRegionMapper.selectAllHotRegion();
 	}
 

@@ -20,20 +20,20 @@ public class SubwayController {
 	@Resource
 	private SubwayService subwayService;
 	
-	@RequestMapping("/admin/Subway.do")
-	public ModelAndView allSubway() {		
-		ModelAndView mov = new ModelAndView("/admin/Subway.jsp");
-		List<FdSubway> allSbuway=subwayService.getAllSubwayService();
-		mov.addObject("allSbuway",allSbuway);
+	@RequestMapping("/admin/subway.do")
+	public ModelAndView subway() {		
+		ModelAndView mov = new ModelAndView("/admin/subway.jsp");
+		List<FdSubway> subwayList=subwayService.getAllSubway();
+		mov.addObject("subwayList",subwayList);
 		return mov;
 	}
 	
 	@RequestMapping("/admin/getSubwayRegion.do")
 	public ModelAndView getAllSubwayRegion(HttpServletRequest request) {	
 		int subwayId=Integer.parseInt(request.getParameter("subwayId"));
-		ModelAndView mov = new ModelAndView("/admin/SubwayRegion.jsp");
-		List<SubwayRegionVo> allSbuwayRegion=subwayService.getSubwayRegionBySubwayId(subwayId);
-		mov.addObject("allSbuwayRegion",allSbuwayRegion);
+		ModelAndView mov = new ModelAndView("/admin/subwayRegion.jsp");
+		List<SubwayRegionVo> subwayRegionList=subwayService.getSubwayRegionBySubwayId(subwayId);
+		mov.addObject("subwayRegionList",subwayRegionList);
 		return mov;
 	}
 	

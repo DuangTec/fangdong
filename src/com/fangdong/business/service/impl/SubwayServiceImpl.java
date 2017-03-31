@@ -19,13 +19,11 @@ public class SubwayServiceImpl implements SubwayService {
 	@Resource
 	private FdSubwayRegionMapper subwayRegionMapper;
 	//这里获取的是所有的地铁
-	public List<FdSubway> getAllSubwayService() {
-		// TODO Auto-generated method stub
+	public List<FdSubway> getAllSubway() {
 		return subwayMapper.selectAllSubway();
 	}
 	@Override
 	public List<SubwayRegionVo> getSubwayRegionBySubwayId(int subwayId) {
-		// TODO Auto-generated method stub
 		return subwayRegionMapper.selectSubwayRegionBySubwayId(subwayId);
 	}
 

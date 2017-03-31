@@ -8,7 +8,7 @@ import com.fangdong.business.model.SubwayRegionVo;
 
 public interface SubwayService {
 
-	public List<FdSubway> getAllSubwayService();
+	public List<FdSubway> getAllSubway();
 	
 	public List<SubwayRegionVo> getSubwayRegionBySubwayId(int subwayId);
 }

@@ -17,11 +17,10 @@ public class HotRegionController {
 	private HotRegionService hotRegionService;
 	
 	@RequestMapping("/admin/hotRegion.do")
-	public ModelAndView allHotRegion() {
-		
+	public ModelAndView hotRegion() {
 		ModelAndView mov = new ModelAndView("/admin/hotRegion.jsp");
-		List<HotRegionVo> allHotRegion=hotRegionService.getAllHotRegion();
-		mov.addObject("allHotRegion",allHotRegion);
+		List<HotRegionVo> hotRegionList=hotRegionService.getAllHotRegion();
+		mov.addObject("hotRegionList",hotRegionList);
 		return mov;
 	}
 
