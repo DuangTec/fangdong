@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fangdong.business.mapper.FdSubwayRegionMapper" >
+<mapper namespace="com.fangdong.business.mapper1.FdSubwayRegionMapper" >
   <resultMap id="BaseResultMap" type="com.fangdong.business.model.FdSubwayRegion" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="subwayId" property="subwayid" jdbcType="INTEGER" />
-    <result column="regionId" property="regionid" jdbcType="INTEGER" />
+    <result column="subway_id" property="subwayId" jdbcType="INTEGER" />
+    <result column="region_id" property="regionId" jdbcType="INTEGER" />
   </resultMap>
-  <resultMap id="ResultMap" type="com.fangdong.business.model.SubwayRegionVo" >
+  <resultMap id="VoResultMap" type="com.fangdong.business.model.SubwayRegionVo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="subwayId" property="subwayid" jdbcType="INTEGER" />
-    <result column="regionId" property="regionid" jdbcType="INTEGER" />
-    <result column="subwayName" property="subwayname" jdbcType="VARCHAR" />
-    <result column="regionName" property="regionname" jdbcType="VARCHAR" />
+    <result column="subway_id" property="subwayId" jdbcType="INTEGER" />
+    <result column="region_id" property="regionId" jdbcType="INTEGER" />
+    <result column="subwayName" property="subwayName" jdbcType="VARCHAR" />
+    <result column="regionName" property="regionName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, subwayId, regionId
+    id, subway_id, region_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fangdong.business.model.FdSubwayRegionExample" >
     select
@@ -94,19 +94,19 @@
     from fd_subway_region
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectSubwayRegionBySubwayId" resultMap="ResultMap" parameterType="java.lang.Integer" >
+  <select id="selectSubwayRegionBySubwayId" resultMap="VoResultMap" parameterType="java.lang.Integer" >
 	SELECT
 	fsr.id,
-	fsr.regionId,
-	fsr.subwayId,
+	fsr.region_id,
+	fsr.subway_id,
 	s.subway_name as 'subwayName',
-	r.region_name as 'regionNmae'
+	r.region_name as 'regionName'
 	FROM
 	fd_subway_region fsr
-	LEFT JOIN fd_region r on r.id=fsr.regionId
-	LEFT JOIN fd_subway s on s.id=fsr.subwayId
+	LEFT JOIN fd_region r on r.id=fsr.region_id
+	LEFT JOIN fd_subway s on s.id=fsr.subway_id
 	WHERE
-	fsr.subwayId =#{subwayId,jdbcType=INTEGER}
+	fsr.subway_id =#{subwayId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from fd_subway_region
@@ -118,10 +118,16 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+    <delete id="deleteBySubwayRegionId" parameterType="int">
+  	delete from fd_subway_region sr
+  	<if test="_parameter != null">
+  		where sr.subway_id=#{id}
+  	</if>
+  </delete>
   <insert id="insert" parameterType="com.fangdong.business.model.FdSubwayRegion" >
-    insert into fd_subway_region (id, subwayId, regionId
+    insert into fd_subway_region (id, subway_id, region_id
       )
-    values (#{id,jdbcType=INTEGER}, #{subwayid,jdbcType=INTEGER}, #{regionid,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{subwayId,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fangdong.business.model.FdSubwayRegion" >
@@ -130,22 +136,22 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="subwayid != null" >
-        subwayId,
+      <if test="subwayId != null" >
+        subway_id,
       </if>
-      <if test="regionid != null" >
-        regionId,
+      <if test="regionId != null" >
+        region_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="subwayid != null" >
-        #{subwayid,jdbcType=INTEGER},
+      <if test="subwayId != null" >
+        #{subwayId,jdbcType=INTEGER},
       </if>
-      <if test="regionid != null" >
-        #{regionid,jdbcType=INTEGER},
+      <if test="regionId != null" >
+        #{regionId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -161,11 +167,11 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.subwayid != null" >
-        subwayId = #{record.subwayid,jdbcType=INTEGER},
+      <if test="record.subwayId != null" >
+        subway_id = #{record.subwayId,jdbcType=INTEGER},
       </if>
-      <if test="record.regionid != null" >
-        regionId = #{record.regionid,jdbcType=INTEGER},
+      <if test="record.regionId != null" >
+        region_id = #{record.regionId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -175,8 +181,8 @@
   <update id="updateByExample" parameterType="map" >
     update fd_subway_region
     set id = #{record.id,jdbcType=INTEGER},
-      subwayId = #{record.subwayid,jdbcType=INTEGER},
-      regionId = #{record.regionid,jdbcType=INTEGER}
+      subway_id = #{record.subwayId,jdbcType=INTEGER},
+      region_id = #{record.regionId,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -184,19 +190,19 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fangdong.business.model.FdSubwayRegion" >
     update fd_subway_region
     <set >
-      <if test="subwayid != null" >
-        subwayId = #{subwayid,jdbcType=INTEGER},
+      <if test="subwayId != null" >
+        subway_id = #{subwayId,jdbcType=INTEGER},
       </if>
-      <if test="regionid != null" >
-        regionId = #{regionid,jdbcType=INTEGER},
+      <if test="regionId != null" >
+        region_id = #{regionId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fangdong.business.model.FdSubwayRegion" >
     update fd_subway_region
-    set subwayId = #{subwayid,jdbcType=INTEGER},
-      regionId = #{regionid,jdbcType=INTEGER}
+    set subway_id = #{subwayId,jdbcType=INTEGER},
+      region_id = #{regionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

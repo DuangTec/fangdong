@@ -27,13 +27,13 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
-		<sqlMapGenerator targetPackage="com.fangdong.business.mapper"
+ 		<sqlMapGenerator targetPackage="com.fangdong.business.mapper1"
 			targetProject=".\src">
 			<property name="enableSubPackages" value="true" />	
-		</sqlMapGenerator>
+		</sqlMapGenerator> 
 
 	<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.fangdong.business.mapper" targetProject=".\src">
+			targetPackage="com.fangdong.business.mapper1" targetProject=".\src">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator> 
 

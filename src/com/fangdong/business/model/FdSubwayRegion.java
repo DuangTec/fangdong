@@ -3,9 +3,9 @@ package com.fangdong.business.model;
 public class FdSubwayRegion {
     private Integer id;
 
-    private Integer subwayid;
+    private Integer subwayId;
 
-    private Integer regionid;
+    private Integer regionId;
 
     public Integer getId() {
         return id;
@@ -15,19 +15,19 @@ public class FdSubwayRegion {
         this.id = id;
     }
 
-    public Integer getSubwayid() {
-        return subwayid;
+    public Integer getSubwayId() {
+        return subwayId;
     }
 
-    public void setSubwayid(Integer subwayid) {
-        this.subwayid = subwayid;
+    public void setSubwayId(Integer subwayId) {
+        this.subwayId = subwayId;
     }
 
-    public Integer getRegionid() {
-        return regionid;
+    public Integer getRegionId() {
+        return regionId;
     }
 
-    public void setRegionid(Integer regionid) {
-        this.regionid = regionid;
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
     }
 }

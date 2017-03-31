@@ -3,6 +3,8 @@ package com.fangdong.business.model;
 public class SubwayRegionVo extends FdSubwayRegion {
 
 	private String regionName;
+	private String subwayName;
+
 	public String getRegionName() {
 		return regionName;
 	}
@@ -15,5 +17,4 @@ public class SubwayRegionVo extends FdSubwayRegion {
 	public void setSubwayName(String subwayName) {
 		this.subwayName = subwayName;
 	}
-	private String subwayName;
 }

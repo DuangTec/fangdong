@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.apache.catalina.connector.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import com.fangdong.business.model.FdSubway;
@@ -35,6 +36,12 @@ public class SubwayController {
 		List<SubwayRegionVo> subwayRegionList=subwayService.getSubwayRegionBySubwayId(subwayId);
 		mov.addObject("subwayRegionList",subwayRegionList);
 		return mov;
+	}
+	
+	@RequestMapping("/admin/delSubway.action")
+	public String delSubway(@RequestParam(value="id",required=true)int id){
+		subwayService.deleteSubwayById(id);
+		return "redirect:/admin/subway.do";
 	}
 	
 	

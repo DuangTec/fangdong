@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fangdong.business.model.HotRegionVo;
@@ -24,5 +25,10 @@ public class HotRegionController {
 		return mov;
 	}
 
+	@RequestMapping("/admin/delHotRegion.action")
+	public String delHotRegion(@RequestParam(value="id",required=true)int id){
+		hotRegionService.deleteHotRegionById(id);
+		return "redirect:/admin/hotRegion.do";
+	}
 
 }

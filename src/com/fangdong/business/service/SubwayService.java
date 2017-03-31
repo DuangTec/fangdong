@@ -11,4 +11,6 @@ public interface SubwayService {
 	public List<FdSubway> getAllSubway();
 	
 	public List<SubwayRegionVo> getSubwayRegionBySubwayId(int subwayId);
+	
+	public void deleteSubwayById(int id);
 }

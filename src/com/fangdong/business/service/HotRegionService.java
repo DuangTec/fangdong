@@ -7,5 +7,7 @@ import com.fangdong.business.model.HotRegionVo;
 public interface HotRegionService {
 
 	public List<HotRegionVo> getAllHotRegion();
+	
+	public void deleteHotRegionById(int id);
 }
 

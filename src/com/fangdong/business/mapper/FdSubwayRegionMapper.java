@@ -13,6 +13,8 @@ public interface FdSubwayRegionMapper {
     int deleteByExample(FdSubwayRegionExample example);
 
     int deleteByPrimaryKey(Integer id);
+    
+    int deleteBySubwayId(Integer id);
 
     int insert(FdSubwayRegion record);
 

@@ -19,12 +19,20 @@ public class SubwayServiceImpl implements SubwayService {
 	@Resource
 	private FdSubwayRegionMapper subwayRegionMapper;
 	//这里获取的是所有的地铁
+	@Override
 	public List<FdSubway> getAllSubway() {
 		return subwayMapper.selectAllSubway();
 	}
 	@Override
 	public List<SubwayRegionVo> getSubwayRegionBySubwayId(int subwayId) {
 		return subwayRegionMapper.selectSubwayRegionBySubwayId(subwayId);
+	}
+	@Override
+	public void deleteSubwayById(int id) {
+		//删除subwayRegion表中的数据
+		subwayRegionMapper.deleteBySubwayId(id);
+		//删除subway表中的数据
+		subwayMapper.deleteByPrimaryKey(id);
 	}
 
 }

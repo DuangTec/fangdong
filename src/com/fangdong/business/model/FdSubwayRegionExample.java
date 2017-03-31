@@ -164,123 +164,123 @@ public class FdSubwayRegionExample {
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidIsNull() {
-            addCriterion("subwayId is null");
+        public Criteria andSubwayIdIsNull() {
+            addCriterion("subway_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidIsNotNull() {
-            addCriterion("subwayId is not null");
+        public Criteria andSubwayIdIsNotNull() {
+            addCriterion("subway_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidEqualTo(Integer value) {
-            addCriterion("subwayId =", value, "subwayid");
+        public Criteria andSubwayIdEqualTo(Integer value) {
+            addCriterion("subway_id =", value, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidNotEqualTo(Integer value) {
-            addCriterion("subwayId <>", value, "subwayid");
+        public Criteria andSubwayIdNotEqualTo(Integer value) {
+            addCriterion("subway_id <>", value, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidGreaterThan(Integer value) {
-            addCriterion("subwayId >", value, "subwayid");
+        public Criteria andSubwayIdGreaterThan(Integer value) {
+            addCriterion("subway_id >", value, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("subwayId >=", value, "subwayid");
+        public Criteria andSubwayIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("subway_id >=", value, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidLessThan(Integer value) {
-            addCriterion("subwayId <", value, "subwayid");
+        public Criteria andSubwayIdLessThan(Integer value) {
+            addCriterion("subway_id <", value, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidLessThanOrEqualTo(Integer value) {
-            addCriterion("subwayId <=", value, "subwayid");
+        public Criteria andSubwayIdLessThanOrEqualTo(Integer value) {
+            addCriterion("subway_id <=", value, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidIn(List<Integer> values) {
-            addCriterion("subwayId in", values, "subwayid");
+        public Criteria andSubwayIdIn(List<Integer> values) {
+            addCriterion("subway_id in", values, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidNotIn(List<Integer> values) {
-            addCriterion("subwayId not in", values, "subwayid");
+        public Criteria andSubwayIdNotIn(List<Integer> values) {
+            addCriterion("subway_id not in", values, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidBetween(Integer value1, Integer value2) {
-            addCriterion("subwayId between", value1, value2, "subwayid");
+        public Criteria andSubwayIdBetween(Integer value1, Integer value2) {
+            addCriterion("subway_id between", value1, value2, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andSubwayidNotBetween(Integer value1, Integer value2) {
-            addCriterion("subwayId not between", value1, value2, "subwayid");
+        public Criteria andSubwayIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("subway_id not between", value1, value2, "subwayId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidIsNull() {
-            addCriterion("regionId is null");
+        public Criteria andRegionIdIsNull() {
+            addCriterion("region_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidIsNotNull() {
-            addCriterion("regionId is not null");
+        public Criteria andRegionIdIsNotNull() {
+            addCriterion("region_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidEqualTo(Integer value) {
-            addCriterion("regionId =", value, "regionid");
+        public Criteria andRegionIdEqualTo(Integer value) {
+            addCriterion("region_id =", value, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidNotEqualTo(Integer value) {
-            addCriterion("regionId <>", value, "regionid");
+        public Criteria andRegionIdNotEqualTo(Integer value) {
+            addCriterion("region_id <>", value, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidGreaterThan(Integer value) {
-            addCriterion("regionId >", value, "regionid");
+        public Criteria andRegionIdGreaterThan(Integer value) {
+            addCriterion("region_id >", value, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("regionId >=", value, "regionid");
+        public Criteria andRegionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("region_id >=", value, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidLessThan(Integer value) {
-            addCriterion("regionId <", value, "regionid");
+        public Criteria andRegionIdLessThan(Integer value) {
+            addCriterion("region_id <", value, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidLessThanOrEqualTo(Integer value) {
-            addCriterion("regionId <=", value, "regionid");
+        public Criteria andRegionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("region_id <=", value, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidIn(List<Integer> values) {
-            addCriterion("regionId in", values, "regionid");
+        public Criteria andRegionIdIn(List<Integer> values) {
+            addCriterion("region_id in", values, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidNotIn(List<Integer> values) {
-            addCriterion("regionId not in", values, "regionid");
+        public Criteria andRegionIdNotIn(List<Integer> values) {
+            addCriterion("region_id not in", values, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidBetween(Integer value1, Integer value2) {
-            addCriterion("regionId between", value1, value2, "regionid");
+        public Criteria andRegionIdBetween(Integer value1, Integer value2) {
+            addCriterion("region_id between", value1, value2, "regionId");
             return (Criteria) this;
         }
 
-        public Criteria andRegionidNotBetween(Integer value1, Integer value2) {
-            addCriterion("regionId not between", value1, value2, "regionid");
+        public Criteria andRegionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("region_id not between", value1, value2, "regionId");
             return (Criteria) this;
         }
     }

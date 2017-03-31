@@ -14,10 +14,16 @@ import com.fangdong.business.service.HotRegionService;
 public class HotRegionServiceImpl implements HotRegionService {
 
 	@Resource
-	private FdHotRegionMapper HotRegionMapper;
+	private FdHotRegionMapper hotRegionMapper;
 	
+	@Override
 	public List<HotRegionVo> getAllHotRegion() {
-		return HotRegionMapper.selectAllHotRegion();
+		return hotRegionMapper.selectAllHotRegion();
+	}
+
+	@Override
+	public void deleteHotRegionById(int id) {
+		hotRegionMapper.deleteByPrimaryKey(id);
 	}
 
 }
