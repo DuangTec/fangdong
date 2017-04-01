@@ -30,6 +30,14 @@ public class SubwayController {
 		return mov;
 	}
 	
+	@RequestMapping("/admin/subwayDetail.do")
+	public ModelAndView subwayDetail(@RequestParam(value="id")int id){
+		ModelAndView mov = new ModelAndView("/admin/subwayDetail.jsp");
+		List<SubwayRegionVo> subwayRegionList=subwayService.getSubwayRegionBySubwayId(id);
+		mov.addObject("subwayRegionList",subwayRegionList);
+		return mov;
+	}
+	
 	@RequestMapping("/admin/getSubwayRegion.do")
 	public ModelAndView getAllSubwayRegion(HttpServletRequest request) {	
 		int subwayId=Integer.parseInt(request.getParameter("subwayId"));
@@ -88,7 +96,7 @@ public class SubwayController {
 		subwayRegion.setRegionId(regionId);
 		subwayService.createSubwayRegionBySubwayId(subwayRegion);
 		
-		return "redirect:/admin/subway.do";
+		return "redirect:/admin/subwayDetail.do?id="+subwayId;//返回地铁详情页面。
 	}
 
 	
