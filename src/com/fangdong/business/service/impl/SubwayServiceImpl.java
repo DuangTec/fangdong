@@ -5,10 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fangdong.business.mapper.FdSubwayMapper;
 import com.fangdong.business.mapper.FdSubwayRegionMapper;
 import com.fangdong.business.model.FdSubway;
+import com.fangdong.business.model.FdSubwayRegion;
 import com.fangdong.business.model.SubwayRegionVo;
 import com.fangdong.business.service.SubwayService;
 @Service
@@ -34,5 +36,21 @@ public class SubwayServiceImpl implements SubwayService {
 		//删除subway表中的数据
 		subwayMapper.deleteByPrimaryKey(id);
 	}
-
+	@Override
+	public FdSubway getSubwayById(int id) {
+		return subwayMapper.selectByPrimaryKey(id);
+	}
+	@Override
+	public void createSubway(FdSubway subway) {
+		subwayMapper.insertSelective(subway);
+	}
+	@Override
+	public void updateSubwayById(FdSubway subway) {
+		subwayMapper.updateByPrimaryKeySelective(subway);
+	}
+	@Override
+	public void createSubwayRegionBySubwayId(FdSubwayRegion subwayRegion) {
+		subwayRegionMapper.insertSelective(subwayRegion);
+	}
+	
 }

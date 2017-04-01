@@ -47,7 +47,7 @@ public class RegionController {
 		ModelAndView mov = new ModelAndView("/admin/area_manage_edit.jsp");
 		String type=request.getParameter("type");
 		
-		if((type!=null)&&(!type.equals(""))){
+		if((type!=null)&&(type.equals("create"))){
 			//如果是create，返回一个create标识符
 			mov.addObject("type","create");
 			return mov;

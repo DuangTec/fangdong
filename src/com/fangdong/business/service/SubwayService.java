@@ -12,5 +12,13 @@ public interface SubwayService {
 	
 	public List<SubwayRegionVo> getSubwayRegionBySubwayId(int subwayId);
 	
+	public FdSubway getSubwayById(int id);
+	
+	public void createSubway(FdSubway subway);
+	
+	public void updateSubwayById(FdSubway subway);
+	
 	public void deleteSubwayById(int id);
+	
+	public void createSubwayRegionBySubwayId(FdSubwayRegion subwayRegion);
 }
