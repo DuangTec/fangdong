@@ -26,4 +26,25 @@ public class HotRegionServiceImpl implements HotRegionService {
 		hotRegionMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public HotRegionVo getHotRegionById(int id) {
+		return hotRegionMapper.selectHotRegionById(id);	
+	}
+
+	@Override
+	public boolean createHotRegion(FdHotRegion hotRegion) {
+		int i=hotRegionMapper.insert(hotRegion);
+		if(i==0)
+		{return false;}
+		return true;
+	}
+
+	@Override
+	public boolean updateHotRegion(FdHotRegion hotRegion) {
+		int i=hotRegionMapper.updateByPrimaryKey(hotRegion);
+		if(i==0)
+		{return false;}
+		return true;
+	}
+
 }

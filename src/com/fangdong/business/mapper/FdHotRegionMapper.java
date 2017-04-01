@@ -20,7 +20,9 @@ public interface FdHotRegionMapper {
 
     List<FdHotRegion> selectByExample(FdHotRegionExample example);
     
-    List<HotRegionVo> selectAllHotRegion(); 
+    List<HotRegionVo> selectAllHotRegion();
+    
+    HotRegionVo selectHotRegionById(int id);
 
     FdHotRegion selectByPrimaryKey(Integer id);
 
