@@ -62,17 +62,16 @@ public class HouseController {
 		if (regionCode == null) {
 			regionCode = "1";
 		}
-		int cityId = Integer.parseInt(regionCode);
 		List<FdRegion> fdRegionResult = regionService.getChildren(regionCode);
 
-		int regionId = Integer.parseInt(regionCode);
+		int cityId = Integer.parseInt(regionCode);
 		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
 
 		// 检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
 		String type = request.getParameter("type");
 		if ((type != null) && (type.equals("fuzzySearch"))) {
 			String key = request.getParameter("index-search");
-			List<HouseVo> houseList = houseService.fuzzySearch(regionId, key);
+			List<HouseVo> houseList = houseService.fuzzySearch(cityId, key);
 			mov.addObject("houseList", houseList);
 
 			return mov;
@@ -80,15 +79,21 @@ public class HouseController {
 
 		// 不是模糊查询，则执行条件查询
 		// 获取前台的数据
-		String district = request.getParameter("district");
+		String searchRegionType = request.getParameter("searchRegionType");
+		Integer l2RegionId = Integer.parseInt(request.getParameter("l2RegionId"));
+		Integer l3RegionId = Integer.parseInt(request.getParameter("l3RegionId"));
 		String rentprice = request.getParameter("rentprice");
 		String housetype = request.getParameter("housetype");
+		String rentType = request.getParameter("rentType");
+		String[] features = request.getParameterValues("features");
 
 		// 组装搜索参数对象
 		SearchParam param = new SearchParam();
-		if ((district != null) && (!district.equals(""))) {
-			param.setDistrictId(Integer.parseInt(district));
-		}
+		param.setSearchRegionType(searchRegionType);
+		param.setL2RegionId(l2RegionId);
+		param.setL3RegionId(l3RegionId);
+		param.setRentType(rentType);
+		
 		if (rentprice != null) {
 			switch (rentprice) {
 			case "700L":
@@ -131,14 +136,16 @@ public class HouseController {
 			}
 		}
 
+		if(features!=null){
+			param.setFeatures(features);
+		}
+		
 		// 按参数搜索，并添加结果到视图
-		List<HouseVo> houseList = houseService.getHouseList(regionId, param);
+		List<HouseVo> houseList = houseService.getHouseList(cityId, param);
 		mov.addObject("houseList", houseList);
 
 		// 将上一次的搜索参数返回到响应页面
-		mov.addObject("district", district);
-		mov.addObject("rentprice", rentprice);
-		mov.addObject("housetype", housetype);
+		mov.addObject("param", param);
 
 		return mov;
 	}

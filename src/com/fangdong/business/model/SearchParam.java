@@ -7,8 +7,8 @@ package com.fangdong.business.model;
  */
 public class SearchParam {
 	private String searchRegionType;
-	private String l2RegionId;
-	private String l3RegionId;
+	private Integer l2RegionId;
+	private Integer l3RegionId;
 	private Integer lowerPrice;
 	private Integer upperPrice;
 	private Integer roomNum;
@@ -34,16 +34,17 @@ public class SearchParam {
 	public void setSearchRegionType(String searchRegionType) {
 		this.searchRegionType = searchRegionType;
 	}
-	public String getL2RegionId() {
+
+	public Integer getL2RegionId() {
 		return l2RegionId;
 	}
-	public void setL2RegionId(String l2RegionId) {
+	public void setL2RegionId(Integer l2RegionId) {
 		this.l2RegionId = l2RegionId;
 	}
-	public String getL3RegionId() {
+	public Integer getL3RegionId() {
 		return l3RegionId;
 	}
-	public void setL3RegionId(String l3RegionId) {
+	public void setL3RegionId(Integer l3RegionId) {
 		this.l3RegionId = l3RegionId;
 	}
 	public Integer getLowerPrice() {
