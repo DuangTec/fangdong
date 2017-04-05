@@ -51,13 +51,17 @@
                         锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
                     </li>
                 </ol>
+                <div class="house_manage">
+                    <button type="button" class="btn btn-info">审核通过</button>
+                    <button type="button" class="btn btn-warning">审核不通过</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div class="house_preview">
     <div class="container">
-        <div class="row">
+        <div class="row house_preview_row">
             <div class="col-xs-5 house_img_preview">
                 <div class="row magnifier">
                     <div class="col-xs-12 house_small_img_preview">
@@ -95,8 +99,16 @@
                         <span class="news_text news_text_money">￥590.00-800.00</span>
                     </li>
                     <li>
+                        <span class="news_title">面积：</span>
+                        <span class="news_text">90㎡</span>
+                    </li>
+                    <li>
                         <span class="news_title">户型：</span>
                         <span class="news_text">两室两厅</span>
+                    </li>
+                    <li>
+                        <span class="news_title">租赁类型：</span>
+                        <span class="news_text">单租</span>
                     </li>
                     <li>
                         <span class="news_title">地址：</span>
@@ -110,7 +122,7 @@
                         <span class="news_title">联系方式：</span>
                         <span class="news_text new_text_phone">13511111111</span>
                     </li>
-                    <li>
+                    <li class="booking_house_but">
                        <input type="button" value="我要看房" class="booking_house"/>
                     </li>
                 </ul>
@@ -120,136 +132,164 @@
 </div>
 <div class="house_details_box">
     <div class="container">
-        <div class="row">
-            <div class="house_details col-xs-12">
-                <h2 class="house_details_title">房屋详情</h2>
-                <div class="house_details_groups">
-                        <h3>配套设施</h3>
-                        <span class="house_equipment">床</span>
-                        <span class="house_equipment">沙发</span>
-                        <span class="house_equipment">桌子</span>
-                        <span class="house_equipment">衣柜</span>
-                        <span class="house_equipment">空调</span>
-                        <span class="house_equipment">电视</span>
-                        <span class="house_equipment">洗衣机</span>
-                        <span class="house_equipment">热水器</span>
-                        <span class="house_equipment house_equipment_no">水、电、气</span>
+        <div class="row house_details_box_row">
+            <div class="house_details col-xs-9">
+                <a id="house_ul"></a>
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="#house_detail1">房屋描述</a></li>
+                    <li role="presentation"><a href="#house_detail2">配套设施</a></li>
+                    <li role="presentation"><a href="#house_detail3">房屋特点</a></li>
+                    <li role="presentation"><a href="#house_detail4">房屋图片</a></li>
+                </ul>
+                <div class="house_detail_news">
+                    <a id="house_detail1"></a>
+                    <span class="house_detail_news_icon">房屋描述</span>
+                    <div class="house_detail_content">
+                        房子坐落在成都市天府新区华阳华府大道、位置很好、离地铁口华府大道地铁口很近、公交线路很多到成都市中心、周边2000米内有家乐福、欧尚、缤纷广场等购物中心，房子非常优质、价格公道、装修好、家电家具齐全
+                    </div>
+                    <a href="#house_ul" class="glyphicon glyphicon-hand-up go_house_ul"></a>
                 </div>
-                <div class="house_details_groups">
-                    <h3>详情描述</h3>
-                    <p style="width: 70%">后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加后台添加</p>
+                <div class="house_detail_news">
+                    <a id="house_detail2"></a>
+                    <span class="house_detail_news_icon">配套设施</span>
+                    <div class="house_detail_content">
+                        <img src="bootstrap/images/chuang.jpg">
+                        <img src="bootstrap/images/TV.jpg">
+                        <img src="bootstrap/images/kuandai.jpg">
+                        <img src="bootstrap/images/xiyiji.jpg">
+                        <img src="bootstrap/images/bingxiang.jpg">
+                        <img src="bootstrap/images/kongtiao.jpg">
+                        <img src="bootstrap/images/nuanqi.jpg">
+                        <img src="bootstrap/images/reshuiqi.jpg">
+                        <img src="bootstrap/images/tianranqi.jpg">
+                        <img src="bootstrap/images/jiaju.jpg">
+                    </div>
+                    <a href="#house_ul" class="glyphicon glyphicon-hand-up go_house_ul"></a>
                 </div>
-                <div class="house_details_groups">
-                        <h3>房屋图片</h3>
-                        <div class="house_details_img"></div>
+                <div class="house_detail_news">
+                    <a id="house_detail3"></a>
+                    <span class="house_detail_news_icon">房屋特点</span>
+                    <div class="house_detail_content house_feature">
+                        <span>超市</span>
+                        <span>超市</span>
+                        <span>超市</span>
+                        <span>超市</span>
+                    </div>
+                    <a href="#house_ul" class="glyphicon glyphicon-hand-up go_house_ul"></a>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="you_like_box">
-    <div class="container">
-        <div class="row">
-            <div class="you_like col-xs-12">
-                <h2 class="you_like_title">猜你喜欢</h2>
-                <div class="you_like_groups">
-                    <div class="col-xs-4 you_like_one">
-                        <div class="thumbnail">
-                            <a href="#" target="_blank" class="you_like_img">
-                                <img src="bootstrap/images/hot-selected1.png" alt="...">
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
-                                       target="_blank">
-                                        锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
-                                    </a>
-                                </h3>
-                                <div class="item-info clearfix">
-                                    <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
-                                    <div class="item-pri pull-right">￥590.00-800.00</div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="house_detail_news">
+                    <a id="house_detail4"></a>
+                    <span class="house_detail_news_icon">房屋图片</span>
+                    <div class="house_detail_content house_imgs">
+                       <img src="bootstrap/images/hot-selected1.png">
+                       <img src="bootstrap/images/hot-selected2.png">
+                       <img src="bootstrap/images/hot-selected1.png">
                     </div>
-                    <div class="col-xs-4 you_like_one">
-                        <div class="thumbnail">
-                            <a href="#" target="_blank" class="you_like_img">
-                                <img src="bootstrap/images/hot-selected1.png" alt="...">
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
-                                       target="_blank">
-                                        锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
-                                    </a>
-                                </h3>
-                                <div class="item-info clearfix">
-                                    <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
-                                    <div class="item-pri pull-right">￥590.00-800.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 you_like_one">
-                        <div class="thumbnail">
-                            <a href="#" target="_blank" class="you_like_img">
-                                <img src="bootstrap/images/hot-selected1.png" alt="...">
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
-                                       target="_blank">
-                                        锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
-                                    </a>
-                                </h3>
-                                <div class="item-info clearfix">
-                                    <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
-                                    <div class="item-pri pull-right">￥590.00-800.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 you_like_one">
-                        <div class="thumbnail">
-                            <a href="#" target="_blank" class="you_like_img">
-                                <img src="bootstrap/images/hot-selected1.png" alt="...">
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
-                                       target="_blank">
-                                        锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
-                                    </a>
-                                </h3>
-                                <div class="item-info clearfix">
-                                    <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
-                                    <div class="item-pri pull-right">￥590.00-800.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 you_like_one">
-                        <div class="thumbnail">
-                            <a href="#" target="_blank" class="you_like_img">
-                                <img src="bootstrap/images/hot-selected1.png" alt="...">
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
-                                       target="_blank">
-                                        锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
-                                    </a>
-                                </h3>
-                                <div class="item-info clearfix">
-                                    <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
-                                    <div class="item-pri pull-right">￥590.00-800.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#house_ul" class="glyphicon glyphicon-hand-up go_house_ul"></a>
                 </div>
             </div>
+            <div class="you_like col-xs-3">
+                    <ul class="you_like_title_box">
+                        <li class="you_like_title">猜你喜欢</li>
+                    </ul>
+                    <div class="you_like_groups">
+                        <div class="col-xs-12 you_like_one">
+                            <div class="thumbnail">
+                                <a href="#" target="_blank" class="you_like_img">
+                                    <img src="bootstrap/images/hot-selected1.png" alt="...">
+                                </a>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
+                                           target="_blank">
+                                            锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
+                                        </a>
+                                    </h3>
+                                    <div class="item-info clearfix">
+                                                    <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
+                                                    <div class="item-pri pull-right">￥590.00-800.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 you_like_one">
+                            <div class="thumbnail">
+                                <a href="#" target="_blank" class="you_like_img">
+                                    <img src="bootstrap/images/hot-selected1.png" alt="...">
+                                </a>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
+                                           target="_blank">
+                                            锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
+                                        </a>
+                                    </h3>
+                                    <div class="item-info clearfix">
+                                        <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
+                                        <div class="item-pri pull-right">￥590.00-800.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 you_like_one">
+                            <div class="thumbnail">
+                                <a href="#" target="_blank" class="you_like_img">
+                                    <img src="bootstrap/images/hot-selected1.png" alt="...">
+                                </a>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
+                                           target="_blank">
+                                            锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
+                                        </a>
+                                    </h3>
+                                    <div class="item-info clearfix">
+                                        <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
+                                        <div class="item-pri pull-right">￥590.00-800.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 you_like_one">
+                            <div class="thumbnail">
+                                <a href="#" target="_blank" class="you_like_img">
+                                    <img src="bootstrap/images/hot-selected1.png" alt="...">
+                                </a>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
+                                           target="_blank">
+                                            锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
+                                        </a>
+                                    </h3>
+                                    <div class="item-info clearfix">
+                                        <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
+                                        <div class="item-pri pull-right">￥590.00-800.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 you_like_one">
+                            <div class="thumbnail">
+                                <a href="#" target="_blank" class="you_like_img">
+                                    <img src="bootstrap/images/hot-selected1.png" alt="...">
+                                </a>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="#" title="【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间"
+                                           target="_blank">
+                                            锦江区 川师 【首月半价】地铁2号线塔子山公园 东客站附近 非中介精装单间
+                                        </a>
+                                    </h3>
+                                    <div class="item-info clearfix">
+                                        <div class="item-loc pull-left">比华利国际城二期比华利国际城二期比华利国际城二期比华利国际城二期</div>
+                                        <div class="item-pri pull-right">￥590.00-800.00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
