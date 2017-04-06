@@ -30,6 +30,18 @@ p{
     top: 13px;
     /*display: none;*/
 }
+.duang-btn-error{
+    background-color: #CDCDCD;
+    color:white;
+}
+.duang-btn-error:hover{
+    background-color: #C3C3C3;
+    color:white;
+}
+.duang-btn-error:focus{
+    background-color: #B9B9B9;
+    color:white;
+}
 /*·¿ÎÝÐÅÏ¢Ô¤ÀÀ-×ó²àÍ¼Æ¬*/
 .house_preview{
     margin-bottom: 20px;
@@ -226,7 +238,7 @@ p{
     right: 20px;
     top: 90%;
     height: 20px;
-    color:#EC4949;
+    color:#3FAFDB;
     font-size: 20px;
     display: none;
 }
@@ -243,14 +255,14 @@ p{
     line-height: 30px;
     padding: 0px 20px;
     color: white;
-    background-color: #EC4949;
+    background-color: #3FAFDB;
     border-radius: 4px;
 }
 .house_feature span{
     display: inline-block;
     padding: 0px 20px;
     margin-right: 20px;
-    border: 1px dashed #EC4949;
+    border: 1px dashed #3FAFDB;
 }
 .house_imgs img{
     width: 40%;
