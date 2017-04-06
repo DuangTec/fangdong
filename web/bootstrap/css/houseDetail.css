@@ -148,6 +148,9 @@ p{
     display: inline-block;
     width: 45%;
 }
+.house_news li.house_news_address{
+    width: 100%;
+}
 .house_news li.house_phone{
     width: 100%;
     display: none;
