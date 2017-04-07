@@ -20,6 +20,12 @@
 .subway_line_del:hover,.subway_news_edit:hover{
     color: #FF9649;
 }
-.panel-title:hover{
-
+.panel-title a{
+    color: #98D2E9;
+}
+.panel-title a:hover{
+    color: #3FAFDB;
+}
+.subway_manage .panel{
+    margin-bottom: 20px;
 }
