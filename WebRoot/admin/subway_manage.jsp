@@ -62,8 +62,8 @@
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                 <div class="panel-body">
-                                	<c:forEach items="${subwayList.SubwayRegion}" var="subwayStation">
-                                    <div class="subway_station"><span class="glyphicon glyphicon-map-marker"></span>${subwayStation}</div>
+                                	<c:forEach items="${subway.subwayRegion}" var="subwayStation">
+                                    <div class="subway_station"><span class="glyphicon glyphicon-map-marker"></span>${subwayStation}<br></div>
                                     <!-- <div class="subway_station"><span class="glyphicon glyphicon-map-marker"></span>熊猫大道</div>
                                     <div class="subway_station"><span class="glyphicon glyphicon-map-marker"></span>动物园</div>
                                     <div class="subway_station"><span class="glyphicon glyphicon-map-marker"></span>昭觉寺南路</div>

@@ -59,9 +59,9 @@
                         <tbody>
                         <c:forEach items="${hotRegionList}" var="hotRegion">
                         <tr>
-                            <td>hotRegion.hotRegionName</td>
-                            <td>hotRegion.regionName</td>
-                            <td>hotRegion.hotRegionType</td>
+                            <td>${hotRegion.hotRegionName}</td>
+                            <td>${hotRegion.regionName}</td>
+                            <td>${hotRegion.hotRegionType}</td>
                             <td>
                                 <span class="glyphicon glyphicon-pencil house_news_edit" onclick="editHotRegion(${hotRegion.id})"></span>
                                 <span class="glyphicon glyphicon-trash house_news_del" onclick="delHotRegion(${hotRegion.id})"></span>

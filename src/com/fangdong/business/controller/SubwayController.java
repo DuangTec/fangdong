@@ -1,5 +1,6 @@
 package com.fangdong.business.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -23,17 +24,21 @@ public class SubwayController {
 	@Resource
 	private SubwayService subwayService;
 	
-	@SuppressWarnings("null")
 	@RequestMapping("/admin/subway.do")
 	public ModelAndView subway() {		
 		ModelAndView mov = new ModelAndView("/admin/subway_manage.jsp");
 		List<FdSubway> subwayList=subwayService.getAllSubway();
-		List<SubwayVo> subwayVoList = null;			
+		List<SubwayVo> subwayVoList = new ArrayList<SubwayVo>();			
 		for(int i=0;i<subwayList.size();i++)
 		{
-			subwayVoList.get(i).setId(subwayList.get(i).getId());
-			subwayVoList.get(i).setSubwayName(subwayList.get(i).getSubwayName());
-			subwayVoList.get(i).setSubwayRegion(getsubwayVoById(subwayList.get(i).getId()));
+			SubwayVo sv=new SubwayVo();
+			int id=subwayList.get(i).getId();
+			String subwayName=subwayList.get(i).getSubwayName();
+			String[] station=getsubwayVoById(subwayList.get(i).getId());
+			sv.setId(id);
+			sv.setSubwayName(subwayName);
+			sv.setSubwayRegion(station);
+			subwayVoList.add(i,sv);
 		}
 		mov.addObject("subwayList",subwayVoList);
 		return mov;
@@ -43,10 +48,11 @@ public class SubwayController {
 	public String[] getsubwayVoById(int id)
 	{
 		List<SubwayRegionVo> SubwayRegionVo=subwayService.getSubwayRegionBySubwayId(id);
-		String[] subwayRegion = null;
-		for(int i=0;i<SubwayRegionVo.size();i++)
-		{
-			subwayRegion[i]=SubwayRegionVo.get(i).getRegionName();
+		String[] subwayRegion = new String[SubwayRegionVo.size()];
+		for(int j=0;j<SubwayRegionVo.size();j++)
+		{			
+			String regionName=SubwayRegionVo.get(j).getRegionName();
+			subwayRegion[j]=regionName;
 		}
 		return subwayRegion;
 		
