@@ -59,26 +59,24 @@
                         <form class="form-horizontal" action="/admin/editHotRegionSubmit.action" method="post">
                         </c:otherwise>
                     	</c:choose>
-                            <c:forEach items="${hotRegion}" var="hotRegion">
                                 <div class="form-group">
                                     <label  class="col-xs-2 control-label">热门地区名称</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input2" value="热门地区名称" value="${hotRegion.hotRegionName}">
+                                        <input type="text" class="form-control" id="input2" value="${hotRegion.hotRegionName}">
                                     </div>
                                 </div> 
                                 <div class="form-group">
                                     <label  class="col-xs-2 control-label">热门地区类型</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input2" value="热门地区类型" value="${hotRegion.hotRegionType}">
+                                        <input type="text" class="form-control" id="input2" value="${hotRegion.hotRegionType}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label  class="col-xs-2 control-label">热门地区关联地区</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input2" value="热门地区关联地区" value="${hotRegion.regionName}">
+                                        <input type="text" class="form-control" id="input2" value="${hotRegion.regionName}">
                                     </div>
                                 </div>
-                                </c:forEach> 
                                 <div class="form-group">
                                     <div class="col-xs-offset-2 col-xs-2">
                                         <input type="submit" class="edit_submit" value="保存" >

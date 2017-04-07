@@ -43,8 +43,7 @@ public class SubwayController {
 		mov.addObject("subwayList",subwayVoList);
 		return mov;
 	}
-	
-	@SuppressWarnings("null")
+
 	public String[] getsubwayVoById(int id)
 	{
 		List<SubwayRegionVo> SubwayRegionVo=subwayService.getSubwayRegionBySubwayId(id);
@@ -82,7 +81,6 @@ public class SubwayController {
 	}
 	
 	//修改及创建创建地铁线路
-	@SuppressWarnings("null")
 	@RequestMapping("/admin/editSubway.do")
 	public ModelAndView editSubway(@RequestParam(value="id",defaultValue="-1")int id,@RequestParam(value="type",required=false)String type){
 		ModelAndView mov = new ModelAndView("/admin/subway_manage_edit.jsp");
@@ -93,7 +91,7 @@ public class SubwayController {
 		}
 		//不是create则根据id查找地铁信息，并添加到响应中去
 		FdSubway subway=subwayService.getSubwayById(id);
-		SubwayVo subwayVo = null;			
+		SubwayVo subwayVo = new SubwayVo();	
 		subwayVo.setId(subway.getId());
 		subwayVo.setSubwayName(subway.getSubwayName());
 		subwayVo.setSubwayRegion(getsubwayVoById(subway.getId()));
