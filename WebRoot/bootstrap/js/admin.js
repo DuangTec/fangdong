@@ -19,4 +19,10 @@ $(function(){
     $("#user_manage").click(function(){
         window.location.href="/admin/user_manage.do";
     })
+    $("#hot_area_manage").click(function(){
+        window.location.href="/admin/hotRegion.do";
+    })
+    $("#subway_manage").click(function(){
+        window.location.href="/admin/subway.do";
+    })
 })

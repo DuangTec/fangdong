@@ -1,9 +1,12 @@
 body{
     background-color: #F6F7FB;
 }
+label{
+    font-weight: normal;
+    color:#777 ;
+}
 .footer{
     position: absolute;
-    width: 100%;
 }
 .esc_login{
     float: right;
@@ -45,11 +48,11 @@ body{
 .edit_submit:focus{
     background-color: #4CB9E4;
 }
-.form_control_p{
+.form-control_p{
     height: 34px;
-    line-height:34px;
+    line-height: 34px;
     padding-left: 12px;
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 .edit_select{
     position: relative;
@@ -63,10 +66,9 @@ body{
 .edit-select_ul{
     display: none;
     max-height: 200px;
-    overflow-y:scroll;
+    overflow-y: scroll;
     overflow-x:hidden;
 }
-
 .edit-select_ul li{
     height: 26px;
     line-height: 26px;
@@ -78,7 +80,7 @@ body{
 .edit-select_ul li:hover{
     background-color:#CAE4EE;
 }
-.housetype {
-    width: 20%;
+.house_input{
+    width: 200px;
     display: inline-block;
 }

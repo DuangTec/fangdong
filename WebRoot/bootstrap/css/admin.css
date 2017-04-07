@@ -1,9 +1,12 @@
 .footer{
     position: absolute;
-    width: 100%;
 }
 .esc_login{
     float: right;
+}
+.center_content{
+    padding-top: 60px;
+    padding-bottom: 200px;
 }
 .go_in_buts{
     padding-top: 140px;
@@ -12,6 +15,7 @@
     width: 90%;
     height: 60px;
     line-height: 60px;
+    margin-bottom: 40px;
     background-color: #98D2E9;
     color: white;
     border: 1px solid #56BEE7;
@@ -23,9 +27,4 @@
 }
 .go_in_buts li input:focus{
     background-color: #4CB9E4;
-}
-
-.center_content{
-    padding-top: 60px;
-    padding-bottom: 200px;
 }

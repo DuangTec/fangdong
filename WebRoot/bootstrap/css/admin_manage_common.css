@@ -3,15 +3,14 @@ body{
 }
 .footer{
     position: absolute;
-    width: 100%;
 }
 .esc_login{
     float: right;
 }
 .center_content{
     padding-top: 60px;
-    padding-bottom: 100px;
- }
+    padding-bottom: 200px;
+}
 .manage_box .container{
     background-color: white;
 }
@@ -53,10 +52,9 @@ body{
 .add_news_but:focus{
     background-color: #4CB9E4;
 }
-
-.area_manage nav,.house_manage nav,.user_manage nav{
+.area_manage nav,.house_manage nav,.user_manage nav,.hot_area_manage nav,.subway_manage nav{
     text-align: right;
 }
-.area_manage .pagination,.house_manage .pagination,.user_manage .pagination{
+.area_manage .pagination,.house_manage .pagination,.user_manage .pagination,.hot_area_manage .pagination,.subway_manage .pagination{
     margin: 20px 40px 20px 20px;
 }
