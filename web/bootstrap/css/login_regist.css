@@ -77,5 +77,28 @@ h1{
 .footer{
     position: absolute;
 }
+/*ÐÞ¸ÄÃÜÂë*/
+.edit_pwd h1{
+    margin-bottom: 60px;
+}
+.edit_pwd_box li{
+    width: 500px;
+}
+.edit_pwd_box span{
+    display: inline-block;
+    width: 80px;
+}
+.edit_pwd_box p{
+    width: 400px;
+}
+.edit_pwd_box input{
+    display: inline-block;
+}
+.edit_pwd_phone{
+    color:#6CC5E9;
+}
+.edit_pwd_box label.error{
+    margin-left: 100px;
+}
 
 
