@@ -228,7 +228,11 @@ public class HouseController {
 			MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
 			List<MultipartFile> fileList = multiRequest.getFiles("file");
 			try {
-				pictureService.savePicByHouseId(request.getServletContext().getRealPath("/"), fileList, house.getId());
+				pictureService.savePicByHouseId(
+						request.getServletContext().getRealPath("/"), 
+						fileList, 
+						house.getId()
+						);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -492,5 +496,20 @@ public class HouseController {
 		
 		return mov;
 	}
+	
+	//房屋下架
+	@RequestMapping("/takeOffHouse.action")
+	public String takeOffHouse(@RequestParam(value="id",required=true)int id){
+		houseService.takeOffHouse(id);
+		return "redirect:/userinfo.do";
+	}
+	
+	//房屋上架
+	@RequestMapping("/putOnHouse.action")
+	public String putOnHouse(@RequestParam(value="id",required=true)int id){
+		houseService.putOnHouse(id);
+		return "redirect:/userinfo.do";
+	}
+	
 
 }

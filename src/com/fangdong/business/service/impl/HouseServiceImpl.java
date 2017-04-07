@@ -205,5 +205,21 @@ public class HouseServiceImpl implements HouseService {
 		return houseMapper.selectAllPendingHouseVo();
 	}
 
+	@Override
+	public void takeOffHouse(int id) {
+		FdHouse house = new FdHouse();
+		house.setId(id);
+		house.setHouseStatus("closed");
+		houseMapper.updateByPrimaryKeySelective(house);
+	}
+	
+	@Override
+	public void putOnHouse(int id){
+		FdHouse house = new FdHouse();
+		house.setId(id);
+		house.setHouseStatus("pending");
+		houseMapper.updateByPrimaryKeySelective(house);
+	}
+
 	
 }

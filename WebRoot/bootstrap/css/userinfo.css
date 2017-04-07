@@ -15,7 +15,22 @@
 .red{
     color: red;
 }
-
+.input-row a,.input-row a:hover,.table a:visited,.table a:focus{
+    color:black;
+}
+.input-row .label-info{
+    display: block;
+    width: 30px;
+    height: 20px;
+    padding-top: 10px;
+    color: black;
+    background: #fcfcfc;
+}
+.recharge{
+    position: relative;
+    left: 60px;
+    top: -20px;
+}
 /* input */
 .input-row {
     padding-left: 80px;
@@ -44,4 +59,24 @@
 /* ±í¸ñ */
 .table a,.table a:hover,.table a:visited,.table a:focus{
     color: black;
+}
+.info-normal{
+    position: absolute;
+    display: none;
+    color: black;
+    background: #f5f5f5;
+    font-weight: bold;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    width: 62px;
+}
+
+.table .glyphicon{
+    padding: 0 5px;
+    cursor:pointer;
 }

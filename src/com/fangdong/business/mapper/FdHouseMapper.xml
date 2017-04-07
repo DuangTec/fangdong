@@ -184,6 +184,7 @@
 	h.address,
 	h.prior_approval,
 	h.house_type,
+	h.house_status,
 	h.rent_price,
 	h.region_id,
 	h.title,
@@ -241,6 +242,7 @@
 		</if>
 		
 	</where>
+	order by update_time desc
 </select>
 	
   <select id="selectByKey" parameterType="map" resultMap="VoResultMap">
@@ -377,7 +379,7 @@
       #{houseStatus,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR}, 
       #{startTopTime,jdbcType=TIMESTAMP}, #{endTopTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.fangdong.business.model.FdHouse" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fangdong.business.model.FdHouse" >
     insert into fd_house
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

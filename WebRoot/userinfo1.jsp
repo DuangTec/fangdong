@@ -24,21 +24,21 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Duang房咚网</a>
+        <a class="navbar-brand" href="/">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
-                <%String regionCode=(String)session.getAttribute("regionCode");
+       			<%String regionCode=(String)session.getAttribute("regionCode");
        			if((regionCode==null)||(regionCode.equals("1"))){%>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">重庆市<span class="caret"></span></a>
                 <%} else if(regionCode.equals("3")){ %>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">北京市<span class="caret"></span></a>
 				<%} else if(regionCode.equals("2")){ %>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">成都市<span class="caret"></span></a>
-				<%} %>
+				<%} %>				                
                 <ul class="dropdown-menu">
                     <li><a href="/changeregion.action?region=1">重庆市</a></li>
                     <li><a href="/changeregion.action?region=2">成都市</a></li>
-                    <li><a href="/changeregion.action?region=3">北京市</a></li>                      
+                    <li><a href="/changeregion.action?region=3">北京市</a></li>
                 </ul>
             </li>
             <shiro:authenticated>
@@ -71,7 +71,6 @@
         </ul>
     </div>
 </div>
-
 <!-- content -->
 <div class="userinfo">
     <div class="container">
@@ -92,42 +91,30 @@
                         </div>
                         <div class="input-row">
                             <span class="input-label">用户密码：</span>
-                            <button type="button" class="btn btn-default"><a href="/">修改密码</a></button>
+                            <input type="text" class="form-control short" name="password" value="${user.password}">
                         </div>
                         <h5> <span class="red">*&nbsp;&nbsp;</span>我的详细信息</h5>
                         <div class="input-row">
                             <span class="input-label">联系人：</span>
-                            <input type="text" name="name" class="form-control short" value="${user.name}">
+                            <input type="text" class="form-control short" name="name" value="${user.name}">
                         </div>
                         <div class="input-row">
                             <span class="input-label">性别：</span>
-                            <label class="radio-inline"><input type="radio" name="sex" value="男" <c:if test="${user.sex =='男' }">checked</c:if>>男</label>
-                            <label class="radio-inline"><input type="radio" name="sex" value="女" <c:if test="${user.sex =='女' }">checked</c:if>>女</label>
+                            <label class="checkbox-inline"><input type="radio" name="sex" value="男" <c:if test="${user.sex =='男' }">checked</c:if>>男</label>
+                            <label class="checkbox-inline"><input type="radio" name="sex" value="女" <c:if test="${user.sex =='女' }">checked</c:if>>女</label>
                         </div>
                         <div class="input-row">
                             <span class="input-label">联系电话：</span>
-                            <input type="text" class="form-control short" name="phone"  value="${user.phone}">
+                            <input type="text" class="form-control short"  name="phone" value="${user.phone}">
                         </div>
                         <div class="input-row">
-                            <span class="input-label">角色：</span>
-                            <c:if test="${user.authority =='3' }"><input type="text" class="form-control short" readonly="readonly" name="authority" value="中介"></c:if>
+                            <span class="input-label">权限：</span>
                             <c:if test="${user.authority =='2' }"><input type="text" class="form-control short" readonly="readonly" name="authority" value="管理员"></c:if>
-                            <c:if test="${user.authority =='1' }"><input type="text" class="form-control short" readonly="readonly" name="authority" value="租户"></c:if>
+                            <c:if test="${user.authority =='1' }"><input type="text" class="form-control short" readonly="readonly" name="authority" value="用户"></c:if>
                         </div>
-                        <div class="input-row">
-                            <span class="input-label">我的余额：</span>
-                            <span class="label label-info">${user.balance}</span>
-                            <input type="hidden" value="${user.balance}" name="balance">
-                            <button type="button" class="btn btn-default recharge">充值</button>
-                        </div>
-
-
 
                         <h5>我的租房信息</h5>
-
-
-
-                    </div>
+               </div>
                     <div class="col-xs-3"></div>
                 </div>
                 <div class="row">
@@ -136,50 +123,35 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th>Title</th>
+                                <th>标题</th>
                                 <th>地址</th>
-                                <th class="col-lg-1 col-xs-1">房屋状态</th>
+                                <th>创建日期</th>
+                                <th>租金</th>
                                 <th class="col-lg-2 col-xs-2">相关操作</th>
                             </tr>
                             </thead>
                             <c:forEach items="${house }" var="house">
                             <tbody>
                             <tr>
-                            	<td><a href="/house/houseDetail.do?houseid=${house.id}">${house.title}</a></td>
+                            	<td>${house.title}</td>
                             	<td>${house.address}</td>
-                                <!--<td><fmt:formatDate value='${house.createDate }' pattern='yyyy-MM-dd'/></td>-->
-                                <td>${house.houseStatus}</td>
+                                <td><fmt:formatDate value='${house.createDate }' pattern='yyyy-MM-dd'/></td>
+                                <td>${house.rentPrice}</td>
                                 <td>
-
-                                    <span class="glyphicon glyphicon-pencil" onclick="editHome(${house.id})"  title="编辑房屋"></span>
-                                    <span class="glyphicon glyphicon-refresh" onclick="refreshHome(${house.id})"title="刷新房屋"></span>
-                                    <span class="glyphicon glyphicon-trash" onclick="delHome(${house.id})" title="删除房屋"></span>
-                                    
-                                    <c:choose>
-                                    <c:when test="${house.houseStatus == 'published'}">
-                                    <span class="glyphicon glyphicon-circle-arrow-down" onclick="takeOffHouse(${house.id})" title="房屋下架"></span>
-                                    </c:when>
-                                    <c:when test="${house.houseStatus == 'pending'}">
-                                    </c:when>
-                                    <c:otherwise>
-                                    <span class="glyphicon glyphicon-circle-arrow-up" onclick="putOnHouse(${house.id})" title="房屋上架"></span>
-                                    </c:otherwise>
-                                    </c:choose>
-                                    
-                                    <!--<span class="glyphicon glyphicon-pencil" onclick="editHome(${house.id})"></span>
-                                    <span class="glyphicon glyphicon-trash" onclick="delHome(${house.id})"></span>-->
+                                    <span class="glyphicon glyphicon-pencil" onclick="editHome(${house.id})"></span>
+                                    <span class="glyphicon glyphicon-trash" onclick="delHome(${house.id})"></span>
                                 </td>
                             </tr>
                             </tbody>
                             </c:forEach>
                         </table>
-                    </div>
+                    </div>                    
                     <div class="col-xs-1"></div>
                 </div>
 
                 <div class="row">
                     <div class="col-xs-5"></div>
-                    <div class="col-xs-4"><button type="submit" class="btn btn-primary sub">更新</button></div>
+                    <div class="col-xs-4"><button type="submit" class="btn btn-primary sub">Submit</button></div>
                     <div class="col-xs-3"></div>
                 </div>
             </form>
@@ -201,7 +173,7 @@
 </div>
 
 
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="/https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
 <script src="/bootstrap/js/bootstrap.js"></script>
 <script src="/bootstrap/js/index.js"></script>

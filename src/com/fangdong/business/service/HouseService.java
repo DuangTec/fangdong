@@ -30,4 +30,8 @@ public interface HouseService {
 	public void changeHouseStatus(int id,String status);
 	//获取待审核房屋
 	public List<HouseVo> getAllPendingHouse();
+	//房屋下架
+	public void takeOffHouse(int id);
+	//房屋重新上架
+	public void putOnHouse(int id);
 }

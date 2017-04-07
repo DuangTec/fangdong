@@ -28,6 +28,7 @@ public class PictureServiceImpl implements PictureService {
 
 	@Override
 	public void savePicByHouseId(String contextPath,List<MultipartFile> fileList, int houseId) throws Exception{
+		
 		for (int i = 0; i < fileList.size(); i++) {
 			String fileName = fileList.get(i).getOriginalFilename();
 			String fileSuffix = fileName.substring(fileName.lastIndexOf("."), fileName.length());

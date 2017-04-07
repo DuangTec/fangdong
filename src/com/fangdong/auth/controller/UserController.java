@@ -201,10 +201,6 @@ public class UserController{
 		String name=request.getParameter("name");
 		newUser.setName(name);
 		user.setName(name);//改写shrio
-
-		String password=request.getParameter("password");
-		newUser.setPassword(password);
-		user.setPassword(password);
 		
 		String phone=request.getParameter("phone");
 		newUser.setPhone(phone);
@@ -217,11 +213,8 @@ public class UserController{
 		String userid=request.getParameter("userid");
 		newUser.setId(Integer.parseInt(userid));
 		
-		int balance=Integer.parseInt(request.getParameter("balance"));
-		newUser.setBalance(balance);
-		
 		int i=userService.updateUser(newUser);
-		return new ModelAndView("/index.do");
+		return new ModelAndView("redirect:/index.do");
 	}
 	
 
