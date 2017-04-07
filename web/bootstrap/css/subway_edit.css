@@ -1,0 +1,50 @@
+.edit_page_box .panel {
+    margin-left: 80px;
+    margin-bottom: 40px;
+}
+.subway_station_edit{
+    overflow: hidden;
+    line-height: 34px;
+}
+.subway_station_check{
+    position: relative;
+}
+.subway_station_check,.subway_station_add{
+    display: inline-block;
+    height: 28px;
+    line-height: 14px;
+    padding: 6px 15px;
+    margin-right: 10px;
+    background-color: #3FAFDB;
+    color:white;
+    cursor: pointer;
+}
+input[type="text"].subway_station_add{
+    width: 60px;
+    text-align: center;
+    background-color: white;
+    border: 1px dashed #3FAFDB;
+    border-radius: 0px;
+    color:#3FAFDB;
+}
+input[type="text"].subway_station_add:focus{
+    border: none;
+    box-shadow: 0px 0px 4px 1px #98D2E9;
+}
+.glyphicon-remove{
+    position: absolute;
+    top:-4px;
+    right: -6px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 0px 0px 4px 1px #98D2E9;
+    background-color: white;
+    color: #98D2E9;
+    border-radius: 100%;
+}
+.subway_sub{
+    padding-top: 40px;
+}

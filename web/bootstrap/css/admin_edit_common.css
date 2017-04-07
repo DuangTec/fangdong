@@ -1,6 +1,10 @@
 body{
     background-color: #F6F7FB;
 }
+label{
+    font-weight: normal;
+    color:#777 ;
+}
 .footer{
     position: absolute;
 }

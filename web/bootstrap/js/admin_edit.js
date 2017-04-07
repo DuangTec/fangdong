@@ -23,5 +23,26 @@ $(function(){
             $(".edit_select_icon").css("display","none");
         })
     })
+    /*删除站点*/
+    del_station()
+    function del_station(){
+        $(".glyphicon-remove").click(function(){
+            $(this).parent(".subway_station_check").css("display","none");
+        })
+    }
+    /*添加站点*/
+    $(".subway_station_add").focus(function(){
+        $(this).attr("value","");
+        $(this).val("");
+    })
+    $(".subway_station_add").blur(function(){
+        if($(".subway_station_add").val()!=""){
+            $(".station_haved").append("<div class='subway_station_check'>"+
+                $(".subway_station_add").val()+"<span class='glyphicon glyphicon-remove'></span></div>");
+                del_station();
+        }
+        $(this).attr("value","+");
+        $(this).val("+");
+    })
 
 })
