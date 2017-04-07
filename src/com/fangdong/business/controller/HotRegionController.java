@@ -23,7 +23,7 @@ public class HotRegionController {
 	
 	@RequestMapping("/admin/hotRegion.do")
 	public ModelAndView hotRegion() {
-		ModelAndView mov = new ModelAndView("/admin/hotRegion.jsp");
+		ModelAndView mov = new ModelAndView("/admin/hot_region_manage.jsp");
 		List<HotRegionVo> hotRegionList=hotRegionService.getAllHotRegion();
 		mov.addObject("hotRegionList",hotRegionList);
 		return mov;
@@ -37,7 +37,7 @@ public class HotRegionController {
 	
 	@RequestMapping("/admin/editHotRegion.do")
 	public ModelAndView editRegion(HttpServletRequest request){
-		ModelAndView mov = new ModelAndView("/admin/hotRegion_manage_edit.jsp");
+		ModelAndView mov = new ModelAndView("/admin/hot_region_manage_edit.jsp");
 		String type=request.getParameter("type");
 		
 		if((type!=null)&&(!type.equals(""))){

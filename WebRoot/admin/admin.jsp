@@ -46,6 +46,12 @@
                     <li class="col-xs-4">
                         <input type="button" name="user_manegee" id="user_manage" value="用户管理"/>
                     </li>
+                    <li class="col-xs-4">
+                      	<input type="button" name="hot_area_manage" id="hot_area_manage" value="热门地区管理"/>
+                    </li>
+                    <li class="col-xs-4">
+                        <input type="button" name="subway_manage" id="subway_manage" value="地铁管理"/>
+                    </li>
                 </ul>
             </div>
         </div>

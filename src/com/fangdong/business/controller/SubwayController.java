@@ -1,5 +1,6 @@
 package com.fangdong.business.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import com.fangdong.business.model.FdSubway;
 import com.fangdong.business.model.FdSubwayRegion;
 import com.fangdong.business.model.HotRegionVo;
 import com.fangdong.business.model.SubwayRegionVo;
+import com.fangdong.business.model.SubwayVo;
 import com.fangdong.business.service.SubwayService;
 
 @Controller
@@ -24,20 +26,46 @@ public class SubwayController {
 	
 	@RequestMapping("/admin/subway.do")
 	public ModelAndView subway() {		
-		ModelAndView mov = new ModelAndView("/admin/subway.jsp");
+		ModelAndView mov = new ModelAndView("/admin/subway_manage.jsp");
 		List<FdSubway> subwayList=subwayService.getAllSubway();
-		mov.addObject("subwayList",subwayList);
+		List<SubwayVo> subwayVoList = new ArrayList<SubwayVo>();			
+		for(int i=0;i<subwayList.size();i++)
+		{
+			SubwayVo sv=new SubwayVo();
+			int id=subwayList.get(i).getId();
+			String subwayName=subwayList.get(i).getSubwayName();
+			String[] station=getsubwayVoById(subwayList.get(i).getId());
+			sv.setId(id);
+			sv.setSubwayName(subwayName);
+			sv.setSubwayRegion(station);
+			subwayVoList.add(i,sv);
+		}
+		mov.addObject("subwayList",subwayVoList);
 		return mov;
 	}
 	
-	@RequestMapping("/admin/subwayDetail.do")
+	@SuppressWarnings("null")
+	public String[] getsubwayVoById(int id)
+	{
+		List<SubwayRegionVo> SubwayRegionVo=subwayService.getSubwayRegionBySubwayId(id);
+		String[] subwayRegion = new String[SubwayRegionVo.size()];
+		for(int j=0;j<SubwayRegionVo.size();j++)
+		{			
+			String regionName=SubwayRegionVo.get(j).getRegionName();
+			subwayRegion[j]=regionName;
+		}
+		return subwayRegion;
+		
+	}
+	
+/*	@RequestMapping("/admin/subwayDetail.do")
 	public ModelAndView subwayDetail(@RequestParam(value="id")int id){
 		ModelAndView mov = new ModelAndView("/admin/subwayDetail.jsp");
 		List<SubwayRegionVo> subwayRegionList=subwayService.getSubwayRegionBySubwayId(id);
 		mov.addObject("subwayRegionList",subwayRegionList);
 		return mov;
 	}
-	
+		
 	@RequestMapping("/admin/getSubwayRegion.do")
 	public ModelAndView getAllSubwayRegion(HttpServletRequest request) {	
 		int subwayId=Integer.parseInt(request.getParameter("subwayId"));
@@ -45,7 +73,7 @@ public class SubwayController {
 		List<SubwayRegionVo> subwayRegionList=subwayService.getSubwayRegionBySubwayId(subwayId);
 		mov.addObject("subwayRegionList",subwayRegionList);
 		return mov;
-	}
+	}*/
 	
 	@RequestMapping("/admin/delSubway.action")
 	public String delSubway(@RequestParam(value="id",required=true)int id){
@@ -54,9 +82,10 @@ public class SubwayController {
 	}
 	
 	//修改及创建创建地铁线路
+	@SuppressWarnings("null")
 	@RequestMapping("/admin/editSubway.do")
 	public ModelAndView editSubway(@RequestParam(value="id",defaultValue="-1")int id,@RequestParam(value="type",required=false)String type){
-		ModelAndView mov = new ModelAndView("/admin/editSubway.jsp");
+		ModelAndView mov = new ModelAndView("/admin/subway_manage_edit.jsp");
 		//如果type为create，则为创建页面，否则为修改
 		if((type!=null)&&type.equals("create")){
 			mov.addObject("type","create");
@@ -64,8 +93,11 @@ public class SubwayController {
 		}
 		//不是create则根据id查找地铁信息，并添加到响应中去
 		FdSubway subway=subwayService.getSubwayById(id);
-		mov.addObject("subway",subway);
-		
+		SubwayVo subwayVo = null;			
+		subwayVo.setId(subway.getId());
+		subwayVo.setSubwayName(subway.getSubwayName());
+		subwayVo.setSubwayRegion(getsubwayVoById(subway.getId()));
+		mov.addObject("subway",subwayVo);	
 		return mov;
 		
 	}

@@ -132,3 +132,15 @@ function getParentsRegion() {
         }
     });
 }
+
+function delSubwayRegion(id){
+	window.location.href="/admin/delSubway.action?id="+id;
+}
+
+function addSubwayRegion(name){
+	window.location.href="/admin/delSubway.action?name="+name;
+}
+
+
+
+

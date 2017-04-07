@@ -5,6 +5,7 @@ import java.util.List;
 import com.fangdong.business.model.FdSubway;
 import com.fangdong.business.model.FdSubwayRegion;
 import com.fangdong.business.model.SubwayRegionVo;
+import com.fangdong.business.model.SubwayVo;
 
 public interface SubwayService {
 
@@ -21,4 +22,5 @@ public interface SubwayService {
 	public void deleteSubwayById(int id);
 	
 	public void createSubwayRegionBySubwayId(FdSubwayRegion subwayRegion);
+	
 }
