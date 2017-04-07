@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.security.auth.Subject;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Service;
 
 import com.fangdong.auth.mapper.FdUserMapper;
@@ -116,6 +118,19 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		FdUser newFU=userMapper.selectByUserName(username);	
 		return newFU.getId();
+	}
+
+	@Override
+	public boolean currentUserPay(int price) {
+		FdUser currentUser = (FdUser)SecurityUtils.getSubject();
+		FdUser user = new FdUser();
+		user.setId(currentUser.getBalance());
+		if(currentUser.getBalance()>=price){
+			user.setBalance(currentUser.getBalance()-price);
+			userMapper.updateByPrimaryKeySelective(currentUser);
+			return true;
+		}
+		return false;
 	}
 
 	

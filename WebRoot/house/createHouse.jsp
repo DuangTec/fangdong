@@ -92,11 +92,17 @@
                 <div class="col-xs-2">
                 </div>
                 <div class="col-xs-8">
-                    <h5> <span class="red">*&nbsp;&nbsp;</span>房源基本信息</h5>
+                    <h5> <span class="red">*&nbsp;&nbsp;</span>房源详细信息</h5>
                     <c:if test="${type=='update'}"><input type="hidden" value="${house.id}" name="houseId"></c:if>
                     <div class="input-row">
                         <span class="input-label">标题：</span>
                         <input type="text" name="title" class="form-control" value="${house.title}">
+                        <div></div>
+                    </div>
+                    <div class="input-row">
+                        <span class="input-label"> 租赁类型：</span>
+                        <label class="radio-inline"><input type="radio" value="单间" name="rentType" <c:if test="${house.rentType =='单间' }">checked</c:if>>单间</label>
+                        <label class="radio-inline"><input type="radio" value="整租" name="rentType" <c:if test="${house.rentType =='整租' }">checked</c:if>>整租</label>
                         <div></div>
                     </div>
                     <div class="input-row">
@@ -148,12 +154,24 @@
                         </div>
                     </div>
                     <div class="input-row">
+                        <span class="input-label">房屋特点：</span>
+                        <div class="checkbox input-tag">
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="拎包入住" <c:if test="${fn:contains(house.feature,'拎包入住')}">checked</c:if>>拎包入住</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="精装修"<c:if test="${fn:contains(house.feature,'精装修')}">checked</c:if>>精装修</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="家电齐全" <c:if test="${fn:contains(house.feature,'家电齐全')}">checked</c:if>>家电齐全</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="低价" <c:if test="${fn:contains(house.feature,'低价')}">checked</c:if>>低价</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="紧急出售" <c:if test="${fn:contains(house.feature,'紧急出售')}">checked</c:if>>紧急出售</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="交通方便" <c:if test="${fn:contains(house.feature,'交通方便')}">checked</c:if>>交通方便</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="小区房" <c:if test="${fn:contains(house.feature,'小区房')}">checked</c:if>>小区房</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="可办公" <c:if test="${fn:contains(house.feature,'可办公')}">checked</c:if>>可办公</label>
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="input-row">
                         <span class="input-label">详细信息：</span>
                         <textarea class="form-control" rows="3" name="houseDetail">${house.houseDetail}</textarea>
                         <div></div>
                     </div>
-
-                    <h5> <span class="red">*&nbsp;&nbsp;</span>详细信息</h5>
                     <div class="input-row">
                         <span class="input-label i-down"> 配套设施：</span>
                         <div class="checkbox input-tag">
@@ -168,6 +186,7 @@
                             <label  class="checkbox-inline"><input type="checkbox" name="facility" value="水、电、气" <c:if test="${fn:contains(house.facilities,'水、电、气')}">checked</c:if>>水、电、气</label>
                         </div>
                     </div>
+
                     <div class="input-row create_house_img_preview">
                         <span class="input-label">小屋美图：</span>
                         <span class="img_preview"><c:forEach items="${picList}" var="pic"><img src="${pic.pictureUrl}"></c:forEach></span>
@@ -176,6 +195,15 @@
                                    accept="image/jpg,image/jpeg,image/gif,image/png" multiple="multiple" name="file">上传图片
                         </a>
                     </div>
+
+                    <div class="input-row">
+                        <span class="input-label red">增值服务：</span>
+                        <div class="checkbox input-tag">
+                            <label  class="checkbox-inline"><input type="checkbox" name="houseTop" value="houseTop" >房屋置顶30天(30元/次)</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="priorApproval" value="priorApproval">优先审批(5元/次)</label>
+                        </div>
+                    </div>
+
                     <div class="up">
                         <input type="submit" value="上传房屋信息" class="upload"/>
                     </div>

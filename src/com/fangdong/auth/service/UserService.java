@@ -16,4 +16,6 @@ public interface UserService {
 	public int deleteUserById(int id);
 	public int createUser(FdUser newUser);
 	public int updateUser(FdUser User);
+	//当前用户付款
+	public boolean currentUserPay(int price);
 }

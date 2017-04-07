@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -183,9 +185,13 @@ public class HouseController {
 		int hall = Integer.parseInt(request.getParameter("hall"));
 		int size = Integer.parseInt(request.getParameter("size"));
 		String address = request.getParameter("address");
+		String rentType=request.getParameter("rentType");
 		String houseDetail = request.getParameter("houseDetail");
 		int regionId = Integer.parseInt(request.getParameter("areaId"));
 		String facility[] = request.getParameterValues("facility");
+		String feature[] = request.getParameterValues("feature");
+		String houseTop = request.getParameter("houseTop");
+		String priorApproval = request.getParameter("priorApproval");
 
 		FdHouse house = new FdHouse();
 		house.setTitle(title);
@@ -195,19 +201,45 @@ public class HouseController {
 		house.setSize(size);
 		house.setAddress(address);
 		house.setHouseDetail(houseDetail);
+		house.setRentType(rentType);
 		house.setRegionId(regionId);
 		house.setUpdateTime(new Date());
 		//创建房屋后状态改为pending待审批
 		house.setHouseStatus("pending");
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb1 = new StringBuilder();
 		for (String f : facility) {
-			sb.append(f + ",");
+			sb1.append(f + ",");
 		}
-		house.setFacilities(sb.substring(0, sb.length() - 1));
+		house.setFacilities(sb1.substring(0, sb1.length() - 1));
+		
+		StringBuilder sb2 = new StringBuilder();
+		for (String f : feature) {
+			sb2.append(f + ",");
+		}
+		house.setFeatures(sb2.substring(0, sb2.length() - 1));
+		
 		house.setCreateDate(new Date());
+		
 
-		Subject currentUser = SecurityUtils.getSubject();
-		int ownerId = ((FdUser) currentUser.getPrincipal()).getId();
+		Subject subject = SecurityUtils.getSubject();
+		FdUser currentUser = (FdUser)subject.getPrincipal();
+		int ownerId = currentUser.getId();
+		//查看增值服务
+		if((houseTop!=null)&&(houseTop.equals("houseTop"))){
+			if(userService.currentUserPay(30)){
+				Date startDate = new Date();
+				house.setStartTopTime(startDate);
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(startDate);
+				cal.add(Calendar.MONTH, 1);
+				house.setEndTopTime(cal.getTime());
+			}
+		}
+		if((priorApproval!=null)&&(priorApproval.equals("priorApproval"))){
+			if(userService.currentUserPay(5)){
+				house.setPriorApproval(1);
+			}
+		}
 		house.setOwnerId(ownerId);
 		try {
 			houseService.insertHouse(house);
@@ -475,14 +507,14 @@ public class HouseController {
 	//通过审核 接口
 	@RequestMapping("/admin/passApproval.action")
 	public String passApproval(@RequestParam(value="id",required=true)int id){
-		houseService.changeHouseStatus(id,"publish");
+		houseService.changeHouseStatus(id,"published");
 		return "redirect:/admin/pendingHouse.do";
 	}
 	
 	//未通过审核 接口
 	@RequestMapping("/admin/failApproval.action")
 	public String failApproval(@RequestParam(value="id",required=true)int id){
-		houseService.changeHouseStatus(id,"close");
+		houseService.changeHouseStatus(id,"closed");
 		return "redirect:/admin/pendingHouse.do";
 	}
 	
