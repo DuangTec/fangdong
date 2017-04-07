@@ -100,5 +100,71 @@ h1{
 .edit_pwd_box label.error{
     margin-left: 100px;
 }
+/*≥‰÷µ*/
+.recharge{
+    padding: 80px 0px;
+}
+.recharge li{
+    position: relative;
+    width: 620px;
+    margin-bottom: 0px;
+    padding-bottom: 70px;
+    overflow: visible;
+}
+.recharge h1{
+    margin-bottom: 60px;
+}
+.recharge .title{
+    display: inline-block;
+    width: 120px;
+}
+.recharge input{
+    display: inline-block;
+}
+.recharge input.money{
+    width: 200px;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 0em;
+}
+.bank_radio{
+    display: inline-block;
+}
+.bank_radio input{
+    width: 14px;
+    height: 14px;
+    border-radius: 0px;
+}
+.more_bank{
+   margin-left: 10px;
+}
+.money_able_num{
+    color:#FF9649;
+    font-size: 16px;
+}
+.money_user{
+    font-size: 16px;
+    color:#6CC5E9;
+}
+.more_bank_radio .modal-dialog{
+    width: 650px;
+    margin: 100px auto;
+}
+.more_bank_radio .modal-dialog .bank_radio{
+    margin-bottom: 5px;
+}
+.recharge_box label{
+    position: absolute;
+    top: 0px;
+    right: -120px;
+}
+.recharge_money label{
+    top: -5px;
+    right: auto;
+    left: 330px;
+}
+.recharge_bank{
+    display: inline-block;
+}
 
 

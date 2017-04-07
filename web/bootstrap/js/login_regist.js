@@ -66,6 +66,15 @@ $(function(){
                 required:true,
                 login_regist_pwd_reg:true,
                 equalTo:"#regist_pwd"/*选择器*/
+            },
+            /*充值*/
+            bank:{
+                required:true,
+            },
+            money:{
+                required:true,
+                digits:true,/*大于等于0的数字*/
+                min:1/*最小值为1*/
             }
         },
         messages:{
@@ -86,6 +95,15 @@ $(function(){
             regist_repwd:{
                 required:"请再次输入密码",
                 equalTo:"两次密码不一致"
+            },
+            /*充值*/
+            bank:{
+                required:"请选择充值来源",
+            },
+            money:{
+                required:"请输入充值金额",
+                digits:"充值金额最少为1元",/*大于等于0的数字*/
+                min:"充值金额最少为1元"/*最小值为1*/
             }
         },
         submitHandler:function(form){/*表单通过验证后调用的函数，参数是form的DOM元素，serialize()序列化*/
