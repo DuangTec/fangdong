@@ -39,8 +39,15 @@
                 <div class="col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="admin.html">后台管理</a></li>
-                        <li><a href="hot_area_manage.html.html">热门地区管理</a></li>
-                        <li class="active">热门地区编辑</li>
+                        <li><a href="/admin/hotRegion.do">热门地区管理</a></li>
+                        <c:choose>
+                    	<c:when test="${type == 'create' }">
+                    <li class="active">创建热门地区</li>
+                    	</c:when>
+                    	<c:otherwise>
+                    <li class="active">热门地区编辑</li>
+                    	</c:otherwise>
+                    	</c:choose>
                     </ol>
                 </div>
             </div>
