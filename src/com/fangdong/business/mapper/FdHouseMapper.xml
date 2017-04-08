@@ -221,10 +221,36 @@
 	LEFT JOIN fd_region r1 ON h.region_id = r1.id
 	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
 	LEFT JOIN fd_region r3 on r2.parent_reg_id=r3.id
+	LEFT JOIN fd_subway_region sr ON sr.region_id=h.region_id
+	LEFT JOIN fd_hot_region hr ON hr.region_id=h.region_id
 	<where>
-		<if test="param.districtId != null">
-			AND r2.id=#{param.districtId}
-		</if>
+	<choose>
+		<when test="param.searchRegionType == 'region'">
+			<if test="param.l2RegionId != null">
+				AND r2.id=#{param.l2RegionId}
+			</if>
+			<if test="param.l3RegionId != null">
+				AND r2.id=#{param.l3RegionId}
+			</if>
+		</when>
+		<when test="param.searchRegionType == 'subway'">
+			<if test="param.l2RegionId != null">
+				AND sr.subway_id=#{param.l2RegionId}
+			</if>
+			<if test="param.l3RegionId !=null">
+				AND sr.region_id=#{param.l3RegionId}
+			</if>
+		</when>
+		<when test="param.searchRegionType == 'hotRegion'">
+			<if test="param.l2RegionId != null">
+				AND h.region_id=#{param.l2RegionId}
+			</if>
+			<if test="param.l3RegionId !=null">
+				AND hr.id=#{param.l3RegionId}
+			</if>
+		</when>
+	</choose>
+		
 		<if test="param.lowerPrice != null">
 			and h.rent_price &gt;=#{param.lowerPrice}
 		</if>
@@ -237,8 +263,17 @@
 		<if test="param.hallNum != null">
 			and h.hall=#{param.hallNum}
 		</if>
-		<if test="regionId != 0">
-			AND r3.id=#{regionId}
+		<if test="param.rentType != null">
+		 and h.rent_type=#{param.rentType}
+		</if>
+		<if test="param.features != null">
+		<foreach collection="param.features" item="fea" index="index"
+            open="(" close=")">
+		and h.features like '%'#{fea}'%'
+    	</foreach>
+		</if>
+		<if test="cityId != 0">
+			AND r3.id=#{cityId}
 		</if>
 		
 	</where>
