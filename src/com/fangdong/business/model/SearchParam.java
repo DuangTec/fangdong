@@ -6,16 +6,46 @@ package com.fangdong.business.model;
  *
  */
 public class SearchParam {
-	private Integer districtId;
+	private String searchRegionType;
+	private Integer l2RegionId;
+	private Integer l3RegionId;
 	private Integer lowerPrice;
 	private Integer upperPrice;
 	private Integer roomNum;
 	private Integer hallNum;
-	public Integer getDistrictId() {
-		return districtId;
+	private String rentType;
+	private String[] features;
+	
+	public String getRentType() {
+		return rentType;
 	}
-	public void setDistrictId(Integer districtId) {
-		this.districtId = districtId;
+	public void setRentType(String rentType) {
+		this.rentType = rentType;
+	}
+	public String[] getFeatures() {
+		return features;
+	}
+	public void setFeatures(String[] features) {
+		this.features = features;
+	}
+	public String getSearchRegionType() {
+		return searchRegionType;
+	}
+	public void setSearchRegionType(String searchRegionType) {
+		this.searchRegionType = searchRegionType;
+	}
+
+	public Integer getL2RegionId() {
+		return l2RegionId;
+	}
+	public void setL2RegionId(Integer l2RegionId) {
+		this.l2RegionId = l2RegionId;
+	}
+	public Integer getL3RegionId() {
+		return l3RegionId;
+	}
+	public void setL3RegionId(Integer l3RegionId) {
+		this.l3RegionId = l3RegionId;
 	}
 	public Integer getLowerPrice() {
 		return lowerPrice;
