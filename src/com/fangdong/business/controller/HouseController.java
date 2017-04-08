@@ -301,6 +301,7 @@ public class HouseController {
 		String houseDetail = request.getParameter("houseDetail");
 		int regionId = Integer.parseInt(request.getParameter("areaId"));
 		String facility[] = request.getParameterValues("facility");
+		String feature[] = request.getParameterValues("feature");
 
 		FdHouse house = new FdHouse();
 		house.setId(houseId);
@@ -312,11 +313,18 @@ public class HouseController {
 		house.setAddress(address);
 		house.setHouseDetail(houseDetail);
 		house.setRegionId(regionId);
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb1 = new StringBuilder();
 		for (String f : facility) {
-			sb.append(f + ",");
+			sb1.append(f + ",");
 		}
-		house.setFacilities(sb.substring(0, sb.length() - 1));
+		
+		StringBuilder sb2 = new StringBuilder();
+		for (String f : feature) {
+			sb2.append(f + ",");
+		}
+		
+		house.setFacilities(sb1.substring(0, sb1.length() - 1));
+		house.setFeatures(sb2.substring(0,sb2.length()-1));
 		house.setCreateDate(new Date());
 
 		Subject currentUser = SecurityUtils.getSubject();
@@ -458,11 +466,11 @@ public class HouseController {
 		house.setHall(hall);
 		house.setRoom(room);
 		house.setOwnerId(owner.getId());
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb1 = new StringBuilder();
 		for (String f : facility) {
-			sb.append(f + ",");
+			sb1.append(f + ",");
 		}
-		house.setFacilities(sb.substring(0, sb.length() - 1));
+		house.setFacilities(sb1.substring(0, sb1.length() - 1));
 
 		// 判断新建房屋
 		if ((type != null) && (!type.equals(""))) {

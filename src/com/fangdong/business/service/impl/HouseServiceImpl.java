@@ -107,7 +107,10 @@ public class HouseServiceImpl implements HouseService {
 		String facility=house.getFacilities();
 		if(facility!=null)
 			house.setFacility(facility.split(","));
-		
+		//根据features字段房屋特点
+				String features=house.getFeatures();
+				if(features!=null)
+					house.setFeature(features.split(","));
 
 		return house;
 	}

@@ -156,14 +156,14 @@
                     <div class="input-row">
                         <span class="input-label">房屋特点：</span>
                         <div class="checkbox input-tag">
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="拎包入住" <c:if test="${fn:contains(house.feature,'拎包入住')}">checked</c:if>>拎包入住</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="精装修"<c:if test="${fn:contains(house.feature,'精装修')}">checked</c:if>>精装修</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="家电齐全" <c:if test="${fn:contains(house.feature,'家电齐全')}">checked</c:if>>家电齐全</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="低价" <c:if test="${fn:contains(house.feature,'低价')}">checked</c:if>>低价</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="紧急出售" <c:if test="${fn:contains(house.feature,'紧急出售')}">checked</c:if>>紧急出售</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="交通方便" <c:if test="${fn:contains(house.feature,'交通方便')}">checked</c:if>>交通方便</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="小区房" <c:if test="${fn:contains(house.feature,'小区房')}">checked</c:if>>小区房</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="可办公" <c:if test="${fn:contains(house.feature,'可办公')}">checked</c:if>>可办公</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="拎包入住" <c:if test="${fn:contains(house.features,'拎包入住')}">checked</c:if>>拎包入住</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="精装修"<c:if test="${fn:contains(house.features,'精装修')}">checked</c:if>>精装修</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="家电齐全" <c:if test="${fn:contains(house.features,'家电齐全')}">checked</c:if>>家电齐全</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="低价" <c:if test="${fn:contains(house.features,'低价')}">checked</c:if>>低价</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="紧急出售" <c:if test="${fn:contains(house.features,'紧急出售')}">checked</c:if>>紧急出售</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="交通方便" <c:if test="${fn:contains(house.features,'交通方便')}">checked</c:if>>交通方便</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="小区房" <c:if test="${fn:contains(house.features,'小区房')}">checked</c:if>>小区房</label>
+                            <label  class="checkbox-inline"><input type="checkbox" name="feature" value="可办公" <c:if test="${fn:contains(house.features,'可办公')}">checked</c:if>>可办公</label>
                         </div>
                         <div></div>
                     </div>
