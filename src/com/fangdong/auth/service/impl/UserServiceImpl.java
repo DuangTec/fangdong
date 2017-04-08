@@ -133,6 +133,13 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+	@Override
+	public boolean recharge(FdUser User) {
+		// TODO Auto-generated method stub
+		userMapper.updateByPrimaryKeySelective(User);
+		return true;
+	}
+
 	
 
 }

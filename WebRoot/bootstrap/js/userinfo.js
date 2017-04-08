@@ -21,3 +21,7 @@ function takeOffHouse(id){
 function putOnHouse(id){
 	window.location.href="/putOnHouse.action?id="+id;
 }
+//充值
+function recharge(id){
+	window.location.href="/recharge.do?id="+id;
+}

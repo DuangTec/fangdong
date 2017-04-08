@@ -102,6 +102,27 @@ public class UserController{
 //	public String changePassword(@RequestParam(value="id",required=true)int id,@RequestParam(value="oldPassword",required=true)String oldPsw,@RequestParam(value="newPassword",required=true)String newPsw){
 //		
 //	}
+	//更改密码提交
+	@RequestMapping("/changePassowordSubmit.action")
+	public ModelAndView changePasswordSubmit(@RequestParam(value="id",required=true)int id,@RequestParam(value="regist_pwd",required=true)String newPsw){
+		FdUser user=new FdUser();
+		user.setId(id);
+		user.setPassword(newPsw);
+		userService.updateUser(user);
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("redirect:/userinfo.do");
+		return mov;
+		
+	}
+	/*//更改密码跳转
+	@RequestMapping("/changePassword.do")
+	public ModelAndView changePassword(@RequestParam(value="userid",required=true)int id){
+		FdUser user=userService.getUserById(id);
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("redirect:/admin/userinfo.do");
+		return mov;
+		
+	}*/
 	
 	//后台管理用户删除
 	@RequestMapping("/admin/deleteUser.action")
@@ -217,5 +238,27 @@ public class UserController{
 		return new ModelAndView("redirect:/index.do");
 	}
 	
-
+	@RequestMapping("/recharge.do")
+	public ModelAndView recharge(HttpServletRequest request){
+		int ownerId = Integer.parseInt(request.getParameter("id"));
+		FdUser user=userService.getUserById(ownerId);
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("/recharge.jsp");
+		mov.addObject("user",user);
+		return mov;
+	}
+	
+	@RequestMapping("/rechargeSubmit.do")
+	public ModelAndView rechargeSubmit(HttpServletRequest request){
+		int money = Integer.parseInt(request.getParameter("money"));
+		int ownerId = Integer.parseInt(request.getParameter("id"));
+		FdUser user=userService.getUserById(ownerId);
+		user.setBalance(money+user.getBalance());
+		//充值接口
+		userService.recharge(user);
+		ModelAndView mov = new ModelAndView();
+		mov.setViewName("redirect:/userinfo.do");
+		return mov;
+	}
+	
 }
