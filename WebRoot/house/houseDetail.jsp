@@ -5,6 +5,7 @@
 <%@page import="com.fangdong.business.model.HouseVo" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -22,7 +23,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg">
             <li class="dropdown">
                 <%String regionCode=(String)session.getAttribute("regionCode");
@@ -184,17 +185,37 @@
                     <a id="house_detail2"></a>
                     <span class="house_detail_news_icon">配套设施</span>
                     <div class="house_detail_content">
-                        <img src="/bootstrap/images/chuang.jpg">
-                        <img src="/bootstrap/images/TV.jpg">
-                        <img src="/bootstrap/images/kuandai.jpg">
-                        <img src="/bootstrap/images/xiyiji.jpg">
-                        <img src="/bootstrap/images/bingxiang.jpg">
-                        <img src="/bootstrap/images/kongtiao.jpg">
-                        <img src="/bootstrap/images/nuanqi.jpg">
-                        <img src="/bootstrap/images/reshuiqi.jpg">
-                        <img src="/bootstrap/images/tianranqi.jpg">
-                        <img src="/bootstrap/images/jiaju.jpg">
-                    </div>
+							<c:if test="${fn:contains(house.facilities,'床')}">
+								<img src="/bootstrap/images/chuang.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'电视')}">
+								<img src="/bootstrap/images/TV.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'宽带')}">
+								<img src="/bootstrap/images/kuandai.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'洗衣机')}">
+								<img src="/bootstrap/images/xiyiji.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'冰箱')}">
+								<img src="/bootstrap/images/bingxiang.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'空调')}">
+								<img src="/bootstrap/images/kongtiao.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'暖气')}">
+								<img src="/bootstrap/images/nuanqi.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'热水器')}">
+								<img src="/bootstrap/images/reshuiqi.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'天然气')}">
+								<img src="/bootstrap/images/tianranqi.jpg">
+							</c:if>
+							<c:if test="${fn:contains(house.facilities,'家具')}">
+								<img src="/bootstrap/images/jiaju.jpg">
+							</c:if>
+						</div>
                     <a href="#house_ul" class="glyphicon glyphicon-hand-up go_house_ul"></a>
                 </div>
                 <div class="house_detail_news">
