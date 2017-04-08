@@ -238,7 +238,7 @@
 				AND r2.id=#{param.l2RegionId}
 			</if>
 			<if test="param.l3RegionId != null">
-				AND r2.id=#{param.l3RegionId}
+				AND r1.id=#{param.l3RegionId}
 			</if>
 		</when>
 		<when test="param.searchRegionType == 'subway'">
@@ -251,7 +251,7 @@
 		</when>
 		<when test="param.searchRegionType == 'hotRegion'">
 			<if test="param.l2RegionId != null">
-				AND h.region_id=#{param.l2RegionId}
+				AND r2.id=#{param.l2RegionId}
 			</if>
 			<if test="param.l3RegionId !=null">
 				AND hr.id=#{param.l3RegionId}

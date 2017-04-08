@@ -25,6 +25,8 @@ public interface FdHotRegionMapper {
     HotRegionVo selectHotRegionById(int id);
 
     FdHotRegion selectByPrimaryKey(Integer id);
+    
+    List<HotRegionVo> selectHotRegionByDistrictId(Integer districtId);
 
     int updateByExampleSelective(@Param("record") FdHotRegion record, @Param("example") FdHotRegionExample example);
 

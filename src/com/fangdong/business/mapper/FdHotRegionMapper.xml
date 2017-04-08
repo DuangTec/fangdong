@@ -119,6 +119,19 @@
 	WHERE
 	hr.id=#{id,jdbcType=INTEGER}
   </select>
+  <select id="selectHotRegionByDistrictId" parameterType="int" resultMap="VoResultMap">
+  	select
+  	hr.hot_region_name,
+	hr.hot_region_type,
+	hr.id,
+	hr.region_id,
+	r1.region_name as 'region_name'
+	from fd_hot_region hr
+	left join fd_region r1 on r1.id=hr.region_id
+	left join fd_region r2 on r2.id=r1.parent_reg_id
+	where r2.id=#{districtId}
+	
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fd_hot_region
     where id = #{id,jdbcType=INTEGER}

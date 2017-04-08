@@ -44,4 +44,9 @@ public class HotRegionServiceImpl implements HotRegionService {
 		return true;
 	}
 
+	@Override
+	public List<HotRegionVo> getHotRegionByDistrictId(Integer districtId) {
+		return hotRegionMapper.selectHotRegionByDistrictId(districtId);
+	}
+
 }

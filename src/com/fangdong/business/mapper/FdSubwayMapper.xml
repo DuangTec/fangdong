@@ -93,6 +93,9 @@
 	FROM
 	fd_subway s
   </select>
+  <select id="selectSubwayByRegionCode" parameterType="int" resultMap="BaseResultMap">
+  	select s.subway_name,s.id from fd_subway s left join fd_region r on r.id=s.region_id where r.id=#{regionCode}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fd_subway
     where id = #{id,jdbcType=INTEGER}

@@ -16,5 +16,7 @@ public interface HotRegionService {
 	public void createHotRegion(FdHotRegion hotRegion);
 	
 	public boolean updateHotRegion(FdHotRegion hotRegion);
+
+	public List<HotRegionVo> getHotRegionByDistrictId(Integer districtId);
 }
 

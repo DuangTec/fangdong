@@ -33,11 +33,17 @@ import com.fangdong.auth.service.UserService;
 import com.fangdong.business.model.FdHouse;
 import com.fangdong.business.model.FdPicture;
 import com.fangdong.business.model.FdRegion;
+import com.fangdong.business.model.FdSubway;
+import com.fangdong.business.model.HotRegionVo;
 import com.fangdong.business.model.HouseVo;
+import com.fangdong.business.model.RegionVo;
 import com.fangdong.business.model.SearchParam;
+import com.fangdong.business.model.SubwayRegionVo;
+import com.fangdong.business.service.HotRegionService;
 import com.fangdong.business.service.HouseService;
 import com.fangdong.business.service.PictureService;
 import com.fangdong.business.service.RegionService;
+import com.fangdong.business.service.SubwayService;
 import com.fangdong.common.exception.SQLConnectionFailException;
 
 @Controller
@@ -51,24 +57,36 @@ public class HouseController {
 	private PictureService pictureService;
 	@Resource
 	private UserService userService;
-
+	@Resource
+	private SubwayService subwayService;
+	@Resource
+	private HotRegionService hotRegionService;
 	/**
 	 * 房屋业务的主页，展示已经挂上来的房屋 模糊查询整合\通过三种方式查询整合
 	 * 
 	 * @return
+	 * @throws Exception 
+	 * @throws NumberFormatException 
 	 */
 	@RequestMapping("/house.do")
-	public ModelAndView house(HttpSession session,String type, @RequestParam(value="index-search",required=false)String key,String searchRegionType,Integer l2RegionId,Integer l3RegionId,String rentprice,String housetype,String rentType,String[] features) {
+	public ModelAndView house(HttpSession session,String type, @RequestParam(value="index-search",required=false)String key,@RequestParam(value="searchRegionType",defaultValue="region")String searchRegionType,String l2regionid,String l3regionid,String rentprice,String housetype,String renttype,String[] features) throws NumberFormatException, Exception {
 		ModelAndView mov = new ModelAndView("/house/house.jsp");
-		// 获取该城市下的所有行政区
+		
 		String regionCode = (String) session.getAttribute("regionCode");
 		if (regionCode == null) {
 			regionCode = "1";
 		}
-		List<FdRegion> fdRegionResult = regionService.getChildren(regionCode);
-
 		int cityId = Integer.parseInt(regionCode);
-		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
+		
+		// 获取该城市下的所有二级搜索条件
+		if((searchRegionType!=null)&&((searchRegionType.equals("region"))||(searchRegionType.equals("hotRegion")))){
+			List<FdRegion> fdRegionResult = regionService.getChildren(regionCode);
+			mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
+		} else if((searchRegionType!=null)&&(searchRegionType.equals("subway"))){
+			List<FdSubway> subwayList = subwayService.getSubwayByRegionCode(cityId);
+			mov.addObject("subwayList",subwayList);//传地铁线路信息到jsp前台
+		}
+
 
 		// 检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
 		if ((type != null) && (type.equals("fuzzySearch"))) {
@@ -77,16 +95,31 @@ public class HouseController {
 
 			return mov;
 		}
-
 		// 不是模糊查询，则执行条件查询
-
+		
 		// 组装搜索参数对象
 		SearchParam param = new SearchParam();
 		param.setSearchRegionType(searchRegionType);
-		param.setL2RegionId(l2RegionId);
-		param.setL3RegionId(l3RegionId);
-		param.setRentType(rentType);
-		
+
+		//如果选中的是二级搜索条件，则要返回三级搜索条件
+		if((l2regionid!=null)&&(!l2regionid.equals("all"))){
+			param.setL2RegionId(Integer.parseInt(l2regionid));
+			if(searchRegionType.equals("subway")){
+				List<SubwayRegionVo> subwayRegionList = subwayService.getSubwayRegionBySubwayId(Integer.parseInt(l2regionid));
+				mov.addObject("subwayRegionList",subwayRegionList);
+			} else if(searchRegionType.equals("region")){
+				List<FdRegion> regionVoList = regionService.getAreaByDistrictId(Integer.parseInt(l2regionid));
+				mov.addObject("regionVoList",regionVoList);
+			} else if(searchRegionType.equals("hotRegion")){
+				List<HotRegionVo> hotRegionList = hotRegionService.getHotRegionByDistrictId(Integer.parseInt(l2regionid));
+				mov.addObject("hotRegionList",hotRegionList);
+			}
+			
+			if((l3regionid!=null)&&(!l3regionid.equals("all"))){
+				param.setL3RegionId(Integer.parseInt(l3regionid));
+			}
+		}
+
 		if (rentprice != null) {
 			switch (rentprice) {
 			case "700L":
@@ -128,6 +161,15 @@ public class HouseController {
 				break;
 			}
 		}
+		//租房方式
+		if((renttype!=null)&&(!renttype.equals("all"))){
+			if(renttype.equals("whole")){
+				param.setRentType("整租");
+			}
+			else if(renttype.equals("single")){
+				param.setRentType("单间");
+			}
+		}
 
 		if(features!=null){
 			param.setFeatures(features);
@@ -138,7 +180,7 @@ public class HouseController {
 		mov.addObject("houseList", houseList);
 
 		// 将上一次的搜索参数返回到响应页面
-		mov.addObject("param", param);
+		mov.addObject("searchParam",param);
 
 		return mov;
 	}

@@ -22,6 +22,8 @@ public interface FdSubwayMapper {
     List<FdSubway> selectAllSubway();
 
     FdSubway selectByPrimaryKey(Integer id);
+    
+    List<FdSubway> selectSubwayByRegionCode(Integer regionCode);
 
     int updateByExampleSelective(@Param("record") FdSubway record, @Param("example") FdSubwayExample example);
 

@@ -85,6 +85,15 @@
     left: 25px;
     margin-bottom: 10px;
 }
+/*分*/
+.s-left .new h4 span{
+    padding: 10px 15px;
+    cursor:pointer;
+}
+.now{
+    border-top: solid 2px #FF9649;
+    background-color: white;
+}
 .filter-row {
     padding-left: 80px;
     margin: 20px 0;
@@ -96,19 +105,37 @@
     width: 70px;
     text-align: right;
     margin-right: -100%;
-	margin-top:10px;
 }
 .filter-tag a.active {
     background-color: #98D2E9;
     color: #fff;
     padding: 0 5px;
+    margin-bottom: 10px;
 }
 .filter-row .filter-tag a {
     color: #555;
     display: inline-block;
     margin-right: 20px;
-	margin-top:10px;
-	padding:0 5px;
+    padding: 0 5px;
+    margin-bottom: 10px;
+}
+/* 二级地区 */
+.secondlevel{
+    width: 95%;
+    padding: 5px 30px;
+    border: solid 1px #98D2E9;
+    border-radius: 5px;
+    position: relative;
+    top: -8px;
+    display: none;
+}
+.filter-tag .glyphicon-map-marker{
+    color: #ff995f;
+    padding-right: 3px;
+}
+.secondlevel .filter-tag{
+    position: relative;
+    top: 5px;
 }
 
 /* search */
