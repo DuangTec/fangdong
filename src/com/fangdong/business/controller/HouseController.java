@@ -21,6 +21,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -57,7 +58,7 @@ public class HouseController {
 	 * @return
 	 */
 	@RequestMapping("/house.do")
-	public ModelAndView house(HttpServletRequest request, HttpSession session) {
+	public ModelAndView house(HttpSession session,String type, @RequestParam(value="index-search",required=false)String key,String searchRegionType,Integer l2RegionId,Integer l3RegionId,String rentprice,String housetype,String rentType,String[] features) {
 		ModelAndView mov = new ModelAndView("/house/house.jsp");
 		// 获取该城市下的所有行政区
 		String regionCode = (String) session.getAttribute("regionCode");
@@ -70,9 +71,7 @@ public class HouseController {
 		mov.addObject("fdRegionResult", fdRegionResult);// 传子地区信息到jsp前台
 
 		// 检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
-		String type = request.getParameter("type");
 		if ((type != null) && (type.equals("fuzzySearch"))) {
-			String key = request.getParameter("index-search");
 			List<HouseVo> houseList = houseService.fuzzySearch(cityId, key);
 			mov.addObject("houseList", houseList);
 
@@ -80,14 +79,6 @@ public class HouseController {
 		}
 
 		// 不是模糊查询，则执行条件查询
-		// 获取前台的数据
-		String searchRegionType = request.getParameter("searchRegionType");
-		Integer l2RegionId = Integer.parseInt(request.getParameter("l2RegionId"));
-		Integer l3RegionId = Integer.parseInt(request.getParameter("l3RegionId"));
-		String rentprice = request.getParameter("rentprice");
-		String housetype = request.getParameter("housetype");
-		String rentType = request.getParameter("rentType");
-		String[] features = request.getParameterValues("features");
 
 		// 组装搜索参数对象
 		SearchParam param = new SearchParam();
