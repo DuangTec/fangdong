@@ -495,7 +495,11 @@ public class HouseController {
 	public ModelAndView houseDetail(HttpServletRequest request) {
 		Integer houseId = Integer.parseInt(request.getParameter("houseid"));
 		ModelAndView mov = new ModelAndView("/house/houseDetail.jsp");
-
+		String pending=request.getParameter("pending");
+		if(pending!=null&&pending.equals("pending"))
+		{
+			mov.addObject("pending", pending);
+		}
 		HouseVo houseVo = houseService.getHouseVoById(houseId);
 		mov.addObject("house", houseVo);
 		List<HouseVo> guessYouLikeList = houseService.guessYouLike(houseVo.getDistrict());
@@ -514,20 +518,20 @@ public class HouseController {
 	@RequestMapping("/admin/passApproval.action")
 	public String passApproval(@RequestParam(value="id",required=true)int id){
 		houseService.changeHouseStatus(id,"published");
-		return "redirect:/admin/pendingHouse.do";
+		return "redirect:/admin/house_check.do";
 	}
 	
 	//未通过审核 接口
 	@RequestMapping("/admin/failApproval.action")
 	public String failApproval(@RequestParam(value="id",required=true)int id){
 		houseService.changeHouseStatus(id,"closed");
-		return "redirect:/admin/pendingHouse.do";
+		return "redirect:/admin/house_check.do";
 	}
 	
 	//后台房屋审核页面
-	@RequestMapping("/admin/pendingHouse.do")
+	@RequestMapping("/admin/house_check.do")
 	public ModelAndView pendingHouse(){
-		ModelAndView mov = new ModelAndView("/admin/pendingHouse.jsp");
+		ModelAndView mov = new ModelAndView("/admin/house_check.jsp");
 		
 		List<HouseVo> pendingHouseList=houseService.getAllPendingHouse();
 		mov.addObject("pendingHouseList",pendingHouseList);

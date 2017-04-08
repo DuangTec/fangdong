@@ -13,6 +13,9 @@ $(function(){
     $("#house_manage").click(function(){
         window.location.href="/admin/house_manage.do";
     })
+    $("#house_check").click(function(){
+        window.location.href="/admin/house_check.do";
+    })
     $("#area_manage").click(function(){
         window.location.href="/admin/area_manage.do";
     })

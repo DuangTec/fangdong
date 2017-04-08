@@ -40,6 +40,7 @@
                 <div class="col-xs-2 manege_nav_box">
                     <ul class="manege_nav">
                         <li><a href="house_manage.do">房屋管理</a></li>
+                        <li><a href="house_check.do">房屋审核</a></li>
                         <li><a href="area_manage.do">地区管理</a></li>
                         <li><a href="user_manage.do">用户管理</a></li>
                         <li><a href="subway.do">地铁管理</a></li>

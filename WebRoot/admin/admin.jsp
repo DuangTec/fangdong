@@ -41,6 +41,9 @@
                         <input type="button" name="house_manegee" id="house_manage" value="房屋管理"/>
                     </li>
                     <li class="col-xs-4">
+                            <input type="button" name="house_check" id="house_check" value="房屋审核"/>
+                        </li>
+                    <li class="col-xs-4">
                         <input type="button" name="area_manegee" id="area_manage" value="地区管理"/>
                     </li>
                     <li class="col-xs-4">

@@ -83,3 +83,12 @@ $(function(){
     })
     $(".house_details_img").html($(".scroll_inner").html())
 })
+
+
+function passApproval(id){
+	 window.location.href="/admin/passApproval.action?id="+id;
+}
+
+function failApproval(id){
+	window.location.href="/admin/failApproval.action?id="+id;
+}

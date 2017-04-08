@@ -6,3 +6,13 @@
     margin-right: 10px;
     cursor: pointer;
 }
+.house_news_check a,
+.house_name a{
+    color: #98D2E9;
+}
+.house_news_check a:hover,
+.house_news_check a:focus,
+.house_name a:hover,
+.house_name a:focus{
+    text-decoration: underline;
+}

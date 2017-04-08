@@ -81,8 +81,8 @@
                 </ol>
                 <c:if test="${pending == 'pending'}">
                 <div class="house_manage">
-                    <button type="button" onclick="/admin/passApproval.action?id=${house.id}" class="btn btn-info">审核通过</button>
-                    <button type="button" onclick="/admin/failApproval.action?id=${house.id}" class="btn duang-btn-error">审核不通过</button>
+                    <button type="button" onclick="passApproval(${house.id})" class="btn btn-info">审核通过</button>
+                    <button type="button" onclick="failApproval(${house.id})" class="btn duang-btn-error">审核不通过</button>
                 </div>
                 </c:if>
             </div>
