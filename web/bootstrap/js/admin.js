@@ -9,6 +9,9 @@ $(function(){
     $("#house_manage").click(function(){
         window.location.href="house_manage.html";
     })
+    $("#house_check").click(function(){
+        window.location.href="house_check.html";
+    })
     $("#area_manage").click(function(){
         window.location.href="area_manage.html";
     })
