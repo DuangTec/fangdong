@@ -23,4 +23,8 @@ public interface SubwayService {
 	
 	public void createSubwayRegionBySubwayId(FdSubwayRegion subwayRegion);
 	
+	public void delSubwayRegionById(int id);
+
+	public int getSubwayIdBySubwayRegionId(int id);
+	
 }

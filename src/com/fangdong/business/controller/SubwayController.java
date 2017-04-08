@@ -91,18 +91,17 @@ public class SubwayController {
 		}
 		//不是create则根据id查找地铁信息，并添加到响应中去
 		FdSubway subway=subwayService.getSubwayById(id);
-		SubwayVo subwayVo = new SubwayVo();	
-		subwayVo.setId(subway.getId());
-		subwayVo.setSubwayName(subway.getSubwayName());
-		subwayVo.setSubwayRegion(getsubwayVoById(subway.getId()));
-		mov.addObject("subway",subwayVo);	
+		mov.addObject("subway",subway);
+		
+		List<SubwayRegionVo> subwayRegionVoList=subwayService.getSubwayRegionBySubwayId(id);
+		mov.addObject("station",subwayRegionVoList);
 		return mov;
 		
 	}
 	
 	@RequestMapping("/admin/editSubwaySubmit.action")
 	public String editSubwaySubmit(HttpServletRequest request,@RequestParam(value="id",defaultValue="-1")int id,@RequestParam(value="type",required=false)String type){
-		String subwayName=request.getParameter("subwayName");
+		String subwayName=request.getParameter("subwayRegionId");
 		//如果是创建，type=create
 		if((type!=null)&&(type.equals("create"))){
 			FdSubway subway=new FdSubway();
@@ -129,5 +128,13 @@ public class SubwayController {
 		return "redirect:/admin/subwayDetail.do?id="+subwayId;//返回地铁详情页面。
 	}
 
+	@RequestMapping("/admin/delSubwayRegion.action")
+	public String addSubwayRegion(@RequestParam(value="subwayRegionId",required=true)int id){
+		//FdSubwayRegion subwayRegion = new FdSubwayRegion();
+		//subwayService.createSubwayRegionBySubwayId(subwayRegion);
+		int subwayId=subwayService.getSubwayIdBySubwayRegionId(id);
+		subwayService.delSubwayRegionById(id);
+		return "/admin/editSubway.do?id="+subwayId;//返回地铁详情页面。
+	}
 	
 }

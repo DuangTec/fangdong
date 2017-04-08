@@ -22,7 +22,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="../index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
             <li class="log-reg">
                 <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
