@@ -53,7 +53,8 @@ public class CommonController {
 	
 	@RequestMapping("/userinfo.do")
 	public ModelAndView userInfo(){
-		FdUser user=(FdUser)(SecurityUtils.getSubject().getPrincipal());
+		FdUser user1=(FdUser)(SecurityUtils.getSubject().getPrincipal());
+		FdUser user=userService.getUserById(user1.getId());
 		ModelAndView mov=new ModelAndView("/userinfo.jsp");
 		List<HouseVo> house=houseService.getHouseByUserId(user.getId());
 		mov.addObject("user",user);

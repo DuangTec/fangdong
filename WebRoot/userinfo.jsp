@@ -92,7 +92,7 @@
                         </div>
                         <div class="input-row">
                             <span class="input-label">用户密码：</span>
-                            <button type="button" class="btn btn-default"><a href="/">修改密码</a></button>
+                            <button type="button" class="btn btn-default"><a href="/edit_pwd.jsp">修改密码</a></button>
                         </div>
                         <h5> <span class="red">*&nbsp;&nbsp;</span>我的详细信息</h5>
                         <div class="input-row">
@@ -118,7 +118,7 @@
                             <span class="input-label">我的余额：</span>
                             <span class="label label-info">${user.balance}</span>
                             <input type="hidden" value="${user.balance}" name="balance">
-                            <button type="button" class="btn btn-default recharge">充值</button>
+                            <button type="button" class="btn btn-default recharge" onclick="recharge(${user.id})">充值</button>
                         </div>
 
 

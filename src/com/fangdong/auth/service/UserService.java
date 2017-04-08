@@ -18,4 +18,5 @@ public interface UserService {
 	public int updateUser(FdUser User);
 	//当前用户付款
 	public boolean currentUserPay(int price);
+	public boolean recharge(FdUser User);
 }
