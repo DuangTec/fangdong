@@ -87,19 +87,19 @@ public class HouseController {
 			mov.addObject("subwayList",subwayList);//传地铁线路信息到jsp前台
 		}
 
+		// 组装搜索参数对象
+		SearchParam param = new SearchParam();
+		param.setSearchRegionType(searchRegionType);
 
 		// 检查是否是模糊查询，如果是模糊查询则不进行后面的条件查询
 		if ((type != null) && (type.equals("fuzzySearch"))) {
 			List<HouseVo> houseList = houseService.fuzzySearch(cityId, key);
 			mov.addObject("houseList", houseList);
-
+			mov.addObject("searchParam",param);
 			return mov;
 		}
 		// 不是模糊查询，则执行条件查询
 		
-		// 组装搜索参数对象
-		SearchParam param = new SearchParam();
-		param.setSearchRegionType(searchRegionType);
 
 		//如果选中的是二级搜索条件，则要返回三级搜索条件
 		if((l2regionid!=null)&&(!l2regionid.equals("all"))){
