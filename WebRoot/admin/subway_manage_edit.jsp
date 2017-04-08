@@ -74,40 +74,18 @@
                                                <div class="edit_select subway_select_groups">
                                                    <input type="text" class="form-control yiji" id="input2" value="" placeholder="行政区">
                                                    <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
-                                                   <ul class="edit-select_ul">
-                                                       <li id="1">1</li>
-                                                       <li id="2">2</li>
-                                                       <li id="3">3</li>
-                                                       <li id="4">1</li>
-                                                       <li id="5">2</li>
-                                                       <li id="6">3</li>
+                                                   <ul class="edit-select_ul uxz">
+                                                       
                                                    </ul>
                                                </div>
                                            <div class="edit_select subway_select_groups">
                                                <input type="text" class="form-control erji" id="input3" value=""
                                                       placeholder="地区">
                                                <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
-                                               <ul class="edit-select_ul">
-                                                   <li id="11">1</li>
-                                                   <li id="22">2</li>
-                                                   <li id="33">3</li>
-                                                   <li id="44">1</li>
-                                                   <li id="55">2</li>
-                                                   <li id="66">3</li>
+                                               <ul class="edit-select_ul udq">
+                                                   
                                                </ul>
                                            </div>
-                                           <!--<div class="edit_select subway_select_groups">
-                                               <input type="text" class="form-control sanji" id="input4" value="" placeholder="三级">
-                                               <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
-                                               <ul class="edit-select_ul">
-                                                   <li id="111">1</li>
-                                                   <li id="222">2</li>
-                                                   <li id="333">3</li>
-                                                   <li id="444">1</li>
-                                                   <li id="555">2</li>
-                                                   <li id="666">3</li>
-                                               </ul>
-                                           </div>-->
                                            <button type="button" class="btn btn-info add_station">添加站点</button>
                                         </div>
                                 </div>

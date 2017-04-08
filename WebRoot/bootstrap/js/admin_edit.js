@@ -47,11 +47,12 @@ $(function() {
 	}
 	/*添加站点*/
 	$(".subway_station_add").click(function() {
+		getSonRegion();
 		$(".subway_station_add_select").slideToggle(100);
 	})
 	$(".add_station")
 			.click(
-					function() {
+					function() {				
 						if ($(".yiji").val() != "" && $(".erji").val() != ""/*&& $(".sanji").val()!=""*/) {
 							$(".station_haved")
 									.append(
@@ -78,6 +79,27 @@ function getParentsRegion() {
 			$(".edit-select_ul li").click(function() {
 				$("#parentRegionName").attr("value", $(this).html());
 				$("#parentRegionId").attr("value", $(this).attr("id"));
+				$(".select_control_label").attr("for", $(this).attr("id"));
+				$(".edit-select_ul").slideToggle(500);
+				$(".edit_select_icon").css("display", "none");
+			});
+		}
+	});
+}
+
+function getSonRegion() {
+	$.ajax({
+		url : "/admin/getSonRegion.action",
+		success : function(resultList1) {
+			$.each(resultList, function(index, element) {
+				$(".subway_select_groups .uxz").append(
+						"<li id=" + element.id + ">" + element.regionName
+								+ "</li>");
+			});
+			//绑定点击事件
+			$(".edit-select_ul li").click(function() {
+				$("#SonRegionName").attr("value", $(this).html());
+				$("#SonRegionId").attr("value", $(this).attr("id"));
 				$(".select_control_label").attr("for", $(this).attr("id"));
 				$(".edit-select_ul").slideToggle(500);
 				$(".edit_select_icon").css("display", "none");
