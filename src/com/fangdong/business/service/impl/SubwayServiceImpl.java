@@ -53,9 +53,21 @@ public class SubwayServiceImpl implements SubwayService {
 		subwayRegionMapper.insertSelective(subwayRegion);
 	}
 	@Override
+
 	public List<FdSubway> getSubwayByRegionCode(Integer regionCode) {
 		return subwayMapper.selectSubwayByRegionCode(regionCode);
-		
+	}
+
+	public void delSubwayRegionById(int id) {
+		// TODO Auto-generated method stub
+		subwayRegionMapper.deleteByPrimaryKey(id);
+	}
+	@Override
+	public int getSubwayIdBySubwayRegionId(int id) {
+		// TODO Auto-generated method stub
+		FdSubwayRegion a=subwayRegionMapper.selectByPrimaryKey(id);
+		return a.getSubwayId();
+
 	}
 	
 }

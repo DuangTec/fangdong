@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fangdong.business.model.FdSubway">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="subway_name" jdbcType="VARCHAR" property="subwayName" />
+    <result column="region_id" jdbcType="INTEGER" property="regionId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, subway_name
+    id, subway_name,region_id
   </sql>
   <select id="selectByExample" parameterType="com.fangdong.business.model.FdSubwayExample" resultMap="BaseResultMap">
     select

@@ -344,7 +344,9 @@ public class HouseController {
 		int regionId = Integer.parseInt(request.getParameter("areaId"));
 		String facility[] = request.getParameterValues("facility");
 		String feature[] = request.getParameterValues("feature");
-
+		String houseTop = request.getParameter("houseTop");
+		String priorApproval = request.getParameter("priorApproval");
+		
 		FdHouse house = new FdHouse();
 		house.setId(houseId);
 		house.setTitle(title);
@@ -371,6 +373,22 @@ public class HouseController {
 
 		Subject currentUser = SecurityUtils.getSubject();
 		int ownerId = ((FdUser) currentUser.getPrincipal()).getId();
+		//查看增值服务
+				if((houseTop!=null)&&(houseTop.equals("houseTop"))){
+					if(userService.currentUserPay(30)){
+						Date startDate = new Date();
+						house.setStartTopTime(startDate);
+						Calendar cal = Calendar.getInstance();
+						cal.setTime(startDate);
+						cal.add(Calendar.MONTH, 1);
+						house.setEndTopTime(cal.getTime());
+					}
+				}
+				if((priorApproval!=null)&&(priorApproval.equals("priorApproval"))){
+					if(userService.currentUserPay(5)){
+						house.setPriorApproval(1);
+					}
+				}
 		house.setOwnerId(ownerId);
 
 		try {
@@ -537,7 +555,11 @@ public class HouseController {
 	public ModelAndView houseDetail(HttpServletRequest request) {
 		Integer houseId = Integer.parseInt(request.getParameter("houseid"));
 		ModelAndView mov = new ModelAndView("/house/houseDetail.jsp");
-
+		String pending=request.getParameter("pending");
+		if(pending!=null&&pending.equals("pending"))
+		{
+			mov.addObject("pending", pending);
+		}
 		HouseVo houseVo = houseService.getHouseVoById(houseId);
 		mov.addObject("house", houseVo);
 		List<HouseVo> guessYouLikeList = houseService.guessYouLike(houseVo.getDistrict());
@@ -556,20 +578,20 @@ public class HouseController {
 	@RequestMapping("/admin/passApproval.action")
 	public String passApproval(@RequestParam(value="id",required=true)int id){
 		houseService.changeHouseStatus(id,"published");
-		return "redirect:/admin/pendingHouse.do";
+		return "redirect:/admin/house_check.do";
 	}
 	
 	//未通过审核 接口
 	@RequestMapping("/admin/failApproval.action")
 	public String failApproval(@RequestParam(value="id",required=true)int id){
 		houseService.changeHouseStatus(id,"closed");
-		return "redirect:/admin/pendingHouse.do";
+		return "redirect:/admin/house_check.do";
 	}
 	
 	//后台房屋审核页面
-	@RequestMapping("/admin/pendingHouse.do")
+	@RequestMapping("/admin/house_check.do")
 	public ModelAndView pendingHouse(){
-		ModelAndView mov = new ModelAndView("/admin/pendingHouse.jsp");
+		ModelAndView mov = new ModelAndView("/admin/house_check.jsp");
 		
 		List<HouseVo> pendingHouseList=houseService.getAllPendingHouse();
 		mov.addObject("pendingHouseList",pendingHouseList);

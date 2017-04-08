@@ -397,6 +397,8 @@
 	fd_house h
 	LEFT JOIN fd_user u ON h.owner_id = u.id
 	LEFT JOIN fd_region r ON h.region_id = r.id
+	WHERE
+	h.house_status='pending'
 	order by h.prior_approval desc,h.update_time desc
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
