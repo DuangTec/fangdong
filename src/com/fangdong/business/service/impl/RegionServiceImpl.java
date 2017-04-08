@@ -70,4 +70,9 @@ public class RegionServiceImpl implements RegionService{
 		return regionMapper.selectAreaByDistrictId(districtId);
 	}
 
+	@Override
+	public List<FdRegion> getAllArea() {
+		return regionMapper.selectAllErea();
+	}
+
 }

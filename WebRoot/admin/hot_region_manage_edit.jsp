@@ -12,12 +12,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit" /><!--国产浏览器高速渲染360-->
-    <link rel="icon" type="image/png" href="../bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
+    <link rel="icon" type="image/png" href="/bootstrap/i/Duang.jpg" /><!--改变title图标：h5-->
     <meta http-equiv="Cache-Control" content="no-siteapp" /><!--禁止百度转码-->
     <title>热门地区编辑-杜昂科技</title>
-    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="../bootstrap/css/duang.css" rel="stylesheet">
-    <link href="../bootstrap/css/admin_edit_common.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/duang.css" rel="stylesheet">
+    <link href="/bootstrap/css/admin_edit_common.css" rel="stylesheet">
 </head>
 <body>
 <div class="navbar navbar-fixed-top">
@@ -59,22 +59,32 @@
                         <form class="form-horizontal" action="/admin/editHotRegionSubmit.action" method="post">
                         </c:otherwise>
                     	</c:choose>
+                        <input type="hidden" value="${hotRegion.id}" name="hotRegionId"/>
                                 <div class="form-group">
                                     <label  class="col-xs-2 control-label">热门地区名称</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input2" value="${hotRegion.hotRegionName}">
+                                        <input type="text" class="form-control" name="hotRegionName" id="hotRegionName" value="${hotRegion.hotRegionName}">
                                     </div>
                                 </div> 
                                 <div class="form-group">
-                                    <label  class="col-xs-2 control-label">热门地区类型</label>
-                                    <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input2" value="${hotRegion.hotRegionType}">
-                                    </div>
-                                </div>
+								<label class="col-xs-2 control-label">热门地区类型</label>
+								<div class="col-xs-10">
+									<label class="checkbox-inline"><input type="radio"
+										name="hotRegionType" value="1"
+										<c:if test="${hotRegion.hotRegionType ==1 }">checked</c:if>>学校</label>
+									<label class="checkbox-inline"><input type="radio"
+										name="hotRegionType" value="2"
+										<c:if test="${hotRegion.hotRegionType ==2 }">checked</c:if>>商圈</label>
+								</div>
+							</div>
                                 <div class="form-group">
                                     <label  class="col-xs-2 control-label">热门地区关联地区</label>
-                                    <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input2" value="${hotRegion.regionName}">
+                                    <div class="col-xs-10" id="region">
+                                        <input type="text" class="form-control" id="regionName" value="${hotRegion.regionName}" readonly>
+                                        <input type="hidden" id="regionId" name="regionId" value="${hotRegion.regionId}">
+                                        <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
+                                        <ul class="edit-select_ul">
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -100,9 +110,9 @@
     </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="../bootstrap/js/jquery-1.12.1.min.js"></script>
-<script src="../bootstrap/js/bootstrap.js"></script>
-<script src="../bootstrap/js/admin_common.js"></script>
-<script src="../bootstrap/js/admin_edit.js"></script>
+<script src="/bootstrap/js/jquery-1.12.1.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/admin_common.js"></script>
+<script src="/bootstrap/js/hot_region_manage_edit.js"></script>
 </body>
 </html>

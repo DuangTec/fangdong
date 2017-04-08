@@ -170,5 +170,11 @@ public class RegionController {
 		return null;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/getAllArea.action")
+	public List<FdRegion> getAllArea(){
+		return regionService.getAllArea();
+	}
+	
 		
 }

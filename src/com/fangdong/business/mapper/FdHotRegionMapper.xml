@@ -128,7 +128,8 @@
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-  </delete><insert id="insert" parameterType="com.fangdong.business.model.FdHotRegion">
+  </delete>
+  <insert id="insert" parameterType="com.fangdong.business.model.FdHotRegion">
     insert into fd_hot_region (id, region_id, hot_region_name, 
       hot_region_type)
     values (#{id,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{hotRegionName,jdbcType=VARCHAR}, 

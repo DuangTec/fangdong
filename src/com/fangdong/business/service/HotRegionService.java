@@ -13,7 +13,7 @@ public interface HotRegionService {
 	
 	public HotRegionVo getHotRegionById(int id);
 	
-	public boolean createHotRegion(FdHotRegion hotRegion);
+	public void createHotRegion(FdHotRegion hotRegion);
 	
 	public boolean updateHotRegion(FdHotRegion hotRegion);
 }

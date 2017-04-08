@@ -32,11 +32,8 @@ public class HotRegionServiceImpl implements HotRegionService {
 	}
 
 	@Override
-	public boolean createHotRegion(FdHotRegion hotRegion) {
-		int i=hotRegionMapper.insert(hotRegion);
-		if(i==0)
-		{return false;}
-		return true;
+	public void createHotRegion(FdHotRegion hotRegion) {
+		hotRegionMapper.insertSelective(hotRegion);
 	}
 
 	@Override

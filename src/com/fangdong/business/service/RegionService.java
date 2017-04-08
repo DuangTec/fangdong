@@ -28,4 +28,6 @@ public interface RegionService {
 	public List<FdRegion> getSonRegion() throws Exception;
 	//传入地区父ID寻找子ID
 	public List<FdRegion> getChildren(String fatherId);
+	//获取所有三级地区
+	public List<FdRegion> getAllArea();
 } 

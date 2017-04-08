@@ -78,14 +78,16 @@ public class HotRegionController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return "redirect:/admin/hotRegion_manage.do";
+			return "redirect:/admin/hotRegion.do";
 		}
 		
 		//如果不是新建，则为更新
+		int hotRegionId = Integer.parseInt(request.getParameter("hotRegionId"));
 		int regionId=Integer.parseInt(request.getParameter("regionId"));
 		String hotRegionType=request.getParameter("hotRegionType");
 		String hotRegionName=request.getParameter("hotRegionName");
 		FdHotRegion hotRegion = new FdHotRegion();
+		hotRegion.setId(hotRegionId);
 		hotRegion.setHotRegionName(hotRegionName);
 		hotRegion.setHotRegionType(hotRegionType);
 		hotRegion.setRegionId(regionId);
@@ -97,7 +99,7 @@ public class HotRegionController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/admin/hotRegion_manage.do";
+		return "redirect:/admin/hotRegion.do";
 	}
 
 }
