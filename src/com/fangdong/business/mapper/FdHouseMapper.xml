@@ -283,7 +283,7 @@
 		<if test="cityId != 0">
 			AND r3.id=#{cityId}
 		</if>
-		
+		and h.house_status='published'
 	</where>
 	order by update_time desc
 </select>
@@ -322,6 +322,8 @@
 	 or h.address LIKE "%" #{key}"%"
 	 or h.title LIKE "%" #{key}"%")
 	 and r3.id=#{regionId}
+	 and h.house_status='published'
+	 order by h.update_time desc
   </select>
   
   <select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
@@ -366,6 +368,7 @@
 	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
 	WHERE
 	r2.region_name = #{district}
+	and h.house_status='published'
 	limit 0,3;
   </select>
   <select id="selectAllPendingHouseVo" resultMap="VoResultMap">
