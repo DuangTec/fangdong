@@ -36,10 +36,10 @@ $(function(){
         /*$(this).attr("value","");
         $(this).val("");*/
     })
-    $("#input4").blur(function(){
-        if($("#input2").val()!=""&& $("#input3").val()!=""&& $("#input4").val()!=""){
+    $(".add_station").click(function(){
+        if($(".yiji").val()!=""&& $(".erji").val()!=""/*&& $(".sanji").val()!=""*/){
             $(".station_haved").append("<div class='subway_station_check'>"+
-                $("#input2").val()+$("#input3").val()+$("#input4").val()+"<span class='glyphicon glyphicon-remove'></span></div>");
+                $(".yiji").attr("value")+$(".erji").val()/*+$(".sanji").val()*/+"<span class='glyphicon glyphicon-remove'></span></div>");
                 del_station();
         }
     })

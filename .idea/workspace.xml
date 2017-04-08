@@ -28,38 +28,28 @@
       <file leaf-file-name="subway_manage_edit.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/admin/subway_manage_edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.214286">
-              <caret line="90" column="97" selection-start-line="90" selection-start-column="91" selection-end-line="90" selection-end-column="97" />
+            <state vertical-scroll-proportion="-10.857142">
+              <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="area_manage_edit.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/admin/area_manage_edit.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.928572">
-              <caret line="112" column="38" selection-start-line="98" selection-start-column="32" selection-end-line="112" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="subway_edit.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="subway_edit.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/bootstrap/css/subway_edit.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.966666">
-              <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.6625222">
+              <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin_edit.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="admin_edit.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/bootstrap/js/admin_edit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73693085">
-              <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -124,9 +114,9 @@
         <option value="$PROJECT_DIR$/web/bootstrap/css/house_manage.css" />
         <option value="$PROJECT_DIR$/web/admin/area_manage_edit.html" />
         <option value="$PROJECT_DIR$/web/bootstrap/js/admin_common.js" />
-        <option value="$PROJECT_DIR$/web/bootstrap/css/subway_edit.css" />
         <option value="$PROJECT_DIR$/web/admin/subway_manage_edit.html" />
         <option value="$PROJECT_DIR$/web/bootstrap/js/admin_edit.js" />
+        <option value="$PROJECT_DIR$/web/bootstrap/css/subway_edit.css" />
       </list>
     </option>
   </component>
@@ -358,7 +348,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28050596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -557,13 +547,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/houseDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4483146">
-          <caret line="107" column="25" selection-start-line="107" selection-start-column="25" selection-end-line="107" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/userinfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6191011">
@@ -729,26 +712,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/subway_edit.css">
+    <entry file="file://$PROJECT_DIR$/web/houseDetail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.966666">
-          <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.7061947">
+          <caret line="54" column="76" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="76" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/admin/subway_manage_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.214286">
-          <caret line="90" column="97" selection-start-line="90" selection-start-column="91" selection-end-line="90" selection-end-column="97" />
+        <state vertical-scroll-proportion="-10.857142">
+          <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/bootstrap/js/admin_edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73693085">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap/css/subway_edit.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6625222">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
           <folding />
         </state>
       </provider>

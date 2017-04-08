@@ -71,5 +71,8 @@
 .subway_station_add_select{
     display: none;
 }
+.add_station{
+    vertical-align: top;
+}
 
 
