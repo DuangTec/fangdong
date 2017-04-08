@@ -221,8 +221,16 @@
 	LEFT JOIN fd_region r1 ON h.region_id = r1.id
 	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
 	LEFT JOIN fd_region r3 on r2.parent_reg_id=r3.id
-	LEFT JOIN fd_subway_region sr ON sr.region_id=h.region_id
+	<if test="param.searchRegionType == 'hotRegion'">
+	<if test="param.l3RegionId != null">
 	LEFT JOIN fd_hot_region hr ON hr.region_id=h.region_id
+	</if>
+	</if>
+	<if test="param.searchRegionType == 'subway'">
+	<if test="param.l2RegionId != null">
+	LEFT JOIN fd_subway_region sr ON sr.region_id=h.region_id
+	</if>
+	</if>
 	<where>
 	<choose>
 		<when test="param.searchRegionType == 'region'">
