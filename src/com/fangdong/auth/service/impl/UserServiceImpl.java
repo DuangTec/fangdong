@@ -124,7 +124,7 @@ public class UserServiceImpl implements UserService {
 	public boolean currentUserPay(int price) {
 		FdUser user1=(FdUser)(SecurityUtils.getSubject().getPrincipal());
 		FdUser user = userMapper.selectByPrimaryKey(user1.getId());
-		user.setId(user.getBalance());
+		user.setBalance(user.getBalance());
 		if(user.getBalance()>=price){
 			user.setBalance(user.getBalance()-price);
 			userMapper.updateByPrimaryKeySelective(user);

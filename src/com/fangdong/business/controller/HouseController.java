@@ -302,7 +302,9 @@ public class HouseController {
 		int regionId = Integer.parseInt(request.getParameter("areaId"));
 		String facility[] = request.getParameterValues("facility");
 		String feature[] = request.getParameterValues("feature");
-
+		String houseTop = request.getParameter("houseTop");
+		String priorApproval = request.getParameter("priorApproval");
+		
 		FdHouse house = new FdHouse();
 		house.setId(houseId);
 		house.setTitle(title);
@@ -329,6 +331,22 @@ public class HouseController {
 
 		Subject currentUser = SecurityUtils.getSubject();
 		int ownerId = ((FdUser) currentUser.getPrincipal()).getId();
+		//查看增值服务
+				if((houseTop!=null)&&(houseTop.equals("houseTop"))){
+					if(userService.currentUserPay(30)){
+						Date startDate = new Date();
+						house.setStartTopTime(startDate);
+						Calendar cal = Calendar.getInstance();
+						cal.setTime(startDate);
+						cal.add(Calendar.MONTH, 1);
+						house.setEndTopTime(cal.getTime());
+					}
+				}
+				if((priorApproval!=null)&&(priorApproval.equals("priorApproval"))){
+					if(userService.currentUserPay(5)){
+						house.setPriorApproval(1);
+					}
+				}
 		house.setOwnerId(ownerId);
 
 		try {
