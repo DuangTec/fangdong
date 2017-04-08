@@ -16,5 +16,6 @@ $(function(){
             buttom.style.top=(screen_Height-80)+"px";
         }
     }
+    setInterval(pageButtomPos,100)
     $(window).resize(pageButtomPos);
 })
