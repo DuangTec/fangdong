@@ -77,6 +77,17 @@ $(function(){
                 required:true,
                 equalTo:"#password_reg"/*选择器*/
             },
+            
+            //修改密码验证
+            regist_pwd:{
+                required:true,
+                login_regist_pwd_reg:true,
+            },
+            regist_repwd:{
+            	required:true,
+            	equalTo:"#regist_pwd"/*选择器*/
+            },
+            
             /*充值*/
             bank:{
                 required:true,
@@ -104,6 +115,15 @@ $(function(){
             },
             password_rep:{
                 required:"请再次输入密码",
+                equalTo:"两次密码不一致"
+            },
+            //修改密码
+            regist_pwd:{
+                required:"请输入密码"
+            },
+          
+            regist_repwd:{
+                required:"请输入密码",
                 equalTo:"两次密码不一致"
             },
             /*充值*/
