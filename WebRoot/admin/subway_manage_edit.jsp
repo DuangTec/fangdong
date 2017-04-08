@@ -52,12 +52,13 @@
                             <h3 class="panel-title">编辑列表</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" action="/admin/editSubwaySubmit.action" method="post">
+                            <form class="form-horizontal" action="/admin/createSubwayRegion.action" method="post">
                                 <div class="form-group">
                                     <label  class="col-xs-2 control-label">地铁线路名称</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input1" name="subwayName" value="${subway.subwayName}">
+                                        <input type="text" class="form-control" id="input1" name="subwayName" value="${subway.subwayName}" readonly>
                                         <input type="hidden" class="form-control1" id="input2" name="subwayId" value="${subway.id}">
+                                        <input type="hidden" id="city_id" name="city_id" value="${subway.regionId}">
                                     </div>
                                 </div>
                                 <div class="form-group subway_station_box">
@@ -71,22 +72,24 @@
                                        </span>
                                        <span class="subway_station_add"/>+</span>
                                        <div class="subway_station_add_select">
-                                               <div class="edit_select subway_select_groups">
-                                                   <input type="text" class="form-control yiji" id="input2" value="" placeholder="行政区">
+                                               <div class="edit_select subway_select_groups district_groups">
+                                                   <input type="hidden" id="district_region_id" value="">
+                                                   <input type="text" class="form-control" id="district_region_name" value="" placeholder="行政区">
                                                    <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
-                                                   <ul class="edit-select_ul uxz">
+                                                   <ul class="edit-select_ul">
                                                        
                                                    </ul>
                                                </div>
-                                           <div class="edit_select subway_select_groups">
-                                               <input type="text" class="form-control erji" id="input3" value=""
-                                                      placeholder="地区">
+                                           <div class="edit_select subway_select_groups area_groups">
+                                               <input type="hidden" name="regionId" id="area_region_id" value="">
+                                               <input type="text" class="form-control" id="area_region_name" value="" placeholder="地区">
+                                           
                                                <span class="glyphicon glyphicon-chevron-down edit_select_icon"></span>
-                                               <ul class="edit-select_ul udq">
+                                               <ul class="edit-select_ul">
                                                    
                                                </ul>
                                            </div>
-                                           <button type="button" class="btn btn-info add_station">添加站点</button>
+                                           <input type="submit" class="btn btn-info add_station" value="添加站点">
                                         </div>
                                 </div>
                                 <!--  <div class="form-group subway_sub">
@@ -115,6 +118,6 @@
 <script src="../bootstrap/js/jquery-1.12.1.min.js"></script>
 <script src="../bootstrap/js/bootstrap.js"></script>
 <script src="../bootstrap/js/admin_common.js"></script>
-<script src="../bootstrap/js/admin_edit.js"></script>
+<script src="/bootstrap/js/admin_subway_edit.js"></script>
 </body>
 </html>

@@ -125,16 +125,16 @@ public class SubwayController {
 		subwayRegion.setRegionId(regionId);
 		subwayService.createSubwayRegionBySubwayId(subwayRegion);
 		
-		return "redirect:/admin/subwayDetail.do?id="+subwayId;//返回地铁详情页面。
+		return "redirect:/admin/editSubway.do?id="+subwayId;//返回地铁详情页面。
 	}
 
 	@RequestMapping("/admin/delSubwayRegion.action")
-	public String addSubwayRegion(@RequestParam(value="subwayRegionId",required=true)int id){
+	public String delSubwayRegion(@RequestParam(value="subwayRegionId",required=true)int id){
 		//FdSubwayRegion subwayRegion = new FdSubwayRegion();
 		//subwayService.createSubwayRegionBySubwayId(subwayRegion);
 		int subwayId=subwayService.getSubwayIdBySubwayRegionId(id);
 		subwayService.delSubwayRegionById(id);
-		return "/admin/editSubway.do?id="+subwayId;//返回地铁详情页面。
+		return "redirect:/admin/editSubway.do?id="+subwayId;//返回地铁详情页面。
 	}
 	
 }

@@ -3,14 +3,14 @@ $(function () {
     /*获取所有父级地区*/
     getParentsRegion();
 
-	/*input聚焦下拉按钮出现，按钮点击模拟select出现，select点击input获得对应值*/
-	$(".edit_select input").focus(function () {
-		$(".edit_select_icon").css("display", "block")
-	})
-	$(".edit_select_icon").click(
-		function () {
-			$(".edit-select_ul").slideToggle(500);
-		});
+    /*input聚焦下拉按钮出现，按钮点击模拟select出现，select点击input获得对应值*/
+    $(".edit_select input").focus(function () {
+        $(".edit_select_icon").css("display", "block")
+    })
+    $(".edit_select_icon").click(
+        function () {
+            $(".edit-select_ul").slideToggle(500);
+        });
 });
 
 

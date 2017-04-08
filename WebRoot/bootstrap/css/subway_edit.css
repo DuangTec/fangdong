@@ -60,7 +60,7 @@
     z-index: 2;
     width: 100%;
     background-color: white;
-    max-height: 60px;
+    max-height: 200px;
 }
 .subway_select_groups .edit_select_icon{
     cursor: pointer;

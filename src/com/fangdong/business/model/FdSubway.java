@@ -4,8 +4,18 @@ public class FdSubway {
     private int id;
 
     private String subwayName;
+    
+    private int regionId;
 
-    public int getId() {
+    public int getRegionId() {
+		return regionId;
+	}
+
+	public void setRegionId(int regionId) {
+		this.regionId = regionId;
+	}
+
+	public int getId() {
         return id;
     }
 

@@ -2,6 +2,7 @@
  * Created by yey on 2017/3/20.
  */
 $(function () {
+
 	/*input聚焦下拉按钮出现，按钮点击模拟select出现，select点击input获得对应值*/
 	$(".edit_select input").focus(function () {
 		$(".edit_select_icon").css("display", "block")
