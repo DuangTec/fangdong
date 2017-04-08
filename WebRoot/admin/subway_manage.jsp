@@ -24,7 +24,7 @@
 <body>
 <div class="navbar navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="../index.html">Duang房咚网</a>
+        <a class="navbar-brand" href="/index.do">Duang房咚网</a>
         <ul class="city-log-reg esc_login">
             <li class="log-reg">
                 <a href="/userinfo.do"><shiro:principal property="username" /></a>&nbsp;欢迎您
@@ -43,8 +43,8 @@
                         <li><a href="house_manage.do">房屋管理</a></li>
                         <li><a href="area_manage.do">地区管理</a></li>
                         <li><a href="user_manage.do">用户管理</a></li>
-                        <li><a href="subway.do">地铁管理</a></li>
-                        <li class="active"><a href="hotRegion.do.html">热门地区管理</a></li>
+                        <li class="active"><a href="subway.do">地铁管理</a></li>
+                        <li><a href="hotRegion.do">热门地区管理</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-10 manage_table">

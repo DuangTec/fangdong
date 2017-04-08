@@ -39,9 +39,16 @@
             <div class="row">
                 <div class="col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="admin.html">后台管理</a></li>
-                        <li><a href="house_manage.html">地铁管理</a></li>
-                        <li class="active">地铁编辑</li>
+                        <li><a href="admin.do">后台管理</a></li>
+                        <li><a href="/admin/subway.do">地铁管理</a></li>
+                        <c:choose>
+							<c:when test="${type=='create'}">
+								<li class="active">创建地铁</li>
+							</c:when>
+							<c:otherwise>
+								<li class="active">地铁编辑</li>
+							</c:otherwise>
+						</c:choose>                   
                     </ol>
                 </div>
             </div>
