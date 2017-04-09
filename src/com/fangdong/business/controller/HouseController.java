@@ -244,6 +244,7 @@ public class HouseController {
 		house.setRentType(rentType);
 		house.setRegionId(regionId);
 		house.setUpdateTime(new Date());
+		house.setPriorApproval(0);
 		//创建房屋后状态改为pending待审批
 		house.setHouseStatus("pending");
 		StringBuilder sb1 = new StringBuilder();
@@ -274,10 +275,19 @@ public class HouseController {
 				cal.add(Calendar.MONTH, 1);
 				house.setEndTopTime(cal.getTime());
 			}
+			else
+			{
+				mov.setViewName("redirect:/recharge.do?id="+ownerId);
+				return mov;
+			}
 		}
 		if((priorApproval!=null)&&(priorApproval.equals("priorApproval"))){
 			if(userService.currentUserPay(5)){
 				house.setPriorApproval(1);
+			}
+			else{
+				mov.setViewName("redirect:/recharge.do?id="+ownerId);
+				return mov;
 			}
 		}
 		house.setOwnerId(ownerId);
@@ -357,6 +367,7 @@ public class HouseController {
 		house.setAddress(address);
 		house.setHouseDetail(houseDetail);
 		house.setRegionId(regionId);
+		house.setHouseStatus("pending");
 		StringBuilder sb1 = new StringBuilder();
 		for (String f : facility) {
 			sb1.append(f + ",");
@@ -373,22 +384,35 @@ public class HouseController {
 
 		Subject currentUser = SecurityUtils.getSubject();
 		int ownerId = ((FdUser) currentUser.getPrincipal()).getId();
+		
+		//top服务和priorApproval服务  00/11
+		//String service=houseService.getHouseService(houseId);
 		//查看增值服务
-				if((houseTop!=null)&&(houseTop.equals("houseTop"))){
-					if(userService.currentUserPay(30)){
-						Date startDate = new Date();
-						house.setStartTopTime(startDate);
-						Calendar cal = Calendar.getInstance();
-						cal.setTime(startDate);
-						cal.add(Calendar.MONTH, 1);
-						house.setEndTopTime(cal.getTime());
-					}
-				}
-				if((priorApproval!=null)&&(priorApproval.equals("priorApproval"))){
-					if(userService.currentUserPay(5)){
-						house.setPriorApproval(1);
-					}
-				}
+		if((houseTop!=null)&&(houseTop.equals("houseTop"))){
+			if(userService.currentUserPay(30)){
+				Date startDate = new Date();
+				house.setStartTopTime(startDate);
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(startDate);
+				cal.add(Calendar.MONTH, 1);
+				house.setEndTopTime(cal.getTime());
+			}
+			else
+			{
+				mov.setViewName("redirect:/recharge.do?id="+ownerId);
+				return mov;
+			}
+		}
+		if((priorApproval!=null)&&(priorApproval.equals("priorApproval"))){
+			if(userService.currentUserPay(5)){
+				
+				house.setPriorApproval(1);
+			}
+			else{
+				mov.setViewName("redirect:/recharge.do?id="+ownerId);
+				return mov;
+			}
+		}
 		house.setOwnerId(ownerId);
 
 		try {

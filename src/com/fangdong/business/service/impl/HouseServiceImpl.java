@@ -199,6 +199,7 @@ public class HouseServiceImpl implements HouseService {
 	public void changeHouseStatus(int id, String status) {
 		FdHouse house = new FdHouse();
 		house.setHouseStatus(status);
+		house.setPriorApproval(0);
 		house.setId(id);
 		houseMapper.updateByPrimaryKeySelective(house);		
 	}
@@ -222,6 +223,18 @@ public class HouseServiceImpl implements HouseService {
 		house.setId(id);
 		house.setHouseStatus("pending");
 		houseMapper.updateByPrimaryKeySelective(house);
+	}
+
+	@Override
+	public String getHouseService(int houseid) {
+		FdHouse house=houseMapper.selectByPrimaryKey(houseid);
+		String houseTop="0";
+		String PriorApproval="0";
+		if(house.getStartTopTime()!=null)
+		{houseTop="1";}
+		if(house.getHouseStatus()=="published"||house.getPriorApproval()==1)
+		{PriorApproval="1";}
+		return houseTop+PriorApproval;
 	}
 
 	
