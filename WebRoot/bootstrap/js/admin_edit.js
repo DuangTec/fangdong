@@ -45,8 +45,7 @@ $(function () {
 		getSonRegion();
 		$(".subway_station_add_select").slideToggle(100);
 	})
-	$(".add_station")
-		.click(
+	$(".add_station").click(
 		function () {
 			if ($(".yiji").val() != "" && $(".erji").val() != ""/*&& $(".sanji").val()!=""*/) {
 				$(".station_haved")

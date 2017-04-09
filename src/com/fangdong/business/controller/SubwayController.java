@@ -101,12 +101,16 @@ public class SubwayController {
 	
 	@RequestMapping("/admin/editSubwaySubmit.action")
 	public String editSubwaySubmit(HttpServletRequest request,@RequestParam(value="id",defaultValue="-1")int id,@RequestParam(value="type",required=false)String type){
-		String subwayName=request.getParameter("subwayRegionId");
+		String subwayName=request.getParameter("subwayName");
+		Integer subwayRegionId = Integer.parseInt(request.getParameter("subwayRegionId"));
 		//如果是创建，type=create
 		if((type!=null)&&(type.equals("create"))){
 			FdSubway subway=new FdSubway();
 			subway.setSubwayName(subwayName);
+			subway.setRegionId(subwayRegionId);
 			subwayService.createSubway(subway);
+			
+			return "redirect:/admin/subway.do";
 		}
 		//更新地铁
 		if(id!=-1){
