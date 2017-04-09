@@ -1,746 +1,781 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fangdong.business.mapper.FdHouseMapper" >
-  <resultMap id="BaseResultMap" type="com.fangdong.business.model.FdHouse" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="owner_id" property="ownerId" jdbcType="INTEGER" />
-    <result column="create_date" property="createDate" jdbcType="DATE" />
-    <result column="size" property="size" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="house_detail" property="houseDetail" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="prior_approval" property="priorApproval" jdbcType="INTEGER" />
-    <result column="house_type" property="houseType" jdbcType="VARCHAR" />
-    <result column="rent_price" property="rentPrice" jdbcType="INTEGER" />
-    <result column="region_id" property="regionId" jdbcType="INTEGER" />
-    <result column="hall" property="hall" jdbcType="INTEGER" />
-    <result column="room" property="room" jdbcType="INTEGER" />
-    <result column="facilities" property="facilities" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
-    <result column="rent_type" property="rentType" jdbcType="VARCHAR" />
-    <result column="features" property="features" jdbcType="VARCHAR" />
-    <result column="start_top_time" property="startTopTime" jdbcType="TIMESTAMP" />
-    <result column="end_top_time" property="endTopTime" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <resultMap type="com.fangdong.business.model.HouseVo" id="VoResultMap">
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="owner_id" property="ownerId" jdbcType="INTEGER" />
-    <result column="create_date" property="createDate" jdbcType="DATE" />
-    <result column="size" property="size" jdbcType="INTEGER" />
-    <result column="title" jdbcType="VARCHAR" property="title" />
-    <result column="house_detail" jdbcType="VARCHAR" property="houseDetail" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="prior_approval" property="priorApproval" jdbcType="INTEGER" />
-    <result column="house_type" property="houseType" jdbcType="VARCHAR" />
-    <result column="hall" property="hall" jdbcType="INTEGER" />
-    <result column="room" property="room" jdbcType="INTEGER" />    
-    <result column="rent_price" property="rentPrice" jdbcType="INTEGER" />
-    <result column="region_id" property="regionId" jdbcType="INTEGER" />
-    <result column="area" property="area" jdbcType="VARCHAR"/>
-    <result column="city" property="city" jdbcType="VARCHAR"/>
-    <result column="district" property="district" jdbcType="VARCHAR"/>
-    <result column="owner" property="owner" jdbcType="VARCHAR" />
-    <result column="facilities" property="facilities" jdbcType="VARCHAR" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
-    <result column="rent_type" property="rentType" jdbcType="VARCHAR" />
-    <result column="features" property="features" jdbcType="VARCHAR" />
-    <result column="start_top_time" property="startTopTime" jdbcType="TIMESTAMP" />
-    <result column="end_top_time" property="endTopTime" jdbcType="TIMESTAMP" />    
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    id, owner_id, create_date, size, title, house_detail, address, prior_approval, house_type, 
-    rent_price, region_id, hall, room, facilities, update_time, house_status, rent_type, 
-    features, start_top_time, end_top_time
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fangdong.business.model.FdHouseExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from fd_house
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from fd_house
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap" parameterType="java.lang.Integer">
-  	select 
-    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title, h.house_detail, h.address, h.prior_approval, h.title,
-    h.house_type, h.rent_price, h.region_id,h.facilities,h.update_time, h.house_status, h.rent_type, 
-    h.features, r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city',
-    u.username as 'owner'
-    from fd_house h 
-    left join fd_user u on h.owner_id=u.id
-    left join fd_region r1 on h.region_id = r1.id
-    left join fd_region r2 on r1.parent_reg_id=r2.id
-    left join fd_region r3 on r2.parent_reg_id=r3.id
-    where h.id=#{id}
-  </select>
-  <select id="selectAllHouseVo" resultMap="VoResultMap">
-	SELECT
-	h.id,
-	h.owner_id,
-	h.create_date,
-	h.size,
-	h.hall,
-	h.room,
-	h.house_detail,
-	h.address,
-	h.prior_approval,
-	h.house_type,
-	h.rent_price,
-	h.region_id,
-	h.title,
-	h.facilities,
-	h.update_time, 
-	h.house_status, 
-	h.rent_type, 
-    h.features,
-	u.username AS 'owner',
-	r.region_name AS 'area'
-	FROM
-	fd_house h
-	LEFT JOIN fd_user u ON h.owner_id = u.id
-	LEFT JOIN fd_region r ON h.region_id = r.id
-  </select>
-  <select id="selectHouseByUserId" resultMap="VoResultMap">
-	SELECT
-	h.id,
-	h.owner_id,
-	h.create_date,
-	h.size,
-	h.hall,
-	h.room,
-	h.house_detail,
-	h.address,
-	h.prior_approval,
-	h.house_type,
-	h.house_status,
-	h.rent_price,
-	h.region_id,
-	h.title,
-	h.facilities,
-	u.username AS 'owner',
-	r.region_name AS 'area'
-	FROM
-	fd_house h
-	LEFT JOIN fd_user u ON h.owner_id = u.id
-	LEFT JOIN fd_region r ON h.region_id = r.id
-	WHERE h.owner_id= #{userId}
-  </select>
-  <select id="selectHouseVoByParam" parameterType="map" resultMap="VoResultMap">
-	SELECT
-	h.id,
-	h.owner_id,
-	h.create_date,
-	h.size,
-	h.hall,
-	h.room,
-	h.house_detail,
-	h.address,
-	h.prior_approval,
-	h.house_type,
-	h.rent_price,
-	h.region_id,
-	h.facilities,
-	h.title,
-	r3.region_name AS 'city',
-	r1.region_name AS 'area',
-	r2.region_name AS 'district'
-	FROM
-	fd_house h
-	LEFT JOIN fd_region r1 ON h.region_id = r1.id
-	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
-	LEFT JOIN fd_region r3 on r2.parent_reg_id=r3.id
-	<if test="param.searchRegionType == 'hotRegion'">
-	<if test="param.l3RegionId != null">
-	LEFT JOIN fd_hot_region hr ON hr.region_id=h.region_id
-	</if>
-	</if>
-	<if test="param.searchRegionType == 'subway'">
-	<if test="param.l2RegionId != null">
-	LEFT JOIN fd_subway_region sr ON sr.region_id=h.region_id
-	</if>
-	</if>
-	<where>
-	<choose>
-		<when test="param.searchRegionType == 'region'">
-			<if test="param.l2RegionId != null">
-				AND r2.id=#{param.l2RegionId}
-			</if>
+<mapper namespace="com.fangdong.business.mapper.FdHouseMapper">
+	<resultMap id="BaseResultMap" type="com.fangdong.business.model.FdHouse">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="owner_id" property="ownerId" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="DATE" />
+		<result column="size" property="size" jdbcType="INTEGER" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="house_detail" property="houseDetail" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="prior_approval" property="priorApproval"
+			jdbcType="INTEGER" />
+		<result column="house_type" property="houseType" jdbcType="VARCHAR" />
+		<result column="rent_price" property="rentPrice" jdbcType="INTEGER" />
+		<result column="region_id" property="regionId" jdbcType="INTEGER" />
+		<result column="hall" property="hall" jdbcType="INTEGER" />
+		<result column="room" property="room" jdbcType="INTEGER" />
+		<result column="facilities" property="facilities" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
+		<result column="rent_type" property="rentType" jdbcType="VARCHAR" />
+		<result column="features" property="features" jdbcType="VARCHAR" />
+		<result column="start_top_time" property="startTopTime"
+			jdbcType="TIMESTAMP" />
+		<result column="end_top_time" property="endTopTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<resultMap type="com.fangdong.business.model.HouseVo" id="VoResultMap">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="owner_id" property="ownerId" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="DATE" />
+		<result column="size" property="size" jdbcType="INTEGER" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="house_detail" jdbcType="VARCHAR" property="houseDetail" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="prior_approval" property="priorApproval"
+			jdbcType="INTEGER" />
+		<result column="house_type" property="houseType" jdbcType="VARCHAR" />
+		<result column="hall" property="hall" jdbcType="INTEGER" />
+		<result column="room" property="room" jdbcType="INTEGER" />
+		<result column="rent_price" property="rentPrice" jdbcType="INTEGER" />
+		<result column="region_id" property="regionId" jdbcType="INTEGER" />
+		<result column="area" property="area" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="district" property="district" jdbcType="VARCHAR" />
+		<result column="owner" property="owner" jdbcType="VARCHAR" />
+		<result column="facilities" property="facilities" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="house_status" property="houseStatus" jdbcType="VARCHAR" />
+		<result column="rent_type" property="rentType" jdbcType="VARCHAR" />
+		<result column="features" property="features" jdbcType="VARCHAR" />
+		<result column="start_top_time" property="startTopTime"
+			jdbcType="TIMESTAMP" />
+		<result column="end_top_time" property="endTopTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		id, owner_id, create_date, size, title, house_detail, address,
+		prior_approval, house_type,
+		rent_price, region_id, hall, room, facilities, update_time, house_status,
+		rent_type,
+		features, start_top_time, end_top_time
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.fangdong.business.model.FdHouseExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from fd_house
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from fd_house
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectHouseVoByPrimaryKey" resultMap="VoResultMap"
+		parameterType="java.lang.Integer">
+		select
+		h.id, h.owner_id, h.create_date, h.size, h.hall,h.room,h.title,
+		h.house_detail, h.address, h.prior_approval, h.title,
+		h.house_type, h.rent_price, h.region_id,h.facilities,h.update_time, h.house_status,
+		h.rent_type,
+		h.features, r1.region_name as 'area',r2.region_name as 'district',r3.region_name
+		as 'city',
+		u.username as 'owner'
+		from fd_house h
+		left join fd_user u on h.owner_id=u.id
+		left join fd_region r1 on h.region_id = r1.id
+		left join fd_region r2 on r1.parent_reg_id=r2.id
+		left join fd_region r3 on r2.parent_reg_id=r3.id
+		where h.id=#{id}
+	</select>
+	<select id="selectAllHouseVo" resultMap="VoResultMap">
+		SELECT
+		h.id,
+		h.owner_id,
+		h.create_date,
+		h.size,
+		h.hall,
+		h.room,
+		h.house_detail,
+		h.address,
+		h.prior_approval,
+		h.house_type,
+		h.rent_price,
+		h.region_id,
+		h.title,
+		h.facilities,
+		h.update_time,
+		h.house_status,
+		h.rent_type,
+		h.features,
+		u.username AS 'owner',
+		r.region_name AS 'area'
+		FROM
+		fd_house h
+		LEFT JOIN fd_user u ON h.owner_id = u.id
+		LEFT JOIN fd_region r ON h.region_id = r.id
+	</select>
+	<select id="selectHouseByUserId" resultMap="VoResultMap">
+		SELECT
+		h.id,
+		h.owner_id,
+		h.create_date,
+		h.size,
+		h.hall,
+		h.room,
+		h.house_detail,
+		h.address,
+		h.prior_approval,
+		h.house_type,
+		h.house_status,
+		h.rent_price,
+		h.region_id,
+		h.title,
+		h.facilities,
+		u.username AS 'owner',
+		r.region_name AS 'area'
+		FROM
+		fd_house h
+		LEFT JOIN fd_user u ON h.owner_id = u.id
+		LEFT JOIN fd_region r ON h.region_id = r.id
+		WHERE h.owner_id= #{userId}
+	</select>
+	<select id="selectHouseVoByParam" parameterType="map" resultMap="VoResultMap">
+		SELECT
+		h.id,
+		h.owner_id,
+		h.create_date,
+		h.size,
+		h.hall,
+		h.room,
+		h.house_detail,
+		h.address,
+		h.prior_approval,
+		h.house_type,
+		h.rent_price,
+		h.region_id,
+		h.facilities,
+		h.title,
+		r3.region_name AS 'city',
+		r1.region_name AS 'area',
+		r2.region_name AS 'district'
+		FROM
+		fd_house h
+		LEFT JOIN fd_region r1 ON h.region_id = r1.id
+		LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
+		LEFT JOIN fd_region r3 on r2.parent_reg_id=r3.id
+		<if test="param.searchRegionType == 'hotRegion'">
 			<if test="param.l3RegionId != null">
-				AND r1.id=#{param.l3RegionId}
+				LEFT JOIN fd_hot_region hr ON hr.region_id=h.region_id
 			</if>
-		</when>
-		<when test="param.searchRegionType == 'subway'">
+		</if>
+		<if test="param.searchRegionType == 'subway'">
 			<if test="param.l2RegionId != null">
-				AND sr.subway_id=#{param.l2RegionId}
+				LEFT JOIN fd_subway_region sr ON sr.region_id=h.region_id
 			</if>
-			<if test="param.l3RegionId !=null">
-				AND sr.region_id=#{param.l3RegionId}
+		</if>
+		<where>
+			<choose>
+				<when test="param.searchRegionType == 'region'">
+					<if test="param.l2RegionId != null">
+						AND r2.id=#{param.l2RegionId}
+					</if>
+					<if test="param.l3RegionId != null">
+						AND r1.id=#{param.l3RegionId}
+					</if>
+				</when>
+				<when test="param.searchRegionType == 'subway'">
+					<if test="param.l2RegionId != null">
+						AND sr.subway_id=#{param.l2RegionId}
+					</if>
+					<if test="param.l3RegionId !=null">
+						AND sr.region_id=#{param.l3RegionId}
+					</if>
+				</when>
+				<when test="param.searchRegionType == 'hotRegion'">
+					<if test="param.l2RegionId != null">
+						AND r2.id=#{param.l2RegionId}
+					</if>
+					<if test="param.l3RegionId !=null">
+						AND hr.id=#{param.l3RegionId}
+					</if>
+				</when>
+			</choose>
+
+			<if test="param.lowerPrice != null">
+				and h.rent_price &gt;=#{param.lowerPrice}
 			</if>
-		</when>
-		<when test="param.searchRegionType == 'hotRegion'">
-			<if test="param.l2RegionId != null">
-				AND r2.id=#{param.l2RegionId}
+			<if test="param.upperPrice != null">
+				and h.rent_price &lt;=#{param.upperPrice}
 			</if>
-			<if test="param.l3RegionId !=null">
-				AND hr.id=#{param.l3RegionId}
+			<if test="param.roomNum != null">
+				and h.room=#{param.roomNum}
 			</if>
-		</when>
-	</choose>
-		
-		<if test="param.lowerPrice != null">
-			and h.rent_price &gt;=#{param.lowerPrice}
-		</if>
-		<if test="param.upperPrice != null">
-			and h.rent_price &lt;=#{param.upperPrice}
-		</if>
-		<if test="param.roomNum != null">
-			and h.room=#{param.roomNum}
-		</if>
-		<if test="param.hallNum != null">
-			and h.hall=#{param.hallNum}
-		</if>
-		<if test="param.rentType != null">
-		 and h.rent_type=#{param.rentType}
-		</if>
-		<if test="param.features != null">
-		<foreach collection="param.features" item="fea" index="index"
-            open="(" close=")">
-		and h.features like '%'#{fea}'%'
-    	</foreach>
-		</if>
-		<if test="cityId != 0">
-			AND r3.id=#{cityId}
-		</if>
+			<if test="param.hallNum != null">
+				and h.hall=#{param.hallNum}
+			</if>
+			<if test="param.rentType != null">
+				and h.rent_type=#{param.rentType}
+			</if>
+			<if test="param.features != null">
+				<foreach collection="param.features" item="fea" index="index"
+					open="(" close=")">
+					and h.features like '%'#{fea}'%'
+				</foreach>
+			</if>
+			<if test="cityId != 0">
+				AND r3.id=#{cityId}
+			</if>
+			and h.house_status='published'
+		</where>
+		order by update_time desc
+	</select>
+
+	<select id="selectByKey" parameterType="map" resultMap="VoResultMap">
+		SELECT
+		h.id,
+		h.owner_id,
+		h.create_date,
+		h.size,
+		h.hall,
+		h.room,
+		h.house_detail,
+		h.address,
+		h.prior_approval,
+		h.title,
+		h.house_type,
+		h.rent_price,
+		h.region_id,
+		r1.region_name AS 'area',
+		r2.region_name AS
+		'district',
+		r3.region_name AS 'city',
+		u.username AS 'owner'
+		FROM
+		fd_house h
+		LEFT JOIN fd_region r1 ON h.region_id = r1.id
+		LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
+		LEFT JOIN fd_region r3 ON r2.parent_reg_id = r3.id
+		LEFT JOIN fd_user u ON h.owner_id = u.id
+		WHERE
+		(r1.region_name LIKE "%" #{key}"%"
+		or r2.region_name LIKE "%" #{key}"%"
+		or r3.region_name LIKE "%" #{key}"%"
+		or h.house_detail LIKE "%" #{key}"%"
+		or h.address LIKE "%" #{key}"%"
+		or h.title LIKE "%" #{key}"%")
+		and r3.id=#{regionId}
 		and h.house_status='published'
-	</where>
-	order by update_time desc
-</select>
-	
-  <select id="selectByKey" parameterType="map" resultMap="VoResultMap">
-	SELECT
-	h.id,
-	h.owner_id,
-	h.create_date,
-	h.size,
-	h.hall,
-	h.room,
-	h.house_detail,
-	h.address,
-	h.prior_approval,
-	h.title,
-	h.house_type,
-	h.rent_price,
-	h.region_id,
-	r1.region_name AS 'area',
-	r2.region_name AS
-	'district',
-	r3.region_name AS 'city',
-	u.username AS 'owner'
-	FROM
-	fd_house h
-	LEFT JOIN fd_region r1 ON h.region_id = r1.id
-	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
-	LEFT JOIN fd_region r3 ON r2.parent_reg_id = r3.id
-	LEFT JOIN fd_user u ON h.owner_id = u.id
-	WHERE
-	(r1.region_name LIKE "%" #{key}"%"
-	 or r2.region_name LIKE "%" #{key}"%"
-	 or r3.region_name LIKE "%" #{key}"%"
-	 or h.house_detail LIKE "%" #{key}"%"
-	 or h.address LIKE "%" #{key}"%"
-	 or h.title LIKE "%" #{key}"%")
-	 and r3.id=#{regionId}
-	 and h.house_status='published'
-	 order by h.update_time desc
-  </select>
-  
-  <select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
-  	select * from (select 
-    h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail, h.address, h.prior_approval, 
-    h.house_type, h.rent_price, h.region_id,r1.region_name as 'area',r2.region_name as 'district',r3.region_name as 'city'
-    ,h.title,(@rowNum:=@rowNum+1) as row_no
-    from fd_house h
-    left join fd_region r1 on h.region_id = r1.id
-    left join fd_region r2 on r1.parent_reg_id=r2.id
-    left join fd_region r3 on r2.parent_reg_id=r3.id
-    ,(select (@rowNum:=0)) x
-    where r3.id=1 and 
-    now() between h.start_top_time and h.end_top_time ) z where row_no in
-    <foreach collection="randomNum" item="num" index="index"
-            open="(" close=")" separator=",">
-            #{num}
-    </foreach>;
-  </select>
-  <select id="selectTopHouseAmount" resultType="int">
-  	select count(*) from fd_house where prior_approval=1;
-  </select>
-  <select id="selectGuessYouLike" parameterType="String" resultMap="VoResultMap">
-	SELECT
-	h.id,
-	h.owner_id,
-	h.create_date,
-	h.size,
-	h.hall,
-	h.room,
-	h.house_detail,
-	h.address,
-	h.prior_approval,
-	h.house_type,
-	h.rent_price,
-	h.region_id,
-	r1.region_name AS 'area',
-	r2.region_name AS 'district'
-	FROM
-	fd_house h
-	LEFT JOIN fd_region r1 ON h.region_id = r1.id
-	LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
-	WHERE
-	r2.region_name = #{district}
-	and h.house_status='published'
-	limit 0,3;
-  </select>
-  <select id="selectAllPendingHouseVo" resultMap="VoResultMap">
-  	SELECT
-	h.id,
-	h.owner_id,
-	h.create_date,
-	h.size,
-	h.hall,
-	h.room,
-	h.house_detail,
-	h.address,
-	h.prior_approval,
-	h.house_type,
-	h.rent_price,
-	h.region_id,
-	h.title,
-	h.facilities,
-	h.update_time, 
-	h.house_status, 
-	h.rent_type, 
-    h.features,
-	u.username AS 'owner',
-	r.region_name AS 'area'
-	FROM
-	fd_house h
-	LEFT JOIN fd_user u ON h.owner_id = u.id
-	LEFT JOIN fd_region r ON h.region_id = r.id
-	WHERE
-	h.house_status='pending'
-	order by h.prior_approval desc,h.update_time desc
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from fd_house
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.fangdong.business.model.FdHouseExample" >
-    delete from fd_house
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.fangdong.business.model.FdHouse" >
-    insert into fd_house (id, owner_id, create_date, 
-      size, title, house_detail, 
-      address, prior_approval, house_type, 
-      rent_price, region_id, hall, 
-      room, facilities, update_time, 
-      house_status, rent_type, features, 
-      start_top_time, end_top_time)
-    values (#{id,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, 
-      #{size,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{houseDetail,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{priorApproval,jdbcType=INTEGER}, #{houseType,jdbcType=VARCHAR}, 
-      #{rentPrice,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{hall,jdbcType=INTEGER}, 
-      #{room,jdbcType=INTEGER}, #{facilities,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{houseStatus,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR}, 
-      #{startTopTime,jdbcType=TIMESTAMP}, #{endTopTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.fangdong.business.model.FdHouse" >
-    insert into fd_house
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="ownerId != null" >
-        owner_id,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="size != null" >
-        size,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="houseDetail != null" >
-        house_detail,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="priorApproval != null" >
-        prior_approval,
-      </if>
-      <if test="houseType != null" >
-        house_type,
-      </if>
-      <if test="rentPrice != null" >
-        rent_price,
-      </if>
-      <if test="regionId != null" >
-        region_id,
-      </if>
-      <if test="hall != null" >
-        hall,
-      </if>
-      <if test="room != null" >
-        room,
-      </if>
-      <if test="facilities != null" >
-        facilities,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="houseStatus != null" >
-        house_status,
-      </if>
-      <if test="rentType != null" >
-        rent_type,
-      </if>
-      <if test="features != null" >
-        features,
-      </if>
-      <if test="startTopTime != null" >
-        start_top_time,
-      </if>
-      <if test="endTopTime != null" >
-        end_top_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="ownerId != null" >
-        #{ownerId,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=DATE},
-      </if>
-      <if test="size != null" >
-        #{size,jdbcType=INTEGER},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="houseDetail != null" >
-        #{houseDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="priorApproval != null" >
-        #{priorApproval,jdbcType=INTEGER},
-      </if>
-      <if test="houseType != null" >
-        #{houseType,jdbcType=VARCHAR},
-      </if>
-      <if test="rentPrice != null" >
-        #{rentPrice,jdbcType=INTEGER},
-      </if>
-      <if test="regionId != null" >
-        #{regionId,jdbcType=INTEGER},
-      </if>
-      <if test="hall != null" >
-        #{hall,jdbcType=INTEGER},
-      </if>
-      <if test="room != null" >
-        #{room,jdbcType=INTEGER},
-      </if>
-      <if test="facilities != null" >
-        #{facilities,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="houseStatus != null" >
-        #{houseStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="rentType != null" >
-        #{rentType,jdbcType=VARCHAR},
-      </if>
-      <if test="features != null" >
-        #{features,jdbcType=VARCHAR},
-      </if>
-      <if test="startTopTime != null" >
-        #{startTopTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTopTime != null" >
-        #{endTopTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.fangdong.business.model.FdHouseExample" resultType="java.lang.Integer" >
-    select count(*) from fd_house
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update fd_house
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.ownerId != null" >
-        owner_id = #{record.ownerId,jdbcType=INTEGER},
-      </if>
-      <if test="record.createDate != null" >
-        create_date = #{record.createDate,jdbcType=DATE},
-      </if>
-      <if test="record.size != null" >
-        size = #{record.size,jdbcType=INTEGER},
-      </if>
-      <if test="record.title != null" >
-        title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.houseDetail != null" >
-        house_detail = #{record.houseDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="record.address != null" >
-        address = #{record.address,jdbcType=VARCHAR},
-      </if>
-      <if test="record.priorApproval != null" >
-        prior_approval = #{record.priorApproval,jdbcType=INTEGER},
-      </if>
-      <if test="record.houseType != null" >
-        house_type = #{record.houseType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.rentPrice != null" >
-        rent_price = #{record.rentPrice,jdbcType=INTEGER},
-      </if>
-      <if test="record.regionId != null" >
-        region_id = #{record.regionId,jdbcType=INTEGER},
-      </if>
-      <if test="record.hall != null" >
-        hall = #{record.hall,jdbcType=INTEGER},
-      </if>
-      <if test="record.room != null" >
-        room = #{record.room,jdbcType=INTEGER},
-      </if>
-      <if test="record.facilities != null" >
-        facilities = #{record.facilities,jdbcType=VARCHAR},
-      </if>
-      <if test="record.updateTime != null" >
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.houseStatus != null" >
-        house_status = #{record.houseStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="record.rentType != null" >
-        rent_type = #{record.rentType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.features != null" >
-        features = #{record.features,jdbcType=VARCHAR},
-      </if>
-      <if test="record.startTopTime != null" >
-        start_top_time = #{record.startTopTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.endTopTime != null" >
-        end_top_time = #{record.endTopTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update fd_house
-    set id = #{record.id,jdbcType=INTEGER},
-      owner_id = #{record.ownerId,jdbcType=INTEGER},
-      create_date = #{record.createDate,jdbcType=DATE},
-      size = #{record.size,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      house_detail = #{record.houseDetail,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      prior_approval = #{record.priorApproval,jdbcType=INTEGER},
-      house_type = #{record.houseType,jdbcType=VARCHAR},
-      rent_price = #{record.rentPrice,jdbcType=INTEGER},
-      region_id = #{record.regionId,jdbcType=INTEGER},
-      hall = #{record.hall,jdbcType=INTEGER},
-      room = #{record.room,jdbcType=INTEGER},
-      facilities = #{record.facilities,jdbcType=VARCHAR},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      house_status = #{record.houseStatus,jdbcType=VARCHAR},
-      rent_type = #{record.rentType,jdbcType=VARCHAR},
-      features = #{record.features,jdbcType=VARCHAR},
-      start_top_time = #{record.startTopTime,jdbcType=TIMESTAMP},
-      end_top_time = #{record.endTopTime,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fangdong.business.model.FdHouse" >
-    update fd_house
-    <set >
-      <if test="ownerId != null" >
-        owner_id = #{ownerId,jdbcType=INTEGER},
-      </if>
-      <if test="createDate != null" >
-        create_date = #{createDate,jdbcType=DATE},
-      </if>
-      <if test="size != null" >
-        size = #{size,jdbcType=INTEGER},
-      </if>
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="houseDetail != null" >
-        house_detail = #{houseDetail,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="priorApproval != null" >
-        prior_approval = #{priorApproval,jdbcType=INTEGER},
-      </if>
-      <if test="houseType != null" >
-        house_type = #{houseType,jdbcType=VARCHAR},
-      </if>
-      <if test="rentPrice != null" >
-        rent_price = #{rentPrice,jdbcType=INTEGER},
-      </if>
-      <if test="regionId != null" >
-        region_id = #{regionId,jdbcType=INTEGER},
-      </if>
-      <if test="hall != null" >
-        hall = #{hall,jdbcType=INTEGER},
-      </if>
-      <if test="room != null" >
-        room = #{room,jdbcType=INTEGER},
-      </if>
-      <if test="facilities != null" >
-        facilities = #{facilities,jdbcType=VARCHAR},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="houseStatus != null" >
-        house_status = #{houseStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="rentType != null" >
-        rent_type = #{rentType,jdbcType=VARCHAR},
-      </if>
-      <if test="features != null" >
-        features = #{features,jdbcType=VARCHAR},
-      </if>
-      <if test="startTopTime != null" >
-        start_top_time = #{startTopTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="endTopTime != null" >
-        end_top_time = #{endTopTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.fangdong.business.model.FdHouse" >
-    update fd_house
-    set owner_id = #{ownerId,jdbcType=INTEGER},
-      create_date = #{createDate,jdbcType=DATE},
-      size = #{size,jdbcType=INTEGER},
-      title = #{title,jdbcType=VARCHAR},
-      house_detail = #{houseDetail,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      prior_approval = #{priorApproval,jdbcType=INTEGER},
-      house_type = #{houseType,jdbcType=VARCHAR},
-      rent_price = #{rentPrice,jdbcType=INTEGER},
-      region_id = #{regionId,jdbcType=INTEGER},
-      hall = #{hall,jdbcType=INTEGER},
-      room = #{room,jdbcType=INTEGER},
-      facilities = #{facilities,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      house_status = #{houseStatus,jdbcType=VARCHAR},
-      rent_type = #{rentType,jdbcType=VARCHAR},
-      features = #{features,jdbcType=VARCHAR},
-      start_top_time = #{startTopTime,jdbcType=TIMESTAMP},
-      end_top_time = #{endTopTime,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateUpdateTimeById" parameterType="int">
-  	update fd_house set update_time=now() where id=#{id};
-  </update>
+		order by h.update_time desc
+	</select>
+
+	<select id="selectTopHouseVo" parameterType="map" resultMap="VoResultMap">
+		select * from
+		(
+		select
+		h.id, h.owner_id, h.create_date, h.size, h.hall,h.room, h.house_detail,
+		h.address, h.prior_approval,
+		h.house_type, h.rent_price, h.region_id,r1.region_name as 'area',r2.region_name as
+		'district',r3.region_name as 'city'
+		,h.title,(@rowNum:=@rowNum+1) as row_no
+		from fd_house h
+		left join fd_region r1 on h.region_id = r1.id
+		left join fd_region r2 on r1.parent_reg_id=r2.id
+		left join fd_region r3 on r2.parent_reg_id=r3.id
+		,(select (@rowNum:=0)) x
+		where r3.id=1 and
+		now() between h.start_top_time and h.end_top_time 
+		) z
+		where row_no in
+		<foreach collection="randomNum" item="num" index="index" open="("
+			close=")" separator=",">
+			#{num}
+		</foreach>
+		;
+	</select>
+	<select id="selectTopHouseAmount" resultType="int"
+		parameterType="int">
+				select count(*) from fd_house h
+		LEFT JOIN fd_region r1 ON h.region_id = r1.id
+		LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
+		LEFT JOIN fd_region r3 on r2.parent_reg_id=r3.id
+		where r3.id=#{cityId} and now() between h.start_top_time and h.end_top_time and h.house_status='published'
+	</select>
+	<select id="selectGuessYouLike" parameterType="String"
+		resultMap="VoResultMap">
+		SELECT
+		h.id,
+		h.owner_id,
+		h.create_date,
+		h.size,
+		h.hall,
+		h.room,
+		h.house_detail,
+		h.address,
+		h.prior_approval,
+		h.house_type,
+		h.rent_price,
+		h.region_id,
+		r1.region_name AS 'area',
+		r2.region_name AS 'district'
+		FROM
+		fd_house h
+		LEFT JOIN fd_region r1 ON h.region_id = r1.id
+		LEFT JOIN fd_region r2 ON r1.parent_reg_id = r2.id
+		WHERE
+		r2.region_name = #{district}
+		and h.house_status='published'
+		limit 0,3;
+	</select>
+	<select id="selectAllPendingHouseVo" resultMap="VoResultMap">
+		SELECT
+		h.id,
+		h.owner_id,
+		h.create_date,
+		h.size,
+		h.hall,
+		h.room,
+		h.house_detail,
+		h.address,
+		h.prior_approval,
+		h.house_type,
+		h.rent_price,
+		h.region_id,
+		h.title,
+		h.facilities,
+		h.update_time,
+		h.house_status,
+		h.rent_type,
+		h.features,
+		u.username AS 'owner',
+		r.region_name AS 'area'
+		FROM
+		fd_house h
+		LEFT JOIN fd_user u ON h.owner_id = u.id
+		LEFT JOIN fd_region r ON h.region_id = r.id
+		WHERE
+		h.house_status='pending'
+		order by h.prior_approval desc,h.update_time desc
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from fd_house
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.fangdong.business.model.FdHouseExample">
+		delete from fd_house
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.fangdong.business.model.FdHouse">
+		insert into fd_house (id, owner_id, create_date,
+		size, title, house_detail,
+		address, prior_approval, house_type,
+		rent_price, region_id, hall,
+		room, facilities, update_time,
+		house_status, rent_type, features,
+		start_top_time, end_top_time)
+		values (#{id,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER},
+		#{createDate,jdbcType=DATE},
+		#{size,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{houseDetail,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}, #{priorApproval,jdbcType=INTEGER},
+		#{houseType,jdbcType=VARCHAR},
+		#{rentPrice,jdbcType=INTEGER}, #{regionId,jdbcType=INTEGER}, #{hall,jdbcType=INTEGER},
+		#{room,jdbcType=INTEGER}, #{facilities,jdbcType=VARCHAR},
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{houseStatus,jdbcType=VARCHAR}, #{rentType,jdbcType=VARCHAR}, #{features,jdbcType=VARCHAR},
+		#{startTopTime,jdbcType=TIMESTAMP}, #{endTopTime,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" useGeneratedKeys="true"
+		keyProperty="id" parameterType="com.fangdong.business.model.FdHouse">
+		insert into fd_house
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="ownerId != null">
+				owner_id,
+			</if>
+			<if test="createDate != null">
+				create_date,
+			</if>
+			<if test="size != null">
+				size,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="houseDetail != null">
+				house_detail,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="priorApproval != null">
+				prior_approval,
+			</if>
+			<if test="houseType != null">
+				house_type,
+			</if>
+			<if test="rentPrice != null">
+				rent_price,
+			</if>
+			<if test="regionId != null">
+				region_id,
+			</if>
+			<if test="hall != null">
+				hall,
+			</if>
+			<if test="room != null">
+				room,
+			</if>
+			<if test="facilities != null">
+				facilities,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="houseStatus != null">
+				house_status,
+			</if>
+			<if test="rentType != null">
+				rent_type,
+			</if>
+			<if test="features != null">
+				features,
+			</if>
+			<if test="startTopTime != null">
+				start_top_time,
+			</if>
+			<if test="endTopTime != null">
+				end_top_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="ownerId != null">
+				#{ownerId,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=DATE},
+			</if>
+			<if test="size != null">
+				#{size,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="houseDetail != null">
+				#{houseDetail,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="priorApproval != null">
+				#{priorApproval,jdbcType=INTEGER},
+			</if>
+			<if test="houseType != null">
+				#{houseType,jdbcType=VARCHAR},
+			</if>
+			<if test="rentPrice != null">
+				#{rentPrice,jdbcType=INTEGER},
+			</if>
+			<if test="regionId != null">
+				#{regionId,jdbcType=INTEGER},
+			</if>
+			<if test="hall != null">
+				#{hall,jdbcType=INTEGER},
+			</if>
+			<if test="room != null">
+				#{room,jdbcType=INTEGER},
+			</if>
+			<if test="facilities != null">
+				#{facilities,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="houseStatus != null">
+				#{houseStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="rentType != null">
+				#{rentType,jdbcType=VARCHAR},
+			</if>
+			<if test="features != null">
+				#{features,jdbcType=VARCHAR},
+			</if>
+			<if test="startTopTime != null">
+				#{startTopTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTopTime != null">
+				#{endTopTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.fangdong.business.model.FdHouseExample"
+		resultType="java.lang.Integer">
+		select count(*) from fd_house
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update fd_house
+		<set>
+			<if test="record.id != null">
+				id = #{record.id,jdbcType=INTEGER},
+			</if>
+			<if test="record.ownerId != null">
+				owner_id = #{record.ownerId,jdbcType=INTEGER},
+			</if>
+			<if test="record.createDate != null">
+				create_date = #{record.createDate,jdbcType=DATE},
+			</if>
+			<if test="record.size != null">
+				size = #{record.size,jdbcType=INTEGER},
+			</if>
+			<if test="record.title != null">
+				title = #{record.title,jdbcType=VARCHAR},
+			</if>
+			<if test="record.houseDetail != null">
+				house_detail = #{record.houseDetail,jdbcType=VARCHAR},
+			</if>
+			<if test="record.address != null">
+				address = #{record.address,jdbcType=VARCHAR},
+			</if>
+			<if test="record.priorApproval != null">
+				prior_approval = #{record.priorApproval,jdbcType=INTEGER},
+			</if>
+			<if test="record.houseType != null">
+				house_type = #{record.houseType,jdbcType=VARCHAR},
+			</if>
+			<if test="record.rentPrice != null">
+				rent_price = #{record.rentPrice,jdbcType=INTEGER},
+			</if>
+			<if test="record.regionId != null">
+				region_id = #{record.regionId,jdbcType=INTEGER},
+			</if>
+			<if test="record.hall != null">
+				hall = #{record.hall,jdbcType=INTEGER},
+			</if>
+			<if test="record.room != null">
+				room = #{record.room,jdbcType=INTEGER},
+			</if>
+			<if test="record.facilities != null">
+				facilities = #{record.facilities,jdbcType=VARCHAR},
+			</if>
+			<if test="record.updateTime != null">
+				update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.houseStatus != null">
+				house_status = #{record.houseStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="record.rentType != null">
+				rent_type = #{record.rentType,jdbcType=VARCHAR},
+			</if>
+			<if test="record.features != null">
+				features = #{record.features,jdbcType=VARCHAR},
+			</if>
+			<if test="record.startTopTime != null">
+				start_top_time = #{record.startTopTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="record.endTopTime != null">
+				end_top_time = #{record.endTopTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update fd_house
+		set id = #{record.id,jdbcType=INTEGER},
+		owner_id = #{record.ownerId,jdbcType=INTEGER},
+		create_date = #{record.createDate,jdbcType=DATE},
+		size = #{record.size,jdbcType=INTEGER},
+		title = #{record.title,jdbcType=VARCHAR},
+		house_detail = #{record.houseDetail,jdbcType=VARCHAR},
+		address = #{record.address,jdbcType=VARCHAR},
+		prior_approval = #{record.priorApproval,jdbcType=INTEGER},
+		house_type = #{record.houseType,jdbcType=VARCHAR},
+		rent_price = #{record.rentPrice,jdbcType=INTEGER},
+		region_id = #{record.regionId,jdbcType=INTEGER},
+		hall = #{record.hall,jdbcType=INTEGER},
+		room = #{record.room,jdbcType=INTEGER},
+		facilities = #{record.facilities,jdbcType=VARCHAR},
+		update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+		house_status = #{record.houseStatus,jdbcType=VARCHAR},
+		rent_type = #{record.rentType,jdbcType=VARCHAR},
+		features = #{record.features,jdbcType=VARCHAR},
+		start_top_time = #{record.startTopTime,jdbcType=TIMESTAMP},
+		end_top_time = #{record.endTopTime,jdbcType=TIMESTAMP}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.fangdong.business.model.FdHouse">
+		update fd_house
+		<set>
+			<if test="ownerId != null">
+				owner_id = #{ownerId,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				create_date = #{createDate,jdbcType=DATE},
+			</if>
+			<if test="size != null">
+				size = #{size,jdbcType=INTEGER},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="houseDetail != null">
+				house_detail = #{houseDetail,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="priorApproval != null">
+				prior_approval = #{priorApproval,jdbcType=INTEGER},
+			</if>
+			<if test="houseType != null">
+				house_type = #{houseType,jdbcType=VARCHAR},
+			</if>
+			<if test="rentPrice != null">
+				rent_price = #{rentPrice,jdbcType=INTEGER},
+			</if>
+			<if test="regionId != null">
+				region_id = #{regionId,jdbcType=INTEGER},
+			</if>
+			<if test="hall != null">
+				hall = #{hall,jdbcType=INTEGER},
+			</if>
+			<if test="room != null">
+				room = #{room,jdbcType=INTEGER},
+			</if>
+			<if test="facilities != null">
+				facilities = #{facilities,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="houseStatus != null">
+				house_status = #{houseStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="rentType != null">
+				rent_type = #{rentType,jdbcType=VARCHAR},
+			</if>
+			<if test="features != null">
+				features = #{features,jdbcType=VARCHAR},
+			</if>
+			<if test="startTopTime != null">
+				start_top_time = #{startTopTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="endTopTime != null">
+				end_top_time = #{endTopTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.fangdong.business.model.FdHouse">
+		update fd_house
+		set owner_id = #{ownerId,jdbcType=INTEGER},
+		create_date = #{createDate,jdbcType=DATE},
+		size = #{size,jdbcType=INTEGER},
+		title = #{title,jdbcType=VARCHAR},
+		house_detail = #{houseDetail,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
+		prior_approval = #{priorApproval,jdbcType=INTEGER},
+		house_type = #{houseType,jdbcType=VARCHAR},
+		rent_price = #{rentPrice,jdbcType=INTEGER},
+		region_id = #{regionId,jdbcType=INTEGER},
+		hall = #{hall,jdbcType=INTEGER},
+		room = #{room,jdbcType=INTEGER},
+		facilities = #{facilities,jdbcType=VARCHAR},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		house_status = #{houseStatus,jdbcType=VARCHAR},
+		rent_type = #{rentType,jdbcType=VARCHAR},
+		features = #{features,jdbcType=VARCHAR},
+		start_top_time = #{startTopTime,jdbcType=TIMESTAMP},
+		end_top_time = #{endTopTime,jdbcType=TIMESTAMP}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateUpdateTimeById" parameterType="int">
+		update fd_house set update_time=now() where id=#{id};
+	</update>
 </mapper>

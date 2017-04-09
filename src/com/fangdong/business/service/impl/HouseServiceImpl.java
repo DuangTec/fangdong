@@ -117,7 +117,7 @@ public class HouseServiceImpl implements HouseService {
 
 	@Override
 	public List<HouseVo> getTopHouse(int top, int regionId) {
-		int tha=houseMapper.selectTopHouseAmount();
+		int tha=houseMapper.selectTopHouseAmount(regionId);
 		int rCount=top;
 		if(tha<=top){
 			top=tha;
