@@ -119,9 +119,9 @@
     </if>
   </delete>
     <delete id="deleteBySubwayId" parameterType="int">
-  	delete from fd_subway_region sr
+  	delete from fd_subway_region
   	<if test="_parameter != null">
-  		where sr.subway_id=#{id}
+  		where subway_id=#{id}
   	</if>
   </delete>
   <insert id="insert" parameterType="com.fangdong.business.model.FdSubwayRegion" >
