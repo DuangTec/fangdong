@@ -52,15 +52,29 @@
                             <h3 class="panel-title">编辑列表</h3>
                         </div>
                         <div class="panel-body">
+                            <c:choose>
+                            <c:when test="${type=='create'}">
+                            <form class="form-horizontal" action="/admin/editSubwaySubmit.action?type=create" method="post">
+                            </c:when>
+                            <c:otherwise>
                             <form class="form-horizontal" action="/admin/createSubwayRegion.action" method="post">
+                            </c:otherwise>
+                            </c:choose>
+                                <div class="form-group">
+                                    <label  class="col-xs-2 control-label">城市ID</label>
+                                    <div class="col-xs-10">
+                                        <input type="text" class="form-control" id="input1" name="subwayRegionId" value="${subway.regionId}" <c:if test="${type!='create'}">readonly</c:if>>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label  class="col-xs-2 control-label">地铁线路名称</label>
                                     <div class="col-xs-10">
-                                        <input type="text" class="form-control" id="input1" name="subwayName" value="${subway.subwayName}" readonly>
+                                        <input type="text" class="form-control" id="input1" name="subwayName" value="${subway.subwayName}" <c:if test="${type!='create'}">readonly</c:if>>
                                         <input type="hidden" class="form-control1" id="input2" name="subwayId" value="${subway.id}">
                                         <input type="hidden" id="city_id" name="city_id" value="${subway.regionId}">
                                     </div>
                                 </div>
+                                       <c:if test="${type!='create'}">
                                 <div class="form-group subway_station_box">
                                     <label  class="col-xs-2 control-label">站点</label>
                                     <span class="col-xs-10 subway_station_edit">
@@ -92,11 +106,14 @@
                                            <input type="submit" class="btn btn-info add_station" value="添加站点">
                                         </div>
                                 </div>
-                                <!--  <div class="form-group subway_sub">
+                                       </c:if>
+                                <c:if test="${type=='create'}">
+                                  <div class="form-group subway_sub">
                                     <div class="col-xs-offset-2 col-xs-2">
                                         <input type="submit" class="edit_submit" value="保存">
                                     </div>
-                                </div>  -->
+                                </div>  
+                                </c:if>
                             </form>
                         </div>
                     </div>

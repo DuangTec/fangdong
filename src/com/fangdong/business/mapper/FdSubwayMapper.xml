@@ -120,6 +120,9 @@
       <if test="subwayName != null">
         subway_name,
       </if>
+       <if test="regionId != null">
+        region_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -127,6 +130,9 @@
       </if>
       <if test="subwayName != null">
         #{subwayName,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null">
+        #{regionId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
