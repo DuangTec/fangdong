@@ -195,15 +195,23 @@
                                    accept="image/jpg,image/jpeg,image/gif,image/png" multiple="multiple" name="file">上传图片
                         </a>
                     </div>
-
                     <div class="input-row">
                         <span class="input-label red">增值服务：</span>
                         <div class="checkbox input-tag">
-                            <label  class="checkbox-inline"><input type="checkbox" name="houseTop" value="houseTop" >房屋置顶30天(30元/次)</label>
-                            <label  class="checkbox-inline"><input type="checkbox" name="priorApproval" value="priorApproval">优先审批(5元/次)</label>
-                        </div>
+								<label class="checkbox-inline"><input type="checkbox"
+									name="houseTop" value="houseTop"
+									<c:if test="${house.endTopTime<=currentTime&&house.endTopTime!=null}">disabled="disabled" checked="checked"</c:if>>
+									房屋首页推送30天(30元/次 <c:if test="${house.endTopTime>currentTime}">你购买的结束日期是${house.endTopTime}</c:if>)
+								</label>
+								<c:if
+									test="${house.houseStatus=='pending'||house.houseStatus==null}">
+									<label class="checkbox-inline"><input type="checkbox"
+										name="priorApproval" value="priorApproval"
+										<c:if test="${house.priorApproval==1}">disabled="disabled" checked="checked"</c:if>>
+										优先审批(5元/次) </label>
+								</c:if>
+							</div>
                     </div>
-
                     <div class="up">
                         <input type="submit" value="上传房屋信息" class="upload"/>
                     </div>

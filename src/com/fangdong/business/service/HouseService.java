@@ -34,4 +34,6 @@ public interface HouseService {
 	public void takeOffHouse(int id);
 	//房屋重新上架
 	public void putOnHouse(int id);
+	//获取房屋的增值信息
+	public String getHouseService(int houseid);
 }
