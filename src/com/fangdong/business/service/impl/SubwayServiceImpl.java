@@ -31,8 +31,11 @@ public class SubwayServiceImpl implements SubwayService {
 	}
 	@Override
 	public void deleteSubwayById(int id) {
-		//删除subwayRegion表中的数据
+		List<SubwayRegionVo> a =subwayRegionMapper.selectSubwayRegionBySubwayId(id);
+		if(a.size()!=0){
+		//删除subwayRegion表中的数据{
 		subwayRegionMapper.deleteBySubwayId(id);
+		}
 		//删除subway表中的数据
 		subwayMapper.deleteByPrimaryKey(id);
 	}

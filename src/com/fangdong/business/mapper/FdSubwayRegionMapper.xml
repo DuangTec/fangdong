@@ -118,7 +118,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-    <delete id="deleteBySubwayRegionId" parameterType="int">
+    <delete id="deleteBySubwayId" parameterType="int">
   	delete from fd_subway_region sr
   	<if test="_parameter != null">
   		where sr.subway_id=#{id}
